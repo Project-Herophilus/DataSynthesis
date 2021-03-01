@@ -1,4 +1,16 @@
 # DataSynthesis
+<p>
+DataSynthesis was born after its creator received three patents for de-idetification. Its sole intent is to provide a comprehensive reusable hybrid platform for anyone in need of massive amounts of data for development, testing or other data related activities. The key to the entire platform is ALL the data that is provided within it initially is completely fictitious and was at some time publicly available.
+</p>
+<p>
+As you read through this content and think "There's no way there's that much data within it our of the box?" Just think about how data is constructed. Because the core of the system is about data attributes that enables us to legitimately use a force multiplier for data elements. Aldo, keep in mind that we have core tables in place to store lots of these options as well.<br>
+
+A few examples of how to look at the base data provided:<br>
+- Names: The construct of a name is by at a minimum combining a first name and last name. The base platform contains almost **300k first names and almost 600k last names**. So, out of the box that means it has well over **16.5B** name combinations.
+- Addresses: Addresses are constructured from an Street Adrress and a location (City/State/Zip). We also have international zip codes but have not found an open source. Because Addresses are generated within the platform and can have up to 6 potential output styles. However, if you have 70k initial addresses and the platform comes with all 43k zip codes in the US then that means you have **301M** combinations to start with.
+<br>
+While we can go on and on you get the idea, there is a TON of data here initially. Also, keep in mind the platform has a large series of data generator so these can be run to grow the base data, the only limitation is your storage and processing!!!!
+</p>
 
 ## What is Data Synthesis
 <p>
@@ -27,7 +39,7 @@ This technology is intended to democratize complex industry standards metadata a
 
 ## Licensing and Pricing Model
 
-Data Synthesis has always intended to be operated under the open/community source model. This means we are providing the code for community enhancements and improvements to support the growth of underlying data access capabilities. We are currently working on standing up the necessary artifacts in Azure DevOps to support this undertaking. The code assets include the Web UI, APIs and the core repository patterns used to access the data structures offered within the platform. DataSynthesis open source licensing model is MIT.
+Data Synthesis has always intended to be operated under the open/community source model. This means we are providing the code for community enhancements and improvements to support the growth of underlying data access capabilities. We are currently working on standing up the necessary artifacts in GitHub to support this undertaking. The code assets include the Web UI, APIs and the core repository patterns used to access the data structures offered within the platform. DataSynthesis open source licensing model is Apache 2.0.
 
 ## Data Offering(s) Within the Platform
 
@@ -50,19 +62,19 @@ The platform currently has the following data attributes available within it:
 - Social Security Numbers
 - UPC Codes
 - Zip Codes
-
-Composite data structures are always being created; however, a few composite data strucutres are:
-Account List
-Corporate Demographics
-Personal Demographics
-Products
+<br>
+Composite data structures are always being created; however, a few composite data strucutres are:<br>
+- Account List
+- Corporate Demographics
+- Personal Demographics
+- Products
 
 ## How is Data Synthesis a Platform?
-This technology is designed around enabling capabilities. Capabilities are built as subsystems, this design enables various features to be delivered for capabilities to be addressed. These subsystems together form the entire software platform.
+This technology is designed around enabling capabilities. Capabilities are built as subsystems, this design enables various features to be delivered for capabilities to be addressed. These subsystems together form the entire software platform.<br>
 
-Platform Administration
-Platform Generated Data
-Platform Leveraged Data
-Platform Composite Data
-Platform Data: Healthcare
-Platform Data: Vendor Relational Data
+- Platform Administration
+- Platform Generated Data
+- Platform Leveraged Data
+- Platform Composite Data
+- Platform Data: Healthcare
+- Platform Data: Vendor Relational Data
