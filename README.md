@@ -64,6 +64,7 @@ The platform currently has the following data attributes available within it:
 - Zip Codes
 <br>
 Composite data structures are always being created; however, a few composite data strucutres are:<br>
+
 - Account List
 - Corporate Demographics
 - Personal Demographics
