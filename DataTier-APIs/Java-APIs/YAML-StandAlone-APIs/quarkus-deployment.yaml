@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapis-datasynthesis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     app: restapis-datasynthesis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: restapis-datasynthesis
+      labels:
+        app: restapis-datasynthesis
+    spec:
+      containers:
+        - args:
+            - mvn
+            - quarkus:dev
+          env:
+            - name: DATABASE_HOST
+              value: datasynthesisdb
+          image: maven
+          name: quarkus
+          ports:
+            - containerPort: 5005
+            - containerPort: 8080
+         

@@ -1,0 +1,43 @@
+use datasynthesis;
+TRUNCATE TABLE refdata_status;
+source ReferenceData\1-refdata_status.sql
+TRUNCATE TABLE refdata_timezones;
+source ReferenceData\2-refdata_timezones.sql
+TRUNCATE TABLE refdata_usstates;
+source ReferenceData\3-refdata_usstates.sql
+TRUNCATE TABLE refdata_organization;
+source ReferenceData\4-refdata_organization.sql
+TRUNCATE TABLE refdata_vendor;
+source ReferenceData\5-refdata_vendor.sql
+TRUNCATE TABLE refdata_application;
+source ReferenceData\6-refdata_application.sql
+TRUNCATE TABLE refdata_industrystd;
+source ReferenceData\7-refdata_industrystd.sql
+TRUNCATE TABLE refdata_codeset;
+source ReferenceData\8-refdata_codeset.sql
+TRUNCATE TABLE refdata_addressformattype;
+source ReferenceData\refdata_addressformattype.sql
+TRUNCATE TABLE refdata_countries;
+source ReferenceData\refdata_countries.sql
+TRUNCATE TABLE refdata_operationtype;
+source ReferenceData\refdata_operationtype.sql
+TRUNCATE TABLE refdata_sensitivityflag;
+source ReferenceData\refdata_sensitivityflag.sql
+TRUNCATE TABLE refdata_codeset;
+source ReferenceData\refdata_codeset.sql
+source Other\datasynthesis_platform_dataattributes.sql
+source Other\datasynthesis_datamodel_datatables.sql
+source Other\platform_datagenconfig.sql
+source DataExisting\datasynthesis_dataexisting_ababanking.sql
+source DataExisting\datasynthesis_dataexisting_areacode.sql
+source DataExisting\datasynthesis_dataexisting_companies.sql
+source DataExisting\datasynthesis_dataexisting_namefirst.sql
+source DataExisting\datasynthesis_dataexisting_namelast.sql
+source DataExisting\datasynthesis_dataexisting_upccodes.sql
+source DataExisting\datasynthesis_dataexisting_zipcodeus.sql
+source DataGenerated\datasynthesis_datagenerated_addresses.sql
+source DataGenerated\datasynthesis_datagenerated_bankaccount.sql
+source DataGenerated\datasynthesis_datagenerated_creditcard.sql
+source DataGenerated\datasynthesis_datagenerated_dateofbirth.sql
+source DataGenerated\datasynthesis_datagenerated_phonenumber.sql
+source DataGenerated\atasynthesis_datagenerated_socialsecuritynumber.sql

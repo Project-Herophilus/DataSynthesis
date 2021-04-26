@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f mysql2-docker-compose.yml
+    kompose.version: 1.22.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: quarkus
+  name: quarkus
+spec:
+  ports:
+    - name: "5005"
+      port: 5005
+      targetPort: 5005
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    io.kompose.service: quarkus
+status:
+  loadBalancer: {}

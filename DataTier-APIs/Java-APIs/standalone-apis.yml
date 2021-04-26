@@ -1,0 +1,22 @@
+---
+version: "3.8"
+services:
+  quarkus:
+    image: maven
+    environment:
+      DATABASE_NAME: datasynthesis
+      DATABASE_HOST: host.docker.internal
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: Developer123
+      DATABASE_PORT: 3306
+    volumes:
+      - "./:/app:Z,delegated"
+      # Mounting user's local .m2-directory,
+      # for custom settings.xml and for caching dependencies.
+      - "~/.m2:/root/.m2:Z,delegated"
+    ports:
+      - 5005:5005 # Debug port
+      - 8080:8080 # Backend HTTP server port
+    working_dir: /app
+    command: "mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false"
+    

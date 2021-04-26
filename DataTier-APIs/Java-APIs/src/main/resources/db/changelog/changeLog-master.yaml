@@ -1,0 +1,6664 @@
+databaseChangeLog:
+- changeSet:
+    id: 1615466832063-1
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataPlatformID
+            type: BIGINT
+        - column:
+            name: DataProcessingDate
+            type: datetime
+        - column:
+            name: CreatedByUser
+            type: VARCHAR(20)
+        - column:
+            name: Organizaton
+            type: VARCHAR(38)
+        - column:
+            name: Application
+            type: VARCHAR(38)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: RecCount
+            type: INT
+        - column:
+            name: Component
+            type: VARCHAR(20)
+        - column:
+            name: ActionName
+            type: VARCHAR(20)
+        - column:
+            name: DurationToRun
+            type: INT
+        - column:
+            name: ActivityDetail
+            type: VARCHAR(75)
+        tableName: auditing_dataplatform
+- changeSet:
+    id: 1615466832063-2
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataRequestID
+            type: BIGINT
+        - column:
+            name: DataRequestDate
+            type: datetime
+        - column:
+            name: CreatedByUser
+            type: VARCHAR(20)
+        - column:
+            name: Organizaton
+            type: VARCHAR(38)
+        - column:
+            name: Application
+            type: VARCHAR(38)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: RecCount
+            type: INT
+        - column:
+            name: RecordDataRequest
+            type: VARCHAR(400)
+        tableName: auditing_datarequest
+- changeSet:
+    id: 1615466832063-3
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CompleteAddressID
+            type: BIGINT
+        - column:
+            name: Address1
+            type: VARCHAR(99)
+        - column:
+            name: City
+            type: VARCHAR(70)
+        - column:
+            name: StateID
+            type: VARCHAR(2)
+        - column:
+            name: ZipCode
+            type: VARCHAR(10)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_address
+- changeSet:
+    id: 1615466832063-4
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataBuiltBankAccountsID
+            type: BIGINT
+        - column:
+            name: BankAccountNumber
+            type: VARCHAR(12)
+        - column:
+            name: BankAccountName
+            type: VARCHAR(75)
+        - column:
+            name: BankRoutingID
+            type: VARCHAR(9)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_bankaccount
+- changeSet:
+    id: 1615466832063-5
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataBuiltCorporationID
+            type: BIGINT
+        - column:
+            name: CorporationName
+            type: VARCHAR(99)
+        - column:
+            name: Address1
+            type: VARCHAR(99)
+        - column:
+            name: City
+            type: VARCHAR(70)
+        - column:
+            name: StateID
+            type: VARCHAR(2)
+        - column:
+            name: ZipCode
+            type: VARCHAR(10)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_corporations
+- changeSet:
+    id: 1615466832063-6
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataBuiltNamesID
+            type: BIGINT
+        - column:
+            name: CompleteName
+            type: VARCHAR(100)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_names
+- changeSet:
+    id: 1615466832063-7
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PersonDemographicsID
+            type: BIGINT
+        - column:
+            name: DLN
+            type: VARCHAR(25)
+        - column:
+            name: DLNState
+            type: VARCHAR(2)
+        - column:
+            name: SSN
+            type: VARCHAR(11)
+        - column:
+            name: DOBValue
+            type: VARCHAR(12)
+        - column:
+            name: DOBDate
+            type: date
+        - column:
+            name: Age
+            type: INT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_persondemographics
+- changeSet:
+    id: 1615466832063-8
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataBuiltPhoneNumbersID
+            type: BIGINT
+        - column:
+            name: AreaCode
+            type: VARCHAR(3)
+        - column:
+            name: PhoneNumber
+            type: VARCHAR(8)
+        - column:
+            name: CompletePhoneNumber
+            type: VARCHAR(14)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_phonenumbers
+- changeSet:
+    id: 1615466832063-9
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DatabuiltProductsID
+            type: BIGINT
+        - column:
+            name: ProductID
+            type: VARCHAR(20)
+        - column:
+            name: ProductName
+            type: VARCHAR(99)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: databuilt_products
+- changeSet:
+    id: 1615466832063-10
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: ABABankingID
+            type: BIGINT
+        - column:
+            name: RoutingNumber
+            type: VARCHAR(9)
+        - column:
+            name: TelegraphicName
+            type: VARCHAR(20)
+        - column:
+            name: CustomerName
+            type: VARCHAR(36)
+        - column:
+            name: City
+            type: VARCHAR(20)
+        - column:
+            name: State
+            type: VARCHAR(2)
+        - column:
+            name: ZipCode
+            type: VARCHAR(5)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_ababanking
+- changeSet:
+    id: 1615466832063-11
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: AreaCodeID
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: AreaCodeValue
+            type: VARCHAR(3)
+        - column:
+            name: TimeZone
+            type: VARCHAR(3)
+        - column:
+            name: StateCode
+            type: VARCHAR(2)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-12
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: IDDCode
+            type: VARCHAR(5)
+        - column:
+            name: CountryID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_areacodeintl
+- changeSet:
+    id: 1615466832063-13
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CompaniesID
+            type: BIGINT
+        - column:
+            name: CompanyName
+            type: VARCHAR(79)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_companies
+- changeSet:
+    id: 1615466832063-14
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: FirstNameID
+            type: BIGINT
+        - column:
+            name: FirstName
+            type: VARCHAR(39)
+        - column:
+            name: Gender
+            type: VARCHAR(1)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1615466832063-15
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: LastNameID
+            type: BIGINT
+        - column:
+            name: LastName
+            type: VARCHAR(69)
+        - column:
+            constraints:
+              nullable: false
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1615466832063-16
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: UPCCodeID
+            type: BIGINT
+        - column:
+            name: UPCCodeName
+            type: VARCHAR(15)
+        - column:
+            name: UPCProductName
+            type: VARCHAR(150)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_upccodes
+- changeSet:
+    id: 1615466832063-17
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: ZipCodeIntnlID
+            type: INT
+        - column:
+            constraints:
+              nullable: false
+            name: ZipCode
+            type: CHAR(10)
+        - column:
+            name: ZipCodeType
+            type: VARCHAR(15)
+        - column:
+            name: City
+            type: VARCHAR(75)
+        - column:
+            name: Country
+            type: SMALLINT
+        - column:
+            name: Lattitude
+            type: VARCHAR(10)
+        - column:
+            name: Longitude
+            type: VARCHAR(10)
+        - column:
+            name: Location
+            type: VARCHAR(99)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_zipcodeintl
+- changeSet:
+    id: 1615466832063-18
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: ZipCodeID
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: ZipCode
+            type: CHAR(5)
+        - column:
+            name: ZipCodeType
+            type: VARCHAR(15)
+        - column:
+            name: City
+            type: VARCHAR(75)
+        - column:
+            name: State
+            type: VARCHAR(2)
+        - column:
+            name: Lattitude
+            type: VARCHAR(10)
+        - column:
+            name: Longitude
+            type: VARCHAR(10)
+        - column:
+            name: Location
+            type: VARCHAR(99)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: dataexisting_zipcodeus
+- changeSet:
+    id: 1615466832063-19
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: AccountNumbersID
+            type: BIGINT
+        - column:
+            name: AccountNumberValue
+            type: VARCHAR(20)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_accountnumbers
+- changeSet:
+    id: 1615466832063-20
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: AddressID
+            type: BIGINT
+        - column:
+            name: AddressStreet
+            type: VARCHAR(99)
+        - column:
+            name: AddressStreet2
+            type: VARCHAR(59)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueNumeric: 1
+            name: AddressFormatTypeId
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1615466832063-21
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: BankAccountsID
+            type: BIGINT
+        - column:
+            name: BankAccountValue
+            type: VARCHAR(17)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_bankaccount
+- changeSet:
+    id: 1615466832063-22
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CreditCardID
+            type: BIGINT
+        - column:
+            name: CreditCardNumber
+            type: VARCHAR(20)
+        - column:
+            name: CreditCardName
+            type: VARCHAR(10)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_creditcard
+- changeSet:
+    id: 1615466832063-23
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DateofBirthsID
+            type: BIGINT
+        - column:
+            name: DateOfBirth
+            type: VARCHAR(12)
+        - column:
+            name: DateOfBirthDate
+            type: date
+        - column:
+            name: Age
+            type: INT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_dateofbirth
+- changeSet:
+    id: 1615466832063-24
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DriversLicensesID
+            type: BIGINT
+        - column:
+            name: DLN
+            type: VARCHAR(25)
+        - column:
+            name: StateCode
+            type: VARCHAR(2)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CompleteDriversLicenseNumber
+            type: VARCHAR(30)
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1615466832063-25
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: EINID
+            type: BIGINT
+        - column:
+            name: EINValue
+            type: VARCHAR(10)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1615466832063-26
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PhoneNumberID
+            type: BIGINT
+        - column:
+            name: PhoneNumberValue
+            type: VARCHAR(8)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_phonenumber
+- changeSet:
+    id: 1615466832063-27
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PhoneNumberIntlID
+            type: BIGINT
+        - column:
+            name: PhoneNumberValue
+            type: VARCHAR(12)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CountryId
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1615466832063-28
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: SocialSecurityNumberID
+            type: BIGINT
+        - column:
+            name: SocialSecurityNumberValue
+            type: VARCHAR(11)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_socialsecuritynumber
+- changeSet:
+    id: 1615466832063-29
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: UserIdentitiesID
+            type: BIGINT
+        - column:
+            name: UserIdentityValue
+            type: VARCHAR(20)
+        - column:
+            name: UserDomain
+            type: VARCHAR(20)
+        - column:
+            name: AdditionalAttributes
+            type: VARCHAR(40)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: datagenerated_useridentities
+- changeSet:
+    id: 1615466832063-30
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: TableName
+            type: VARCHAR(64)
+        - column:
+            name: TableInformation
+            type: VARCHAR(249)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        tableName: datamodel_datatables
+- changeSet:
+    id: 1615466832063-31
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: AppSettingsID
+            type: SMALLINT
+        - column:
+            name: AppSettingName
+            type: VARCHAR(50)
+        - column:
+            name: AppSettingValue
+            type: VARCHAR(199)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        - column:
+            name: DefaultDataGenerationApp
+            type: VARCHAR(38)
+        tableName: platform_appsetting
+- changeSet:
+    id: 1615466832063-32
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: DataGenConfigID
+            type: SMALLINT
+        - column:
+            name: DataTypeGenConfigName
+            type: VARCHAR(25)
+        - column:
+            name: DataAttributeID
+            type: SMALLINT
+        - column:
+            name: SpecialInstructions
+            type: VARCHAR(99)
+        - column:
+            name: RunQuantity
+            type: INT
+        - column:
+            name: MinuteInterval
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: ApplicationID
+            type: CHAR(38)
+        tableName: platform_config_datagen
+- changeSet:
+    id: 1615466832063-33
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PlatformDataAttributesID
+            type: SMALLINT
+        - column:
+            name: DataAttributeName
+            type: VARCHAR(50)
+        - column:
+            name: SensitivityFlagID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: PlatformDataAttributeGUID
+            type: CHAR(38)
+        - column:
+            name: RegisteredApp
+            type: CHAR(38)
+        tableName: platform_dataattributes
+- changeSet:
+    id: 1615466832063-34
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PlatformDataStructuresID
+            type: SMALLINT
+        - column:
+            name: DataStructureName
+            type: VARCHAR(50)
+        - column:
+            name: SensitivityFlagID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: PlatformDataStructuresGUID
+            type: CHAR(38)
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: platform_datastructures
+- changeSet:
+    id: 1615466832063-35
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PlatformDataStructuresToDataAttributesID
+            type: SMALLINT
+        - column:
+            name: PlatformDataStructuresID
+            type: SMALLINT
+        - column:
+            name: CompositeDataStructureName
+            type: VARCHAR(50)
+        - column:
+            defaultValueNumeric: 1
+            name: SensitivityFlagID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: PlatformDataStructuresToDataAttributesGUID
+            type: CHAR(38)
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        - column:
+            name: PlatformDataAttributesID
+            type: SMALLINT
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-36
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: RuleID
+            type: BIGINT
+        - column:
+            name: RuleName
+            type: VARCHAR(65)
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: ExpirationDate
+            type: timestamp
+        tableName: platform_rulesets
+- changeSet:
+    id: 1615466832063-37
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: RulesetDefinitionsID
+            type: CHAR(38)
+        - column:
+            name: RulesetDefinitionName
+            type: VARCHAR(50)
+        - column:
+            name: RuleSetID
+            type: BIGINT
+        - column:
+            name: StepOrderID
+            type: SMALLINT
+        - column:
+            name: OperationTypeID
+            type: VARCHAR(7)
+        - column:
+            name: RulesetDefValue
+            type: CHAR(40)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: EffectiveDate
+            type: timestamp
+        - column:
+            name: ApplicationID
+            type: VARCHAR(38)
+        - column:
+            name: TermDate
+            type: timestamp
+        - column:
+            name: DataAttributeID
+            type: SMALLINT
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-38
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: AddressFormatTypeID
+            type: SMALLINT
+        - column:
+            name: AddressFormatTypeDesc
+            type: VARCHAR(35)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusId
+            type: SMALLINT
+        tableName: refdata_addressformattype
+- changeSet:
+    id: 1615466832063-39
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: AppGUID
+            type: CHAR(38)
+        - column:
+            name: ApplicationCustomCode
+            type: VARCHAR(15)
+        - column:
+            name: ApplicationDesc
+            type: VARCHAR(50)
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: VendorID
+            type: INT
+        tableName: refdata_application
+- changeSet:
+    id: 1615466832063-40
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CodeSetsID
+            type: BIGINT
+        - column:
+            name: CodeSetName
+            type: VARCHAR(50)
+        - column:
+            name: IndustryStd
+            type: VARCHAR(6)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: CodesetGUID
+            type: CHAR(38)
+        - column:
+            name: FieldMapping
+            type: VARCHAR(20)
+        - column:
+            name: SensitivityFlagID
+            type: SMALLINT
+        tableName: refdata_codeset
+- changeSet:
+    id: 1615466832063-41
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CodeSetStructuresID
+            type: BIGINT
+        - column:
+            name: CodeSetStructureName
+            type: VARCHAR(50)
+        - column:
+            name: IndustryStd
+            type: VARCHAR(6)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: CodesetStructureGUID
+            type: CHAR(38)
+        - column:
+            name: Field1Value
+            type: VARCHAR(75)
+        - column:
+            name: Field2Value
+            type: VARCHAR(75)
+        - column:
+            name: Field3Value
+            type: VARCHAR(75)
+        - column:
+            name: Field4Value
+            type: VARCHAR(75)
+        - column:
+            name: Field5Value
+            type: VARCHAR(75)
+        - column:
+            name: Field6Value
+            type: VARCHAR(75)
+        - column:
+            name: Field7Value
+            type: VARCHAR(75)
+        - column:
+            name: Field8Value
+            type: VARCHAR(75)
+        - column:
+            name: Field9Value
+            type: VARCHAR(75)
+        - column:
+            name: SensitivityFlagID
+            type: SMALLINT
+        - column:
+            name: CodesetsID
+            type: BIGINT
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-42
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CountryID
+            type: SMALLINT
+        - column:
+            name: IDD
+            type: VARCHAR(5)
+        - column:
+            name: CountryName
+            type: VARCHAR(59)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        tableName: refdata_countries
+- changeSet:
+    id: 1615466832063-43
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: IndustryStd
+            type: VARCHAR(6)
+        - column:
+            name: IndustryStdDesc
+            type: VARCHAR(30)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        tableName: refdata_industrystd
+- changeSet:
+    id: 1615466832063-44
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: LegalEntityGUID
+            type: CHAR(38)
+        - column:
+            name: LocationName
+            type: VARCHAR(50)
+        - column:
+            name: Address
+            type: VARCHAR(75)
+        - column:
+            name: City
+            type: VARCHAR(60)
+        - column:
+            name: StateID
+            type: VARCHAR(2)
+        - column:
+            name: ZipCode
+            type: VARCHAR(12)
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: LocationURL
+            type: VARCHAR(99)
+        - column:
+            name: LocationPhone
+            type: VARCHAR(12)
+        tableName: refdata_legalentity
+- changeSet:
+    id: 1615466832063-45
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: OperationTypeID
+            type: VARCHAR(7)
+        - column:
+            name: OperationTypeName
+            type: VARCHAR(60)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        tableName: refdata_operationtype
+- changeSet:
+    id: 1615466832063-46
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: OrganizationGUID
+            type: CHAR(38)
+        - column:
+            name: OrganizationInternalCode
+            type: VARCHAR(10)
+        - column:
+            name: OrganizationInternalID
+            type: VARCHAR(10)
+        - column:
+            name: OrganizationName
+            type: VARCHAR(50)
+        - column:
+            name: Address
+            type: VARCHAR(75)
+        - column:
+            name: City
+            type: VARCHAR(60)
+        - column:
+            name: StateID
+            type: VARCHAR(2)
+        - column:
+            name: ZipCode
+            type: VARCHAR(12)
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            constraints:
+              nullable: false
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: LegalEntityGUID
+            type: VARCHAR(38)
+        tableName: refdata_organization
+- changeSet:
+    id: 1615466832063-47
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PlatformParamsID
+            type: SMALLINT
+        - column:
+            name: PlatformParamValues
+            type: VARCHAR(35)
+        - column:
+            name: PlatformParamDesc
+            type: VARCHAR(70)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        tableName: refdata_platformparams
+- changeSet:
+    id: 1615466832063-48
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: PlatformParamsToDataAttributeID
+            type: BIGINT
+        - column:
+            name: PlatformParamsID
+            type: SMALLINT
+        - column:
+            name: DataAttributeID
+            type: SMALLINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: RegisteredApp
+            type: VARCHAR(38)
+        tableName: refdata_platformparamstodataattributes
+- changeSet:
+    id: 1615466832063-49
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: SensitiveFlagID
+            type: SMALLINT
+        - column:
+            name: SensitiveFlagDesc
+            type: VARCHAR(30)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        tableName: refdata_sensitivityflag
+- changeSet:
+    id: 1615466832063-50
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: StatusID
+            type: SMALLINT
+        - column:
+            constraints:
+              nullable: false
+            name: StatusDescription
+            type: VARCHAR(45)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        tableName: refdata_status
+- changeSet:
+    id: 1615466832063-51
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: TimeZoneValue
+            type: VARCHAR(3)
+        - column:
+            name: TimeZoneDesc
+            type: VARCHAR(25)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        tableName: refdata_timezones
+- changeSet:
+    id: 1615466832063-52
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: StateID
+            type: VARCHAR(2)
+        - column:
+            name: StateDescription
+            type: VARCHAR(65)
+        - column:
+            name: Lattitude
+            type: VARCHAR(12)
+        - column:
+            name: Longitude
+            type: VARCHAR(12)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        tableName: refdata_usstates
+- changeSet:
+    id: 1615466832063-53
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: VendorID
+            type: INT
+        - column:
+            name: VendorName
+            type: VARCHAR(50)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: VendorGUID
+            type: CHAR(38)
+        tableName: refdata_vendor
+- changeSet:
+    id: 1615466832063-54
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CodeSetToApplicationID
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: CodeSetsID
+            type: BIGINT
+        - column:
+            name: Domain
+            type: VARCHAR(50)
+        - column:
+            name: IndustryStd
+            type: VARCHAR(6)
+        - column:
+            name: SpecificDetails
+            type: VARCHAR(99)
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: OrganizationID
+            type: VARCHAR(38)
+        - column:
+            name: ApplicationID
+            type: VARCHAR(38)
+        - column:
+            name: VendorID
+            type: INT
+        - column:
+            name: CodeValue
+            type: VARCHAR(20)
+        - column:
+            name: CodeDesc
+            type: VARCHAR(129)
+        - column:
+            name: SensitiveFlagID
+            type: SMALLINT
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-55
+    author: jfroehli (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+            name: CodeSetToApplicationValuesID
+            type: BIGINT
+        - column:
+            name: CodeSetToApplicationID
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: CodeSetsID
+            type: BIGINT
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+            type: datetime
+        - column:
+            defaultValueNumeric: 1
+            name: StatusID
+            type: SMALLINT
+        - column:
+            name: CreatedUser
+            type: VARCHAR(20)
+        - column:
+            name: TermValue
+            type: VARCHAR(20)
+        - column:
+            name: TermValueLow
+            type: VARCHAR(10)
+        - column:
+            name: TermValueHigh
+            type: VARCHAR(10)
+        tableName: terms_codesetstoapplicationvalues
+- changeSet:
+    id: 1615466832063-56
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: LastName, RegisteredApp
+        constraintName: IDX_UC_DataExisting_NameLast
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1615466832063-57
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: PhoneNumberValue, RegisteredApp
+        constraintName: IDX_UC_DataGeneratedPhoneNumbers
+        tableName: datagenerated_phonenumber
+- changeSet:
+    id: 1615466832063-58
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: AddressStreet, AddressStreet2, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_Addresses
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1615466832063-59
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: BankAccountValue, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_BankAccounts
+        tableName: datagenerated_bankaccount
+- changeSet:
+    id: 1615466832063-60
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: DateOfBirth, DateOfBirthDate, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_DateOfBirths
+        tableName: datagenerated_dateofbirth
+- changeSet:
+    id: 1615466832063-61
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: DLN, StateCode, CompleteDriversLicenseNumber, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_DriversLicenses
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1615466832063-62
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: EINValue, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_EIN
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1615466832063-63
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: SocialSecurityNumberValue, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_SocialSecurityNumbers
+        tableName: datagenerated_socialsecuritynumber
+- changeSet:
+    id: 1615466832063-64
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: UserIdentityValue, UserDomain, RegisteredApp
+        constraintName: IDX_UC_DataGenerated_UserIdentities
+        tableName: datagenerated_useridentities
+- changeSet:
+    id: 1615466832063-65
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: Address1, City, StateID, ZipCode, RegisteredApp
+        constraintName: IDX_UC_databuilt_address
+        tableName: databuilt_address
+- changeSet:
+    id: 1615466832063-66
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: BankAccountNumber, BankRoutingID, RegisteredApp
+        constraintName: IDX_UC_databuilt_bankaccount
+        tableName: databuilt_bankaccount
+- changeSet:
+    id: 1615466832063-67
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: CorporationName, Address1, City, StateID, ZipCode, RegisteredApp
+        constraintName: IDX_UC_databuilt_corporations
+        tableName: databuilt_corporations
+- changeSet:
+    id: 1615466832063-68
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: DLN, DLNState, SSN, DOBDate, DOBValue, Age, RegisteredApp
+        constraintName: IDX_UC_databuilt_persondemographics
+        tableName: databuilt_persondemographics
+- changeSet:
+    id: 1615466832063-69
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: AreaCode, PhoneNumber, RegisteredApp
+        constraintName: IDX_UC_databuilt_phonenumbers
+        tableName: databuilt_phonenumbers
+- changeSet:
+    id: 1615466832063-70
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: ProductID, ProductName, RegisteredApp
+        constraintName: IDX_UC_databuilt_products
+        tableName: databuilt_products
+- changeSet:
+    id: 1615466832063-71
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: AreaCodeValue, TimeZone, StateCode
+        constraintName: IDX_UC_dataexisting_areacode
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-72
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: FirstName, Gender, RegisteredApp
+        constraintName: IDX_UC_dataexisting_namefirst
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1615466832063-73
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: AccountNumberValue, RegisteredApp
+        constraintName: IDX_UC_datagenerated_accountnumbers
+        tableName: datagenerated_accountnumbers
+- changeSet:
+    id: 1615466832063-74
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: CreditCardName, CreditCardNumber, RegisteredApp
+        constraintName: IDX_UC_datagenerated_creditcard
+        tableName: datagenerated_creditcard
+- changeSet:
+    id: 1615466832063-75
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: PhoneNumberValue, CountryId, RegisteredApp
+        constraintName: IDX_UC_datagenerated_phonenumbersintl
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1615466832063-76
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusId
+        indexName: FK_AddressFormatType_Status
+        tableName: refdata_addressformattype
+- changeSet:
+    id: 1615466832063-77
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_Countries_Status
+        tableName: refdata_countries
+- changeSet:
+    id: 1615466832063-78
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_TimeZones_Status
+        tableName: refdata_timezones
+- changeSet:
+    id: 1615466832063-79
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_USStates_Status
+        tableName: refdata_usstates
+- changeSet:
+    id: 1615466832063-80
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_address_registeredapp
+        tableName: databuilt_address
+- changeSet:
+    id: 1615466832063-81
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_databuilt_address_status
+        tableName: databuilt_address
+- changeSet:
+    id: 1615466832063-82
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_bankaccount_registeredapp
+        tableName: databuilt_bankaccount
+- changeSet:
+    id: 1615466832063-83
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_databuilt_completenames_status
+        tableName: databuilt_names
+- changeSet:
+    id: 1615466832063-84
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_corporations_resiteredapp
+        tableName: databuilt_corporations
+- changeSet:
+    id: 1615466832063-85
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_databuilt_corporations_status
+        tableName: databuilt_corporations
+- changeSet:
+    id: 1615466832063-86
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_names_registeredapp
+        tableName: databuilt_names
+- changeSet:
+    id: 1615466832063-87
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_persondemographics_registeredapp
+        tableName: databuilt_persondemographics
+- changeSet:
+    id: 1615466832063-88
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_databuilt_persondemographics_status
+        tableName: databuilt_persondemographics
+- changeSet:
+    id: 1615466832063-89
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_phonenumbers_registeredapp
+        tableName: databuilt_phonenumbers
+- changeSet:
+    id: 1615466832063-90
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_databuilt_phonenumbers_status
+        tableName: databuilt_phonenumbers
+- changeSet:
+    id: 1615466832063-91
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_databuilt_products_regsiteredapp
+        tableName: databuilt_products
+- changeSet:
+    id: 1615466832063-92
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_databuilt_products_status
+        tableName: databuilt_products
+- changeSet:
+    id: 1615466832063-93
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_ababanking_Status
+        tableName: dataexisting_ababanking
+- changeSet:
+    id: 1615466832063-94
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_ababanking_registeredapp
+        tableName: dataexisting_ababanking
+- changeSet:
+    id: 1615466832063-95
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_areacode_Status
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-96
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: StateCode
+        indexName: FK_dataexisting_areacode_USStates
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-97
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_areacode_registeredapp
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-98
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: TimeZone
+        indexName: FK_dataexisting_areacode_timezones
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-99
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CountryID
+        indexName: FK_dataexisting_areacodeintl_Countries
+        tableName: dataexisting_areacodeintl
+- changeSet:
+    id: 1615466832063-100
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_areacodeintl_Status
+        tableName: dataexisting_areacodeintl
+- changeSet:
+    id: 1615466832063-101
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_areacodeintl_registeredapp
+        tableName: dataexisting_areacodeintl
+- changeSet:
+    id: 1615466832063-102
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_companies_Status
+        tableName: dataexisting_companies
+- changeSet:
+    id: 1615466832063-103
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_companies_registeredapp
+        tableName: dataexisting_companies
+- changeSet:
+    id: 1615466832063-104
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_namefirst_Status
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1615466832063-105
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_namefirst_registeredapp
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1615466832063-106
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_namelast_Status
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1615466832063-107
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_namelast_registeredapp
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1615466832063-108
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_upccodes_Status
+        tableName: dataexisting_upccodes
+- changeSet:
+    id: 1615466832063-109
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_upccodes_registeredapp
+        tableName: dataexisting_upccodes
+- changeSet:
+    id: 1615466832063-110
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: Country
+        indexName: FK_dataexisting_zipcodeIntl_Countries
+        tableName: dataexisting_zipcodeintl
+- changeSet:
+    id: 1615466832063-111
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_zipcodeIntl_Status
+        tableName: dataexisting_zipcodeintl
+- changeSet:
+    id: 1615466832063-112
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_dataexisting_zipcodeUS_Status
+        tableName: dataexisting_zipcodeus
+- changeSet:
+    id: 1615466832063-113
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_zipcodeintl_registeredapp
+        tableName: dataexisting_zipcodeintl
+- changeSet:
+    id: 1615466832063-114
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_dataexisting_zipcodeus_registeredapp
+        tableName: dataexisting_zipcodeus
+- changeSet:
+    id: 1615466832063-115
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_accountnumbers_registeredapp
+        tableName: datagenerated_accountnumbers
+- changeSet:
+    id: 1615466832063-116
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_accountnumbers_status
+        tableName: datagenerated_accountnumbers
+- changeSet:
+    id: 1615466832063-117
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: AddressFormatTypeId
+        indexName: FK_datagenerated_addresses_AddressFormatType
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1615466832063-118
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_addresses_registeredapp
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1615466832063-119
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_addresses_status
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1615466832063-120
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_bankaccount_Status
+        tableName: datagenerated_bankaccount
+- changeSet:
+    id: 1615466832063-121
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_bankaccount_registeredapp
+        tableName: datagenerated_bankaccount
+- changeSet:
+    id: 1615466832063-122
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_creditcard_Status
+        tableName: datagenerated_creditcard
+- changeSet:
+    id: 1615466832063-123
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_creditcard_registeredapp
+        tableName: datagenerated_creditcard
+- changeSet:
+    id: 1615466832063-124
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_dateofbirth_Status
+        tableName: datagenerated_dateofbirth
+- changeSet:
+    id: 1615466832063-125
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_dateofbirth_registeredapp
+        tableName: datagenerated_dateofbirth
+- changeSet:
+    id: 1615466832063-126
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_driverslicenses_Status
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1615466832063-127
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: StateCode
+        indexName: FK_datagenerated_driverslicenses_USStates
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1615466832063-128
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_driverslicenses_registeredapp
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1615466832063-129
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_ein_Status
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1615466832063-130
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_ein_registeredapp
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1615466832063-131
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_phonenumber_registeredapp
+        tableName: datagenerated_phonenumber
+- changeSet:
+    id: 1615466832063-132
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_phonenumbers_Status
+        tableName: datagenerated_phonenumber
+- changeSet:
+    id: 1615466832063-133
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CountryId
+        indexName: FK_datagenerated_phonenumbersintl_Country
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1615466832063-134
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_phonenumbersintl_Status
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1615466832063-135
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_phonenumbersintl_registeredapp
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1615466832063-136
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_socialsecuritynumber_Status
+        tableName: datagenerated_socialsecuritynumber
+- changeSet:
+    id: 1615466832063-137
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_socialsecuritynumber_registeredapp
+        tableName: datagenerated_socialsecuritynumber
+- changeSet:
+    id: 1615466832063-138
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_datagenerated_useridentities_Status
+        tableName: datagenerated_useridentities
+- changeSet:
+    id: 1615466832063-139
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_datagenerated_useridentities_registeredapp
+        tableName: datagenerated_useridentities
+- changeSet:
+    id: 1615466832063-140
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DefaultDataGenerationApp
+        indexName: FK_platform_appsetting_datagenapp
+        tableName: platform_appsetting
+- changeSet:
+    id: 1615466832063-141
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_platform_appsettings_registeredapp
+        tableName: platform_appsetting
+- changeSet:
+    id: 1615466832063-142
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_platform_dataattributes_registeredapp
+        tableName: platform_dataattributes
+- changeSet:
+    id: 1615466832063-143
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataAttributeID
+        indexName: FK_platform_datagenconfig_dataattributes
+        tableName: platform_config_datagen
+- changeSet:
+    id: 1615466832063-144
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_datagenconfig_status
+        tableName: platform_config_datagen
+- changeSet:
+    id: 1615466832063-145
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_dataplatform_status
+        tableName: auditing_dataplatform
+- changeSet:
+    id: 1615466832063-146
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_datarequest_status
+        tableName: auditing_datarequest
+- changeSet:
+    id: 1615466832063-147
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_platform_datastructures__registeredapp
+        tableName: platform_datastructures
+- changeSet:
+    id: 1615466832063-148
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SensitivityFlagID
+        indexName: FK_platform_datastructures_sensitivityflag
+        tableName: platform_datastructures
+- changeSet:
+    id: 1615466832063-149
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_datastructures_status
+        tableName: platform_datastructures
+- changeSet:
+    id: 1615466832063-150
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformDataAttributesID
+        indexName: FK_platform_datastructurestodataattributes_dataattributes
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-151
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformDataStructuresID
+        indexName: FK_platform_datastructurestodataattributes_datastructure
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-152
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_platform_datastructurestodataattributes_registeredapp
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-153
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: SensitivityFlagID
+        indexName: FK_platform_datastructurestodataattributes_sensitivityflag
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-154
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_datastructurestodataattributes_status
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-155
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_rulesets_status
+        tableName: platform_rulesets
+- changeSet:
+    id: 1615466832063-156
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataAttributeID
+        indexName: FK_platform_rulesetsdefinitions_dataattributes
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-157
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: OperationTypeID
+        indexName: FK_platform_rulesetsdefinitions_operationtype
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-158
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ApplicationID
+        indexName: FK_platform_rulesetsdefinitions_registeredapp
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-159
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RuleSetID
+        indexName: FK_platform_rulesetsdefinitions_ruleset
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-160
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platform_rulesetsdefinitions_status
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-161
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SensitivityFlagID
+        indexName: FK_platformdataattributes_sensitivtyflag
+        tableName: platform_dataattributes
+- changeSet:
+    id: 1615466832063-162
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_platformdataattributes_status
+        tableName: platform_dataattributes
+- changeSet:
+    id: 1615466832063-163
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_application_status
+        tableName: refdata_application
+- changeSet:
+    id: 1615466832063-164
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: VendorID
+        indexName: FK_refdata_application_vendors
+        tableName: refdata_application
+- changeSet:
+    id: 1615466832063-165
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_appsettings_status
+        tableName: platform_appsetting
+- changeSet:
+    id: 1615466832063-166
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: IndustryStd
+        indexName: FK_refdata_codeset_industrystd
+        tableName: refdata_codeset
+- changeSet:
+    id: 1615466832063-167
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SensitivityFlagID
+        indexName: FK_refdata_codeset_sensitivityflag
+        tableName: refdata_codeset
+- changeSet:
+    id: 1615466832063-168
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_codesets_status
+        tableName: refdata_codeset
+- changeSet:
+    id: 1615466832063-169
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodesetsID
+        indexName: FK_refdata_codesetstructures_codesets
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-170
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: IndustryStd
+        indexName: FK_refdata_codesetstructures_industrystd
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-171
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SensitivityFlagID
+        indexName: FK_refdata_codesetstructures_sensitivityflag
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-172
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_codesetstructures_status
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-173
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_industrystd_status
+        tableName: refdata_industrystd
+- changeSet:
+    id: 1615466832063-174
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: StateID
+        indexName: FK_refdata_location_states
+        tableName: refdata_legalentity
+- changeSet:
+    id: 1615466832063-175
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_location_status
+        tableName: refdata_legalentity
+- changeSet:
+    id: 1615466832063-176
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_operationtype_status
+        tableName: refdata_operationtype
+- changeSet:
+    id: 1615466832063-177
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: LegalEntityGUID
+        indexName: FK_refdata_organization_legalentity
+        tableName: refdata_organization
+- changeSet:
+    id: 1615466832063-178
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: StateID
+        indexName: FK_refdata_organization_states
+        tableName: refdata_organization
+- changeSet:
+    id: 1615466832063-179
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_organization_status
+        tableName: refdata_organization
+- changeSet:
+    id: 1615466832063-180
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_platformparams_status
+        tableName: refdata_platformparams
+- changeSet:
+    id: 1615466832063-181
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataAttributeID
+        indexName: FK_refdata_platformparamstodataattributes_dataattributes
+        tableName: refdata_platformparamstodataattributes
+- changeSet:
+    id: 1615466832063-182
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformParamsID
+        indexName: FK_refdata_platformparamstodataattributes_platformparams
+        tableName: refdata_platformparamstodataattributes
+- changeSet:
+    id: 1615466832063-183
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RegisteredApp
+        indexName: FK_refdata_platformparamstodataattributes_registeredapp
+        tableName: refdata_platformparamstodataattributes
+- changeSet:
+    id: 1615466832063-184
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_platformparamstodataattributes_status
+        tableName: refdata_platformparamstodataattributes
+- changeSet:
+    id: 1615466832063-185
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_sensitivityflag_status
+        tableName: refdata_sensitivityflag
+- changeSet:
+    id: 1615466832063-186
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_refdata_vendors_status
+        tableName: refdata_vendor
+- changeSet:
+    id: 1615466832063-187
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ApplicationID
+        indexName: FK_terms_codesetstoapplication_Application
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-188
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: OrganizationID
+        indexName: FK_terms_codesetstoapplication_Org
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-189
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: VendorID
+        indexName: FK_terms_codesetstoapplication_Vendor
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-190
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetsID
+        indexName: FK_terms_codesetstoapplication_codeset
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-191
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: IndustryStd
+        indexName: FK_terms_codesetstoapplication_industrystd
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-192
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SensitiveFlagID
+        indexName: FK_terms_codesetstoapplication_sensitiveflag
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-193
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_terms_codesetstoapplication_status
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-194
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetsID
+        indexName: FK_terms_codesetstoapplicationvalues_codeset
+        tableName: terms_codesetstoapplicationvalues
+- changeSet:
+    id: 1615466832063-195
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetToApplicationID
+        indexName: FK_terms_codesetstoapplicationvalues_codesettoapp
+        tableName: terms_codesetstoapplicationvalues
+- changeSet:
+    id: 1615466832063-196
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: FK_terms_codesetstoapplicationvalues_status
+        tableName: terms_codesetstoapplicationvalues
+- changeSet:
+    id: 1615466832063-197
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ABABankingID
+        - column:
+            name: RoutingNumber
+        - column:
+            name: TelegraphicName
+        - column:
+            name: CustomerName
+        - column:
+            name: City
+        - column:
+            name: State
+        - column:
+            name: ZipCode
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_ABABanking
+        tableName: dataexisting_ababanking
+- changeSet:
+    id: 1615466832063-198
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: AreaCodeValue
+        - column:
+            name: TimeZone
+        - column:
+            name: StateCode
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_AreaCode
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1615466832063-199
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: IDDCode
+        - column:
+            name: CountryID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_AreaCodeIntl
+        tableName: dataexisting_areacodeintl
+- changeSet:
+    id: 1615466832063-200
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CompaniesID
+        - column:
+            name: CompanyName
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_Companies
+        tableName: dataexisting_companies
+- changeSet:
+    id: 1615466832063-201
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: LastNameID
+        - column:
+            name: LastName
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_NameLast
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1615466832063-202
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: UPCCodeID
+        - column:
+            name: UPCCodeName
+        - column:
+            name: UPCProductName
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_UPCCodes
+        tableName: dataexisting_upccodes
+- changeSet:
+    id: 1615466832063-203
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ZipCodeIntnlID
+        - column:
+            name: ZipCode
+        - column:
+            name: ZipCodeType
+        - column:
+            name: Country
+        - column:
+            name: City
+        - column:
+            name: Lattitude
+        - column:
+            name: Longitude
+        - column:
+            name: Location
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExisting_ZipcodeIntl
+        tableName: dataexisting_zipcodeintl
+- changeSet:
+    id: 1615466832063-204
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: FirstNameID
+        - column:
+            name: FirstName
+        - column:
+            name: Gender
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataExistng_NameFirst
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1615466832063-205
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: AccountNumbersID
+        - column:
+            name: AccountNumberValue
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_AccountNumbers
+        tableName: datagenerated_accountnumbers
+- changeSet:
+    id: 1615466832063-206
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: AddressID
+        - column:
+            name: AddressStreet
+        - column:
+            name: AddressStreet2
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: AddressFormatTypeId
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_Addresses
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1615466832063-207
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: BankAccountsID
+        - column:
+            name: BankAccountValue
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_BankAccounts
+        tableName: datagenerated_bankaccount
+- changeSet:
+    id: 1615466832063-208
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CreditCardID
+        - column:
+            name: CreditCardNumber
+        - column:
+            name: CreditCardName
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_CreditCard
+        tableName: datagenerated_creditcard
+- changeSet:
+    id: 1615466832063-209
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DateofBirthsID
+        - column:
+            name: DateOfBirth
+        - column:
+            name: DateOfBirthDate
+        - column:
+            name: Age
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_DateOfBirths
+        tableName: datagenerated_dateofbirth
+- changeSet:
+    id: 1615466832063-210
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DriversLicensesID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: DLN
+        - column:
+            name: StateCode
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CompleteDriversLicenseNumber
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_DriversLicenses
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1615466832063-211
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: EINID
+        - column:
+            name: EINValue
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_EIN
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1615466832063-212
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: UserIdentitiesID
+        - column:
+            name: UserIdentityValue
+        - column:
+            name: UserDomain
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: AdditionalAttributes
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_Identities
+        tableName: datagenerated_useridentities
+- changeSet:
+    id: 1615466832063-213
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SocialSecurityNumberID
+        - column:
+            name: SocialSecurityNumberValue
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_DataGenerated_SocialSecurityNumber
+        tableName: datagenerated_socialsecuritynumber
+- changeSet:
+    id: 1615466832063-214
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: IndustryStd
+        - column:
+            name: IndustryStdDesc
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: IDX_IndustryStd
+        tableName: refdata_industrystd
+- changeSet:
+    id: 1615466832063-215
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PhoneNumberID
+        - column:
+            name: PhoneNumberValue
+        - column:
+            name: RegisteredApp
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: IDX_PhoneNumbers
+        tableName: datagenerated_phonenumber
+- changeSet:
+    id: 1615466832063-216
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PhoneNumberIntlID
+        - column:
+            name: PhoneNumberValue
+        - column:
+            name: CountryId
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_PhoneNumbersIntl
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1615466832063-217
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataGenConfigID
+        - column:
+            name: DataAttributeID
+        - column:
+            name: DataTypeGenConfigName
+        - column:
+            name: RunQuantity
+        - column:
+            name: MinuteInterval
+        - column:
+            name: SpecialInstructions
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: ApplicationID
+        indexName: IDX_PlatformConfigDataGen
+        tableName: platform_config_datagen
+- changeSet:
+    id: 1615466832063-218
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: AppSettingsID
+        - column:
+            name: AppSettingName
+        - column:
+            name: AppSettingValue
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        - column:
+            name: DefaultDataGenerationApp
+        indexName: IDX_PlatformData_AppSettings
+        tableName: platform_appsetting
+- changeSet:
+    id: 1615466832063-219
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformDataAttributesID
+        - column:
+            name: DataAttributeName
+        - column:
+            name: SensitivityFlagID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: PlatformDataAttributeGUID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_Platform_DataAttributes
+        tableName: platform_dataattributes
+- changeSet:
+    id: 1615466832063-220
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformDataStructuresID
+        - column:
+            name: DataStructureName
+        - column:
+            name: SensitivityFlagID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: PlatformDataStructuresGUID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_Platform_DataStructures
+        tableName: platform_datastructures
+- changeSet:
+    id: 1615466832063-221
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformDataStructuresToDataAttributesID
+        - column:
+            name: PlatformDataStructuresToDataAttributesGUID
+        - column:
+            name: PlatformDataStructuresID
+        - column:
+            name: CompositeDataStructureName
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: SensitivityFlagID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        - column:
+            name: PlatformDataAttributesID
+        indexName: IDX_Platform_DataStructuresToDataAttributes
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1615466832063-222
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RuleID
+        - column:
+            name: RuleName
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: ExpirationDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: IDX_Platform_RuleSets
+        tableName: platform_rulesets
+- changeSet:
+    id: 1615466832063-223
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: RulesetDefinitionsID
+        - column:
+            name: RuleSetID
+        - column:
+            name: RulesetDefinitionName
+        - column:
+            name: StepOrderID
+        - column:
+            name: OperationTypeID
+        - column:
+            name: RulesetDefValue
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: EffectiveDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: ApplicationID
+        - column:
+            name: TermDate
+        - column:
+            name: DataAttributeID
+        indexName: IDX_Platform_RulesetsDefinitions
+        tableName: platform_rulesetsdefinitions
+- changeSet:
+    id: 1615466832063-224
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: AppGUID
+        - column:
+            name: ApplicationCustomCode
+        - column:
+            name: ApplicationDesc
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: VendorID
+        indexName: IDX_RefData_Application
+        tableName: refdata_application
+- changeSet:
+    id: 1615466832063-225
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetStructuresID
+        - column:
+            name: CodeSetStructureName
+        - column:
+            name: IndustryStd
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: CodesetStructureGUID
+        - column:
+            name: CodesetsID
+        indexName: IDX_RefData_CodeSetStructure1
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-226
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: Field1Value
+        - column:
+            name: Field2Value
+        - column:
+            name: Field3Value
+        - column:
+            name: Field4Value
+        - column:
+            name: Field5Value
+        - column:
+            name: Field6Value
+        - column:
+            name: Field7Value
+        - column:
+            name: Field8Value
+        - column:
+            name: Field9Value
+        - column:
+            name: SensitivityFlagID
+        indexName: IDX_RefData_CodeSetStructure2
+        tableName: refdata_codesetstructures
+- changeSet:
+    id: 1615466832063-227
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetsID
+        - column:
+            name: CodeSetName
+        - column:
+            name: IndustryStd
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: CodesetGUID
+        - column:
+            name: FieldMapping
+        - column:
+            name: SensitivityFlagID
+        indexName: IDX_RefData_CodeSets
+        tableName: refdata_codeset
+- changeSet:
+    id: 1615466832063-228
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: LegalEntityGUID
+        - column:
+            name: LocationName
+        - column:
+            name: Address
+        - column:
+            name: City
+        - column:
+            name: StateID
+        - column:
+            name: ZipCode
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: LocationURL
+        - column:
+            name: LocationPhone
+        indexName: IDX_RefData_LegalEntity2
+        tableName: refdata_legalentity
+- changeSet:
+    id: 1615466832063-229
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: OperationTypeID
+        - column:
+            name: OperationTypeName
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        indexName: IDX_RefData_OperationType
+        tableName: refdata_operationtype
+- changeSet:
+    id: 1615466832063-230
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: OrganizationGUID
+        - column:
+            name: OrganizationName
+        - column:
+            name: Address
+        - column:
+            name: City
+        - column:
+            name: StateID
+        - column:
+            name: ZipCode
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: OrganizationInternalCode
+        - column:
+            name: OrganizationInternalID
+        - column:
+            name: LegalEntityGUID
+        indexName: IDX_RefData_Organization
+        tableName: refdata_organization
+- changeSet:
+    id: 1615466832063-231
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: SensitiveFlagID
+        - column:
+            name: SensitiveFlagDesc
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        indexName: IDX_RefData_SensitivityFlag
+        tableName: refdata_sensitivityflag
+- changeSet:
+    id: 1615466832063-232
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: StatusID
+        - column:
+            name: StatusDescription
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        indexName: IDX_RefData_Status
+        tableName: refdata_status
+- changeSet:
+    id: 1615466832063-233
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: TimeZoneValue
+        - column:
+            name: TimeZoneDesc
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: IDX_RefData_TimeZones
+        tableName: refdata_timezones
+- changeSet:
+    id: 1615466832063-234
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: StateID
+        - column:
+            name: StateDescription
+        - column:
+            name: Lattitude
+        - column:
+            name: Longitude
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        indexName: IDX_RefData_USStates
+        tableName: refdata_usstates
+- changeSet:
+    id: 1615466832063-235
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: VendorID
+        - column:
+            name: VendorName
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: VendorGUID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        indexName: IDX_RefData_Vendors
+        tableName: refdata_vendor
+- changeSet:
+    id: 1615466832063-236
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetToApplicationID
+        - column:
+            name: CodeSetsID
+        - column:
+            name: Domain
+        - column:
+            name: IndustryStd
+        - column:
+            name: SpecificDetails
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        - column:
+            name: OrganizationID
+        - column:
+            name: ApplicationID
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: VendorID
+        - column:
+            name: SensitiveFlagID
+        indexName: IDX_Terms_CodeSetsToApplication
+        tableName: terms_codesetstoapplication
+- changeSet:
+    id: 1615466832063-237
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CodeSetToApplicationValuesID
+        - column:
+            name: CodeSetToApplicationID
+        - column:
+            name: CodeSetsID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: CreatedUser
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: TermValue
+        - column:
+            name: TermValueLow
+        - column:
+            name: TermValueHigh
+        indexName: IDX_Terms_CodeSetsToApplicationValues
+        tableName: terms_codesetstoapplicationvalues
+- changeSet:
+    id: 1615466832063-238
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PersonDemographicsID
+        - column:
+            name: DLN
+        - column:
+            name: DLNState
+        - column:
+            name: SSN
+        - column:
+            name: DOBValue
+        - column:
+            name: DOBDate
+        - column:
+            name: Age
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_dataabuilt_persondemographics
+        tableName: databuilt_persondemographics
+- changeSet:
+    id: 1615466832063-239
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CompleteAddressID
+        - column:
+            name: Address1
+        - column:
+            name: City
+        - column:
+            name: StateID
+        - column:
+            name: ZipCode
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_databuilt_completeaddress
+        tableName: databuilt_address
+- changeSet:
+    id: 1615466832063-240
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataBuiltCorporationID
+        - column:
+            name: CorporationName
+        - column:
+            name: Address1
+        - column:
+            name: City
+        - column:
+            name: StateID
+        - column:
+            name: ZipCode
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_databuilt_corporations
+        tableName: databuilt_corporations
+- changeSet:
+    id: 1615466832063-241
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataBuiltPhoneNumbersID
+        - column:
+            name: AreaCode
+        - column:
+            name: PhoneNumber
+        - column:
+            name: CompletePhoneNumber
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: RegisteredApp
+        indexName: IDX_databuilt_phonenumbers
+        tableName: databuilt_phonenumbers
+- changeSet:
+    id: 1615466832063-242
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DatabuiltProductsID
+        - column:
+            name: ProductID
+        - column:
+            name: ProductName
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_databuilt_products
+        tableName: databuilt_products
+- changeSet:
+    id: 1615466832063-243
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ZipCodeID
+        - column:
+            name: ZipCode
+        - column:
+            name: ZipCodeType
+        - column:
+            name: City
+        - column:
+            name: State
+        - column:
+            name: Lattitude
+        - column:
+            name: Longitude
+        - column:
+            name: Location
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: CreatedUser
+        - column:
+            name: RegisteredApp
+        indexName: IDX_dataexisting_zipcodeus
+        tableName: dataexisting_zipcodeus
+- changeSet:
+    id: 1615466832063-244
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: TableName
+        - column:
+            name: TableInformation
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        indexName: IDX_datamodel_datatables
+        tableName: datamodel_datatables
+- changeSet:
+    id: 1615466832063-245
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataPlatformID
+        - column:
+            name: DataProcessingDate
+        - column:
+            name: CreatedByUser
+        - column:
+            name: Organizaton
+        - column:
+            name: Application
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: RecCount
+        - column:
+            name: Component
+        - column:
+            name: ActionName
+        - column:
+            name: DurationToRun
+        - column:
+            name: ActivityDetail
+        indexName: IDX_platform_dataplatform
+        tableName: auditing_dataplatform
+- changeSet:
+    id: 1615466832063-246
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataRequestID
+        - column:
+            name: DataRequestDate
+        - column:
+            name: CreatedByUser
+        - column:
+            name: Organizaton
+        - column:
+            name: Application
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: RecCount
+        - column:
+            name: RecordDataRequest
+        indexName: IDX_platform_datarequest
+        tableName: auditing_datarequest
+- changeSet:
+    id: 1615466832063-247
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: AddressFormatTypeID
+        - column:
+            name: AddressFormatTypeDesc
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusId
+        indexName: IDX_refdata_addressformattype_AddressFormatTypeID
+        tableName: refdata_addressformattype
+- changeSet:
+    id: 1615466832063-248
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformParamsID
+        - column:
+            name: PlatformParamDesc
+        - column:
+            name: PlatformParamValues
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: IDX_refdata_platformparams
+        tableName: refdata_platformparams
+- changeSet:
+    id: 1615466832063-249
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: PlatformParamsToDataAttributeID
+        - column:
+            name: PlatformParamsID
+        - column:
+            name: DataAttributeID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IDX_refdata_platformparamstodataattributes
+        tableName: refdata_platformparamstodataattributes
+- changeSet:
+    id: 1615466832063-250
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: CountryID
+        - column:
+            name: IDD
+        - column:
+            name: CountryName
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: IX_Countries
+        tableName: refdata_countries
+- changeSet:
+    id: 1615466832063-251
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataBuiltBankAccountsID
+        - column:
+            name: BankAccountName
+        - column:
+            name: BankAccountNumber
+        - column:
+            name: BankRoutingID
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            name: RegisteredApp
+        indexName: IX_databuilt_bankAccounts
+        tableName: databuilt_bankaccount
+- changeSet:
+    id: 1615466832063-252
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: DataBuiltNamesID
+        - column:
+            name: CompleteName
+        - column:
+            defaultValueComputed: CURRENT_TIMESTAMP
+            name: CreatedDate
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        - column:
+            name: RegisteredApp
+        indexName: IX_databuilt_names_databuiltnamesid
+        tableName: databuilt_names
+- changeSet:
+    id: 1615466832063-253
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            defaultValueNumeric: !!float '1'
+            name: StatusID
+        indexName: fk_databuilt_bankAccounts_status
+        tableName: databuilt_bankaccount
+- changeSet:
+    id: 1615466832063-254
+    author: jfroehli (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: ApplicationID
+        indexName: platform_config_datagen_registeredapp
+        tableName: platform_config_datagen
+- changeSet:
+    id: 1615466832063-255
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusId
+        baseTableName: refdata_addressformattype
+        constraintName: FK_AddressFormatType_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-256
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_countries
+        constraintName: FK_Countries_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-257
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_timezones
+        constraintName: FK_TimeZones_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-258
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_usstates
+        constraintName: FK_USStates_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-259
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_address
+        constraintName: FK_databuilt_address_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-260
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_address
+        constraintName: FK_databuilt_address_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-261
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_bankaccount
+        constraintName: FK_databuilt_bankaccount_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-262
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_names
+        constraintName: FK_databuilt_completenames_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-263
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_corporations
+        constraintName: FK_databuilt_corporations_resiteredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-264
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_corporations
+        constraintName: FK_databuilt_corporations_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-265
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_names
+        constraintName: FK_databuilt_names_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-266
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_persondemographics
+        constraintName: FK_databuilt_persondemographics_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-267
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_persondemographics
+        constraintName: FK_databuilt_persondemographics_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-268
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_phonenumbers
+        constraintName: FK_databuilt_phonenumbers_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-269
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_phonenumbers
+        constraintName: FK_databuilt_phonenumbers_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-270
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: databuilt_products
+        constraintName: FK_databuilt_products_regsiteredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-271
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_products
+        constraintName: FK_databuilt_products_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-272
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_ababanking
+        constraintName: FK_dataexisting_ababanking_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-273
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_ababanking
+        constraintName: FK_dataexisting_ababanking_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-274
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_areacode
+        constraintName: FK_dataexisting_areacode_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-275
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StateCode
+        baseTableName: dataexisting_areacode
+        constraintName: FK_dataexisting_areacode_USStates
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StateID
+        referencedTableName: refdata_usstates
+        validate: true
+- changeSet:
+    id: 1615466832063-276
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_areacode
+        constraintName: FK_dataexisting_areacode_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-277
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: TimeZone
+        baseTableName: dataexisting_areacode
+        constraintName: FK_dataexisting_areacode_timezones
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: TimeZoneValue
+        referencedTableName: refdata_timezones
+        validate: true
+- changeSet:
+    id: 1615466832063-278
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CountryID
+        baseTableName: dataexisting_areacodeintl
+        constraintName: FK_dataexisting_areacodeintl_Countries
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CountryID
+        referencedTableName: refdata_countries
+        validate: true
+- changeSet:
+    id: 1615466832063-279
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_areacodeintl
+        constraintName: FK_dataexisting_areacodeintl_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-280
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_areacodeintl
+        constraintName: FK_dataexisting_areacodeintl_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-281
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_companies
+        constraintName: FK_dataexisting_companies_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-282
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_companies
+        constraintName: FK_dataexisting_companies_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-283
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_namefirst
+        constraintName: FK_dataexisting_namefirst_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-284
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_namefirst
+        constraintName: FK_dataexisting_namefirst_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-285
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_namelast
+        constraintName: FK_dataexisting_namelast_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-286
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_namelast
+        constraintName: FK_dataexisting_namelast_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-287
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_upccodes
+        constraintName: FK_dataexisting_upccodes_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-288
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_upccodes
+        constraintName: FK_dataexisting_upccodes_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-289
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: Country
+        baseTableName: dataexisting_zipcodeintl
+        constraintName: FK_dataexisting_zipcodeIntl_Countries
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CountryID
+        referencedTableName: refdata_countries
+        validate: true
+- changeSet:
+    id: 1615466832063-290
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_zipcodeintl
+        constraintName: FK_dataexisting_zipcodeIntl_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-291
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: dataexisting_zipcodeus
+        constraintName: FK_dataexisting_zipcodeUS_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-292
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_zipcodeintl
+        constraintName: FK_dataexisting_zipcodeintl_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-293
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: dataexisting_zipcodeus
+        constraintName: FK_dataexisting_zipcodeus_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-294
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_accountnumbers
+        constraintName: FK_datagenerated_accountnumbers_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-295
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_accountnumbers
+        constraintName: FK_datagenerated_accountnumbers_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-296
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: AddressFormatTypeId
+        baseTableName: datagenerated_addresses
+        constraintName: FK_datagenerated_addresses_AddressFormatType
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AddressFormatTypeID
+        referencedTableName: refdata_addressformattype
+        validate: true
+- changeSet:
+    id: 1615466832063-297
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_addresses
+        constraintName: FK_datagenerated_addresses_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-298
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_addresses
+        constraintName: FK_datagenerated_addresses_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-299
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_bankaccount
+        constraintName: FK_datagenerated_bankaccount_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-300
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_bankaccount
+        constraintName: FK_datagenerated_bankaccount_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-301
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_creditcard
+        constraintName: FK_datagenerated_creditcard_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-302
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_creditcard
+        constraintName: FK_datagenerated_creditcard_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-303
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_dateofbirth
+        constraintName: FK_datagenerated_dateofbirth_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-304
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_dateofbirth
+        constraintName: FK_datagenerated_dateofbirth_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-305
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_driverslicenses
+        constraintName: FK_datagenerated_driverslicenses_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-306
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StateCode
+        baseTableName: datagenerated_driverslicenses
+        constraintName: FK_datagenerated_driverslicenses_USStates
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StateID
+        referencedTableName: refdata_usstates
+        validate: true
+- changeSet:
+    id: 1615466832063-307
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_driverslicenses
+        constraintName: FK_datagenerated_driverslicenses_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-308
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_ein
+        constraintName: FK_datagenerated_ein_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-309
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_ein
+        constraintName: FK_datagenerated_ein_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-310
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_phonenumber
+        constraintName: FK_datagenerated_phonenumber_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-311
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_phonenumber
+        constraintName: FK_datagenerated_phonenumbers_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-312
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CountryId
+        baseTableName: datagenerated_phonenumbersintl
+        constraintName: FK_datagenerated_phonenumbersintl_Country
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CountryID
+        referencedTableName: refdata_countries
+        validate: true
+- changeSet:
+    id: 1615466832063-313
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_phonenumbersintl
+        constraintName: FK_datagenerated_phonenumbersintl_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-314
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_phonenumbersintl
+        constraintName: FK_datagenerated_phonenumbersintl_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-315
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_socialsecuritynumber
+        constraintName: FK_datagenerated_socialsecuritynumber_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-316
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_socialsecuritynumber
+        constraintName: FK_datagenerated_socialsecuritynumber_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-317
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: datagenerated_useridentities
+        constraintName: FK_datagenerated_useridentities_Status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-318
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: datagenerated_useridentities
+        constraintName: FK_datagenerated_useridentities_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-319
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: DefaultDataGenerationApp
+        baseTableName: platform_appsetting
+        constraintName: FK_platform_appsetting_datagenapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-320
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: platform_appsetting
+        constraintName: FK_platform_appsettings_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-321
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: platform_dataattributes
+        constraintName: FK_platform_dataattributes_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-322
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: DataAttributeID
+        baseTableName: platform_config_datagen
+        constraintName: FK_platform_datagenconfig_dataattributes
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PlatformDataAttributesID
+        referencedTableName: platform_dataattributes
+        validate: true
+- changeSet:
+    id: 1615466832063-323
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_config_datagen
+        constraintName: FK_platform_datagenconfig_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-324
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: auditing_dataplatform
+        constraintName: FK_platform_dataplatform_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-325
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: auditing_datarequest
+        constraintName: FK_platform_datarequest_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-326
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: platform_datastructures
+        constraintName: FK_platform_datastructures__registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-327
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: SensitivityFlagID
+        baseTableName: platform_datastructures
+        constraintName: FK_platform_datastructures_sensitivityflag
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: SensitiveFlagID
+        referencedTableName: refdata_sensitivityflag
+        validate: true
+- changeSet:
+    id: 1615466832063-328
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_datastructures
+        constraintName: FK_platform_datastructures_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-329
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: PlatformDataAttributesID
+        baseTableName: platform_datastructurestodataattributes
+        constraintName: FK_platform_datastructurestodataattributes_dataattributes
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PlatformDataAttributesID
+        referencedTableName: platform_dataattributes
+        validate: true
+- changeSet:
+    id: 1615466832063-330
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: PlatformDataStructuresID
+        baseTableName: platform_datastructurestodataattributes
+        constraintName: FK_platform_datastructurestodataattributes_datastructure
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PlatformDataStructuresID
+        referencedTableName: platform_datastructures
+        validate: true
+- changeSet:
+    id: 1615466832063-331
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: platform_datastructurestodataattributes
+        constraintName: FK_platform_datastructurestodataattributes_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-332
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: SensitivityFlagID
+        baseTableName: platform_datastructurestodataattributes
+        constraintName: FK_platform_datastructurestodataattributes_sensitivityflag
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: SensitiveFlagID
+        referencedTableName: refdata_sensitivityflag
+        validate: true
+- changeSet:
+    id: 1615466832063-333
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_datastructurestodataattributes
+        constraintName: FK_platform_datastructurestodataattributes_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-334
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_rulesets
+        constraintName: FK_platform_rulesets_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-335
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: DataAttributeID
+        baseTableName: platform_rulesetsdefinitions
+        constraintName: FK_platform_rulesetsdefinitions_dataattributes
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PlatformDataAttributesID
+        referencedTableName: platform_dataattributes
+        validate: true
+- changeSet:
+    id: 1615466832063-336
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: OperationTypeID
+        baseTableName: platform_rulesetsdefinitions
+        constraintName: FK_platform_rulesetsdefinitions_operationtype
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: OperationTypeID
+        referencedTableName: refdata_operationtype
+        validate: true
+- changeSet:
+    id: 1615466832063-337
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: ApplicationID
+        baseTableName: platform_rulesetsdefinitions
+        constraintName: FK_platform_rulesetsdefinitions_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-338
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RuleSetID
+        baseTableName: platform_rulesetsdefinitions
+        constraintName: FK_platform_rulesetsdefinitions_ruleset
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: RuleID
+        referencedTableName: platform_rulesets
+        validate: true
+- changeSet:
+    id: 1615466832063-339
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_rulesetsdefinitions
+        constraintName: FK_platform_rulesetsdefinitions_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-340
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: SensitivityFlagID
+        baseTableName: platform_dataattributes
+        constraintName: FK_platformdataattributes_sensitivtyflag
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: SensitiveFlagID
+        referencedTableName: refdata_sensitivityflag
+        validate: true
+- changeSet:
+    id: 1615466832063-341
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_dataattributes
+        constraintName: FK_platformdataattributes_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-342
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_application
+        constraintName: FK_refdata_application_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-343
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: VendorID
+        baseTableName: refdata_application
+        constraintName: FK_refdata_application_vendors
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: VendorID
+        referencedTableName: refdata_vendor
+        validate: true
+- changeSet:
+    id: 1615466832063-344
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: platform_appsetting
+        constraintName: FK_refdata_appsettings_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-345
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: IndustryStd
+        baseTableName: refdata_codeset
+        constraintName: FK_refdata_codeset_industrystd
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: IndustryStd
+        referencedTableName: refdata_industrystd
+        validate: true
+- changeSet:
+    id: 1615466832063-346
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: SensitivityFlagID
+        baseTableName: refdata_codeset
+        constraintName: FK_refdata_codeset_sensitivityflag
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: SensitiveFlagID
+        referencedTableName: refdata_sensitivityflag
+        validate: true
+- changeSet:
+    id: 1615466832063-347
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_codeset
+        constraintName: FK_refdata_codesets_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-348
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CodesetsID
+        baseTableName: refdata_codesetstructures
+        constraintName: FK_refdata_codesetstructures_codesets
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CodeSetsID
+        referencedTableName: refdata_codeset
+        validate: true
+- changeSet:
+    id: 1615466832063-349
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: IndustryStd
+        baseTableName: refdata_codesetstructures
+        constraintName: FK_refdata_codesetstructures_industrystd
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: IndustryStd
+        referencedTableName: refdata_industrystd
+        validate: true
+- changeSet:
+    id: 1615466832063-350
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: SensitivityFlagID
+        baseTableName: refdata_codesetstructures
+        constraintName: FK_refdata_codesetstructures_sensitivityflag
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: SensitiveFlagID
+        referencedTableName: refdata_sensitivityflag
+        validate: true
+- changeSet:
+    id: 1615466832063-351
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_codesetstructures
+        constraintName: FK_refdata_codesetstructures_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-352
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_industrystd
+        constraintName: FK_refdata_industrystd_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-353
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StateID
+        baseTableName: refdata_legalentity
+        constraintName: FK_refdata_location_states
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StateID
+        referencedTableName: refdata_usstates
+        validate: true
+- changeSet:
+    id: 1615466832063-354
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_legalentity
+        constraintName: FK_refdata_location_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-355
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_operationtype
+        constraintName: FK_refdata_operationtype_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-356
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: LegalEntityGUID
+        baseTableName: refdata_organization
+        constraintName: FK_refdata_organization_legalentity
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: LegalEntityGUID
+        referencedTableName: refdata_legalentity
+        validate: true
+- changeSet:
+    id: 1615466832063-357
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StateID
+        baseTableName: refdata_organization
+        constraintName: FK_refdata_organization_states
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StateID
+        referencedTableName: refdata_usstates
+        validate: true
+- changeSet:
+    id: 1615466832063-358
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_organization
+        constraintName: FK_refdata_organization_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-359
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_platformparams
+        constraintName: FK_refdata_platformparams_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-360
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: DataAttributeID
+        baseTableName: refdata_platformparamstodataattributes
+        constraintName: FK_refdata_platformparamstodataattributes_dataattributes
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PlatformDataAttributesID
+        referencedTableName: platform_dataattributes
+        validate: true
+- changeSet:
+    id: 1615466832063-361
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: PlatformParamsID
+        baseTableName: refdata_platformparamstodataattributes
+        constraintName: FK_refdata_platformparamstodataattributes_platformparams
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: PlatformParamsID
+        referencedTableName: refdata_platformparams
+        validate: true
+- changeSet:
+    id: 1615466832063-362
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: RegisteredApp
+        baseTableName: refdata_platformparamstodataattributes
+        constraintName: FK_refdata_platformparamstodataattributes_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-363
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_platformparamstodataattributes
+        constraintName: FK_refdata_platformparamstodataattributes_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-364
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_sensitivityflag
+        constraintName: FK_refdata_sensitivityflag_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-365
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: refdata_vendor
+        constraintName: FK_refdata_vendors_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-366
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: ApplicationID
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_Application
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+- changeSet:
+    id: 1615466832063-367
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: OrganizationID
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_Org
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: OrganizationGUID
+        referencedTableName: refdata_organization
+        validate: true
+- changeSet:
+    id: 1615466832063-368
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: VendorID
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_Vendor
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: VendorID
+        referencedTableName: refdata_vendor
+        validate: true
+- changeSet:
+    id: 1615466832063-369
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CodeSetsID
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_codeset
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CodeSetsID
+        referencedTableName: refdata_codeset
+        validate: true
+- changeSet:
+    id: 1615466832063-370
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: IndustryStd
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_industrystd
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: IndustryStd
+        referencedTableName: refdata_industrystd
+        validate: true
+- changeSet:
+    id: 1615466832063-371
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: SensitiveFlagID
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_sensitiveflag
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: SensitiveFlagID
+        referencedTableName: refdata_sensitivityflag
+        validate: true
+- changeSet:
+    id: 1615466832063-372
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: terms_codesetstoapplication
+        constraintName: FK_terms_codesetstoapplication_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-373
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CodeSetsID
+        baseTableName: terms_codesetstoapplicationvalues
+        constraintName: FK_terms_codesetstoapplicationvalues_codeset
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CodeSetsID
+        referencedTableName: refdata_codeset
+        validate: true
+- changeSet:
+    id: 1615466832063-374
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: CodeSetToApplicationID
+        baseTableName: terms_codesetstoapplicationvalues
+        constraintName: FK_terms_codesetstoapplicationvalues_codesettoapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: CodeSetToApplicationID
+        referencedTableName: terms_codesetstoapplication
+        validate: true
+- changeSet:
+    id: 1615466832063-375
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: terms_codesetstoapplicationvalues
+        constraintName: FK_terms_codesetstoapplicationvalues_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-376
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: StatusID
+        baseTableName: databuilt_bankaccount
+        constraintName: fk_databuilt_bankAccounts_status
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: StatusID
+        referencedTableName: refdata_status
+        validate: true
+- changeSet:
+    id: 1615466832063-377
+    author: jfroehli (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: ApplicationID
+        baseTableName: platform_config_datagen
+        constraintName: platform_config_datagen_registeredapp
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: RESTRICT
+        onUpdate: RESTRICT
+        referencedColumnNames: AppGUID
+        referencedTableName: refdata_application
+        validate: true
+

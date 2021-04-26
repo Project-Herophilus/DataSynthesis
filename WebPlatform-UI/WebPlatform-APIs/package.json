@@ -1,0 +1,19 @@
+{
+  "name": "webplatform-apis",
+  "version": "1.0.0",
+  "description": "APIs to power the WebPlatform UI for DataSynthesis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "body-parser",
+    "cors"
+  ],
+  "author": "balanscott",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

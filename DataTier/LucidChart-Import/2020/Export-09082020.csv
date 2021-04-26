@@ -1,0 +1,567 @@
+dbms|TABLE_SCHEMA|TABLE_NAME|COLUMN_NAME|ORDINAL_POSITION|DATA_TYPE|CHARACTER_MAXIMUM_LENGTH|CONSTRAINT_TYPE|REFERENCED_TABLE_SCHEMA|REFERENCED_TABLE_NAME|REFERENCED_COLUMN_NAME
+mysql|datasynthesis|dataexisting_ababanking|ABABankingID|1|||PRIMARY KEY|||
+mysql|datasynthesis|dataexisting_ababanking|City|5||20||||
+mysql|datasynthesis|dataexisting_ababanking|CreatedDate|8||||||
+mysql|datasynthesis|dataexisting_ababanking|CreatedUser|10||20||||
+mysql|datasynthesis|dataexisting_ababanking|CustomerName|4||36||||
+mysql|datasynthesis|dataexisting_ababanking|RegisteredApp|11||38||||
+mysql|datasynthesis|dataexisting_ababanking|RoutingNumber|2||9||||
+mysql|datasynthesis|dataexisting_ababanking|State|6||2||||
+mysql|datasynthesis|dataexisting_ababanking|StatusID|9|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_ababanking|TelegraphicName|3||20||||
+mysql|datasynthesis|dataexisting_ababanking|ZipCode|7||5||||
+mysql|datasynthesis|refdata_status|CreatedDate|3||||||
+mysql|datasynthesis|refdata_status|CreatedUser|4||20||||
+mysql|datasynthesis|refdata_status|StatusDescription|2||45||||
+mysql|datasynthesis|refdata_status|StatusID|1|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_addressformattype|AddressFormatTypeDesc|2||35||||
+mysql|datasynthesis|refdata_addressformattype|AddressFormatTypeID|1||||||
+mysql|datasynthesis|refdata_addressformattype|CreatedDate|3||||||
+mysql|datasynthesis|refdata_addressformattype|StatusId|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_areacode|AreaCodeID|1||||||
+mysql|datasynthesis|dataexisting_areacode|AreaCodeValue|2||3||||
+mysql|datasynthesis|dataexisting_areacode|CreatedDate|5||||||
+mysql|datasynthesis|dataexisting_areacode|CreatedUser|7||20||||
+mysql|datasynthesis|dataexisting_areacode|RegisteredApp|8||38||||
+mysql|datasynthesis|dataexisting_areacode|StateCode|4||2||||
+mysql|datasynthesis|dataexisting_areacode|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_areacode|TimeZone|3||3||||
+mysql|datasynthesis|dataexisting_areacodeintl|CountryID|2||||||
+mysql|datasynthesis|dataexisting_areacodeintl|CreatedDate|3||||||
+mysql|datasynthesis|dataexisting_areacodeintl|IDDCode|1||5||||
+mysql|datasynthesis|dataexisting_areacodeintl|RegisteredApp|5||38||||
+mysql|datasynthesis|dataexisting_areacodeintl|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_bankaccount|BankAccountsID|1||||||
+mysql|datasynthesis|datagenerated_bankaccount|BankAccountValue|2||17||||
+mysql|datasynthesis|datagenerated_bankaccount|CreatedDate|3||||||
+mysql|datasynthesis|datagenerated_bankaccount|CreatedUser|5||20||||
+mysql|datasynthesis|datagenerated_bankaccount|RegisteredApp|6||38||||
+mysql|datasynthesis|datagenerated_bankaccount|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_companies|CompaniesID|1||||||
+mysql|datasynthesis|dataexisting_companies|CompanyName|2||79||||
+mysql|datasynthesis|dataexisting_companies|CreatedDate|3||||||
+mysql|datasynthesis|dataexisting_companies|CreatedUser|5||20||||
+mysql|datasynthesis|dataexisting_companies|RegisteredApp|6||38||||
+mysql|datasynthesis|dataexisting_companies|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_countries|CountryID|1||||||
+mysql|datasynthesis|refdata_countries|CountryName|3||59||||
+mysql|datasynthesis|refdata_countries|CreatedDate|4||||||
+mysql|datasynthesis|refdata_countries|IDD|2||5||||
+mysql|datasynthesis|refdata_countries|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_creditcard|CreatedDate|4||||||
+mysql|datasynthesis|datagenerated_creditcard|CreatedUser|6||20||||
+mysql|datasynthesis|datagenerated_creditcard|CreditCardID|1||||||
+mysql|datasynthesis|datagenerated_creditcard|CreditCardName|3||10||||
+mysql|datasynthesis|datagenerated_creditcard|CreditCardNumber|2||20||||
+mysql|datasynthesis|datagenerated_creditcard|RegisteredApp|7||38||||
+mysql|datasynthesis|datagenerated_creditcard|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_driverslicenses|CompleteDriversLicenseNumber|6||30||||
+mysql|datasynthesis|datagenerated_driverslicenses|CreatedDate|4||||||
+mysql|datasynthesis|datagenerated_driverslicenses|CreatedUser|7||20||||
+mysql|datasynthesis|datagenerated_driverslicenses|DLN|2||25||||
+mysql|datasynthesis|datagenerated_driverslicenses|DriversLicensesID|1||||||
+mysql|datasynthesis|datagenerated_driverslicenses|RegisteredApp|8||38||||
+mysql|datasynthesis|datagenerated_driverslicenses|StateCode|3||2||||
+mysql|datasynthesis|datagenerated_driverslicenses|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_ein|CreatedDate|3||||||
+mysql|datasynthesis|datagenerated_ein|CreatedUser|5||20||||
+mysql|datasynthesis|datagenerated_ein|EINID|1||||||
+mysql|datasynthesis|datagenerated_ein|EINValue|2||10||||
+mysql|datasynthesis|datagenerated_ein|RegisteredApp|6||38||||
+mysql|datasynthesis|datagenerated_ein|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_namefirst|CreatedDate|5||||||
+mysql|datasynthesis|dataexisting_namefirst|CreatedUser|6||20||||
+mysql|datasynthesis|dataexisting_namefirst|FirstName|2||39||||
+mysql|datasynthesis|dataexisting_namefirst|FirstNameID|1||||||
+mysql|datasynthesis|dataexisting_namefirst|Gender|3||1||||
+mysql|datasynthesis|dataexisting_namefirst|RegisteredApp|7||38||||
+mysql|datasynthesis|dataexisting_namefirst|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_namelast|CreatedDate|4||||||
+mysql|datasynthesis|dataexisting_namelast|CreatedUser|5||20||||
+mysql|datasynthesis|dataexisting_namelast|LastName|2||69||||
+mysql|datasynthesis|dataexisting_namelast|LastNameID|1||||||
+mysql|datasynthesis|dataexisting_namelast|RegisteredApp|6||38||||
+mysql|datasynthesis|dataexisting_namelast|StatusID|3|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_timezones|CreatedDate|3||||||
+mysql|datasynthesis|refdata_timezones|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_timezones|TimeZoneDesc|2||25||||
+mysql|datasynthesis|refdata_timezones|TimeZoneValue|1||3||||
+mysql|datasynthesis|dataexisting_upccodes|CreatedDate|4||||||
+mysql|datasynthesis|dataexisting_upccodes|RegisteredApp|6||38||||
+mysql|datasynthesis|dataexisting_upccodes|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_upccodes|UPCCodeID|1||||||
+mysql|datasynthesis|dataexisting_upccodes|UPCCodeName|2||15||||
+mysql|datasynthesis|dataexisting_upccodes|UPCProductName|3||150||||
+mysql|datasynthesis|datagenerated_phonenumber|CreatedDate|3||||||
+mysql|datasynthesis|datagenerated_phonenumber|CreatedUser|5||20||||
+mysql|datasynthesis|datagenerated_phonenumber|PhoneNumberID|1||||||
+mysql|datasynthesis|datagenerated_phonenumber|PhoneNumberValue|2||8||||
+mysql|datasynthesis|datagenerated_phonenumber|RegisteredApp|6||38||||
+mysql|datasynthesis|datagenerated_phonenumber|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_phonenumbersintl|CountryId|5||||||
+mysql|datasynthesis|datagenerated_phonenumbersintl|CreatedDate|3||||||
+mysql|datasynthesis|datagenerated_phonenumbersintl|CreatedUser|6||20||||
+mysql|datasynthesis|datagenerated_phonenumbersintl|PhoneNumberIntlID|1||||||
+mysql|datasynthesis|datagenerated_phonenumbersintl|PhoneNumberValue|2||12||||
+mysql|datasynthesis|datagenerated_phonenumbersintl|RegisteredApp|7||38||||
+mysql|datasynthesis|datagenerated_phonenumbersintl|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_zipcodeintl|City|4||75||||
+mysql|datasynthesis|dataexisting_zipcodeintl|Country|5||||||
+mysql|datasynthesis|dataexisting_zipcodeintl|CreatedDate|9||||||
+mysql|datasynthesis|dataexisting_zipcodeintl|CreatedUser|11||20||||
+mysql|datasynthesis|dataexisting_zipcodeintl|Lattitude|6||10||||
+mysql|datasynthesis|dataexisting_zipcodeintl|Location|8||99||||
+mysql|datasynthesis|dataexisting_zipcodeintl|Longitude|7||10||||
+mysql|datasynthesis|dataexisting_zipcodeintl|RegisteredApp|12||38||||
+mysql|datasynthesis|dataexisting_zipcodeintl|StatusID|10|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_zipcodeintl|ZipCode|2||10||||
+mysql|datasynthesis|dataexisting_zipcodeintl|ZipCodeIntnlID|1||||||
+mysql|datasynthesis|dataexisting_zipcodeintl|ZipCodeType|3||15||||
+mysql|datasynthesis|datagenerated_socialsecuritynumber|CreatedDate|3||||||
+mysql|datasynthesis|datagenerated_socialsecuritynumber|CreatedUser|5||20||||
+mysql|datasynthesis|datagenerated_socialsecuritynumber|RegisteredApp|6||38||||
+mysql|datasynthesis|datagenerated_socialsecuritynumber|SocialSecurityNumberID|1||||||
+mysql|datasynthesis|datagenerated_socialsecuritynumber|SocialSecurityNumberValue|2||11||||
+mysql|datasynthesis|datagenerated_socialsecuritynumber|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_useridentities|AdditionalAttributes|4||40||||
+mysql|datasynthesis|datagenerated_useridentities|CreatedDate|5||||||
+mysql|datasynthesis|datagenerated_useridentities|RegisteredApp|7||38||||
+mysql|datasynthesis|datagenerated_useridentities|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_useridentities|UserDomain|3||20||||
+mysql|datasynthesis|datagenerated_useridentities|UserIdentitiesID|1||||||
+mysql|datasynthesis|datagenerated_useridentities|UserIdentityValue|2||20||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|CodesetsID|3||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|CreatedDate|5||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|CreatedUser|7||20||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|DelimitedDataMapDetailID|2||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|DelimitedDataMapToCodesetsDataMappingDetailID|1||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|FieldNumber|4||25||||
+mysql|datasynthesis|map_delimiteddatamapdetailtocodesets|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_delimiteddatamapdetailtodataattributes|CreatedDate|4||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtodataattributes|CreatedUser|6||20||||
+mysql|datasynthesis|map_delimiteddatamapdetailtodataattributes|DataAttributesID|3||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtodataattributes|DelimitedDataMapDetailID|2||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtodataattributes|DelimitedDataMapToCoreMetadataDataMappingDetailID|1||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtodataattributes|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_delimiteddatamapdetailtovendordatamodel|CreatedDate|4||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtovendordatamodel|CreatedUser|6||20||||
+mysql|datasynthesis|map_delimiteddatamapdetailtovendordatamodel|DelimitedDataMapDetailID|2||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtovendordatamodel|DelimitedDataMapToVendorDataMappingDetailID|1||||||
+mysql|datasynthesis|map_delimiteddatamapdetailtovendordatamodel|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_delimiteddatamapdetailtovendordatamodel|VendorDataMappingDetailID|3||||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|ApplicationID|4||||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|CompeleteFieldName|11||102||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|CreatedDate|12||||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|CreatedUser|14||20||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|DBName|5||20||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|DelimitedDataMappingDetailGUID|15||38||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|DelimitedDataMappingDetailID|1||||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|DelimitedDataMappingHeaderID|2||||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|FieldDataType|9||10||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|FieldLength|10||10||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|FieldName|8||50||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|FieldNumber|7||10||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|SourceDataMapDesc|3||75||||
+mysql|datasynthesis|map_delimiteddatamappingdetail|StatusID|13|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_delimiteddatamappingdetail|TableName|6||30||||
+mysql|datasynthesis|map_delimiteddatamappingheader|ApplicationID|6||||||
+mysql|datasynthesis|map_delimiteddatamappingheader|CreatedBy|9||20||||
+mysql|datasynthesis|map_delimiteddatamappingheader|CreatedDate|10||||||
+mysql|datasynthesis|map_delimiteddatamappingheader|CreatedUser|12||20||||
+mysql|datasynthesis|map_delimiteddatamappingheader|DelimitedDataMappingHeaderGUID|13||38||||
+mysql|datasynthesis|map_delimiteddatamappingheader|DelimitedDataMappingHeaderID|1||||||
+mysql|datasynthesis|map_delimiteddatamappingheader|DelimiterCharacter|14||1||||
+mysql|datasynthesis|map_delimiteddatamappingheader|OrganizationID|7||||||
+mysql|datasynthesis|map_delimiteddatamappingheader|StatusID|11|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_delimiteddatamappingheader|VendorID|5||||||
+mysql|datasynthesis|map_delimiteddatamappingheader|VendorTechnologyDesc|3||50||||
+mysql|datasynthesis|map_delimiteddatamappingheader|VendorTechnologyInternalCode|4||10||||
+mysql|datasynthesis|map_delimiteddatamappingheader|VendorTechnologyName|2||50||||
+mysql|datasynthesis|map_delimiteddatamappingheader|VendorTechnologyVersion|8||15||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|CreatedDate|12||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|CreatedUser|14||20||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|DataType|10||5||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|HCInterfaceDataMapDetailID|1||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|HCInterfaceDataMapDetailIGUID|15||38||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|InterfaceDataMapHeaderID|2||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|MsgFieldLength|9||10||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|MsgFieldName|8||154||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|MsgFieldNumber|7||7||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|MsgSegment|5||3||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|SegmentFieldOrder|6||8||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|SensitivityFlagID|11||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|SourceApplicationID|3||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetail|StatusID|13|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_hcinterfacedatamapdetail|Vrsn|4||7||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|CodesetsID|3||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|CreatedDate|5||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|CreatedUser|7||20||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|FieldNumber|4||25||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|HCInterfaceDataMapDetailID|2||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|HCInterfaceDataMapToCodesetsDataMappingDetailID|1||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtocodesets|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_hcinterfacedatamapdetailtodataattributes|CreatedDate|4||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtodataattributes|CreatedUser|6||20||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtodataattributes|DataAttributesID|3||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtodataattributes|HCInterfaceDataMapDetailID|2||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtodataattributes|HCInterfaceDataMapToCoreMetadataDataMappingDetailID|1||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtodataattributes|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_hcinterfacedatamapdetailtovendordatamodel|CreatedDate|4||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtovendordatamodel|CreatedUser|6||20||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtovendordatamodel|HCInterfaceDataMapDetailID|2||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtovendordatamodel|HCInterfaceDataMapToVendorDataMappingDetailID|1||||||
+mysql|datasynthesis|map_hcinterfacedatamapdetailtovendordatamodel|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_hcinterfacedatamapdetailtovendordatamodel|VendorDataMappingDetailID|3||||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|ApplicationID|5||||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|CreatedDate|10||||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|CreatedUser|12||20||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|HCInterfaceDataMapHeaderGUID|13||38||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|HCInterfaceDataMapHeaderID|1||||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|IndustryStd|14||6||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|InterfaceDesc|3||50||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|InterfaceName|2||50||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|MessageTrigger|7||10||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|MessageType|6||11||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|MessageVersion|8||7||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|OrganizationID|9||||||
+mysql|datasynthesis|map_hcinterfacedatamapheader|StatusID|11|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_hcinterfacedatamapheader|VendorID|4||||||
+mysql|datasynthesis|map_vendordatamappingdetail|ApplicationID|4||||||
+mysql|datasynthesis|map_vendordatamappingdetail|CompeleteFieldName|11||102||||
+mysql|datasynthesis|map_vendordatamappingdetail|CreatedDate|12||||||
+mysql|datasynthesis|map_vendordatamappingdetail|CreatedUser|14||20||||
+mysql|datasynthesis|map_vendordatamappingdetail|DBName|5||20||||
+mysql|datasynthesis|map_vendordatamappingdetail|FieldDataType|9||10||||
+mysql|datasynthesis|map_vendordatamappingdetail|FieldLength|10||10||||
+mysql|datasynthesis|map_vendordatamappingdetail|FieldName|8||50||||
+mysql|datasynthesis|map_vendordatamappingdetail|FieldNumber|7||10||||
+mysql|datasynthesis|map_vendordatamappingdetail|SourceDataMapDesc|3||75||||
+mysql|datasynthesis|map_vendordatamappingdetail|StatusID|13|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_vendordatamappingdetail|TableName|6||30||||
+mysql|datasynthesis|map_vendordatamappingdetail|VendorDataMappingDetailGUID|15||38||||
+mysql|datasynthesis|map_vendordatamappingdetail|VendorDataMappingDetailID|1||||||
+mysql|datasynthesis|map_vendordatamappingdetail|VendorDataMappingHeaderID|2||||||
+mysql|datasynthesis|map_vendordatamappingdetailtocodesets|CodesetsID|3||||||
+mysql|datasynthesis|map_vendordatamappingdetailtocodesets|CreatedDate|5||||||
+mysql|datasynthesis|map_vendordatamappingdetailtocodesets|CreatedUser|6||20||||
+mysql|datasynthesis|map_vendordatamappingdetailtocodesets|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_vendordatamappingdetailtocodesets|VendorDataMappingDetailID|2||||||
+mysql|datasynthesis|map_vendordatamappingdetailtocodesets|VendorDataMappingDetailToCodesetsID|1||||||
+mysql|datasynthesis|map_vendordatamappingdetailtodataattributes|CreatedDate|5||||||
+mysql|datasynthesis|map_vendordatamappingdetailtodataattributes|CreatedUser|6||20||||
+mysql|datasynthesis|map_vendordatamappingdetailtodataattributes|DataAttributesID|3||||||
+mysql|datasynthesis|map_vendordatamappingdetailtodataattributes|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_vendordatamappingdetailtodataattributes|VendorDataMappingDetailID|2||||||
+mysql|datasynthesis|map_vendordatamappingdetailtodataattributes|VendorDataMappingDetailToDataAttributesID|1||||||
+mysql|datasynthesis|map_vendordatamappingheader|ApplicationID|6||||||
+mysql|datasynthesis|map_vendordatamappingheader|CreatedBy|9||20||||
+mysql|datasynthesis|map_vendordatamappingheader|CreatedDate|10||||||
+mysql|datasynthesis|map_vendordatamappingheader|CreatedUser|12||20||||
+mysql|datasynthesis|map_vendordatamappingheader|OrganizationID|7||||||
+mysql|datasynthesis|map_vendordatamappingheader|StatusID|11|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|map_vendordatamappingheader|VendorDataMappingHeaderGUID|13||38||||
+mysql|datasynthesis|map_vendordatamappingheader|VendorDataMappingHeaderID|1||||||
+mysql|datasynthesis|map_vendordatamappingheader|VendorID|5||||||
+mysql|datasynthesis|map_vendordatamappingheader|VendorTechnologyDesc|3||50||||
+mysql|datasynthesis|map_vendordatamappingheader|VendorTechnologyInternalMnemonic|4||10||||
+mysql|datasynthesis|map_vendordatamappingheader|VendorTechnologyName|2||50||||
+mysql|datasynthesis|map_vendordatamappingheader|VendorTechnologyVersion|8||15||||
+mysql|cmsdemodata|refdata_status|CreatedDate|3||||||
+mysql|cmsdemodata|refdata_status|statusdesc|2||40||||
+mysql|cmsdemodata|refdata_status|statusid|1|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|cmsdemodata|refdata_cmsphysiciancodes|createddate|3||||||
+mysql|cmsdemodata|refdata_cmsphysiciancodes|physiciancode|1||2||||
+mysql|cmsdemodata|refdata_cmsphysiciancodes|physiciancodedesc|2||149||||
+mysql|cmsdemodata|refdata_cmsphysiciancodes|statusid|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|cmsdemodata|refdata_state|createddate|5||||||
+mysql|cmsdemodata|refdata_state|latitude|3||12||||
+mysql|cmsdemodata|refdata_state|longitude|4||12||||
+mysql|cmsdemodata|refdata_state|statedesc|2||45||||
+mysql|cmsdemodata|refdata_state|stateid|1||2||||
+mysql|cmsdemodata|refdata_state|statusid|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|cmsdemodata|physicians|address|4||45||||
+mysql|cmsdemodata|physicians|address1|5||45||||
+mysql|cmsdemodata|physicians|city|6||45||||
+mysql|cmsdemodata|physicians|createddate|12||||||
+mysql|cmsdemodata|physicians|name_first|3||30||||
+mysql|cmsdemodata|physicians|name_last|2||45||||
+mysql|cmsdemodata|physicians|phone_mobile|9||12||||
+mysql|cmsdemodata|physicians|phone_officenumber|10||12||||
+mysql|cmsdemodata|physicians|physicianid|1||||||
+mysql|cmsdemodata|physicians|stateid|7||2||||
+mysql|cmsdemodata|physicians|statusid|11|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|cmsdemodata|physicians|zipcode|8||12||||
+mysql|cmsdemodata|physicianstospecialty|createddate|7||||||
+mysql|cmsdemodata|physicianstospecialty|licenseid|4||12||||
+mysql|cmsdemodata|physicianstospecialty|licensestateid|5||2||||
+mysql|cmsdemodata|physicianstospecialty|nuccphysicianspecialtyid|3||12||||
+mysql|cmsdemodata|physicianstospecialty|physicianid|2||||||
+mysql|cmsdemodata|physicianstospecialty|physiciantospecialtyid|1||||||
+mysql|cmsdemodata|physicianstospecialty|statusid|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_zipcodeus|City|4||75||||
+mysql|datasynthesis|dataexisting_zipcodeus|CreatedDate|9||||||
+mysql|datasynthesis|dataexisting_zipcodeus|CreatedUser|11||20||||
+mysql|datasynthesis|dataexisting_zipcodeus|Lattitude|6||10||||
+mysql|datasynthesis|dataexisting_zipcodeus|Location|8||99||||
+mysql|datasynthesis|dataexisting_zipcodeus|Longitude|7||10||||
+mysql|datasynthesis|dataexisting_zipcodeus|RegisteredApp|12||38||||
+mysql|datasynthesis|dataexisting_zipcodeus|State|5||2||||
+mysql|datasynthesis|dataexisting_zipcodeus|StatusID|10|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|dataexisting_zipcodeus|ZipCode|2||5||||
+mysql|datasynthesis|dataexisting_zipcodeus|ZipCodeID|1||||||
+mysql|datasynthesis|dataexisting_zipcodeus|ZipCodeType|3||15||||
+mysql|datasynthesis|platform_datagenconfig|ApplicationID|10||||||
+mysql|datasynthesis|platform_datagenconfig|CreatedDate|7||||||
+mysql|datasynthesis|platform_datagenconfig|CreatedUser|9||20||||
+mysql|datasynthesis|platform_datagenconfig|DataAttributeID|3||||||
+mysql|datasynthesis|platform_datagenconfig|DataGenConfigID|1||||||
+mysql|datasynthesis|platform_datagenconfig|DataTypeGenConfigName|2||25||||
+mysql|datasynthesis|platform_datagenconfig|MinuteInterval|6||||||
+mysql|datasynthesis|platform_datagenconfig|RunQuantity|5||||||
+mysql|datasynthesis|platform_datagenconfig|SpecialInstructions|4||99||||
+mysql|datasynthesis|platform_datagenconfig|StatusID|8|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|auditing_datarequest|Application|5||||||
+mysql|datasynthesis|auditing_datarequest|CreatedByUser|3||20||||
+mysql|datasynthesis|auditing_datarequest|CreatedDate|7||||||
+mysql|datasynthesis|auditing_datarequest|DataRequestDate|2||||||
+mysql|datasynthesis|auditing_datarequest|DataRequestID|1||||||
+mysql|datasynthesis|auditing_datarequest|Organizaton|4||||||
+mysql|datasynthesis|auditing_datarequest|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|auditing_datarequestdetail|CreatedDate|7||||||
+mysql|datasynthesis|auditing_datarequestdetail|DataAttributeID|3||||||
+mysql|datasynthesis|auditing_datarequestdetail|DataRequestDetailID|1||||||
+mysql|datasynthesis|auditing_datarequestdetail|DataRequestID|2||||||
+mysql|datasynthesis|auditing_datarequestdetail|RecCount|4||||||
+mysql|datasynthesis|auditing_datarequestdetail|RecordFormatDetails|5||75||||
+mysql|datasynthesis|auditing_datarequestdetail|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|platform_datastructures|CreatedDate|4||||||
+mysql|datasynthesis|platform_datastructures|CreatedUser|6||20||||
+mysql|datasynthesis|platform_datastructures|DataStructureName|2||50||||
+mysql|datasynthesis|platform_datastructures|PlatformDataStructuresGUID|7||38||||
+mysql|datasynthesis|platform_datastructures|PlatformDataStructuresID|1||||||
+mysql|datasynthesis|platform_datastructures|RegisteredApp|8||38||||
+mysql|datasynthesis|platform_datastructures|SensitivityFlagID|3||||||
+mysql|datasynthesis|platform_datastructures|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|platform_rulesets|CreatedDate|4||||||
+mysql|datasynthesis|platform_rulesets|CreatedUser|3||20||||
+mysql|datasynthesis|platform_rulesets|ExpirationDate|6||||||
+mysql|datasynthesis|platform_rulesets|RuleID|1||||||
+mysql|datasynthesis|platform_rulesets|RuleName|2||65||||
+mysql|datasynthesis|platform_rulesets|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|terms_codesetstoapplication|ApplicationID|11||||||
+mysql|datasynthesis|terms_codesetstoapplication|CodeSetsID|2||||||
+mysql|datasynthesis|terms_codesetstoapplication|CodeSetToApplicationID|1||||||
+mysql|datasynthesis|terms_codesetstoapplication|CreatedDate|6||||||
+mysql|datasynthesis|terms_codesetstoapplication|CreatedUser|8||20||||
+mysql|datasynthesis|terms_codesetstoapplication|Domain|3||50||||
+mysql|datasynthesis|terms_codesetstoapplication|IndustryStd|4||6||||
+mysql|datasynthesis|terms_codesetstoapplication|MessageTrigger|9||4||||
+mysql|datasynthesis|terms_codesetstoapplication|OrganizationID|10||||||
+mysql|datasynthesis|terms_codesetstoapplication|SpecificDetails|5||99||||
+mysql|datasynthesis|terms_codesetstoapplication|StatusID|7|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|terms_codesetstoapplication|VendorID|12||||||
+mysql|datasynthesis|refdata_application|AppGUID|7||38||||
+mysql|datasynthesis|refdata_application|ApplicationCustomCode|2||15||||
+mysql|datasynthesis|refdata_application|ApplicationDesc|3||50||||
+mysql|datasynthesis|refdata_application|ApplicationID|1||||||
+mysql|datasynthesis|refdata_application|CreatedDate|5||||||
+mysql|datasynthesis|refdata_application|CreatedUser|4||20||||
+mysql|datasynthesis|refdata_application|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_application|VendorID|8||||||
+mysql|datasynthesis|platform_appsetting|AppSettingName|2||50||||
+mysql|datasynthesis|platform_appsetting|AppSettingsID|1||||||
+mysql|datasynthesis|platform_appsetting|AppSettingValue|3||199||||
+mysql|datasynthesis|platform_appsetting|CreatedDate|4||||||
+mysql|datasynthesis|platform_appsetting|RegisteredApp|6||38||||
+mysql|datasynthesis|platform_appsetting|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_codeset|CodesetGUID|7||38||||
+mysql|datasynthesis|refdata_codeset|CodeSetName|2||50||||
+mysql|datasynthesis|refdata_codeset|CodeSetsID|1||||||
+mysql|datasynthesis|refdata_codeset|CreatedDate|5||||||
+mysql|datasynthesis|refdata_codeset|CreatedUser|6||20||||
+mysql|datasynthesis|refdata_codeset|FieldMapping|8||20||||
+mysql|datasynthesis|refdata_codeset|IndustryStd|3||6||||
+mysql|datasynthesis|refdata_codeset|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_vendor|CreatedDate|3||||||
+mysql|datasynthesis|refdata_vendor|CreatedUser|5||20||||
+mysql|datasynthesis|refdata_vendor|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_vendor|VendorGUID|6||38||||
+mysql|datasynthesis|refdata_vendor|VendorID|1||||||
+mysql|datasynthesis|refdata_vendor|VendorName|2||50||||
+mysql|datasynthesis|platform_rulesetsattributes|CreatedDate|3||||||
+mysql|datasynthesis|platform_rulesetsattributes|RuleSetAttributeDesc|2||75||||
+mysql|datasynthesis|platform_rulesetsattributes|RulesetAttributeID|1||||||
+mysql|datasynthesis|platform_rulesetsattributes|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|platform_rulesetsdefinitions|CreatedDate|8||||||
+mysql|datasynthesis|platform_rulesetsdefinitions|EffectiveDate|9||||||
+mysql|datasynthesis|platform_rulesetsdefinitions|OperationTypeID|5||7||||
+mysql|datasynthesis|platform_rulesetsdefinitions|RulesetDefinitionName|2||50||||
+mysql|datasynthesis|platform_rulesetsdefinitions|RulesetDefinitionsID|1||38||||
+mysql|datasynthesis|platform_rulesetsdefinitions|RulesetDefValue|6||40||||
+mysql|datasynthesis|platform_rulesetsdefinitions|RuleSetID|3||||||
+mysql|datasynthesis|platform_rulesetsdefinitions|StatusID|7|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|platform_rulesetsdefinitions|StepOrderID|4||||||
+mysql|datasynthesis|platform_datastructurestodataattributes|CompositeDataStructureName|3||50||||
+mysql|datasynthesis|platform_datastructurestodataattributes|CreatedDate|5||||||
+mysql|datasynthesis|platform_datastructurestodataattributes|CreatedUser|7||20||||
+mysql|datasynthesis|platform_datastructurestodataattributes|PlatformDataAttributesID|10||||||
+mysql|datasynthesis|platform_datastructurestodataattributes|PlatformDataStructuresID|2||||||
+mysql|datasynthesis|platform_datastructurestodataattributes|PlatformDataStructuresToDataAttributesGUID|8||38||||
+mysql|datasynthesis|platform_datastructurestodataattributes|PlatformDataStructuresToDataAttributesID|1||||||
+mysql|datasynthesis|platform_datastructurestodataattributes|RegisteredApp|9||38||||
+mysql|datasynthesis|platform_datastructurestodataattributes|SensitivityFlagID|4||||||
+mysql|datasynthesis|platform_datastructurestodataattributes|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_industrystd|CreatedDate|3||||||
+mysql|datasynthesis|refdata_industrystd|IndustryStd|1||6||||
+mysql|datasynthesis|refdata_industrystd|IndustryStdDesc|2||30||||
+mysql|datasynthesis|refdata_industrystd|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_usstates|CreatedDate|5||||||
+mysql|datasynthesis|refdata_usstates|CreatedUser|7||20||||
+mysql|datasynthesis|refdata_usstates|Lattitude|3||12||||
+mysql|datasynthesis|refdata_usstates|Longitude|4||12||||
+mysql|datasynthesis|refdata_usstates|StateDescription|2||65||||
+mysql|datasynthesis|refdata_usstates|StateID|1||2||||
+mysql|datasynthesis|refdata_usstates|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_dateofbirth|Age|4||||||
+mysql|datasynthesis|datagenerated_dateofbirth|CreatedDate|5||||||
+mysql|datasynthesis|datagenerated_dateofbirth|CreatedUser|7||20||||
+mysql|datasynthesis|datagenerated_dateofbirth|DateOfBirth|2||12||||
+mysql|datasynthesis|datagenerated_dateofbirth|DateOfBirthDate|3||||||
+mysql|datasynthesis|datagenerated_dateofbirth|DateofBirthsID|1||||||
+mysql|datasynthesis|datagenerated_dateofbirth|RegisteredApp|8||38||||
+mysql|datasynthesis|datagenerated_dateofbirth|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_accountnumbers|AccountNumbersID|1||||||
+mysql|datasynthesis|datagenerated_accountnumbers|AccountNumberValue|2||20||||
+mysql|datasynthesis|datagenerated_accountnumbers|CreatedDate|3||||||
+mysql|datasynthesis|datagenerated_accountnumbers|CreatedUser|4||20||||
+mysql|datasynthesis|datagenerated_accountnumbers|RegisteredApp|6||38||||
+mysql|datasynthesis|datagenerated_accountnumbers|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datagenerated_addresses|AddressFormatTypeId|6||||||
+mysql|datasynthesis|datagenerated_addresses|AddressID|1||||||
+mysql|datasynthesis|datagenerated_addresses|AddressStreet|2||99||||
+mysql|datasynthesis|datagenerated_addresses|AddressStreet2|3||59||||
+mysql|datasynthesis|datagenerated_addresses|CreatedDate|4||||||
+mysql|datasynthesis|datagenerated_addresses|CreatedUser|7||20||||
+mysql|datasynthesis|datagenerated_addresses|RegisteredApp|8||38||||
+mysql|datasynthesis|datagenerated_addresses|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|platform_dataattributes|CreatedDate|4||||||
+mysql|datasynthesis|platform_dataattributes|CreatedUser|6||20||||
+mysql|datasynthesis|platform_dataattributes|DataAttributeName|2||50||||
+mysql|datasynthesis|platform_dataattributes|PlatformDataAttributeGUID|7||38||||
+mysql|datasynthesis|platform_dataattributes|PlatformDataAttributesID|1||||||
+mysql|datasynthesis|platform_dataattributes|RegisteredApp|8||38||||
+mysql|datasynthesis|platform_dataattributes|SensitivityFlagID|3||||||
+mysql|datasynthesis|platform_dataattributes|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datamodel_datatables|CreatedDate|4||||||
+mysql|datasynthesis|datamodel_datatables|StatusID|3|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|datamodel_datatables|TableInformation|2||249||||
+mysql|datasynthesis|datamodel_datatables|TableName|1||64||||
+mysql|datasynthesis|refdata_codesetvalues|ApplicationID|5||||||
+mysql|datasynthesis|refdata_codesetvalues|CodesetID|2||||||
+mysql|datasynthesis|refdata_codesetvalues|CodeSetValueID|1||||||
+mysql|datasynthesis|refdata_codesetvalues|CreatedDate|6||||||
+mysql|datasynthesis|refdata_codesetvalues|QtyValue|3||20||||
+mysql|datasynthesis|refdata_codesetvalues|QtyValueDesc|4||20||||
+mysql|datasynthesis|refdata_codesetvalues|StatusID|7|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_organization|Address|5||75||||
+mysql|datasynthesis|refdata_organization|City|6||60||||
+mysql|datasynthesis|refdata_organization|CreatedDate|11||||||
+mysql|datasynthesis|refdata_organization|CreatedUser|9||20||||
+mysql|datasynthesis|refdata_organization|OrganizationGUID|12||38||||
+mysql|datasynthesis|refdata_organization|OrganizationID|1||||||
+mysql|datasynthesis|refdata_organization|OrganizationInternalCode|2||10||||
+mysql|datasynthesis|refdata_organization|OrganizationInternalID|3||10||||
+mysql|datasynthesis|refdata_organization|OrganizationName|4||50||||
+mysql|datasynthesis|refdata_organization|StateID|7||2||||
+mysql|datasynthesis|refdata_organization|StatusID|10|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_organization|ZipCode|8||12||||
+mysql|cmsdemodata|refdata_nucc|createddate|7||||||
+mysql|cmsdemodata|refdata_nucc|nuccclassification|3||128||||
+mysql|cmsdemodata|refdata_nucc|nuccdefinition|5||512||||
+mysql|cmsdemodata|refdata_nucc|nuccgrouping|2||99||||
+mysql|cmsdemodata|refdata_nucc|nuccid|1||12||||
+mysql|cmsdemodata|refdata_nucc|nuccnotes|6||512||||
+mysql|cmsdemodata|refdata_nucc|nuccspecialization|4||128||||
+mysql|cmsdemodata|refdata_nucc|statusid|8|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|idaasdatahub|refdata_status|createdDate|3||||||
+mysql|idaasdatahub|refdata_status|statusdesc|2||25||||
+mysql|idaasdatahub|refdata_status|statusid|1|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|idaasdatahub|refdata_processingtype|createdDate|3||||||
+mysql|idaasdatahub|refdata_processingtype|processingtypedesc|2||40||||
+mysql|idaasdatahub|refdata_processingtype|processingtypeID|1||10||||
+mysql|idaasdatahub|refdata_processingtype|statusid|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|idaasdatahub|refdata_msgtrigger|createdDate|3||||||
+mysql|idaasdatahub|refdata_msgtrigger|msgtriggerdesc|2||50||||
+mysql|idaasdatahub|refdata_msgtrigger|msgtriggerid|1||20||||
+mysql|idaasdatahub|refdata_msgtrigger|statusid|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|idaasdatahub|refdata_industrystd|CreatedDate|3||||||
+mysql|idaasdatahub|refdata_industrystd|industrystd|1||10||||
+mysql|idaasdatahub|refdata_industrystd|industrystddesc|2||35||||
+mysql|idaasdatahub|refdata_industrystd|statusid|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|idaasdatahub|appdata_auditlog_msgs|auditlogmsgsid|1||||||
+mysql|idaasdatahub|appdata_auditlog_msgs|createdDate|5||||||
+mysql|idaasdatahub|appdata_auditlog_msgs|msgdata|3||65535||||
+mysql|idaasdatahub|appdata_auditlog_msgs|msgdatalink|4||45||||
+mysql|idaasdatahub|appdata_auditlog_msgs|msgid|2||||||
+mysql|idaasdatahub|appdata_auditlog_msgs|statusid|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|idaasdatahub|appdata_auditlog|auditlogid|1||||||
+mysql|idaasdatahub|appdata_auditlog|componentname|6||45||||
+mysql|idaasdatahub|appdata_auditlog|createddate|10||||||
+mysql|idaasdatahub|appdata_auditlog|industrystd|5||10||||
+mysql|idaasdatahub|appdata_auditlog|internalID|9||38||||
+mysql|idaasdatahub|appdata_auditlog|msgid|8||25||||
+mysql|idaasdatahub|appdata_auditlog|msgprocesseddate|2||14||||
+mysql|idaasdatahub|appdata_auditlog|msgprocessedtime|3||14||||
+mysql|idaasdatahub|appdata_auditlog|msgtrigger|7||20||||
+mysql|idaasdatahub|appdata_auditlog|processedtype|4||10||||
+mysql|idaasdatahub|appdata_auditlog|statusid|11|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_operationtype|CreatedDate|3||||||
+mysql|datasynthesis|refdata_operationtype|OperationTypeID|1||7||||
+mysql|datasynthesis|refdata_operationtype|OperationTypeName|2||60||||
+mysql|datasynthesis|refdata_operationtype|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|refdata_sensitivityflag|CreatedDate|3||||||
+mysql|datasynthesis|refdata_sensitivityflag|SensitiveFlagDesc|2||30||||
+mysql|datasynthesis|refdata_sensitivityflag|SensitiveFlagID|1||||||
+mysql|datasynthesis|refdata_sensitivityflag|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|databuilt_address|Address1|2||99||||
+mysql|datasynthesis|databuilt_address|City|3||70||||
+mysql|datasynthesis|databuilt_address|CompleteAddressID|1||||||
+mysql|datasynthesis|databuilt_address|CreatedDate|6||||||
+mysql|datasynthesis|databuilt_address|RegisteredApp|8||38||||
+mysql|datasynthesis|databuilt_address|StateID|4||2||||
+mysql|datasynthesis|databuilt_address|StatusID|7|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|databuilt_address|ZipCode|5||10||||
+mysql|datasynthesis|databuilt_names|CompleteName|2||100||||
+mysql|datasynthesis|databuilt_names|CreatedDate|3||||||
+mysql|datasynthesis|databuilt_names|DataBuiltNamesID|1||||||
+mysql|datasynthesis|databuilt_names|RegisteredApp|5||38||||
+mysql|datasynthesis|databuilt_names|StatusID|4|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|databuilt_phonenumbers|AreaCode|2||3||||
+mysql|datasynthesis|databuilt_phonenumbers|CompletePhoneNumber|4||14||||
+mysql|datasynthesis|databuilt_phonenumbers|CreatedDate|5||||||
+mysql|datasynthesis|databuilt_phonenumbers|DataBuiltPhoneNumbersID|1||||||
+mysql|datasynthesis|databuilt_phonenumbers|PhoneNumber|3||8||||
+mysql|datasynthesis|databuilt_phonenumbers|RegisteredApp|7||38||||
+mysql|datasynthesis|databuilt_phonenumbers|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|databuilt_products|CreatedDate|4||||||
+mysql|datasynthesis|databuilt_products|DatabuiltProductsID|1||||||
+mysql|datasynthesis|databuilt_products|ProductID|2||20||||
+mysql|datasynthesis|databuilt_products|ProductName|3||99||||
+mysql|datasynthesis|databuilt_products|RegisteredApp|6||38||||
+mysql|datasynthesis|databuilt_products|StatusID|5|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|databuilt_corporations|Address1|3||99||||
+mysql|datasynthesis|databuilt_corporations|City|4||70||||
+mysql|datasynthesis|databuilt_corporations|CorporationName|2||99||||
+mysql|datasynthesis|databuilt_corporations|CreatedDate|7||||||
+mysql|datasynthesis|databuilt_corporations|DataBuiltCorporationID|1||||||
+mysql|datasynthesis|databuilt_corporations|RegisteredApp|9||38||||
+mysql|datasynthesis|databuilt_corporations|StateID|5||2||||
+mysql|datasynthesis|databuilt_corporations|StatusID|8|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
+mysql|datasynthesis|databuilt_corporations|ZipCode|6||10||||
+mysql|datasynthesis|databuilt_bankaccount|BankAccountName|3||75||||
+mysql|datasynthesis|databuilt_bankaccount|BankAccountNumber|2||12||||
+mysql|datasynthesis|databuilt_bankaccount|BankRoutingID|4||9||||
+mysql|datasynthesis|databuilt_bankaccount|CreatedDate|5||||||
+mysql|datasynthesis|databuilt_bankaccount|DataBuiltBankAccountsID|1||||||
+mysql|datasynthesis|databuilt_bankaccount|RegisteredApp|7||38||||
+mysql|datasynthesis|databuilt_bankaccount|StatusID|6|||FOREIGN KEY|datasynthesis|refdata_status|StatusID
