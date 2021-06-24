@@ -3,30 +3,32 @@ package com.redhat.idaas.datasynthesis.services;
 import java.sql.Timestamp;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Map.Entry;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
+import com.github.curiousoddman.rgxgen.RgxGen;
 import com.redhat.idaas.datasynthesis.dtos.DLN;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.models.DataGeneratedDriversLicensesEntity;
+import com.redhat.idaas.datasynthesis.models.PlatformDataAttributesEntity;
 import com.redhat.idaas.datasynthesis.models.RefDataApplicationEntity;
+import com.redhat.idaas.datasynthesis.models.RefDataDataGenTypesEntity;
 import com.redhat.idaas.datasynthesis.models.RefDataStatusEntity;
 import com.redhat.idaas.datasynthesis.models.RefDataUsStatesEntity;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class DriversLicenseNumberService extends RandomizerService<DataGeneratedDriversLicensesEntity> {
+public class DriversLicenseNumberService extends RandomizerService<DataGeneratedDriversLicensesEntity, DLN> {
     // format is based on https://www.mvrdecoder.com/content/drvlicformats.aspx
     // https://ntsi.com/drivers-license-format/ is outdated
     //
@@ -80,34 +82,48 @@ public class DriversLicenseNumberService extends RandomizerService<DataGenerated
                 Arrays.copyOfRange(queryOpts, 1, queryOpts.length));
     }
 
+    @Override
+    protected DLN mapEntityToDTO(DataGeneratedDriversLicensesEntity e) {
+        return new DLN(e.getDln(), e.getState().getStateId(), null);
+    }
+
     @Transactional
-    public List<DataGeneratedDriversLicensesEntity> generatedDriverLicenses(int count, String state)
+    public List<DataGeneratedDriversLicensesEntity> generatedDriverLicenses(int count, Short typeId)
             throws DataSynthesisException {
         List<DataGeneratedDriversLicensesEntity> results = new ArrayList<DataGeneratedDriversLicensesEntity>();
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
 
-        String format = null;
-        RefDataUsStatesEntity stateEntity = null;
-        if (state != null) {
-            format = FORMAT_MAP.get(state);
-            stateEntity = RefDataUsStatesEntity.findById(state);
+        List<RefDataDataGenTypesEntity> dlnTypes = null;
+        if (typeId != null) {
+            RefDataDataGenTypesEntity dataType = RefDataDataGenTypesEntity.findById(typeId);
+            dlnTypes = new ArrayList<RefDataDataGenTypesEntity>();
+            dlnTypes.add(dataType);
+        } else {
+            PlatformDataAttributesEntity dlnDataAttribute = PlatformDataAttributesEntity.findByDataAttributeName("Drivers License Number");
+            dlnTypes = RefDataDataGenTypesEntity.find("dataAttribute", dlnDataAttribute).list();
         }
+        RgxGen[] rgxGens = new RgxGen[dlnTypes.size()];
+        RefDataUsStatesEntity[] states = new RefDataUsStatesEntity[rgxGens.length];
         for (int i = 0; i < count;) {
+            int selected = rand.nextInt(dlnTypes.size());
+            RefDataDataGenTypesEntity dataType = dlnTypes.get(selected);
+            RgxGen rgxGen = rgxGens[selected];
+            if (rgxGen == null) {
+                rgxGen = new RgxGen(dataType.getDefinition());
+                rgxGens[selected] = rgxGen;
+                states[selected] = RefDataUsStatesEntity.findById(dataType.getDataGenTypeDescription());
+            }
+
             DataGeneratedDriversLicensesEntity entity = new DataGeneratedDriversLicensesEntity();
             entity.setCreatedDate(createdDate);
             entity.setStatus(defaultStatus);
             entity.setRegisteredApp(app);
-            if (state == null) {
-                // generate a random DLN for a random state
-                Entry<String, String> entry = FORMAT_LIST.get(rand.nextInt(FORMAT_LIST.size()));
-                entity.setState(RefDataUsStatesEntity.findById(entry.getKey()));
-                entity.setDln(randLicense(entry.getValue()));
-            } else {
-                entity.setState(stateEntity);
-                entity.setDln(randLicense(format));
-            }
+            entity.setState(states[selected]);
+            entity.setDln(rgxGen.generate(rand));
+            entity.setDataGenType(dataType);
+
             if (entity.safePersist()) {
                 results.add(entity);
                 i++;
@@ -117,61 +133,12 @@ public class DriversLicenseNumberService extends RandomizerService<DataGenerated
         return results;
     }
 
-    private String randLicense(String format) {
-        CharacterIterator it = new StringCharacterIterator(format);
-        StringBuffer sb = new StringBuffer();
- 
-        while (it.current() != CharacterIterator.DONE)
-        {
-            if (it.current() == '[') { // expect [A#] pattern, 9% to fill a fixed letter, 91% to fill a random number
-                it.next(); //skip '['
-                char letter = it.current();
-                it.next(); //done letter
-                it.next(); //skip '#'
-                if (chance(9)) {
-                    sb.append(letter);
-                } else {
-                    sb.append(randDigit());
-                }
-                it.next(); //skip ']'
-                continue;
-            }
-            switch(it.current()) {
-                case '#': sb.append(randDigit()); break;
-                case '.': if (chance()) {sb.append(randDigit());} break;
-                case '%': sb.append(randLetter()); break;
-                case '*': sb.append(chance() ? randDigit() : randLetter()); break;
-                default: sb.append(it.current());
-            }
-            it.next();
-        }
-
-        return sb.toString();
-    }
-    
-    private char randDigit() {
-        return (char)(rand.nextInt(10) + '0');
-    }
-
-    private char randLetter() {
-        return (char)(rand.nextInt(26) + 'A');
-    }
-
-    private boolean chance(int percent) {
-        return rand.nextInt(100) < percent;
-    }
-
-    private boolean chance() {
-        return chance(50); // 50% chance
-    }
-
-    public List<DLN> retrieveRandomDriverLicenses(int count, String state) {
-        Set<DataGeneratedDriversLicensesEntity> entities = null;
-        if (state == null) {
-            entities = findRandomRows(count);
-        } else {
-            entities = findRandomRows(count, "StateCode", state);
-        }
-        return entities.stream().map(e -> new DLN(e.getDln(), e.getState().getStateId(), "")).collect(Collectors.toList());
+    public List<DLN> retrieveRandomDriverLicenses(int count, Short typeId) {
+        if (typeId == null) {
+            return retrieveRandomData(count);
+        } 
+        
+        RefDataDataGenTypesEntity dataType = RefDataDataGenTypesEntity.findById(typeId);
+        return retrieveRandomData(count, "DataGenTypeID", dataType);
     }
 }

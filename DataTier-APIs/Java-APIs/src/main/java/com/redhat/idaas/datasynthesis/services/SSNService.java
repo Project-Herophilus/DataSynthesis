@@ -4,9 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -22,7 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class SSNService extends RandomizerService<DataGeneratedSocialSecurityNumberEntity> {
+public class SSNService extends RandomizerService<DataGeneratedSocialSecurityNumberEntity, SSN> {
     @Override
     protected long count(Object... queryOpts) {
         if (queryOpts.length <= 1) {
@@ -38,6 +35,11 @@ public class SSNService extends RandomizerService<DataGeneratedSocialSecurityNum
         }
         return DataGeneratedSocialSecurityNumberEntity.find((String)queryOpts[0], Arrays.copyOfRange(queryOpts, 1, queryOpts.length));
     }
+
+    @Override
+    protected SSN mapEntityToDTO(DataGeneratedSocialSecurityNumberEntity entity) {
+        return new SSN(entity.getSocialSecurityNumberValue());
+    } 
 
     // Generate Data
     @Transactional
@@ -71,11 +73,4 @@ public class SSNService extends RandomizerService<DataGeneratedSocialSecurityNum
 
         return ssnList;
     }
-
-    //Persist Data
-    public List<SSN> retrieveRandomSSNs(int count) {
-        Set<DataGeneratedSocialSecurityNumberEntity> entities = findRandomRows(count);
-        return entities.stream().map(e -> new SSN(e.getSocialSecurityNumberValue())).collect(Collectors.toList());
-    }
-
 }

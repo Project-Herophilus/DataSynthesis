@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "datagenerated_useridentities", schema = "datasynthesis", catalog = "")
-public class DataGeneratedUserIdentitiesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataGeneratedUserIdentitiesEntity extends BaseEntity {
     private long userIdentitiesId;
     private String userIdentityValue;
     private String userDomain;
@@ -23,6 +23,7 @@ public class DataGeneratedUserIdentitiesEntity extends io.quarkus.hibernate.orm.
     private Timestamp createdDate;
     private RefDataStatusEntity status;
     private RefDataApplicationEntity registeredApp;
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,13 +87,14 @@ public class DataGeneratedUserIdentitiesEntity extends io.quarkus.hibernate.orm.
 		DataGeneratedUserIdentitiesEntity other = (DataGeneratedUserIdentitiesEntity) o;
 		return java.util.Objects.equals(userIdentitiesId, other.userIdentitiesId) && java.util.Objects.equals(userIdentityValue, other.userIdentityValue) && java.util.Objects.equals(userDomain, other.userDomain) && 
 			java.util.Objects.equals(additionalAttributes, other.additionalAttributes) && java.util.Objects.equals(createdDate, other.createdDate) && 
-			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp);
+			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp) &&
+            java.util.Objects.equals(dataGenType, other.dataGenType);
 	}
 
     @Override
     public int hashCode() {
 		return java.util.Objects.hash(userIdentitiesId, userIdentityValue, userDomain, additionalAttributes, createdDate,
-					status, registeredApp);
+					status, registeredApp, dataGenType);
 	}
 
     @ManyToOne
@@ -113,6 +115,16 @@ public class DataGeneratedUserIdentitiesEntity extends io.quarkus.hibernate.orm.
 
     public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
         this.registeredApp = registeredApp;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
+    public RefDataDataGenTypesEntity getDataGenType() {
+        return dataGenType;
+    }
+
+    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
+        this.dataGenType = dataGenType;
     }
 
     public static List<DataGeneratedUserIdentitiesEntity> findByStatusId(Short statusId) {

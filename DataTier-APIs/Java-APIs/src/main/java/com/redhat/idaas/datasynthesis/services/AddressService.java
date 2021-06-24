@@ -4,8 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -21,7 +19,7 @@ import com.redhat.idaas.datasynthesis.models.RefDataStatusEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class AddressService extends RandomizerService<DataGeneratedAddressesEntity> {
+public class AddressService extends RandomizerService<DataGeneratedAddressesEntity, Address> {
     final static String[] STREET_TYPES = new String[] {"Way", "Ave", "Lane", "Street", "Court", "Place", "Walk", "Pike", "Run"};
     final static String[] DIRECTIONS = new String[] {"N", "S", "E", "W", "NW", "NE", "SW", "SE"};
 
@@ -41,6 +39,11 @@ public class AddressService extends RandomizerService<DataGeneratedAddressesEnti
         return DataGeneratedAddressesEntity.find((String)queryOpts[0], Arrays.copyOfRange(queryOpts, 1, queryOpts.length));
     }
 
+    @Override
+    protected Address mapEntityToDTO(DataGeneratedAddressesEntity e) {
+        return new Address(e.getAddressStreet());
+    }
+
     @Transactional
     public List<DataGeneratedAddressesEntity> generateAddresses(int count) throws DataSynthesisException {
         List<DataGeneratedAddressesEntity> entities = new ArrayList<DataGeneratedAddressesEntity>();
@@ -49,7 +52,7 @@ public class AddressService extends RandomizerService<DataGeneratedAddressesEnti
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
-        List<NameLast> lastNames = new NameLastService().retrieveNameLasts(count);
+        List<NameLast> lastNames = new NameLastService().retrieveRandomData(count);
         String[] lastNameArray = lastNames.stream().map(e -> e.lastName).toArray(String[]::new);
         for(int i = 0; i < count;) {
             DataGeneratedAddressesEntity entity = new DataGeneratedAddressesEntity();
@@ -74,9 +77,4 @@ public class AddressService extends RandomizerService<DataGeneratedAddressesEnti
 
         return entities;
     }
-
-    public List<Address> retrieveAddresses(int count) {
-        Set<DataGeneratedAddressesEntity> entities = findRandomRows(count);
-        return entities.stream().map(e -> new Address(e.getAddressStreet())).collect(Collectors.toList());
-    }    
 }

@@ -3,14 +3,14 @@ package com.redhat.idaas.datasynthesis.dtos;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 public class ZipCode {
-    public String areaCodeValue;
-    public String timeZone;
-    public String stateCode;
+    public String zipCode;
+    public String state;
+    public String city;
 
-    public ZipCode(String areaCodeValue, String timeZone, String stateCode) {
-        this.areaCodeValue = areaCodeValue;
-        this.timeZone = timeZone;
-        this.stateCode = stateCode;
+    public ZipCode(String zipCode, String state, String city) {
+        this.zipCode = zipCode;
+        this.state = state;
+        this.city = city;
     }
 
     //toString

@@ -1,14 +1,13 @@
 package com.redhat.idaas.datasynthesis.dtos;
 
-import javax.json.bind.annotation.JsonbProperty;
-
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+@Schema(name = "NameFirst")
 public class NameFirst {
-    @JsonbProperty(value = "firstName")
     public String firstName;
 
-    @JsonbProperty(value = "gender")
+    @Schema(enumeration = {"F", "M"})
     public String gender;
 
     public NameFirst() {

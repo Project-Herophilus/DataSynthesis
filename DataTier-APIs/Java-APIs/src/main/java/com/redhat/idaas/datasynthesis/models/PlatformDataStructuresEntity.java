@@ -2,6 +2,7 @@ package com.redhat.idaas.datasynthesis.models;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -129,5 +130,9 @@ public class PlatformDataStructuresEntity extends io.quarkus.hibernate.orm.panac
 
     public static List<PlatformDataStructuresEntity> findByStatusId(Short statusId) {
         return find("status", new RefDataStatusEntity(statusId)).list();
+    }
+
+    public static Optional<PlatformDataStructuresEntity> findByName(String dataStructureName) {
+        return find("dataStructureName", dataStructureName).firstResultOptional();
     }
 }

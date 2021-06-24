@@ -23,7 +23,7 @@ public class DataGeneratedAddressesEntity extends BaseEntity {
     private String createdUser;
     private RefDataStatusEntity status;
     private RefDataApplicationEntity registeredApp;
-    private RefDataAddressFormatTypeEntity addressFormatType;
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -88,24 +88,14 @@ public class DataGeneratedAddressesEntity extends BaseEntity {
 		return java.util.Objects.equals(addressId, other.addressId) && java.util.Objects.equals(addressStreet, other.addressStreet) && java.util.Objects.equals(addressStreet2, other.addressStreet2) && 
 			java.util.Objects.equals(createdDate, other.createdDate) && java.util.Objects.equals(createdUser, other.createdUser) && 
 			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp) && 
-			java.util.Objects.equals(addressFormatType, other.addressFormatType);
+			java.util.Objects.equals(dataGenType, other.dataGenType);
 	}
 
     @Override
     public int hashCode() {
 		return java.util.Objects.hash(addressId, addressStreet, addressStreet2, createdDate, createdUser,
-					status, registeredApp, addressFormatType);
+					status, registeredApp, dataGenType);
 	}
-
-    @ManyToOne
-    @JoinColumn(name = "AddressFormatTypeId", referencedColumnName = "AddressFormatTypeID")
-    public RefDataAddressFormatTypeEntity getAddressFormatType() {
-        return addressFormatType;
-    }
-
-    public void setAddressFormatType(RefDataAddressFormatTypeEntity addressFormatType) {
-        this.addressFormatType = addressFormatType;
-    }
 
     @ManyToOne
     @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
@@ -125,6 +115,16 @@ public class DataGeneratedAddressesEntity extends BaseEntity {
 
     public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
         this.registeredApp = registeredApp;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
+    public RefDataDataGenTypesEntity getDataGenType() {
+        return dataGenType;
+    }
+
+    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
+        this.dataGenType = dataGenType;
     }
 
     public static List<DataGeneratedAddressesEntity> findByStatusId(Short statusId) {

@@ -158,11 +158,7 @@ included Insomnia API JSON file for those that like using an IDE based tool.
 
 After you have brought up the Java-APIs and database in whatever configuration fits your needs you are
 now ready to test the APIs.
-## Get Random Data
-Every specific data attribute has an API and it can retrieve random data.
 
-Here is the base URL: http://localhost:8080/api/v1/data  to get the API specific GET and POST details.
-Let's walk through one: Social Security (/ssn) <br/>
-This means the complete URL for getting 50 Random Social Security Numbers is http://localhost:8080/api/v1/data/ssn/50
-
-
+DataSynthesis APIs support OpenAPI 3.0 specifications and Swagger UI. Download the OpenAPI documentation from
+http://localhost:8080/openapi. Launch SwaggerUI from http://localhost:8080/swagger. There you can directly try out all
+available APIs to generate and retrieve synthetic data.

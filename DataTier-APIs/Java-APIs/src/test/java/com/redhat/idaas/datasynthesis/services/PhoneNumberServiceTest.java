@@ -70,7 +70,7 @@ public class PhoneNumberServiceTest {
             return entity;
         });
         
-        List<PhoneNumber> randomPhoneNumbers = service.retrieveRandomPhoneNumbers(retrieveCount);
+        List<PhoneNumber> randomPhoneNumbers = service.retrieveRandomData(retrieveCount);
         Assertions.assertEquals(returnedCount, randomPhoneNumbers.size());
     }
 }

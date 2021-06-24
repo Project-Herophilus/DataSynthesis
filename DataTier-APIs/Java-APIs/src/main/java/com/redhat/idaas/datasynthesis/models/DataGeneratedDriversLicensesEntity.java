@@ -19,11 +19,11 @@ public class DataGeneratedDriversLicensesEntity extends BaseEntity {
     private long driversLicensesId;
     private String dln;
     private Timestamp createdDate;
-    private String completeDriversLicenseNumber;
     private String createdUser;
     private RefDataStatusEntity status;
     private RefDataApplicationEntity registeredApp;
     private RefDataUsStatesEntity state;
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,16 +57,6 @@ public class DataGeneratedDriversLicensesEntity extends BaseEntity {
     }
 
     @Basic
-    @Column(name = "CompleteDriversLicenseNumber", nullable = true, length = 30)
-    public String getCompleteDriversLicenseNumber() {
-        return completeDriversLicenseNumber;
-    }
-
-    public void setCompleteDriversLicenseNumber(String completeDriversLicenseNumber) {
-        this.completeDriversLicenseNumber = completeDriversLicenseNumber;
-    }
-
-    @Basic
     @Column(name = "CreatedUser", nullable = true, length = 20)
     public String getCreatedUser() {
         return createdUser;
@@ -86,15 +76,15 @@ public class DataGeneratedDriversLicensesEntity extends BaseEntity {
 			return false;
 		DataGeneratedDriversLicensesEntity other = (DataGeneratedDriversLicensesEntity) o;
 		return java.util.Objects.equals(driversLicensesId, other.driversLicensesId) && java.util.Objects.equals(dln, other.dln) && java.util.Objects.equals(createdDate, other.createdDate) && 
-			java.util.Objects.equals(completeDriversLicenseNumber, other.completeDriversLicenseNumber) && java.util.Objects.equals(createdUser, other.createdUser) && 
+			java.util.Objects.equals(createdUser, other.createdUser) && 
 			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp) && 
-			java.util.Objects.equals(state, other.state);
+			java.util.Objects.equals(state, other.state) && java.util.Objects.equals(dataGenType, other.dataGenType);
 	}
 
     @Override
     public int hashCode() {
-		return java.util.Objects.hash(driversLicensesId, dln, createdDate, completeDriversLicenseNumber, createdUser,
-					status, registeredApp, state);
+		return java.util.Objects.hash(driversLicensesId, dln, createdDate, createdUser,
+					status, registeredApp, state, dataGenType);
 	}
 
     @ManyToOne
@@ -125,6 +115,16 @@ public class DataGeneratedDriversLicensesEntity extends BaseEntity {
 
     public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
         this.registeredApp = registeredApp;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
+    public RefDataDataGenTypesEntity getDataGenType() {
+        return dataGenType;
+    }
+
+    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
+        this.dataGenType = dataGenType;
     }
 
     public static List<DataGeneratedDriversLicensesEntity> findByStatusId(Short statusId) {

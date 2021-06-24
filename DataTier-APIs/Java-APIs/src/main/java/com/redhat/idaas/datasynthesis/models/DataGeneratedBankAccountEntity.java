@@ -15,13 +15,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "datagenerated_bankaccount", schema = "datasynthesis", catalog = "")
-public class DataGeneratedBankAccountEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataGeneratedBankAccountEntity extends BaseEntity {
     private long bankAccountsId;
     private String bankAccountValue;
     private Timestamp createdDate;
     private String createdUser;
     private RefDataStatusEntity status;
     private RefDataApplicationEntity registeredApp;
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,13 +76,13 @@ public class DataGeneratedBankAccountEntity extends io.quarkus.hibernate.orm.pan
 		DataGeneratedBankAccountEntity other = (DataGeneratedBankAccountEntity) o;
 		return java.util.Objects.equals(bankAccountsId, other.bankAccountsId) && java.util.Objects.equals(bankAccountValue, other.bankAccountValue) && java.util.Objects.equals(createdDate, other.createdDate) && 
 			java.util.Objects.equals(createdUser, other.createdUser) && java.util.Objects.equals(status, other.status) && 
-			java.util.Objects.equals(registeredApp, other.registeredApp);
+			java.util.Objects.equals(registeredApp, other.registeredApp) && java.util.Objects.equals(dataGenType, other.dataGenType);
 	}
 
     @Override
     public int hashCode() {
 		return java.util.Objects.hash(bankAccountsId, bankAccountValue, createdDate, createdUser, status,
-					registeredApp);
+					registeredApp, dataGenType);
 	}
 
     @ManyToOne
@@ -102,6 +103,16 @@ public class DataGeneratedBankAccountEntity extends io.quarkus.hibernate.orm.pan
 
     public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
         this.registeredApp = registeredApp;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
+    public RefDataDataGenTypesEntity getDataGenType() {
+        return dataGenType;
+    }
+
+    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
+        this.dataGenType = dataGenType;
     }
 
     public static List<DataGeneratedBankAccountEntity> findByStatusId(Short statusId) {

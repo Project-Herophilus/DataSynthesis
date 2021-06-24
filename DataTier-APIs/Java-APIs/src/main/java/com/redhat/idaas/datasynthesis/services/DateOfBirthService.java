@@ -6,8 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -21,7 +19,7 @@ import com.redhat.idaas.datasynthesis.models.RefDataStatusEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBirthEntity> {
+public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBirthEntity, BirthDate> {
     private final long MILLS_IN_100YRS = 3155695200000L; // milliseconds in 100 years
     private final int DAYS_IN_100YRS = 36525;
     private final long MILLS_IN_DAY = 86400000L;
@@ -40,6 +38,11 @@ public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBir
             return DataGeneratedDateOfBirthEntity.findAll();
         }
         return DataGeneratedDateOfBirthEntity.find((String)queryOpts[0], Arrays.copyOfRange(queryOpts, 1, queryOpts.length));
+    }
+
+    @Override
+    protected BirthDate mapEntityToDTO(DataGeneratedDateOfBirthEntity e) {
+        return new BirthDate(e.getDateOfBirth(), e.getDateOfBirthDate(), e.getAge());
     }
 
     // Create Generated Data
@@ -72,9 +75,4 @@ public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBir
 
         return entities;
     } 
-
-    public List<BirthDate> retrieveRandomBirthDates(int count) {
-        Set<DataGeneratedDateOfBirthEntity> entities = findRandomRows(count);
-        return entities.stream().map(e -> new BirthDate(e.getDateOfBirth(), e.getDateOfBirthDate(), e.getAge())).collect(Collectors.toList());
-    }
 }

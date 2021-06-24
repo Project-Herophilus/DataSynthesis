@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import io.quarkus.panache.common.Parameters;
+
 @Entity
 @Table(name = "platform_dataattributes", schema = "datasynthesis", catalog = "")
 public class PlatformDataAttributesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
@@ -129,5 +131,14 @@ public class PlatformDataAttributesEntity extends io.quarkus.hibernate.orm.panac
 
     public static List<PlatformDataAttributesEntity> findByStatusId(Short statusId) {
         return find("status", new RefDataStatusEntity(statusId)).list();
+    }
+
+    public static List<PlatformDataAttributesEntity> findByPlatformDataStructure(String platformDataStructureName) {
+        return find("select a from PlatformDataAttributesEntity a, PlatformDataStructuresEntity s, PlatformDataStructuresToDataAttributesEntity t where s.dataStructureName = :name and t.platformDataStructures = s and t.platformDataAttributes = a", 
+        Parameters.with("name", platformDataStructureName).map()).list();
+    }
+
+    public static PlatformDataAttributesEntity findByDataAttributeName(String name) {
+        return find("DataAttributeName", name).firstResult();
     }
 }

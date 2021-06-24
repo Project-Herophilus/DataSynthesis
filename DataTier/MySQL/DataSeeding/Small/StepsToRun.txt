@@ -4,4 +4,4 @@ The scripts for simplicity are hard coded. You will need to change the core dire
 1. Start MySQL Command Line Client
 2. run: mysql -u root -p 
 3. Enter password to get to mysql> prompt
-4. source Base-DataLoader-DataSynthesis-v9.sql
+4. source Base-DataLoader-DataSynthesis-v8.sql

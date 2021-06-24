@@ -87,7 +87,7 @@ public class EINServiceTest {
             return entity;
         });
         
-        List<EIN> randomEINs = service.retrieveRandomEINs(retrieveCount);
+        List<EIN> randomEINs = service.retrieveRandomData(retrieveCount);
         Assertions.assertEquals(returnedCount, randomEINs.size());
     }
 }

@@ -71,7 +71,7 @@ public class SSNServiceTest {
             return entity;
         });
         
-        List<SSN> randomSSNs = service.retrieveRandomSSNs(retrieveCount);
+        List<SSN> randomSSNs = service.retrieveRandomData(retrieveCount);
         Assertions.assertEquals(returnedCount, randomSSNs.size());
     }
 }

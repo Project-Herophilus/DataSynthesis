@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "datagenerated_creditcard", schema = "datasynthesis", catalog = "")
-public class DataGeneratedCreditCardEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataGeneratedCreditCardEntity extends BaseEntity {
     private long creditCardId;
     private String creditCardNumber;
     private String creditCardName;
@@ -23,6 +23,7 @@ public class DataGeneratedCreditCardEntity extends io.quarkus.hibernate.orm.pana
     private String createdUser;
     private RefDataStatusEntity status;
     private RefDataApplicationEntity registeredApp;
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,13 +87,14 @@ public class DataGeneratedCreditCardEntity extends io.quarkus.hibernate.orm.pana
 		DataGeneratedCreditCardEntity other = (DataGeneratedCreditCardEntity) o;
 		return java.util.Objects.equals(creditCardId, other.creditCardId) && java.util.Objects.equals(creditCardNumber, other.creditCardNumber) && java.util.Objects.equals(creditCardName, other.creditCardName) && 
 			java.util.Objects.equals(createdDate, other.createdDate) && java.util.Objects.equals(createdUser, other.createdUser) && 
-			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp);
+			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp) &&
+            java.util.Objects.equals(dataGenType, other.dataGenType);
 	}
 
     @Override
     public int hashCode() {
 		return java.util.Objects.hash(creditCardId, creditCardNumber, creditCardName, createdDate, createdUser,
-					status, registeredApp);
+					status, registeredApp, dataGenType);
 	}
 
     @ManyToOne
@@ -113,6 +115,16 @@ public class DataGeneratedCreditCardEntity extends io.quarkus.hibernate.orm.pana
 
     public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
         this.registeredApp = registeredApp;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
+    public RefDataDataGenTypesEntity getDataGenType() {
+        return dataGenType;
+    }
+
+    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
+        this.dataGenType = dataGenType;
     }
 
     public static List<DataGeneratedCreditCardEntity> findByStatusId(Short statusId) {

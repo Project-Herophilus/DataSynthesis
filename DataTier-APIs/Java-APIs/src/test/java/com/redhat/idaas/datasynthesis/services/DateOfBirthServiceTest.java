@@ -33,7 +33,7 @@ public class DateOfBirthServiceTest {
     }
 
     private void validateDobEntry(DataGeneratedDateOfBirthEntity entity) throws ParseException {
-        String patternString = "^([1-9]|1[0-2])/([1-9]|1\\d|2\\d|3[01])/(19|20)\\d{2}$";
+        String patternString = "^([1-9]|1[0-2])/([1-9]|1\\d|2\\d|3[01])/(19|20)\\d{2}$";       
         Common.validatePattern(patternString, entity.getDateOfBirth());
 
         Assertions.assertTrue(entity.getAge() <= 100);

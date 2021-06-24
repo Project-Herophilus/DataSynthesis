@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.models.DataGeneratedDriversLicensesEntity;
+import com.redhat.idaas.datasynthesis.models.PlatformDataAttributesEntity;
+import com.redhat.idaas.datasynthesis.models.RefDataDataGenTypesEntity;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,11 +22,46 @@ public class DriverLicenseNumberServiceTest {
     @Inject
     DriversLicenseNumberService service;
 
+    private short[] initDB() {
+        Common.seed();
+
+        PlatformDataAttributesEntity dataAttribute = new PlatformDataAttributesEntity();
+        dataAttribute.setDataAttributeName("Drivers License Number");
+        dataAttribute.persist();
+
+        RefDataDataGenTypesEntity dataType1 = new RefDataDataGenTypesEntity();
+        dataType1.setDataGenTypeDescription("AL");
+        dataType1.setDefinition("^[0-9]{7,8}$");
+        dataType1.setDataAttribute(dataAttribute);
+        dataType1.persist();
+
+        RefDataDataGenTypesEntity dataType2 = new RefDataDataGenTypesEntity();
+        dataType2.setDataGenTypeDescription("CA");
+        dataType2.setDefinition("^[A-Z]{1}[0-9]{7}$");
+        dataType2.setDataAttribute(dataAttribute);
+        dataType2.persist();
+
+        RefDataDataGenTypesEntity dataType3 = new RefDataDataGenTypesEntity();
+        dataType3.setDataGenTypeDescription("HI");
+        dataType3.setDefinition("^H[0-9]{8}$");
+        dataType3.setDataAttribute(dataAttribute);
+        dataType3.persist();
+
+        RefDataDataGenTypesEntity dataType4 = new RefDataDataGenTypesEntity();
+        dataType4.setDataGenTypeDescription("RI");
+        dataType4.setDefinition("(^V[0-9]{6}$)|(^[0-9]{7}$)");
+        dataType4.setDataAttribute(dataAttribute);
+        dataType4.persist();
+
+        return new short[]{dataType1.getDataGenTypeId(), dataType2.getDataGenTypeId(), 
+            dataType3.getDataGenTypeId(), dataType4.getDataGenTypeId()};
+    }
+
     @Test
     @Transactional
     public void testALLicense() throws DataSynthesisException {
-        Common.seed();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, "AL");
+        short[] ids = initDB();
+        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[0]);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
         for(DataGeneratedDriversLicensesEntity entity : dlns) {
             String num = entity.getDln();
@@ -43,8 +80,8 @@ public class DriverLicenseNumberServiceTest {
     @Test
     @Transactional
     public void testCALicense() throws DataSynthesisException {
-        Common.seed();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, "CA");
+        short[] ids = initDB();
+        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[1]);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
         for(DataGeneratedDriversLicensesEntity entity : dlns) {
             String num = entity.getDln();
@@ -61,8 +98,8 @@ public class DriverLicenseNumberServiceTest {
     @Test
     @Transactional
     public void testHILicense() throws DataSynthesisException {
-        Common.seed();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, "HI");
+        short[] ids = initDB();
+        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[2]);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
         for(DataGeneratedDriversLicensesEntity entity : dlns) {
             String num = entity.getDln();
@@ -79,8 +116,8 @@ public class DriverLicenseNumberServiceTest {
     @Test
     @Transactional
     public void testRILicense() throws DataSynthesisException {
-        Common.seed();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, "RI");
+        short[] ids = initDB();
+        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[3]);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
         for(DataGeneratedDriversLicensesEntity entity : dlns) {
             String num = entity.getDln();

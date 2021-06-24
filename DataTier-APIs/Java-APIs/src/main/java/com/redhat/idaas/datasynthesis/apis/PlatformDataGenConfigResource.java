@@ -10,22 +10,18 @@ import javax.ws.rs.core.MediaType;
 
 import com.redhat.idaas.datasynthesis.models.PlatformConfigDataGenEntity;
 
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
-@Path("/platformconfigdatagen")
+@Path("/platform-config-datagens")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class PlatformDataGenConfigResource {
 
     @GET
-    @Path("all")
-    public List<PlatformConfigDataGenEntity> get() {
-        return PlatformConfigDataGenEntity.listAll();
-    }
-
-    @GET
-    @Path("{status}")
-    public List<PlatformConfigDataGenEntity> getByStatus(@PathParam Short status) {
+    public List<PlatformConfigDataGenEntity> get(@Parameter(required=false) @QueryParam Short status) {
+        if (status == null)
+            return PlatformConfigDataGenEntity.listAll();
         return PlatformConfigDataGenEntity.findByStatusId(status);
     }
 }

@@ -18,7 +18,6 @@ import javax.persistence.Table;
 public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short dataGenConfigId;
     private String dataTypeGenConfigName;
-    private String specialInstructions;
     private Integer runQuantity;
     private Short minuteInterval;
     private Timestamp createdDate;
@@ -26,6 +25,7 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
     private RefDataStatusEntity status;
     private RefDataApplicationEntity application;
     private PlatformDataAttributesEntity dataAttribute;
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,16 +46,6 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
 
     public void setDataTypeGenConfigName(String dataTypeGenConfigName) {
         this.dataTypeGenConfigName = dataTypeGenConfigName;
-    }
-
-    @Basic
-    @Column(name = "SpecialInstructions", nullable = true, length = 99)
-    public String getSpecialInstructions() {
-        return specialInstructions;
-    }
-
-    public void setSpecialInstructions(String specialInstructions) {
-        this.specialInstructions = specialInstructions;
     }
 
     @Basic
@@ -107,18 +97,18 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
 		if (getClass() != o.getClass())
 			return false;
 		PlatformConfigDataGenEntity other = (PlatformConfigDataGenEntity) o;
-		return java.util.Objects.equals(dataGenConfigId, other.dataGenConfigId) && java.util.Objects.equals(dataTypeGenConfigName, other.dataTypeGenConfigName) && java.util.Objects.equals(specialInstructions, other.specialInstructions) && 
+		return java.util.Objects.equals(dataGenConfigId, other.dataGenConfigId) && java.util.Objects.equals(dataTypeGenConfigName, other.dataTypeGenConfigName) && 
 			java.util.Objects.equals(runQuantity, other.runQuantity) && java.util.Objects.equals(minuteInterval, other.minuteInterval) && 
 			java.util.Objects.equals(createdDate, other.createdDate) && java.util.Objects.equals(createdUser, other.createdUser) && 
 			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(application, other.application) && 
-			java.util.Objects.equals(dataAttribute, other.dataAttribute);
+			java.util.Objects.equals(dataAttribute, other.dataAttribute) && java.util.Objects.equals(dataGenType, other.dataGenType);
 	}
 
     @Override
     public int hashCode() {
-		return java.util.Objects.hash(dataGenConfigId, dataTypeGenConfigName, specialInstructions, runQuantity, minuteInterval,
+		return java.util.Objects.hash(dataGenConfigId, dataTypeGenConfigName, runQuantity, minuteInterval,
 					createdDate, createdUser, status, application,
-					dataAttribute);
+					dataAttribute, dataGenType);
 	}
 
     @ManyToOne
@@ -149,6 +139,16 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
 
     public void setApplication(RefDataApplicationEntity application) {
         this.application = application;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
+    public RefDataDataGenTypesEntity getDataGenType() {
+        return dataGenType;
+    }
+
+    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
+        this.dataGenType = dataGenType;
     }
 
     public static List<PlatformConfigDataGenEntity> findByStatusId(Short statusId) {
