@@ -1,3 +1,5 @@
+psql -d datasynthesis datasynthesis
+psql -d datasynthesis datasynthesis -f ./ReferenceData/1-refdata_status.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\1-refdata_status.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\1-refdata_status.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\2-refdata_timezones.sql
