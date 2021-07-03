@@ -15,7 +15,7 @@ As with everything we do we keep the complete history so everyone can see the wo
 
 Linux (CentOS/RHEL/Mac)
 -----------------------
-[Base-DataLoader-DataSynthesis-<LatestVersion>-Linux.sql](MySQL/DataSeeding/DataSynthesis-Load-Full/Base-DataLoader-DataSynthesis-v9-Linux.sql)
+[Base-DataLoader-DataSynthesis-<LatestVersion>-Linux.sql](DDLs/MySQL/DataSeeding/DataSynthesis-Load-Full/Base-DataLoader-DataSynthesis-v9-Linux.sql)
 
 Steps to Run The Scripts:
 1. Open Terminal Window
@@ -29,7 +29,7 @@ that these are very open permissions and system admins might not allow this leve
 
 Windows
 -------
-[Base-DataLoader-DataSynthesis-<LatestVersion>.sql](MySQL/DataSeeding/DataSynthesis-Load-Full/Base-DataLoader-DataSynthesis-v9.sql)
+[Base-DataLoader-DataSynthesis-<LatestVersion>.sql](DDLs/MySQL/DataSeeding/DataSynthesis-Load-Full/Base-DataLoader-DataSynthesis-v9.sql)
 
 Steps to Run The Scripts:
 1. Start MySQL Command Line Client
