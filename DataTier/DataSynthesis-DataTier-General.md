@@ -10,9 +10,13 @@ thinking about RDBMS portability. It was clear that we needed to focus on anothe
 technology and eventually backport the new data model to SQL Server when the time was 
 right.
 
-* RDBMS - Move from SQL Server 2017 to MySQL 8
-* Development Technologies - Take the .Net Core assets developed and move them to another
-technology or technologies.
+* RDBMS - Moved base from SQL Server 2017 to MySQL 8 /MariaDB. We will support other RDBMS with DDL scripts;
+  however, it is the responsibility of partners implementers to build out the load scripts. We have these done
+  that support MariaDB 10.x and MySQL 8 (or greater).
+* Development Technologies - We make every attempt to leverage industry leading development technologies to 
+  leverage our data tier. Currently, we have support for Quarkus and Node (Express). We also have implemented 
+  .Net Core but will be revisiting it as time permits.
+  
   
 ## Data Model - Fit for Purpose
 
@@ -20,22 +24,21 @@ As we looked to refocus we wanted to ensure the first thing we did as we revampe
 model was try and have clarity and ease of understanding. This is very important as it is the  
 foundation for all efforts.
 
-We also are now leveraging [Luqibase](https://www.liquibase.org/) for all database operations. While this  
-is a learning effort this will help us long term version and track all database changes, enhancements  
+We also are now leveraging [Luqibase](https://www.liquibase.org/) for all database operations. While this is a learning effort this will help us long term version and track all database changes, enhancements 
 and also enable us to migrate between different RDBMs technologies as we look to the future without manual maintenance.
 
 ### Naming Convention: DataPurpose
 We wanted to have a reusable pattern for use of reading and understand *{datapurpose_}tablepurpose*
 
-| Data Purpose | Details    |
+| Data Purpose | Details |
 |:---|:---|
-|auditing|Auditing data for platform|
-|databuilt|Data built from existing and/or generated sources. Intended to be more structured data|
-|dataexisting|Data from existing public sources|
-|datagenerated|Data generated from code and managed through data generation configuration|
-|platform|Any platform attributes or metadata|
-|refdata|Platform reference data|
-|termsdata|Terminology centric data for industry standards or persisting specific field level application level data |
+|auditing_(tablename)|Auditing data for platform|
+|databuilt_(tablename)|Data built from existing and/or generated sources. Intended to be more structured data|
+|dataexisting_(tablename)|Data from existing public sources|
+|datagenerated_(tablename)|Data generated from code and managed through data generation configuration|
+|platform_(tablename)|Any platform attributes or metadata|
+|refdata_(tablename)|Platform reference data|
+|termsdata_(tablename)|Terminology centric data for industry standards or persisting specific field level application level data |
 
 ### Naming Convention: TableName
 We wanted to make sure that the table names were easy to understand their purpose. While
