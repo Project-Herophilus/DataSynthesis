@@ -297,6 +297,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# IntelliJ idea directory exclusion
+/.idea/
+
 # compiled output
 /dist
 /tmp
