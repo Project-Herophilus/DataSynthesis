@@ -1,10 +1,10 @@
-# DataSynthesis Data Model Setup
+# DataSynthesis Data Tier Setup
 This is very specific to data technologies we support. If we highlight a database version
 going below our outside the recommendation is not something we can help with. However,
 if you want to port it and put a pull request for other RDBMS or NoSQL data Technologies
 we welcome the assistance.
 
-## MySQL 8
+## MariaDB 10.x / MySQL 8
 
 ### Reusable Assets
 In order to enable resources to have independence we have included several directories

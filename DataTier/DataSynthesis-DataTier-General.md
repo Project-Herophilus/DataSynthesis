@@ -17,7 +17,6 @@ right.
   leverage our data tier. Currently, we have support for Quarkus and Node (Express). We also have implemented 
   .Net Core but will be revisiting it as time permits.
   
-  
 ## Data Model - Fit for Purpose
 
 As we looked to refocus we wanted to ensure the first thing we did as we revamped the entire data  
