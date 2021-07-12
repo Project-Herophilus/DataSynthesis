@@ -4,6 +4,10 @@ var app = express();
 var mysql      = require('mysql');
 var bodyParser = require('body-parser');
 //dotenv.config({path: `${__dirname}/.env`})
+// https://www.c-sharpcorner.com/article/integrate-swagger-open-api-with-node-express/
+// had to add yarn add swagger-jsdoc and yarn add swagger-ui-express for them to run
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
 
 //start mysql connection
 var connection = mysql.createConnection({
@@ -27,24 +31,50 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //end body-parser configuration
 
 //create app server
-var server = app.listen(8400,  "127.0.0.1", function () {
+var server = app.listen(8400,  "0.0.0.0", function () {
 
   var host = server.address().address
   var port = server.address().port
 
   console.log("DataSynthesis DataTier API listening at http://%s:%s", host, port)
-
 });
 
+// Added for Swagger Options
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title:'DataSynthesis - Platform Data API',
+            version:'2.0.0'
+        }
+    },
+    apis:['index.js'],
+}
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
+
+
 /*
-*
-*     Data Existing
-*
+*     APIs - Data Existing
 */
+
+/**
+ * @swagger
+ * /dataexisting_ababanking:
+ *   get:
+ *     description: Get all ABABanks defined
+ *   responses:
+ *   '200':
+ * description: A list of users
+ * content:
+ * application/json:
+ * schema:
+ * type: string
+ */
 app.get('/dataexisting_ababanking', function (req, res) {
     connection.query('select * from dataexisting_ababanking', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
+        res.status(200).send();
     });
 });
 
@@ -52,9 +82,25 @@ app.get('/dataexisting_areacode', function (req, res) {
     connection.query('select * from dataexisting_areacode', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
+
     });
 });
-
+/**
+ * @swagger
+ * /dataexisting_areacode:
+ *   put:
+ *     description: Gets All the areacodes specific to a state
+ *     parameters:
+ *     - name: StateCode
+ *       description: The State Specified
+ *       in: formData
+ *       required: true
+ *       type: String
+ *     responses:
+ *       201:
+ *         description: Created
+ *
+ */
 //rest api to get a area codes by state
 // Example: http://localhost:3000/dataexisting_areacode/CA
 app.get('/dataexisting_areacode/:statecode', function (req, res) {
@@ -128,9 +174,7 @@ app.get('/dataexisting_zipcodeus', function (req, res) {
 });
 
 /*
- *
  *     Data Generated
- *
  */
 app.get('/datagenerated_accountnumbers', function (req, res) {
     connection.query('select * from datagenerated_accountnumbers', function (error, results, fields) {
@@ -211,10 +255,94 @@ app.get('/datagenerated_useridentities', function (req, res) {
 });
 
 /*
-*
-*     Reference Data
-*
+*     Platform Data
 */
+
+
+/*
+*     Reference Data
+*/
+
+app.get('/applications', function (req, res) {
+    connection.query('select * from refdata_application', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/codesets', function (req, res) {
+    connection.query('select * from refdata_codeset', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/countries', function (req, res) {
+    connection.query('select * from refdata_countries', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/datagentypes', function (req, res) {
+    connection.query('select * from refdata_datagentypes', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/industrystd', function (req, res) {
+    connection.query('select * from refdata_industrystd', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/legalentity', function (req, res) {
+    connection.query('select * from refdata_legalentity', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/operationtype', function (req, res) {
+    connection.query('select * from refdata_operationtype', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/organization', function (req, res) {
+    connection.query('select * from refdata_organization', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/platformparams', function (req, res) {
+    connection.query('select * from refdata_platformparams', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+app.get('/platformparamstodataattributes', function (req, res) {
+    connection.query('select * from refdata_platformparamstodataattributes', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+/*
+ * @swagger
+ * /sensivityflags:
+ *   get:
+ *     description: Get all sensitivyflags set
+ *     responses:
+ *       200:
+ *         description: Success
+ *
+ */
 app.get('/sensitivityflags', function (req, res) {
     connection.query('select * from refdata_sensitivtyflags', function (error, results, fields) {
         if (error) throw error;
@@ -251,46 +379,51 @@ app.get('/vendors', function (req, res) {
 });
 
 /*
+*     Terms Data
+*/
+
+
+/*
 *    Base Code Prototyped
 */
 //rest api to get all customers
-app.get('/customer', function (req, res) {
+/*app.get('/customer', function (req, res) {
     connection.query('select * from customer', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
-});
+});*/
 //rest api to get a single customer data
-app.get('/customer/:id', function (req, res) {
+/*app.get('/customer/:id', function (req, res) {
     connection.query('select * from customer where Id=?', [req.params.id], function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
-});
+});*/
 
 //rest api to create a new customer record into mysql database
-app.post('/customer', function (req, res) {
+/*app.post('/customer', function (req, res) {
     var params  = req.body;
     console.log(params);
     connection.query('INSERT INTO customer SET ?', params, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
-});
+});*/
 
 //rest api to update record into mysql database
-app.put('/customer', function (req, res) {
+/*app.put('/customer', function (req, res) {
     connection.query('UPDATE `customer` SET `Name`=?,`Address`=?,`Country`=?,`Phone`=? where `Id`=?', [req.body.Name,req.body.Address, req.body.Country, req.body.Phone, req.body.Id], function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
-});
+});*/
 
 //rest api to delete record from mysql database
-app.delete('/customer', function (req, res) {
+/*app.delete('/customer', function (req, res) {
     console.log(req.body);
     connection.query('DELETE FROM `customer` WHERE `Id`=?', [req.body.Id], function (error, results, fields) {
         if (error) throw error;
         res.end('Record has been deleted!');
-    });
-});
+    })
+});;*/
