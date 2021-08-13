@@ -1,0 +1,5 @@
+INSERT INTO refdata_terminologystd (TerminologyStdID, TerminologyStd, TerminologyStdVersion, TerminologyStdDesc, CreatedDate, StatusID) VALUES (1, 'SNOMED', 'SnoMed', null, '2021-08-12 13:13:31', 1);
+INSERT INTO refdata_terminologystd (TerminologyStdID, TerminologyStd, TerminologyStdVersion, TerminologyStdDesc, CreatedDate, StatusID) VALUES (2, 'LOINC', 'LOINC', null, '2021-08-12 13:13:31', 1);
+INSERT INTO refdata_terminologystd (TerminologyStdID, TerminologyStd, TerminologyStdVersion, TerminologyStdDesc, CreatedDate, StatusID) VALUES (3, 'ICD-10', 'ICD-10', null, '2021-08-12 13:13:32', 1);
+INSERT INTO refdata_terminologystd (TerminologyStdID, TerminologyStd, TerminologyStdVersion, TerminologyStdDesc, CreatedDate, StatusID) VALUES (4, 'RxNorm', 'RxNorm', null, '2021-08-12 13:13:32', 1);
+INSERT INTO refdata_terminologystd (TerminologyStdID, TerminologyStd, TerminologyStdVersion, TerminologyStdDesc, CreatedDate, StatusID) VALUES (5, 'Multum', 'Multum', null, '2021-08-12 13:13:32', 1);
