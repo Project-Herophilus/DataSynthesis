@@ -1365,8 +1365,8 @@ CREATE TABLE IF NOT EXISTS `refdata_industrystd` (
 -- Table `refdata_codeset`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `refdata_codeset` (
-                                                                 `CodeSetsID` BIGINT NOT NULL AUTO_INCREMENT,
-                                                                 `CodeSetName` VARCHAR(50) NULL DEFAULT NULL,
+     `CodeSetsID` BIGINT NOT NULL AUTO_INCREMENT,
+     `CodeSetName` VARCHAR(50) NULL DEFAULT NULL,
     `IndustryStd` VARCHAR(6) NULL DEFAULT NULL,
     `StatusID` SMALLINT NULL DEFAULT '1',
     `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1397,9 +1397,9 @@ CREATE TABLE IF NOT EXISTS `refdata_codeset` (
 -- Table `refdata_codesettomsgtype`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `refdata_codesettomsgtype` (
-                                                                          `CodeSetToMsgTypeID` BIGINT NOT NULL AUTO_INCREMENT,
-                                                                          `CodeSetsID` BIGINT NULL DEFAULT NULL,
-                                                                          `MsgType` VARCHAR(10) NULL DEFAULT NULL,
+     `CodeSetToMsgTypeID` BIGINT NOT NULL AUTO_INCREMENT,
+     `CodeSetsID` BIGINT NULL DEFAULT NULL,
+     `MsgType` VARCHAR(10) NULL DEFAULT NULL,
     `StatusID` SMALLINT NULL DEFAULT '1',
     `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     `CreatedUser` VARCHAR(20) NULL DEFAULT NULL,
@@ -1422,8 +1422,8 @@ CREATE TABLE IF NOT EXISTS `refdata_codesettomsgtype` (
 -- Table `refdata_industrystd_datatypes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `refdata_industrystd_datatypes` (
-                                                                               `DataTypesToIndustryID` INT NOT NULL AUTO_INCREMENT,
-                                                                               `IndustryStd` VARCHAR(6) NOT NULL,
+     `DataTypesToIndustryID` INT NOT NULL AUTO_INCREMENT,
+     `IndustryStd` VARCHAR(6) NOT NULL,
     `DataTypeName` VARCHAR(10) NULL DEFAULT NULL,
     `DataTypeNameDesc` VARCHAR(75) NULL DEFAULT NULL,
     `DataTypeSubFields` VARCHAR(249) NULL DEFAULT NULL,
@@ -1448,8 +1448,8 @@ CREATE TABLE IF NOT EXISTS `refdata_industrystd_datatypes` (
 -- Table `refdata_industrystd_fields`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `refdata_industrystd_fields` (
-                                                                            `FieldsToIndustryID` INT NOT NULL AUTO_INCREMENT,
-                                                                            `MessageFieldNumber` VARCHAR(14) NULL DEFAULT NULL,
+    `FieldsToIndustryID` INT NOT NULL AUTO_INCREMENT,
+     `MessageFieldNumber` VARCHAR(14) NULL DEFAULT NULL,
     `MessageFieldName` VARCHAR(154) NULL DEFAULT NULL,
     `FieldLength` VARCHAR(10) NULL DEFAULT NULL,
     `DataType` VARCHAR(7) NULL DEFAULT NULL,

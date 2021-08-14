@@ -5,7 +5,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 DROP SCHEMA IF EXISTS `datasynthesis`;
-CREATE SCHEMA IF NOT EXISTS `datasynthesis` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `datasynthesis` DEFAULT CHARACTER SET latin1;
 USE `datasynthesis` ;
 
 -- -----------------------------------------------------
@@ -1621,8 +1621,8 @@ DEFAULT CHARACTER SET = latin1;
 
 -- datasynthesis.refdata_terminologystd definition
 CREATE TABLE  IF NOT EXISTS `refdata_terminologystd` (
-                                          `TerminologyStdID` smallint NOT NULL AUTO_INCREMENT,
-                                          `TerminologyStd` varchar(12) NOT NULL,
+     `TerminologyStdID` smallint NOT NULL AUTO_INCREMENT,
+     `TerminologyStd` varchar(12) NOT NULL,
     `TerminologyStdVersion` varchar(10) NOT NULL,
     `TerminologyStdDesc` varchar(30) DEFAULT NULL,
     `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -1633,7 +1633,7 @@ CREATE TABLE  IF NOT EXISTS `refdata_terminologystd` (
     CONSTRAINT `FK_TerminologyStd_status` FOREIGN KEY (`StatusID`) REFERENCES `refdata_status` (`StatusID`)
     )
     ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+    DEFAULT CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS terms_codesetstoapplication
 (
@@ -1666,7 +1666,9 @@ CREATE TABLE IF NOT EXISTS terms_codesetstoapplication
     DEFAULT CHARACTER SET = latin1;
 
 create index IDX_Terms_CodeSetsToApplication
-    on terms_codesetstoapplication (CodeSetToApplicationID, CodeSetsID, CodeValue, CodeDesc, CreatedDate, OrganizationID, ApplicationID, StatusID, FormalName, Address, CityStateZip, PhoneNumber, OtherField1, OtherField2, TermLow, TermHigh);
+    on terms_codesetstoapplication (CodeSetToApplicationID, CodeSetsID, CodeValue, CodeDesc, 
+	 CreatedDate, OrganizationID, ApplicationID, StatusID, FormalName, Address, CityStateZip, 
+	 PhoneNumber, OtherField1, OtherField2, TermLow, TermHigh);
 
 create table terms_codesetscrossmaps
 (
@@ -1691,7 +1693,7 @@ create table terms_codesetscrossmaps
         foreign key (TerminologyStd) references refdata_terminologystd (TerminologyStdID)
 )
     ENGINE = InnoDB
-    DEFAULT CHARACTER SET = latin1
+    DEFAULT CHARACTER SET = latin1;
 
 create index IDX_Terms_CodeSetsCrossmap
     on terms_codesetscrossmaps (CodeSetCrossMapID, CodeSetsID, TerminologyStd, SpecificDetails,
