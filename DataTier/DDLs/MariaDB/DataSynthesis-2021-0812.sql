@@ -9,9 +9,9 @@ CREATE SCHEMA IF NOT EXISTS `datasynthesis` DEFAULT CHARACTER SET utf8mb4 COLLAT
 USE `datasynthesis` ;
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_status`
+-- Table `refdata_status`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_status` (
+CREATE TABLE IF NOT EXISTS `refdata_status` (
   `StatusID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `StatusDescription` VARCHAR(45) NOT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -24,9 +24,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`auditing_dataplatform`
+-- Table `auditing_dataplatform`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`auditing_dataplatform` (
+CREATE TABLE IF NOT EXISTS `auditing_dataplatform` (
   `DataPlatformID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `DataProcessingDate` DATETIME(3) NULL DEFAULT NULL,
   `CreatedByUser` VARCHAR(20) NULL DEFAULT NULL,
@@ -44,16 +44,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`auditing_dataplatform` (
   INDEX `IDX_platform_dataplatform` (`DataPlatformID` ASC, `DataProcessingDate` ASC, `CreatedByUser` ASC, `Organizaton` ASC, `Application` ASC, `StatusID` ASC, `CreatedDate` ASC, `RecCount` ASC, `Component` ASC, `ActionName` ASC, `DurationToRun` ASC, `ActivityDetail` ASC) VISIBLE,
   CONSTRAINT `FK_platform_dataplatform_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`auditing_datarequest`
+-- Table `auditing_datarequest`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`auditing_datarequest` (
+CREATE TABLE IF NOT EXISTS `auditing_datarequest` (
   `DataRequestID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `DataRequestDate` DATETIME(3) NULL DEFAULT NULL,
   `CreatedByUser` VARCHAR(20) NULL DEFAULT NULL,
@@ -68,16 +68,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`auditing_datarequest` (
   INDEX `IDX_platform_datarequest` (`DataRequestID` ASC, `DataRequestDate` ASC, `CreatedByUser` ASC, `Organizaton` ASC, `Application` ASC, `StatusID` ASC, `CreatedDate` ASC, `RecCount` ASC, `RecordDataRequest` ASC) VISIBLE,
   CONSTRAINT `FK_platform_datarequest_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_vendor`
+-- Table `refdata_vendor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_vendor` (
+CREATE TABLE IF NOT EXISTS `refdata_vendor` (
   `VendorID` INT NOT NULL AUTO_INCREMENT,
   `VendorName` VARCHAR(50) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -89,16 +89,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_vendor` (
   INDEX `IDX_RefData_Vendors` (`VendorID` ASC, `VendorName` ASC, `StatusID` ASC, `VendorGUID` ASC, `CreatedDate` ASC, `CreatedUser` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_vendors_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_application`
+-- Table `refdata_application`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_application` (
+CREATE TABLE IF NOT EXISTS `refdata_application` (
   `AppGUID` CHAR(38) NOT NULL,
   `ApplicationCustomCode` VARCHAR(15) NULL DEFAULT NULL,
   `ApplicationDesc` VARCHAR(50) NULL DEFAULT NULL,
@@ -112,19 +112,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_application` (
   INDEX `IDX_RefData_Application` (`AppGUID` ASC, `ApplicationCustomCode` ASC, `ApplicationDesc` ASC, `CreatedUser` ASC, `CreatedDate` ASC, `StatusID` ASC, `VendorID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_application_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
+    REFERENCES `refdata_status` (`StatusID`),
   CONSTRAINT `FK_refdata_application_vendors`
     FOREIGN KEY (`VendorID`)
-    REFERENCES `datasynthesis`.`refdata_vendor` (`VendorID`))
+    REFERENCES `refdata_vendor` (`VendorID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_ababanking`
+-- Table `dataexisting_ababanking`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_ababanking` (
+CREATE TABLE IF NOT EXISTS `dataexisting_ababanking` (
   `ABABankingID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `RoutingNumber` VARCHAR(9) NULL DEFAULT NULL,
   `TelegraphicName` VARCHAR(20) NULL DEFAULT NULL,
@@ -142,19 +142,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_ababanking` (
   INDEX `IDX_DataExisting_ABABanking` (`ABABankingID` ASC, `RoutingNumber` ASC, `TelegraphicName` ASC, `CustomerName` ASC, `City` ASC, `State` ASC, `ZipCode` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_ababanking_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_ababanking_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_timezones`
+-- Table `refdata_timezones`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_timezones` (
+CREATE TABLE IF NOT EXISTS `refdata_timezones` (
   `TimeZoneValue` VARCHAR(3) NOT NULL,
   `TimeZoneDesc` VARCHAR(25) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -164,16 +164,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_timezones` (
   INDEX `IDX_RefData_TimeZones` (`TimeZoneValue` ASC, `TimeZoneDesc` ASC, `CreatedDate` ASC, `StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_TimeZones_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_usstates`
+-- Table `refdata_usstates`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_usstates` (
+CREATE TABLE IF NOT EXISTS `refdata_usstates` (
   `StateID` VARCHAR(2) NOT NULL,
   `StateDescription` VARCHAR(65) NULL DEFAULT NULL,
   `Lattitude` VARCHAR(12) NULL DEFAULT NULL,
@@ -186,15 +186,15 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_usstates` (
   INDEX `IDX_RefData_USStates` (`StateID` ASC, `StateDescription` ASC, `Lattitude` ASC, `Longitude` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC) VISIBLE,
   CONSTRAINT `FK_USStates_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_dataattributes`
+-- Table `platform_dataattributes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_dataattributes` (
+CREATE TABLE IF NOT EXISTS `platform_dataattributes` (
   `PlatformDataAttributesID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `DataAttributeName` VARCHAR(50) NULL DEFAULT NULL,
   `SensitivityFlagID` SMALLINT(6) NULL DEFAULT NULL,
@@ -210,21 +210,21 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_dataattributes` (
   INDEX `IDX_Platform_DataAttributes` (`PlatformDataAttributesID` ASC, `DataAttributeName` ASC, `SensitivityFlagID` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `PlatformDataAttributeGUID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_platform_dataattributes_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_platformdataattributes_sensitivtyflag`
     FOREIGN KEY (`SensitivityFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
+    REFERENCES `refdata_sensitivityflag` (`SensitiveFlagID`),
   CONSTRAINT `FK_platformdataattributes_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_areacode`
+-- Table `dataexisting_areacode`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_areacode` (
+CREATE TABLE IF NOT EXISTS `dataexisting_areacode` (
   `AreaCodeID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `AreaCodeValue` VARCHAR(3) NOT NULL,
   `TimeZone` VARCHAR(3) NULL DEFAULT NULL,
@@ -242,25 +242,25 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_areacode` (
   INDEX `IDX_DataExisting_AreaCode` (`AreaCodeValue` ASC, `TimeZone` ASC, `StateCode` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_areacode_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_areacode_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
+    REFERENCES `refdata_status` (`StatusID`),
   CONSTRAINT `FK_dataexisting_areacode_timezones`
     FOREIGN KEY (`TimeZone`)
-    REFERENCES `datasynthesis`.`refdata_timezones` (`TimeZoneValue`),
+    REFERENCES `refdata_timezones` (`TimeZoneValue`),
   CONSTRAINT `FK_dataexisting_areacode_USStates`
     FOREIGN KEY (`StateCode`)
-    REFERENCES `datasynthesis`.`refdata_usstates` (`StateID`))
+    REFERENCES `refdata_usstates` (`StateID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_countries`
+-- Table `refdata_countries`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_countries` (
+CREATE TABLE IF NOT EXISTS `refdata_countries` (
   `CountryID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `IDD` VARCHAR(5) NULL DEFAULT NULL,
   `CountryName` VARCHAR(59) NULL DEFAULT NULL,
@@ -271,16 +271,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_countries` (
   INDEX `IX_Countries` (`CountryID` ASC, `IDD` ASC, `CountryName` ASC, `CreatedDate` ASC, `StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_Countries_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_areacodeintl`
+-- Table `dataexisting_areacodeintl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_areacodeintl` (
+CREATE TABLE IF NOT EXISTS `dataexisting_areacodeintl` (
   `IDDCode` VARCHAR(5) NOT NULL,
   `CountryID` SMALLINT(6) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -293,22 +293,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_areacodeintl` (
   INDEX `IDX_DataExisting_AreaCodeIntl` (`IDDCode` ASC, `CountryID` ASC, `CreatedDate` ASC, `StatusID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_areacodeintl_Countries`
     FOREIGN KEY (`CountryID`)
-    REFERENCES `datasynthesis`.`refdata_countries` (`CountryID`),
+    REFERENCES `refdata_countries` (`CountryID`),
   CONSTRAINT `FK_dataexisting_areacodeintl_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_areacodeintl_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_companies`
+-- Table `dataexisting_companies`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_companies` (
+CREATE TABLE IF NOT EXISTS `dataexisting_companies` (
   `CompaniesID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `CompanyName` VARCHAR(79) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -321,19 +321,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_companies` (
   INDEX `IDX_DataExisting_Companies` (`CompaniesID` ASC, `CompanyName` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_companies_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_companies_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_namefirst`
+-- Table `dataexisting_namefirst`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_namefirst` (
+CREATE TABLE IF NOT EXISTS `dataexisting_namefirst` (
   `FirstNameID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `FirstName` VARCHAR(39) NULL DEFAULT NULL,
   `Gender` VARCHAR(1) NULL DEFAULT NULL,
@@ -348,19 +348,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_namefirst` (
   INDEX `IDX_DataExistng_NameFirst` (`FirstNameID` ASC, `FirstName` ASC, `Gender` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_namefirst_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_namefirst_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_namelast`
+-- Table `dataexisting_namelast`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_namelast` (
+CREATE TABLE IF NOT EXISTS `dataexisting_namelast` (
   `LastNameID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `LastName` VARCHAR(69) NULL DEFAULT NULL,
   `StatusID` SMALLINT(6) NOT NULL DEFAULT '1',
@@ -374,19 +374,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_namelast` (
   INDEX `IDX_DataExisting_NameLast` (`LastNameID` ASC, `LastName` ASC, `StatusID` ASC, `CreatedDate` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_namelast_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_namelast_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_upccodes`
+-- Table `dataexisting_upccodes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_upccodes` (
+CREATE TABLE IF NOT EXISTS `dataexisting_upccodes` (
   `UPCCodeID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `UPCCodeName` VARCHAR(15) NULL DEFAULT NULL,
   `UPCProductName` VARCHAR(150) NULL DEFAULT NULL,
@@ -399,19 +399,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_upccodes` (
   INDEX `IDX_DataExisting_UPCCodes` (`UPCCodeID` ASC, `UPCCodeName` ASC, `UPCProductName` ASC, `CreatedDate` ASC, `StatusID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_upccodes_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_upccodes_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_zipcodeintl`
+-- Table `dataexisting_zipcodeintl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_zipcodeintl` (
+CREATE TABLE IF NOT EXISTS `dataexisting_zipcodeintl` (
   `ZipCodeIntnlID` INT NOT NULL AUTO_INCREMENT,
   `ZipCode` CHAR(10) NOT NULL,
   `ZipCodeType` VARCHAR(15) NULL DEFAULT NULL,
@@ -431,22 +431,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_zipcodeintl` (
   INDEX `IDX_DataExisting_ZipcodeIntl` (`ZipCodeIntnlID` ASC, `ZipCode` ASC, `ZipCodeType` ASC, `Country` ASC, `City` ASC, `Lattitude` ASC, `Longitude` ASC, `Location` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_zipcodeIntl_Countries`
     FOREIGN KEY (`Country`)
-    REFERENCES `datasynthesis`.`refdata_countries` (`CountryID`),
+    REFERENCES `refdata_countries` (`CountryID`),
   CONSTRAINT `FK_dataexisting_zipcodeintl_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_zipcodeIntl_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`dataexisting_zipcodeus`
+-- Table `dataexisting_zipcodeus`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_zipcodeus` (
+CREATE TABLE IF NOT EXISTS `dataexisting_zipcodeus` (
   `ZipCodeID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `ZipCode` CHAR(5) NOT NULL,
   `ZipCodeType` VARCHAR(15) NULL DEFAULT NULL,
@@ -465,19 +465,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`dataexisting_zipcodeus` (
   INDEX `FK_dataexisting_zipcodeus_registeredapp` (`RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_dataexisting_zipcodeus_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_dataexisting_zipcodeUS_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_datagentypes`
+-- Table `refdata_datagentypes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_datagentypes` (
+CREATE TABLE IF NOT EXISTS `refdata_datagentypes` (
   `DataGenTypeID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `DataGenTypeDescription` VARCHAR(65) NULL DEFAULT NULL,
   `Definition` VARCHAR(255) NULL DEFAULT NULL,
@@ -491,19 +491,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_datagentypes` (
   INDEX `IDX_RefData_DataGenTypes` (`DataGenTypeID` ASC, `DataGenTypeDescription` ASC, `Definition` ASC, `DataAttributeID` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC) VISIBLE,
   CONSTRAINT `FK_RefDataDataGenTypes_dataattributes`
     FOREIGN KEY (`DataAttributeID`)
-    REFERENCES `datasynthesis`.`platform_dataattributes` (`PlatformDataAttributesID`),
+    REFERENCES `platform_dataattributes` (`PlatformDataAttributesID`),
   CONSTRAINT `FK_RefDataDataGenTypes_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_accountnumbers`
+-- Table `datagenerated_accountnumbers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_accountnumbers` (
+CREATE TABLE IF NOT EXISTS `datagenerated_accountnumbers` (
   `AccountNumbersID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `AccountNumberValue` VARCHAR(20) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -519,22 +519,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_accountnumbers` (
   INDEX `IDX_DataGenerated_AccountNumbers` (`AccountNumbersID` ASC, `AccountNumberValue` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC, `DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_accountnumbers_datagentype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_datagenerated_accountnumbers_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_accountnumbers_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_addresses`
+-- Table `datagenerated_addresses`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_addresses` (
+CREATE TABLE IF NOT EXISTS `datagenerated_addresses` (
   `AddressID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `AddressStreet` VARCHAR(99) NULL DEFAULT NULL,
   `AddressStreet2` VARCHAR(59) NULL DEFAULT NULL,
@@ -551,22 +551,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_addresses` (
   INDEX `IDX_datagenerated_addresses` (`AddressID` ASC, `AddressStreet` ASC, `AddressStreet2` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC, `DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_addresses_datagenttype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_datagenerated_addresses_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_addresses_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_bankaccount`
+-- Table `datagenerated_bankaccount`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_bankaccount` (
+CREATE TABLE IF NOT EXISTS `datagenerated_bankaccount` (
   `BankAccountsID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `BankAccountValue` VARCHAR(17) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -582,22 +582,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_bankaccount` (
   INDEX `IDX_DataGenerated_BankAccounts` (`BankAccountsID` ASC, `BankAccountValue` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC, `DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `datagenerated_bankaccount__datagentype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_datagenerated_bankaccount_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_bankaccount_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_creditcard`
+-- Table `datagenerated_creditcard`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_creditcard` (
+CREATE TABLE IF NOT EXISTS `datagenerated_creditcard` (
   `CreditCardID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `CreditCardNumber` VARCHAR(20) NULL DEFAULT NULL,
    `CreditCardName` VARCHAR(20) NULL DEFAULT NULL,
@@ -614,22 +614,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_creditcard` (
   INDEX `IDX_DataGenerated_CreditCard` (`CreditCardID` ASC, `CreditCardNumber` ASC, `CreditCardName` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC, `DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `datagenerated_creditcard__datagentype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_datagenerated_creditcard_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_creditcard_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_dateofbirth`
+-- Table `datagenerated_dateofbirth`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_dateofbirth` (
+CREATE TABLE IF NOT EXISTS `datagenerated_dateofbirth` (
   `DateofBirthsID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `DateOfBirth` VARCHAR(12) NULL DEFAULT NULL,
   `DateOfBirthDate` DATE NULL DEFAULT NULL,
@@ -645,19 +645,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_dateofbirth` (
   INDEX `IDX_DataGenerated_DateOfBirths` (`DateofBirthsID` ASC, `DateOfBirth` ASC, `DateOfBirthDate` ASC, `Age` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_dateofbirth_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_dateofbirth_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_driverslicenses`
+-- Table `datagenerated_driverslicenses`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_driverslicenses` (
+CREATE TABLE IF NOT EXISTS `datagenerated_driverslicenses` (
   `DriversLicensesID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `DLN` VARCHAR(25) NULL DEFAULT NULL,
   `StateCode` VARCHAR(2) NULL DEFAULT NULL,
@@ -675,25 +675,25 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_driverslicenses` (
   INDEX `FK_datagenerated_driverslicenses_datagentype` (`DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_driverslicenses_datagentype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_datagenerated_driverslicenses_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_driverslicenses_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
+    REFERENCES `refdata_status` (`StatusID`),
   CONSTRAINT `FK_datagenerated_driverslicenses_USStates`
     FOREIGN KEY (`StateCode`)
-    REFERENCES `datasynthesis`.`refdata_usstates` (`StateID`))
+    REFERENCES `refdata_usstates` (`StateID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_ein`
+-- Table `datagenerated_ein`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_ein` (
+CREATE TABLE IF NOT EXISTS `datagenerated_ein` (
   `EINID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `EINValue` VARCHAR(10) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -707,19 +707,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_ein` (
   INDEX `IDX_DataGenerated_EIN` (`EINID` ASC, `EINValue` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_ein_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_ein_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_phonenumber`
+-- Table `datagenerated_phonenumber`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_phonenumber` (
+CREATE TABLE IF NOT EXISTS `datagenerated_phonenumber` (
   `PhoneNumberID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `PhoneNumberValue` VARCHAR(8) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -733,19 +733,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_phonenumber` (
   INDEX `IDX_PhoneNumbers` (`PhoneNumberID` ASC, `PhoneNumberValue` ASC, `RegisteredApp` ASC, `CreatedUser` ASC, `CreatedDate` ASC, `StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_phonenumber_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_phonenumbers_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_phonenumbersintl`
+-- Table `datagenerated_phonenumbersintl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_phonenumbersintl` (
+CREATE TABLE IF NOT EXISTS `datagenerated_phonenumbersintl` (
   `PhoneNumberIntlID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `PhoneNumberValue` VARCHAR(12) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -761,22 +761,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_phonenumbersintl` (
   INDEX `IDX_PhoneNumbersIntl` (`PhoneNumberIntlID` ASC, `PhoneNumberValue` ASC, `CountryId` ASC, `CreatedDate` ASC, `CreatedUser` ASC, `StatusID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_phonenumbersintl_Country`
     FOREIGN KEY (`CountryId`)
-    REFERENCES `datasynthesis`.`refdata_countries` (`CountryID`),
+    REFERENCES `refdata_countries` (`CountryID`),
   CONSTRAINT `FK_datagenerated_phonenumbersintl_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_phonenumbersintl_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_socialsecuritynumber`
+-- Table `datagenerated_socialsecuritynumber`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_socialsecuritynumber` (
+CREATE TABLE IF NOT EXISTS `datagenerated_socialsecuritynumber` (
   `SocialSecurityNumberID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `SocialSecurityNumberValue` VARCHAR(11) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -790,19 +790,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_socialsecuritynumber` 
   INDEX `IDX_DataGenerated_SocialSecurityNumber` (`SocialSecurityNumberID` ASC, `SocialSecurityNumberValue` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_datagenerated_socialsecuritynumber_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_socialsecuritynumber_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datagenerated_useridentities`
+-- Table `datagenerated_useridentities`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_useridentities` (
+CREATE TABLE IF NOT EXISTS `datagenerated_useridentities` (
   `UserIdentitiesID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `UserIdentityValue` VARCHAR(20) NULL DEFAULT NULL,
   `UserDomain` VARCHAR(20) NULL DEFAULT NULL,
@@ -819,22 +819,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datagenerated_useridentities` (
   INDEX `datagenerated_useridentities_datagentype` (`DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `datagenerated_useridentities_datagentype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_datagenerated_useridentities_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_datagenerated_useridentities_Status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datamodel_datatables`
+-- Table `datamodel_datatables`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datamodel_datatables` (
+CREATE TABLE IF NOT EXISTS `datamodel_datatables` (
   `TableName` VARCHAR(64) CHARACTER SET 'utf8' NOT NULL,
   `TableInformation` VARCHAR(249) NULL DEFAULT NULL,
   `StatusID` SMALLINT(6) NULL DEFAULT '1',
@@ -847,9 +847,9 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_address`
+-- Table `datastructure_address`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_address` (
+CREATE TABLE IF NOT EXISTS `datastructure_address` (
   `CompleteAddressID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `Address1` VARCHAR(99) NULL DEFAULT NULL,
   `City` VARCHAR(70) NULL DEFAULT NULL,
@@ -865,19 +865,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_address` (
   INDEX `FK_databuilt_address_registeredapp` (`RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_address_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_databuilt_address_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_bankaccount`
+-- Table `datastructure_bankaccount`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_bankaccount` (
+CREATE TABLE IF NOT EXISTS `datastructure_bankaccount` (
   `DataBuiltBankAccountsID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `BankAccountNumber` VARCHAR(12) NULL DEFAULT NULL,
   `BankAccountName` VARCHAR(75) NULL DEFAULT NULL,
@@ -892,19 +892,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_bankaccount` (
   INDEX `FK_databuilt_bankaccount_registeredapp` (`RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_bankaccount_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `fk_databuilt_bankAccounts_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_corporations`
+-- Table `datastructure_corporations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_corporations` (
+CREATE TABLE IF NOT EXISTS `datastructure_corporations` (
   `DataBuiltCorporationID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `CorporationName` VARCHAR(99) NULL DEFAULT NULL,
   `Address1` VARCHAR(99) NULL DEFAULT NULL,
@@ -921,19 +921,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_corporations` (
   INDEX `IDX_databuilt_corporations` (`DataBuiltCorporationID` ASC, `CorporationName` ASC, `Address1` ASC, `City` ASC, `StateID` ASC, `ZipCode` ASC, `CreatedDate` ASC, `StatusID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_corporations_resiteredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_databuilt_corporations_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_names`
+-- Table `datastructure_names`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_names` (
+CREATE TABLE IF NOT EXISTS `datastructure_names` (
   `DataBuiltNamesID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `CompleteName` VARCHAR(100) NULL DEFAULT NULL,
   `Gender` VARCHAR(1) NULL DEFAULT NULL,
@@ -946,19 +946,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_names` (
   INDEX `FK_databuilt_names_registeredapp` (`RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_completenames_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
+    REFERENCES `refdata_status` (`StatusID`),
   CONSTRAINT `FK_databuilt_names_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`))
+    REFERENCES `refdata_application` (`AppGUID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_persondemographics`
+-- Table `datastructure_persondemographics`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_persondemographics` (
+CREATE TABLE IF NOT EXISTS `datastructure_persondemographics` (
   `PersonDemographicsID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `DLN` VARCHAR(25) NULL DEFAULT NULL,
   `DLNState` VARCHAR(2) NULL DEFAULT NULL,
@@ -976,19 +976,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_persondemographics` (
   INDEX `IDX_dataabuilt_persondemographics` (`PersonDemographicsID` ASC, `DLN` ASC, `DLNState` ASC, `SSN` ASC, `DOBValue` ASC, `DOBDate` ASC, `Age` ASC, `CreatedDate` ASC, `StatusID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_persondemographics_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_databuilt_persondemographics_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_phonenumbers`
+-- Table `datastructure_phonenumbers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_phonenumbers` (
+CREATE TABLE IF NOT EXISTS `datastructure_phonenumbers` (
   `DataBuiltPhoneNumbersID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `AreaCode` VARCHAR(3) NULL DEFAULT NULL,
   `PhoneNumber` VARCHAR(8) NULL DEFAULT NULL,
@@ -1003,22 +1003,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_phonenumbers` (
   INDEX `IDX_databuilt_phonenumbers` (`DataBuiltPhoneNumbersID` ASC, `AreaCode` ASC, `PhoneNumber` ASC, `CompletePhoneNumber` ASC, `StatusID` ASC, `CreatedDate` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_phonenumbers_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_databuilt_phonenumbers_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
+    REFERENCES `refdata_status` (`StatusID`),
   CONSTRAINT `IDX_databuilt_phonenumbers_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_phonenumbersintl`
+-- Table `datastructure_phonenumbersintl`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_phonenumbersintl` (
+CREATE TABLE IF NOT EXISTS `datastructure_phonenumbersintl` (
   `DataBuiltPhoneNumbersIntlID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `AreaCode` VARCHAR(3) NULL DEFAULT NULL,
   `PhoneNumber` VARCHAR(8) NULL DEFAULT NULL,
@@ -1033,22 +1033,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_phonenumbersintl` (
   INDEX `IDX_databuilt_phonenumbersintl` (`DataBuiltPhoneNumbersIntlID` ASC, `AreaCode` ASC, `PhoneNumber` ASC, `CompletePhoneNumber` ASC, `StatusID` ASC, `CreatedDate` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_phonenumbersintl_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_databuilt_phonenumbersintl_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
+    REFERENCES `refdata_status` (`StatusID`),
   CONSTRAINT `IDX_databuilt_phonenumbersintl_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`datastructure_products`
+-- Table `datastructure_products`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_products` (
+CREATE TABLE IF NOT EXISTS `datastructure_products` (
   `DatabuiltProductsID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `ProductID` VARCHAR(20) NULL DEFAULT NULL,
   `ProductName` VARCHAR(99) NULL DEFAULT NULL,
@@ -1062,19 +1062,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`datastructure_products` (
   INDEX `FK_databuilt_products_regsiteredapp` (`RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_databuilt_products_regsiteredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_databuilt_products_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_sensitivityflag`
+-- Table `refdata_sensitivityflag`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_sensitivityflag` (
+CREATE TABLE IF NOT EXISTS `refdata_sensitivityflag` (
   `SensitiveFlagID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `SensitiveFlagDesc` VARCHAR(30) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1084,16 +1084,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_sensitivityflag` (
   INDEX `IDX_RefData_SensitivityFlag` (`SensitiveFlagID` ASC, `SensitiveFlagDesc` ASC, `StatusID` ASC, `CreatedDate` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_sensitivityflag_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_appsettings_dataattributes`
+-- Table `platform_appsettings_dataattributes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_appsettings_dataattributes` (
+CREATE TABLE IF NOT EXISTS `platform_appsettings_dataattributes` (
   `AppSettingsDataAttributeID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `PlatformDataAttributeID` SMALLINT(6) NULL DEFAULT NULL,
   `ServiceClassName` VARCHAR(75) NULL DEFAULT NULL,
@@ -1111,19 +1111,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_appsettings_dataattributes`
   INDEX `IDX_PlatformData_AppSettings_DataAttributes` (`AppSettingsDataAttributeID` ASC, `PlatformDataAttributeID` ASC, `ServiceClassName` ASC, `CreatedDate` ASC, `StatusID` ASC, `MaxTableTransactionCount` ASC, `CurrentTableTransactionCount` ASC, `CurrentTableTransactionCounRunDateTime` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_platform_appsettings_dataattributes_dataattributes`
     FOREIGN KEY (`PlatformDataAttributeID`)
-    REFERENCES `datasynthesis`.`platform_dataattributes` (`PlatformDataAttributesID`),
+    REFERENCES `platform_dataattributes` (`PlatformDataAttributesID`),
   CONSTRAINT `FK_refdata_appsettings_dataattributes_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_appsettings_general`
+-- Table `platform_appsettings_general`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_appsettings_general` (
+CREATE TABLE IF NOT EXISTS `platform_appsettings_general` (
   `AppSettingsID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `AppSettingName` VARCHAR(50) NULL DEFAULT NULL,
   `AppSettingValue` VARCHAR(199) NULL DEFAULT NULL,
@@ -1138,22 +1138,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_appsettings_general` (
   INDEX `IDX_PlatformData_AppSettings_General` (`AppSettingsID` ASC, `AppSettingName` ASC, `AppSettingValue` ASC, `CreatedDate` ASC, `StatusID` ASC, `RegisteredApp` ASC, `DefaultDataGenerationApp` ASC) VISIBLE,
   CONSTRAINT `FK_platform_appsettings_general_datagenapp`
     FOREIGN KEY (`DefaultDataGenerationApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_platform_appsettings_general_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_refdata_appsettings_general_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_config_datagen`
+-- Table `platform_config_datagen`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_config_datagen` (
+CREATE TABLE IF NOT EXISTS `platform_config_datagen` (
   `DataGenConfigID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `DataTypeGenConfigName` VARCHAR(25) NULL DEFAULT NULL,
   `DataAttributeID` SMALLINT(6) NULL DEFAULT NULL,
@@ -1172,25 +1172,25 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_config_datagen` (
   INDEX `FK_platform_config_datagen_datagentype` (`DataGenTypeID` ASC) VISIBLE,
   CONSTRAINT `FK_platform_config_datagen_dataattributes`
     FOREIGN KEY (`DataAttributeID`)
-    REFERENCES `datasynthesis`.`platform_dataattributes` (`PlatformDataAttributesID`),
+    REFERENCES `platform_dataattributes` (`PlatformDataAttributesID`),
   CONSTRAINT `FK_platform_config_datagen_datagentype`
     FOREIGN KEY (`DataGenTypeID`)
-    REFERENCES `datasynthesis`.`refdata_datagentypes` (`DataGenTypeID`),
+    REFERENCES `refdata_datagentypes` (`DataGenTypeID`),
   CONSTRAINT `FK_platform_config_datagen_registeredapp`
     FOREIGN KEY (`ApplicationID`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_platform_config_datagen_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_datastructures`
+-- Table `platform_datastructures`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_datastructures` (
+CREATE TABLE IF NOT EXISTS `platform_datastructures` (
   `PlatformDataStructuresID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `DataStructureName` VARCHAR(50) NULL DEFAULT NULL,
   `SensitivityFlagID` SMALLINT(6) NULL DEFAULT NULL,
@@ -1206,22 +1206,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_datastructures` (
   INDEX `IDX_Platform_DataStructures` (`PlatformDataStructuresID` ASC, `DataStructureName` ASC, `SensitivityFlagID` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `PlatformDataStructuresGUID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_platform_datastructures__registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_platform_datastructures_sensitivityflag`
     FOREIGN KEY (`SensitivityFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
+    REFERENCES `refdata_sensitivityflag` (`SensitiveFlagID`),
   CONSTRAINT `FK_platform_datastructures_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_datastructurestodataattributes`
+-- Table `platform_datastructurestodataattributes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_datastructurestodataattributes` (
+CREATE TABLE IF NOT EXISTS `platform_datastructurestodataattributes` (
   `PlatformDataStructuresToDataAttributesID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `PlatformDataStructuresID` SMALLINT(6) NULL DEFAULT NULL,
   `CompositeDataStructureName` VARCHAR(50) NULL DEFAULT NULL,
@@ -1241,28 +1241,28 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_datastructurestodataattribu
   INDEX `IDX_Platform_DataStructuresToDataAttributes` (`PlatformDataStructuresToDataAttributesID` ASC, `PlatformDataStructuresToDataAttributesGUID` ASC, `PlatformDataStructuresID` ASC, `CompositeDataStructureName` ASC, `SensitivityFlagID` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `RegisteredApp` ASC, `PlatformDataAttributesID` ASC) VISIBLE,
   CONSTRAINT `FK_platform_datastructurestodataattributes_dataattributes`
     FOREIGN KEY (`PlatformDataAttributesID`)
-    REFERENCES `datasynthesis`.`platform_dataattributes` (`PlatformDataAttributesID`),
+    REFERENCES `platform_dataattributes` (`PlatformDataAttributesID`),
   CONSTRAINT `FK_platform_datastructurestodataattributes_datastructure`
     FOREIGN KEY (`PlatformDataStructuresID`)
-    REFERENCES `datasynthesis`.`platform_datastructures` (`PlatformDataStructuresID`),
+    REFERENCES `platform_datastructures` (`PlatformDataStructuresID`),
   CONSTRAINT `FK_platform_datastructurestodataattributes_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_platform_datastructurestodataattributes_sensitivityflag`
     FOREIGN KEY (`SensitivityFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
+    REFERENCES `refdata_sensitivityflag` (`SensitiveFlagID`),
   CONSTRAINT `FK_platform_datastructurestodataattributes_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_rulesets`
+-- Table `platform_rulesets`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_rulesets` (
+CREATE TABLE IF NOT EXISTS `platform_rulesets` (
   `RuleID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `RuleName` VARCHAR(65) NULL DEFAULT NULL,
   `CreatedUser` VARCHAR(20) NULL DEFAULT NULL,
@@ -1274,16 +1274,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_rulesets` (
   INDEX `IDX_Platform_RuleSets` (`RuleID` ASC, `RuleName` ASC, `CreatedUser` ASC, `CreatedDate` ASC, `ExpirationDate` ASC, `StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_platform_rulesets_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_operationtype`
+-- Table `refdata_operationtype`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_operationtype` (
+CREATE TABLE IF NOT EXISTS `refdata_operationtype` (
   `OperationTypeID` VARCHAR(7) NOT NULL,
   `OperationTypeName` VARCHAR(60) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1293,16 +1293,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_operationtype` (
   INDEX `IDX_RefData_OperationType` (`OperationTypeID` ASC, `OperationTypeName` ASC, `StatusID` ASC, `CreatedDate` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_operationtype_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`platform_rulesetsdefinitions`
+-- Table `platform_rulesetsdefinitions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_rulesetsdefinitions` (
+CREATE TABLE IF NOT EXISTS `platform_rulesetsdefinitions` (
   `RulesetDefinitionsID` CHAR(38) NOT NULL,
   `RulesetDefinitionName` VARCHAR(50) NULL DEFAULT NULL,
   `RuleSetID` BIGINT(20) NULL DEFAULT NULL,
@@ -1324,28 +1324,28 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`platform_rulesetsdefinitions` (
   INDEX `IDX_Platform_RulesetsDefinitions` (`RulesetDefinitionsID` ASC, `RuleSetID` ASC, `RulesetDefinitionName` ASC, `StepOrderID` ASC, `OperationTypeID` ASC, `RulesetDefValue` ASC, `CreatedDate` ASC, `EffectiveDate` ASC, `StatusID` ASC, `ApplicationID` ASC, `TermDate` ASC, `DataAttributeID` ASC) VISIBLE,
   CONSTRAINT `FK_platform_rulesetsdefinitions_dataattributes`
     FOREIGN KEY (`DataAttributeID`)
-    REFERENCES `datasynthesis`.`platform_dataattributes` (`PlatformDataAttributesID`),
+    REFERENCES `platform_dataattributes` (`PlatformDataAttributesID`),
   CONSTRAINT `FK_platform_rulesetsdefinitions_operationtype`
     FOREIGN KEY (`OperationTypeID`)
-    REFERENCES `datasynthesis`.`refdata_operationtype` (`OperationTypeID`),
+    REFERENCES `refdata_operationtype` (`OperationTypeID`),
   CONSTRAINT `FK_platform_rulesetsdefinitions_registeredapp`
     FOREIGN KEY (`ApplicationID`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_platform_rulesetsdefinitions_ruleset`
     FOREIGN KEY (`RuleSetID`)
-    REFERENCES `datasynthesis`.`platform_rulesets` (`RuleID`),
+    REFERENCES `platform_rulesets` (`RuleID`),
   CONSTRAINT `FK_platform_rulesetsdefinitions_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_industrystd`
+-- Table `refdata_industrystd`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd` (
+CREATE TABLE IF NOT EXISTS `refdata_industrystd` (
   `IndustryStd` VARCHAR(6) NOT NULL,
   `IndustryStdDesc` VARCHAR(30) NULL DEFAULT NULL,
   `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1355,16 +1355,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd` (
   INDEX `IDX_IndustryStd` (`IndustryStd` ASC, `IndustryStdDesc` ASC, `CreatedDate` ASC, `StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_industrystd_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_codeset`
+-- Table `refdata_codeset`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_codeset` (
+CREATE TABLE IF NOT EXISTS `refdata_codeset` (
   `CodeSetsID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `CodeSetName` VARCHAR(50) NULL DEFAULT NULL,
   `IndustryStd` VARCHAR(6) NULL DEFAULT NULL,
@@ -1381,22 +1381,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_codeset` (
   INDEX `IDX_RefData_CodeSets` (`CodeSetsID` ASC, `CodeSetName` ASC, `IndustryStd` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `CodesetGUID` ASC, `FieldMapping` ASC, `SensitivityFlagID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_codeset_industrystd`
     FOREIGN KEY (`IndustryStd`)
-    REFERENCES `datasynthesis`.`refdata_industrystd` (`IndustryStd`),
+    REFERENCES `refdata_industrystd` (`IndustryStd`),
   CONSTRAINT `FK_refdata_codeset_sensitivityflag`
     FOREIGN KEY (`SensitivityFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
+    REFERENCES `refdata_sensitivityflag` (`SensitiveFlagID`),
   CONSTRAINT `FK_refdata_codesets_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_codesettomsgtype`
+-- Table `refdata_codesettomsgtype`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_codesettomsgtype` (
+CREATE TABLE IF NOT EXISTS `refdata_codesettomsgtype` (
   `CodeSetToMsgTypeID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `CodeSetsID` BIGINT(20) NULL DEFAULT NULL,
   `MsgType` VARCHAR(10) NULL DEFAULT NULL,
@@ -1409,19 +1409,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_codesettomsgtype` (
   INDEX `IDX_RefData_CodeSetsToMsgType` (`CodeSetToMsgTypeID` ASC, `CodeSetsID` ASC, `MsgType` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_codesettomsgtype_codesets`
     FOREIGN KEY (`CodeSetsID`)
-    REFERENCES `datasynthesis`.`refdata_codeset` (`CodeSetsID`),
+    REFERENCES `refdata_codeset` (`CodeSetsID`),
   CONSTRAINT `FK_refdata_codesettomsgtype_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_industrystd_datatypes`
+-- Table `refdata_industrystd_datatypes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd_datatypes` (
+CREATE TABLE IF NOT EXISTS `refdata_industrystd_datatypes` (
   `DataTypesToIndustryID` INT NOT NULL AUTO_INCREMENT,
   `IndustryStd` VARCHAR(6) NOT NULL,
   `DataTypeName` VARCHAR(10) NULL DEFAULT NULL,
@@ -1435,19 +1435,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd_datatypes` (
   INDEX `FK_refdata_industrystd_datatypes_status` (`StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_industrystd_datatypes_industrystd`
     FOREIGN KEY (`IndustryStd`)
-    REFERENCES `datasynthesis`.`refdata_industrystd` (`IndustryStd`),
+    REFERENCES `refdata_industrystd` (`IndustryStd`),
   CONSTRAINT `FK_refdata_industrystd_datatypes_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_industrystd_fields`
+-- Table `refdata_industrystd_fields`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd_fields` (
+CREATE TABLE IF NOT EXISTS `refdata_industrystd_fields` (
   `FieldsToIndustryID` INT NOT NULL AUTO_INCREMENT,
   `MessageFieldNumber` VARCHAR(14) NULL DEFAULT NULL,
   `MessageFieldName` VARCHAR(154) NULL DEFAULT NULL,
@@ -1467,22 +1467,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd_fields` (
   INDEX `FK_refdata_industrystd_fields_sensitivtyflag` (`SensitivityFlagID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_industrystd_fields_industrystd`
     FOREIGN KEY (`IndustryStd`)
-    REFERENCES `datasynthesis`.`refdata_industrystd` (`IndustryStd`),
+    REFERENCES `refdata_industrystd` (`IndustryStd`),
   CONSTRAINT `FK_refdata_industrystd_fields_sensitivtyflag`
     FOREIGN KEY (`SensitivityFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
+    REFERENCES `refdata_sensitivityflag` (`SensitiveFlagID`),
   CONSTRAINT `FK_refdata_industrystd_fields_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_industrystd_segments`
+-- Table `refdata_industrystd_segments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd_segments` (
+CREATE TABLE IF NOT EXISTS `refdata_industrystd_segments` (
   `SegmentToIndustryID` INT NOT NULL AUTO_INCREMENT,
   `IndustryStd` VARCHAR(6) NOT NULL,
   `IndustryStdDesc` VARCHAR(30) NULL DEFAULT NULL,
@@ -1496,19 +1496,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_industrystd_segments` (
   INDEX `IDX_IndustryStd_Segments` (`SegmentToIndustryID` ASC, `IndustryStd` ASC, `IndustryStdDesc` ASC, `CreatedDate` ASC, `StatusID` ASC, `SegmentName` ASC, `SegmentNameDesc` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_industrystd_segments_industrystd`
     FOREIGN KEY (`IndustryStd`)
-    REFERENCES `datasynthesis`.`refdata_industrystd` (`IndustryStd`),
+    REFERENCES `refdata_industrystd` (`IndustryStd`),
   CONSTRAINT `FK_refdata_industrystd_segments_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_legalentity`
+-- Table `refdata_legalentity`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_legalentity` (
+CREATE TABLE IF NOT EXISTS `refdata_legalentity` (
   `LegalEntityGUID` CHAR(38) NOT NULL,
   `LocationName` VARCHAR(50) NULL DEFAULT NULL,
   `Address` VARCHAR(75) NULL DEFAULT NULL,
@@ -1526,19 +1526,19 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_legalentity` (
   INDEX `IDX_RefData_LegalEntity2` (`LegalEntityGUID` ASC, `LocationName` ASC, `Address` ASC, `City` ASC, `StateID` ASC, `ZipCode` ASC, `CreatedUser` ASC, `StatusID` ASC, `CreatedDate` ASC, `LocationURL` ASC, `LocationPhone` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_location_states`
     FOREIGN KEY (`StateID`)
-    REFERENCES `datasynthesis`.`refdata_usstates` (`StateID`),
+    REFERENCES `refdata_usstates` (`StateID`),
   CONSTRAINT `FK_refdata_location_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_organization`
+-- Table `refdata_organization`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_organization` (
+CREATE TABLE IF NOT EXISTS `refdata_organization` (
   `OrganizationGUID` CHAR(38) NOT NULL,
   `OrganizationInternalCode` VARCHAR(10) NULL DEFAULT NULL,
   `OrganizationInternalID` VARCHAR(10) NULL DEFAULT NULL,
@@ -1558,22 +1558,22 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_organization` (
   INDEX `IDX_RefData_Organization` (`OrganizationGUID` ASC, `OrganizationName` ASC, `Address` ASC, `City` ASC, `StateID` ASC, `ZipCode` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `OrganizationInternalCode` ASC, `OrganizationInternalID` ASC, `LegalEntityGUID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_organization_legalentity`
     FOREIGN KEY (`LegalEntityGUID`)
-    REFERENCES `datasynthesis`.`refdata_legalentity` (`LegalEntityGUID`),
+    REFERENCES `refdata_legalentity` (`LegalEntityGUID`),
   CONSTRAINT `FK_refdata_organization_states`
     FOREIGN KEY (`StateID`)
-    REFERENCES `datasynthesis`.`refdata_usstates` (`StateID`),
+    REFERENCES `refdata_usstates` (`StateID`),
   CONSTRAINT `FK_refdata_organization_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_platformparams`
+-- Table `refdata_platformparams`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_platformparams` (
+CREATE TABLE IF NOT EXISTS `refdata_platformparams` (
   `PlatformParamsID` SMALLINT(6) NOT NULL AUTO_INCREMENT,
   `PlatformParamValues` VARCHAR(35) NULL DEFAULT NULL,
   `PlatformParamDesc` VARCHAR(70) NULL DEFAULT NULL,
@@ -1584,16 +1584,14 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_platformparams` (
   INDEX `IDX_refdata_platformparams` (`PlatformParamsID` ASC, `PlatformParamDesc` ASC, `PlatformParamValues` ASC, `CreatedDate` ASC, `StatusID` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_platformparams_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-
-
 -- -----------------------------------------------------
--- Table `datasynthesis`.`refdata_platformparamstodataattributes`
+-- Table `refdata_platformparamstodataattributes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_platformparamstodataattributes` (
+CREATE TABLE IF NOT EXISTS `refdata_platformparamstodataattributes` (
   `PlatformParamsToDataAttributeID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `PlatformParamsID` SMALLINT(6) NULL DEFAULT NULL,
   `DataAttributeID` SMALLINT(6) NULL DEFAULT NULL,
@@ -1608,16 +1606,16 @@ CREATE TABLE IF NOT EXISTS `datasynthesis`.`refdata_platformparamstodataattribut
   INDEX `IDX_refdata_platformparamstodataattributes` (`PlatformParamsToDataAttributeID` ASC, `PlatformParamsID` ASC, `DataAttributeID` ASC, `CreatedDate` ASC, `StatusID` ASC, `RegisteredApp` ASC) VISIBLE,
   CONSTRAINT `FK_refdata_platformparamstodataattributes_dataattributes`
     FOREIGN KEY (`DataAttributeID`)
-    REFERENCES `datasynthesis`.`platform_dataattributes` (`PlatformDataAttributesID`),
+    REFERENCES `platform_dataattributes` (`PlatformDataAttributesID`),
   CONSTRAINT `FK_refdata_platformparamstodataattributes_platformparams`
     FOREIGN KEY (`PlatformParamsID`)
-    REFERENCES `datasynthesis`.`refdata_platformparams` (`PlatformParamsID`),
+    REFERENCES `refdata_platformparams` (`PlatformParamsID`),
   CONSTRAINT `FK_refdata_platformparamstodataattributes_registeredapp`
     FOREIGN KEY (`RegisteredApp`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
+    REFERENCES `refdata_application` (`AppGUID`),
   CONSTRAINT `FK_refdata_platformparamstodataattributes_status`
     FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
+    REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
@@ -1637,175 +1635,67 @@ CREATE TABLE  IF NOT EXISTS `refdata_terminologystd` (
     ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-
--- -----------------------------------------------------
--- Table `datasynthesis`.`tasks`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`tasks` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `task` VARCHAR(200) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT '1',
-  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
-
--- -----------------------------------------------------
--- Table `datasynthesis`.`terms_codesetmetadata`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`terms_codesetmetadata` (
-  `CodeSetStructuresID` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `CodeSetStructureName` VARCHAR(50) NULL DEFAULT NULL,
-  `IndustryStd` VARCHAR(6) NULL DEFAULT NULL,
-  `StatusID` SMALLINT(6) NULL DEFAULT '1',
-  `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `CreatedUser` VARCHAR(20) NULL DEFAULT NULL,
-  `CodesetStructureGUID` CHAR(38) NULL DEFAULT NULL,
-  `Field1Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field2Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field3Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field4Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field5Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field6Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field7Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field8Value` VARCHAR(75) NULL DEFAULT NULL,
-  `Field9Value` VARCHAR(75) NULL DEFAULT NULL,
-  `SensitivityFlagID` SMALLINT(6) NULL DEFAULT NULL,
-  `CodesetsID` BIGINT(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`CodeSetStructuresID`),
-  INDEX `FK_terms_codesetmetadata_industrystd` (`IndustryStd` ASC) VISIBLE,
-  INDEX `FK_terms_codesetmetadata_sensitivityflag` (`SensitivityFlagID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetmetadata_status` (`StatusID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetmetadata_codesets` (`CodesetsID` ASC) VISIBLE,
-  INDEX `IDX_terms_codesetmetadata1` (`CodeSetStructuresID` ASC, `CodeSetStructureName` ASC, `IndustryStd` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `CodesetStructureGUID` ASC, `CodesetsID` ASC) VISIBLE,
-  INDEX `IDX_terms_codesetmetadata2` (`Field1Value` ASC, `Field2Value` ASC, `Field3Value` ASC, `Field4Value` ASC, `Field5Value` ASC, `Field6Value` ASC, `Field7Value` ASC, `Field8Value` ASC, `Field9Value` ASC, `SensitivityFlagID` ASC) VISIBLE,
-  CONSTRAINT `FK_terms_codesetmetadata_codesets`
-    FOREIGN KEY (`CodesetsID`)
-    REFERENCES `datasynthesis`.`refdata_codeset` (`CodeSetsID`),
-  CONSTRAINT `FK_terms_codesetmetadata_industrystd`
-    FOREIGN KEY (`IndustryStd`)
-    REFERENCES `datasynthesis`.`refdata_industrystd` (`IndustryStd`),
-  CONSTRAINT `FK_terms_codesetmetadata_sensitivityflag`
-    FOREIGN KEY (`SensitivityFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
-  CONSTRAINT `FK_terms_codesetmetadata_status`
-    FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
-
--- -----------------------------------------------------
--- Table `datasynthesis`.`terms_codesetstoapplication`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`terms_codesetstoapplication` (
-  `CodeSetToApplicationID` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `CodeSetsID` BIGINT(20) NOT NULL,
-  `Domain` VARCHAR(50) NULL DEFAULT NULL,
-  `IndustryStd` VARCHAR(6) NULL DEFAULT NULL,
-  `SpecificDetails` VARCHAR(99) NULL DEFAULT NULL,
-  `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `StatusID` SMALLINT(6) NULL DEFAULT '1',
-  `CreatedUser` VARCHAR(20) NULL DEFAULT NULL,
-  `OrganizationID` VARCHAR(38) NULL DEFAULT NULL,
-  `ApplicationID` VARCHAR(38) NULL DEFAULT NULL,
-  `VendorID` INT NULL DEFAULT NULL,
-  `CodeValue` VARCHAR(20) NULL DEFAULT NULL,
-  `CodeDesc` VARCHAR(129) NULL DEFAULT NULL,
-  `SensitiveFlagID` SMALLINT(6) NULL DEFAULT NULL,
-  PRIMARY KEY (`CodeSetToApplicationID`),
-  INDEX `FK_terms_codesetstoapplication_Application` (`ApplicationID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplication_Org` (`OrganizationID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplication_industrystd` (`IndustryStd` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplication_status` (`StatusID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplication_sensitiveflag` (`SensitiveFlagID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplication_codeset` (`CodeSetsID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplication_Vendor` (`VendorID` ASC) VISIBLE,
-  INDEX `IDX_Terms_CodeSetsToApplication` (`CodeSetToApplicationID` ASC, `CodeSetsID` ASC, `Domain` ASC, `IndustryStd` ASC, `SpecificDetails` ASC, `CreatedDate` ASC, `CreatedUser` ASC, `OrganizationID` ASC, `ApplicationID` ASC, `StatusID` ASC, `VendorID` ASC, `SensitiveFlagID` ASC) VISIBLE,
-  CONSTRAINT `FK_terms_codesetstoapplication_Application`
-    FOREIGN KEY (`ApplicationID`)
-    REFERENCES `datasynthesis`.`refdata_application` (`AppGUID`),
-  CONSTRAINT `FK_terms_codesetstoapplication_codeset`
-    FOREIGN KEY (`CodeSetsID`)
-    REFERENCES `datasynthesis`.`refdata_codeset` (`CodeSetsID`),
-  CONSTRAINT `FK_terms_codesetstoapplication_industrystd`
-    FOREIGN KEY (`IndustryStd`)
-    REFERENCES `datasynthesis`.`refdata_industrystd` (`IndustryStd`),
-  CONSTRAINT `FK_terms_codesetstoapplication_Org`
-    FOREIGN KEY (`OrganizationID`)
-    REFERENCES `datasynthesis`.`refdata_organization` (`OrganizationGUID`),
-  CONSTRAINT `FK_terms_codesetstoapplication_sensitiveflag`
-    FOREIGN KEY (`SensitiveFlagID`)
-    REFERENCES `datasynthesis`.`refdata_sensitivityflag` (`SensitiveFlagID`),
-  CONSTRAINT `FK_terms_codesetstoapplication_status`
-    FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`),
-  CONSTRAINT `FK_terms_codesetstoapplication_Vendor`
-    FOREIGN KEY (`VendorID`)
-    REFERENCES `datasynthesis`.`refdata_vendor` (`VendorID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
--- datasynthesis.terms_codesetscrossmaps definition
-CREATE TABLE IF NOT EXISTS `terms_codesetscrossmaps` (
-                                           `CodeSetCrossMapID` bigint NOT NULL AUTO_INCREMENT,
-                                           `CodeSetsID` bigint NOT NULL,
-                                           `CodeSetToApplicationID` BIGINT,
-                                           `TerminologyStd` smallint DEFAULT NULL,
-                                           `SpecificDetails` varchar(99) DEFAULT NULL,
-    `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
-    `StatusID` smallint DEFAULT '1',
-    `CreatedUser` varchar(20) DEFAULT NULL,
-    `CodeValue` varchar(20) DEFAULT NULL,
-    `CodeDesc` varchar(129) DEFAULT NULL,
-    PRIMARY KEY (`CodeSetCrossMapID`),
-    KEY `FK_termscodesetscrossmap_codeset` (`CodeSetsID`),
-    KEY `FK_termscodesetscrossmap_status` (`StatusID`),
-    KEY `FK_termscodesetscrossmaps_termstd` (`TerminologyStd`),
-    KEY `IDX_Terms_CodeSetsCrossmap` (`CodeSetCrossMapID`,`CodeSetsID`,`CodeSetToApplicationID`,`TerminologyStd`,`SpecificDetails`,`CreatedDate`,`CreatedUser`,`StatusID`,`CodeValue`,`CodeDesc`),
-    CONSTRAINT `FK_termscodesetscrossmap_codeset` FOREIGN KEY (`CodeSetsID`) REFERENCES `refdata_codeset` (`CodeSetsID`),
-    CONSTRAINT `FK_termscodesetscrossmap_codesettoapp` FOREIGN KEY (`CodeSeToApplicationID`) REFERENCES `terms_codesetstoapplication` (`CodeSetToApplicationID`),
-    CONSTRAINT `FK_termscodesetscrossmap_status` FOREIGN KEY (`StatusID`) REFERENCES `refdata_status` (`StatusID`),
-    CONSTRAINT `FK_termscodesetscrossmaps_termstd` FOREIGN KEY (`TerminologyStd`) REFERENCES `refdata_terminologystd` (`TerminologyStdID`)
-    )
+CREATE TABLE IF NOT EXISTS terms_codesetstoapplication
+(
+    CodeSetToApplicationID bigint auto_increment primary key,
+    CodeSetsID bigint not null,
+    CreatedDate datetime default CURRENT_TIMESTAMP null,
+    StatusID smallint default 1 null,
+    OrganizationID varchar(38) null,
+    ApplicationID varchar(38) null,
+    CodeValue varchar(20) null,
+    CodeDesc varchar(129) null,
+    FormalName varchar(45) null,
+    Address varchar(45) null,
+    CityStateZip varchar(99) null,
+    PhoneNumber varchar(20) null,
+    OtherField1 varchar(49) null,
+    OtherField2 varchar(49) null,
+    TermLow varchar(25) null,
+    TermHigh varchar(25) null,
+    constraint FK_terms_codesetstoapplication_Application
+        foreign key (ApplicationID) references refdata_application (AppGUID),
+    constraint FK_terms_codesetstoapplication_Org
+        foreign key (OrganizationID) references refdata_organization (OrganizationGUID),
+    constraint FK_terms_codesetstoapplication_codeset
+        foreign key (CodeSetsID) references refdata_codeset (CodeSetsID),
+    constraint FK_terms_codesetstoapplication_status
+        foreign key (StatusID) references refdata_status (StatusID)
+)
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = latin1;
 
+create index IDX_Terms_CodeSetsToApplication
+    on terms_codesetstoapplication (CodeSetToApplicationID, CodeSetsID, CodeValue, CodeDesc, CreatedDate, OrganizationID, ApplicationID, StatusID, FormalName, Address, CityStateZip, PhoneNumber, OtherField1, OtherField2, TermLow, TermHigh);
 
--- -----------------------------------------------------
--- Table `datasynthesis`.`terms_codesetstoapplicationvalues`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `datasynthesis`.`terms_codesetstoapplicationvalues` (
-  `CodeSetToApplicationValuesID` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `CodeSetToApplicationID` BIGINT(20) NULL DEFAULT NULL,
-  `CodeSetsID` BIGINT(20) NOT NULL,
-  `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `StatusID` SMALLINT(6) NULL DEFAULT '1',
-  `CreatedUser` VARCHAR(20) NULL DEFAULT NULL,
-  `TermValue` VARCHAR(20) NULL DEFAULT NULL,
-  `TermValueLow` VARCHAR(10) NULL DEFAULT NULL,
-  `TermValueHigh` VARCHAR(10) NULL DEFAULT NULL,
-  PRIMARY KEY (`CodeSetToApplicationValuesID`),
-  INDEX `FK_terms_codesetstoapplicationvalues_codeset` (`CodeSetsID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplicationvalues_status` (`StatusID` ASC) VISIBLE,
-  INDEX `FK_terms_codesetstoapplicationvalues_codesettoapp` (`CodeSetToApplicationID` ASC) VISIBLE,
-  INDEX `IDX_Terms_CodeSetsToApplicationValues` (`CodeSetToApplicationValuesID` ASC, `CodeSetToApplicationID` ASC, `CodeSetsID` ASC, `CreatedDate` ASC, `CreatedUser` ASC, `StatusID` ASC, `TermValue` ASC, `TermValueLow` ASC, `TermValueHigh` ASC) VISIBLE,
-  CONSTRAINT `FK_terms_codesetstoapplicationvalues_codeset`
-    FOREIGN KEY (`CodeSetsID`)
-    REFERENCES `datasynthesis`.`refdata_codeset` (`CodeSetsID`),
-  CONSTRAINT `FK_terms_codesetstoapplicationvalues_codesettoapp`
-    FOREIGN KEY (`CodeSetToApplicationID`)
-    REFERENCES `datasynthesis`.`terms_codesetstoapplication` (`CodeSetToApplicationID`),
-  CONSTRAINT `FK_terms_codesetstoapplicationvalues_status`
-    FOREIGN KEY (`StatusID`)
-    REFERENCES `datasynthesis`.`refdata_status` (`StatusID`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+create table terms_codesetscrossmaps
+(
+    CodeSetCrossMapID bigint auto_increment
+        primary key,
+    CodeSetsID bigint not null,
+    CodeSetToApplicationID bigint null,
+    TerminologyStd smallint null,
+    SpecificDetails varchar(99) null,
+    CreatedDate datetime default CURRENT_TIMESTAMP null,
+    StatusID smallint default 1 null,
+    CreatedUser varchar(20) null,
+    CodeValue varchar(20) null,
+    CodeDesc varchar(129) null,
+    constraint FK_terms_codesetscrossmap_codesettoapp
+        foreign key (CodeSetToApplicationID) references terms_codesetstoapplication (CodeSetToApplicationID),
+    constraint FK_termscodesetscrossmap_codeset
+        foreign key (CodeSetsID) references refdata_codeset (CodeSetsID),
+    constraint FK_termscodesetscrossmap_status
+        foreign key (StatusID) references refdata_status (StatusID),
+    constraint FK_termscodesetscrossmaps_termstd
+        foreign key (TerminologyStd) references refdata_terminologystd (TerminologyStdID)
+)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = latin1
 
-
+create index IDX_Terms_CodeSetsCrossmap
+    on terms_codesetscrossmaps (CodeSetCrossMapID, CodeSetsID, TerminologyStd, SpecificDetails,
+                                CreatedDate, CreatedUser, StatusID, CodeValue, CodeDesc);
 
 DELIMITER $$
 
