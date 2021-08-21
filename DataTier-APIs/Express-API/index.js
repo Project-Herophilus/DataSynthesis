@@ -85,22 +85,7 @@ app.get('/dataexisting_areacode', function (req, res) {
 
     });
 });
-/**
- * @swagger
- * /dataexisting_areacode:
- *   put:
- *     description: Gets All the areacodes specific to a state
- *     parameters:
- *     - name: StateCode
- *       description: The State Specified
- *       in: formData
- *       required: true
- *       type: String
- *     responses:
- *       201:
- *         description: Created
- *
- */
+
 //rest api to get a area codes by state
 // Example: http://localhost:3000/dataexisting_areacode/CA
 app.get('/dataexisting_areacode/:statecode', function (req, res) {
@@ -381,6 +366,7 @@ app.get('/vendors', function (req, res) {
 /*
 *     Terms Data
 */
+
 
 
 /*
