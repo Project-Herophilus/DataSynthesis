@@ -21,8 +21,6 @@ CREATE TABLE IF NOT EXISTS `refdata_status` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-
-
 -- -----------------------------------------------------
 -- Table `auditing_dataplatform`
 -- -----------------------------------------------------
@@ -47,8 +45,6 @@ CREATE TABLE IF NOT EXISTS `auditing_dataplatform` (
     REFERENCES `refdata_status` (`StatusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
-
-
 
 -- -----------------------------------------------------
 -- Table `auditing_datarequest`

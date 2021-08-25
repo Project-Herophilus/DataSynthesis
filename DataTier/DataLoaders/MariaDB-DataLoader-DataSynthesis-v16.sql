@@ -60,7 +60,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 source ReferenceData\1-refdata_status.sql
 source ReferenceData\2-refdata_timezones.sql
 source ReferenceData\3-refdata_usstates.sql
-source ReferenceData\4-refdata_organization.sql
+source ReferenceData\impl_organization.sql
 source ReferenceData\5-refdata_vendor.sql
 source ReferenceData\6-refdata_application.sql
 source ReferenceData\7-refdata_industrystd.sql
@@ -68,7 +68,7 @@ source ReferenceData\8-refdata_sensitivityflag.sql
 source ReferenceData\9-refdata_codeset.sql
 source ReferenceData\refdata_countries.sql
 source ReferenceData\refdata_operationtype.sql
-source Other\datamodel_datatables.sql
+source Other\old-datamodel_datatables.sql
 source Platform\1-platform_dataattributes.sql
 source ReferenceData\10-refdata_datagentypes.sql
 source Platform\2-platform_datastructures.sql

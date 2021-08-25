@@ -1,68 +1,63 @@
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('auditing_dataplatform', 'Platform Auditing - Data Requests Made from Within the Platform', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('auditing_datarequest', 'Platform Auditing - Data Requests Made within the platform', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_address', 'Platform Built Addresses - Address, City, State, Zip', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_bankaccount', 'Platform Built Bank Account Number/Bank Name', 1, '2020-10-08 01:07:56');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_corporations', 'Platform Built Complete Corp Name and Address', 1, '2020-10-08 01:07:56');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_names', 'Platform Built Full Name - (LastName, FirstName)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_persondemographics', 'Platform Built Demographics DLN, SSN and DOB', 1, '2020-10-08 01:10:05');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_phonenumbers', 'Platform Built Phone Numbers (Area Code and Phone Numbers)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('databuilt_products', 'Product UPC and Product Name', 1, '2020-10-08 01:07:56');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_ababanking', 'Data Freely Available Implemented -  ABABanking Data', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_areacode', 'Data Freely Available Implemented -  Area Codes', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_areacodeintl', 'Data Freely Available Implemented -  Area Codes International', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_companies', 'Data Freely Available Implemented -  SEC Named Companies', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_namefirst', 'Data Freely Available Implemented -  First Names (Baseline from avaiable data and can be added to)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_namelast', 'Data Freely Available Implemented -  Last Names (Baseline from avaiable data and can be added to)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_upccodes', 'Data Freely Available Implemented - UPC Product Codes', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_zipcodeintl', 'Not Populated Yet but meant for International Zip Code Lists', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('dataexisting_zipcodeus', 'Data Freely Available Implemented - US Zip Codes', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_accountnumbers', 'Data to represent Account Numbers for many uses', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_addresses', 'Data to represent Address Street Names - Comes from Algorithm for street address, direction and street name (pulled from last name)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_bankaccount', 'Data to represent bank account numnbers', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_creditcard', 'Data to represent credit cards', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_dateofbirth', 'Data to represent dates of birth', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_driverslicenses', 'Data to represent Drivers License Numbers - Formats are legitimate per state. For states with multiple formats we have defined one', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_ein', 'Data to represent EIN (Employer Identification Number)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_phonenumber', 'Data To represent phone numbers without area code', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_phonenumbersintl', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_socialsecuritynumber', 'Data To represent Social Security Numbers', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datagenerated_useridentities', 'Data to represent User Identities - could be used within many data structures for many uses', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('datamodel_datatables', 'This table for data model details and explanations', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_delimiteddatamapdetailtocodesets', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_delimiteddatamapdetailtodataattributes', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_delimiteddatamapdetailtovendordatamodel', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_delimiteddatamappingdetail', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_delimiteddatamappingheader', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_hcinterfacedatamapdetail', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_hcinterfacedatamapdetailtocodesets', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_hcinterfacedatamapdetailtodataattributes', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_hcinterfacedatamapdetailtovendordatamodel', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_hcinterfacedatamapheader', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_vendordatamappingdetail', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_vendordatamappingdetailtocodesets', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_vendordatamappingdetailtodataattributes', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('map_vendordatamappingheader', 'Future Usage', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_appsetting', 'Platform Settings - Application Settings', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_config_datagen', 'Platform Settings - Data Generation Configuration for automated data building', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_dataattributes', 'Platform Settings - Data Attributes in Platform (Data Existing and Data Generated Tables)', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_datastructures', 'Platform - Data Structures Defined', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_datastructurestodataattributes', 'Platform - Data Structures Associated to Data Attributes', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_rulesets', 'Platform Rulesets - Rule Names', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('platform_rulesetsdefinitions', 'Platform Rulesets - Defined Ruleset Details', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_addressformattype', 'Platform Reference Data - Address Types ', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_application', 'Platform Reference Data - Applications ', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_codeset', 'Platform Reference Data - Codesets Supported within Platform', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_codesetstructures', 'Defined Values that would be in codesets to represent specific test code val', 1, '2020-08-05 09:48:22');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_countries', 'Platform Reference Data - Countries', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_industrystd', 'Platform Reference Data - Supported or Upcoming Industry Stds supported', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_operationtype', 'Platform Reference Data - Operations of Information and Rules', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_organization', 'Platform Reference Data - Organizations Using Platform', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_platformparams', 'Params Used in Platform', 1, '2021-02-07 03:04:57');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_platformparamstodataattributes', 'Associate Platform Params to Defined Data Attributes', 1, '2021-02-07 03:04:57');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_sensitivityflag', 'Platform Reference Data - Sensitivty Levels of Data', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_status', 'Platform Reference Data - Statuses of Data', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_timezones', 'Platform Reference Data - Time Zones', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_usstates', 'Platform Reference Data - US States', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('refdata_vendor', 'Platform Reference Data - Vendors', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('terms_codesetstoapplication', 'Terminology Data - CodeSet To Defined Applications', 1, '2020-08-04 22:18:04');
-INSERT INTO datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate) VALUES ('terms_codessettoapplicationvalues', 'Specific Terminology Values for Terms', 1, '2021-02-07 03:04:57');
+insert into datamodel_datatables (TableName, TableInformation, StatusID, CreatedDate)
+values  ('auditing_dataplatform', 'Platform Auditing - Data Requests Made from Within the Platform', 1, '2020-08-04 22:18:04'),
+        ('auditing_datarequest', 'Platform Auditing - Data Requests Made within the platform', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_ababanking', 'Data Freely Available Implemented -  ABABanking Data', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_areacode', 'Data Freely Available Implemented -  Area Codes', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_areacodeintl', 'Data Freely Available Implemented -  Area Codes International', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_companies', 'Data Freely Available Implemented -  SEC Named Companies', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_namefirst', 'Data Freely Available Implemented -  First Names (Baseline from avaiable data and can be added to)', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_namelast', 'Data Freely Available Implemented -  Last Names (Baseline from avaiable data and can be added to)', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_upccodes', 'Data Freely Available Implemented - UPC Product Codes', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_zipcodeintl', 'Not Populated Yet but meant for International Zip Code Lists', 1, '2020-08-04 22:18:04'),
+        ('dataexisting_zipcodeus', 'Data Freely Available Implemented - US Zip Codes', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_accountnumbers', 'Data to represent Account Numbers for many uses', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_addresses', 'Data to represent Address Street Names - Comes from Algorithm for street address, direction and street name (pulled from last name)', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_bankaccount', 'Data to represent bank account numnbers', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_creditcard', 'Data to represent credit cards', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_dateofbirth', 'Data to represent dates of birth', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_driverslicenses', 'Data to represent Drivers License Numbers - Formats are legitimate per state. For states with multiple formats we have defined one', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_ein', 'Data to represent EIN (Employer Identification Number)', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_phonenumber', 'Data To represent phone numbers without area code', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_phonenumbersintl', 'Future Usage', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_socialsecuritynumber', 'Data To represent Social Security Numbers', 1, '2020-08-04 22:18:04'),
+        ('datagenerated_useridentities', 'Data to represent User Identities - could be used within many data structures for many uses', 1, '2020-08-04 22:18:04'),
+        ('datamodel_datatables', 'This table for data model details and explanations', 1, '2020-08-04 22:18:04'),
+        ('datamodel_domain', 'Reference for all domains within the database x_', 1, '2021-08-25 15:37:45'),
+        ('datastructure_address', 'Composite Data Structure for Addresses', 1, '2021-08-25 14:52:34'),
+        ('datastructure_bankaccount', 'Composite Data Structure for Bank Accounts', 1, '2021-08-25 14:52:34'),
+        ('datastructure_corporations', 'Composite Data Structure for Corporations', 1, '2021-08-25 14:52:34'),
+        ('datastructure_names', 'Composite Data Structure for Complete Names', 1, '2021-08-25 14:52:34'),
+        ('datastructure_persondemographics', 'Composite Data Structure for Person Demographcs', 1, '2021-08-25 14:52:34'),
+        ('datastructure_phonenumber', 'Composite Data Structure for Phone Numbers', 1, '2021-08-25 14:52:34'),
+        ('datastructure_phonenumberintl', 'Composite Data Structure for Phone Numbers - Intl.', 1, '2021-08-25 14:52:35'),
+        ('datastructure_products', 'Composite Data Structure for Products', 1, '2021-08-25 14:52:35'),
+        ('impl_application', 'Implementation Specific Applications ', 1, '2020-08-04 22:18:04'),
+        ('impl_codesetstoapplication', 'Implementation Specific Terminology Data - CodeSet To Defined Applications', 1, '2020-08-04 22:18:04'),
+        ('impl_codesettomsgtype', 'Implementation Specific Codeset to Specific Msg Type Mapping', 1, '2021-08-25 15:24:05'),
+        ('impl_codessetscrossmap', 'Impl Specific CrossMaps of terms', 1, '2021-02-07 03:04:57'),
+        ('impl_legalentities', 'Implementation Specific Legal Enties - Level Above Orgs', 1, '2021-08-25 15:23:15'),
+        ('impl_organization', 'Implementation Specific - Organizations Using Platform', 1, '2020-08-04 22:18:04'),
+        ('impl_rulesets', 'Implementation Specific Rulesets - Named', 1, '2021-08-25 15:23:15'),
+        ('impl_rulesetsdefintions', 'Implementation Specific Detail and Defined Rulesets', 1, '2021-08-25 15:23:15'),
+        ('platform_appsetting', 'Platform Settings - Application Settings', 1, '2020-08-04 22:18:04'),
+        ('platform_config_datagen', 'Platform Settings - Data Generation Configuration for automated data building', 1, '2020-08-04 22:18:04'),
+        ('platform_dataattributes', 'Platform Settings - Data Attributes in Platform (Data Existing and Data Generated Tables)', 1, '2020-08-04 22:18:04'),
+        ('platform_datastructures', 'Platform - Data Structures Defined', 1, '2020-08-04 22:18:04'),
+        ('platform_datastructurestodataattributes', 'Platform - Data Structures Associated to Data Attributes', 1, '2020-08-04 22:18:04'),
+        ('platform_rulesets', 'Platform Rulesets - Rule Names', 1, '2020-08-04 22:18:04'),
+        ('platform_rulesetsdefinitions', 'Platform Rulesets - Defined Ruleset Details', 1, '2020-08-04 22:18:04'),
+        ('refdata_codeset', 'Platform Reference Data - Codesets Supported within Platform', 1, '2020-08-04 22:18:04'),
+        ('refdata_countries', 'Platform Reference Data - Countries', 1, '2020-08-04 22:18:04'),
+        ('refdata_datagentypes', 'Specific Types of Data Generations The Platform is doing', 1, '2021-08-25 15:26:19'),
+        ('refdata_industrystd', 'Platform Reference Data - Supported or Upcoming Industry Stds supported', 1, '2020-08-04 22:18:04'),
+        ('refdata_operationtype', 'Platform Reference Data - Operations of Information and Rules', 1, '2020-08-04 22:18:04'),
+        ('refdata_platformparams', 'Params Used in Platform', 1, '2021-02-07 03:04:57'),
+        ('refdata_platformparamstodataattributes', 'Associate Platform Params to Defined Data Attributes', 1, '2021-02-07 03:04:57'),
+        ('refdata_sensitivityflag', 'Platform Reference Data - Sensitivty Levels of Data', 1, '2020-08-04 22:18:04'),
+        ('refdata_status', 'Platform Reference Data - Statuses of Data', 1, '2020-08-04 22:18:04'),
+        ('refdata_terminologystd', 'Reference Data - All Supprted Terminology Stds', 1, '2021-08-25 15:27:33'),
+        ('refdata_timezones', 'Platform Reference Data - Time Zones', 1, '2020-08-04 22:18:04'),
+        ('refdata_usstates', 'Platform Reference Data - US States', 1, '2020-08-04 22:18:04'),
+        ('refdata_vendor', 'Platform Reference Data - Vendors', 1, '2020-08-04 22:18:04'),
+        ('terms_codeset_HL7v2', 'Specific Terminologies ONLY Intended for HL7v2 standard terms', 1, '2021-08-25 15:28:27'),
+        ('terms_umls_mrconso', 'Loaded UMLS MrConso Data Files of 16.xM terms', 1, '2021-08-25 15:34:04');

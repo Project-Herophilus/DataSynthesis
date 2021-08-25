@@ -4,7 +4,7 @@ psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\1-refdata_stat
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\1-refdata_status.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\2-refdata_timezones.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\3-refdata_usstates.sql
-psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\4-refdata_organization.sql
+psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\impl_organization.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\5-refdata_vendor.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\6-refdata_application.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\7-refdata_industrystd.sql
@@ -12,7 +12,7 @@ psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\8-refdata_sens
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\9-refdata_codeset.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\refdata_countries.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\refdata_operationtype.sql
-psql datasynthesis -h 127.0.0.1 -d datasynthesis -f Other\datamodel_datatables.sql
+psql datasynthesis -h 127.0.0.1 -d datasynthesis -f Other\old-datamodel_datatables.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f Platform\1-platform_dataattributes.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f ReferenceData\10-refdata_datagentypes.sql
 psql datasynthesis -h 127.0.0.1 -d datasynthesis -f Platform\2-platform_datastructures.sql
