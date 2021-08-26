@@ -57,13 +57,12 @@ TRUNCATE TABLE impl_organization;
 TRUNCATE TABLE impl_rulesets;
 TRUNCATE TABLE impl_rulesetsdefinitions;
 TRUNCATE TABLE platform_appsettings_general;
-TRUNCATE TABLE platform_appsettings_dataattributes;
 TRUNCATE TABLE platform_config_datagen;
 TRUNCATE TABLE platform_dataattributes;
 TRUNCATE TABLE platform_datastructures;
 TRUNCATE TABLE platform_datastructurestodataattributes;
 TRUNCATE TABLE terms_codeset_HL7v2;
-TRUNCATE TABLE terms_umls_mrconso;
+TRUNCATE TABLE terms_umls_mrconoso;
 SET FOREIGN_KEY_CHECKS = 1;
 source ./ReferenceData/1-refdata_status.sql
 source ./ReferenceData/2-refdata_timezones.sql
@@ -74,7 +73,6 @@ source ./ReferenceData/8-refdata_sensitivityflag.sql
 source ./ReferenceData/9-refdata_codeset.sql
 source ./ReferenceData/refdata_countries.sql
 source ./ReferenceData/refdata_operationtype.sql
-source ./ReferenceData/refdata_sensitivityflag.sql
 source ./ReferenceData/refdata_terminologystd.sql
 source ./Implementation/impl_legalentities.sql
 source ./Implementation/impl_organization.sql

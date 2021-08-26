@@ -57,62 +57,59 @@ TRUNCATE TABLE impl_organization;
 TRUNCATE TABLE impl_rulesets;
 TRUNCATE TABLE impl_rulesetsdefinitions;
 TRUNCATE TABLE platform_appsettings_general;
-TRUNCATE TABLE platform_appsettings_dataattributes;
 TRUNCATE TABLE platform_config_datagen;
 TRUNCATE TABLE platform_dataattributes;
 TRUNCATE TABLE platform_datastructures;
 TRUNCATE TABLE platform_datastructurestodataattributes;
 TRUNCATE TABLE terms_codeset_HL7v2;
-TRUNCATE TABLE terms_umls_mrconso;
+TRUNCATE TABLE terms_umls_mrconoso;
 SET FOREIGN_KEY_CHECKS = 1;
-source \ReferenceData\1-refdata_status.sql
-source \ReferenceData\2-refdata_timezones.sql
-source \ReferenceData\3-refdata_usstates.sql
-source \ReferenceData\5-refdata_vendor.sql
-source \ReferenceData\7-refdata_industrystd.sql
-source \ReferenceData\8-refdata_sensitivityflag.sql
-source \ReferenceData\9-refdata_codeset.sql
-source \ReferenceData\refdata_countries.sql
-source \ReferenceData\refdata_operationtype.sql
-source \ReferenceData\refdata_sensitivityflag.sql
-source \ReferenceData\refdata_terminologystd.sql
-source \Implementation\impl_legalentities.sql
-source \Implementation\impl_organization.sql
-source \Implementation\impl_application.sql
-source \Other\datamodel_datatables.sql
-source \Other\datamodel_domain.sql
-source \Platform\1-platform_dataattributes.sql
-source \ReferenceData\10-refdata_datagentypes.sql
-source \Platform\2-platform_datastructures.sql
-source \Platform\3-platform_datastructurestodataattributes.sql
-source \Platform\platform_appsettings_dataattributes.sql
-source \Platform\platform_config_datagen.sql
-source \DataExisting\dataexisting_ababanking.sql
-source \DataExisting\dataexisting_areacode.sql
-source \DataExisting\dataexisting_companies.sql
-source \DataExisting\dataexisting_namefirst_1.sql
-source \DataExisting\dataexisting_namefirst_2.sql
-source \DataExisting\dataexisting_namefirst_3.sql
-source \DataExisting\dataexisting_namelast_1.sql
-source \DataExisting\dataexisting_namelast_2.sql
-source \DataExisting\dataexisting_namelast_3.sql
-source \DataExisting\dataexisting_namelast_4.sql
-source \DataExisting\dataexisting_namelast_5.sql
-source \DataExisting\dataexisting_namelast_6.sql
-source \DataExisting\dataexisting_upccodes.sql
-source \DataExisting\dataexisting_zipcodeus.sql
-source \DataGenerated\datagenerated_accountnumber.sql
-source \DataGenerated\datagenerated_addresses.sql
-source \DataGenerated\datagenerated_bankaccount.sql
-source \DataGenerated\datagenerated_creditcard.sql
-source \DataGenerated\datagenerated_dateofbirth.sql
-source \DataGenerated\datagenerated_driverslicenses_1.sql
-source \DataGenerated\datagenerated_driverslicenses_2.sql
-source \DataGenerated\datagenerated_driverslicenses_3.sql
-source \DataGenerated\datagenerated_phonenumber.sql
-source \DataGenerated\datagenerated_socialsecuritynumber.sql
-source \DataGenerated\datagenerated_useridentities.sql
-source \Terms\terms_umls_mrconoso.sql
-source \Terms\terms_umls_mrconoso_2.sql
-source \Terms\terms_umls_mrconoso_3.sql
-source \Terms\terms_umls_mrconoso_4.sql
+source ReferenceData\1-refdata_status.sql
+source ReferenceData\2-refdata_timezones.sql
+source ReferenceData\3-refdata_usstates.sql
+source ReferenceData\5-refdata_vendor.sql
+source ReferenceData\7-refdata_industrystd.sql
+source ReferenceData\8-refdata_sensitivityflag.sql
+source ReferenceData\9-refdata_codeset.sql
+source ReferenceData\refdata_countries.sql
+source ReferenceData\refdata_operationtype.sql
+source ReferenceData\refdata_terminologystd.sql
+source Implementation\impl_legalentities.sql
+source Implementation\impl_organization.sql
+source Implementation\impl_application.sql
+source Other\datamodel_datatables.sql
+source Other\datamodel_domain.sql
+source Platform\1-platform_dataattributes.sql
+source ReferenceData\10-refdata_datagentypes.sql
+source Platform\2-platform_datastructures.sql
+source Platform\3-platform_datastructurestodataattributes.sql
+source Platform\platform_config_datagen.sql
+source DataExisting\dataexisting_ababanking.sql
+source DataExisting\dataexisting_areacode.sql
+source DataExisting\dataexisting_companies.sql
+source DataExisting\dataexisting_namefirst_1.sql
+source DataExisting\dataexisting_namefirst_2.sql
+source DataExisting\dataexisting_namefirst_3.sql
+source DataExisting\dataexisting_namelast_1.sql
+source DataExisting\dataexisting_namelast_2.sql
+source DataExisting\dataexisting_namelast_3.sql
+source DataExisting\dataexisting_namelast_4.sql
+source DataExisting\dataexisting_namelast_5.sql
+source DataExisting\dataexisting_namelast_6.sql
+source DataExisting\dataexisting_upccodes.sql
+source DataExisting\dataexisting_zipcodeus.sql
+source DataGenerated\datagenerated_accountnumber.sql
+source DataGenerated\datagenerated_addresses.sql
+source DataGenerated\datagenerated_bankaccount.sql
+source DataGenerated\datagenerated_creditcard.sql
+source DataGenerated\datagenerated_dateofbirth.sql
+source DataGenerated\datagenerated_driverslicenses_1.sql
+source DataGenerated\datagenerated_driverslicenses_2.sql
+source DataGenerated\datagenerated_driverslicenses_3.sql
+source DataGenerated\datagenerated_phonenumber.sql
+source DataGenerated\datagenerated_socialsecuritynumber.sql
+source DataGenerated\datagenerated_useridentities.sql
+source Terms\terms_umls_mrconoso.sql
+source Terms\terms_umls_mrconoso_2.sql
+source Terms\terms_umls_mrconoso_3.sql
+source Terms\terms_umls_mrconoso_4.sql

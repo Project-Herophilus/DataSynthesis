@@ -1485,9 +1485,9 @@ DROP TABLE IF EXISTS `refdata_terminologystd` ;
 
 CREATE TABLE IF NOT EXISTS `refdata_terminologystd` (
                                                         `TerminologyStdID` SMALLINT NOT NULL AUTO_INCREMENT,
-                                                        `TerminologyStd` VARCHAR(12) NOT NULL,
+                                                        `TerminologyStd` VARCHAR(25) NOT NULL,
     `TerminologyStdVersion` VARCHAR(10) NOT NULL,
-    `TerminologyStdDesc` VARCHAR(30) NULL DEFAULT NULL,
+    `TerminologyStdDesc` VARCHAR(129) NULL DEFAULT NULL,
     `CreatedDate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     `StatusID` SMALLINT NULL DEFAULT '1',
     PRIMARY KEY (`TerminologyStdID`),
@@ -1545,9 +1545,9 @@ CREATE INDEX `FK_terms_codesetscrossmap_codesettoapp` ON `impl_codesetscrossmaps
 -- -----------------------------------------------------
 -- Table `impl_codesettomsgtype`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `impl_codesettomsgtype` ;
+DROP TABLE IF EXISTS `impl_codesetstomsgtype` ;
 
-CREATE TABLE IF NOT EXISTS `impl_codesettomsgtype` (
+CREATE TABLE IF NOT EXISTS `impl_codesetstomsgtype` (
                                                        `CodeSetToMsgTypeID` BIGINT NOT NULL AUTO_INCREMENT,
                                                        `CodeSetsID` BIGINT NULL DEFAULT NULL,
                                                        `MsgType` VARCHAR(75) NULL DEFAULT NULL,
@@ -1572,15 +1572,15 @@ CREATE TABLE IF NOT EXISTS `impl_codesettomsgtype` (
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = latin1;
 
-CREATE INDEX `FK_refdata_codesettomsgtype_codesets` ON `impl_codesettomsgtype` (`CodeSetsID` ASC) VISIBLE;
+CREATE INDEX `FK_refdata_codesetstomsgtype_codesets` ON `impl_codesetstomsgtype` (`CodeSetsID` ASC) VISIBLE;
 
-CREATE INDEX `FK_refdata_codesettomsgtype_status` ON `impl_codesettomsgtype` (`StatusID` ASC) VISIBLE;
+CREATE INDEX `FK_refdata_codesetstomsgtype_status` ON `impl_codesetstomsgtype` (`StatusID` ASC) VISIBLE;
 
-CREATE INDEX `IDX_RefData_CodeSetsToMsgType` ON `impl_codesettomsgtype` (`CodeSetToMsgTypeID` ASC, `CodeSetsID` ASC, `MsgType` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `AppGUID` ASC, `OrgGUID` ASC) VISIBLE;
+CREATE INDEX `IDX_RefData_CodeSetsToMsgType` ON `impl_codesetstomsgtype` (`CodeSetToMsgTypeID` ASC, `CodeSetsID` ASC, `MsgType` ASC, `CreatedDate` ASC, `StatusID` ASC, `CreatedUser` ASC, `AppGUID` ASC, `OrgGUID` ASC) VISIBLE;
 
-CREATE INDEX `FK_refdata_codesettomsgtype_app` ON `impl_codesettomsgtype` (`AppGUID` ASC) VISIBLE;
+CREATE INDEX `FK_refdata_codesetstomsgtype_app` ON `impl_codesetstomsgtype` (`AppGUID` ASC) VISIBLE;
 
-CREATE INDEX `FK_refdata_codesettomsgtype_org` ON `impl_codesettomsgtype` (`OrgGUID` ASC) VISIBLE;
+CREATE INDEX `FK_refdata_codesetstomsgtype_org` ON `impl_codesetstomsgtype` (`OrgGUID` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------

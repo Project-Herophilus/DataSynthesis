@@ -1,4 +1,4 @@
-INSERT INTO refdata_application (AppGUID,ApplicationCustomCode,ApplicationDesc,CreatedUser,CreatedDate,StatusID,VendorID) VALUES
+INSERT INTO impl_application (AppGUID,ApplicationCustomCode,ApplicationDesc,CreatedUser,CreatedDate,StatusID,VendorID) VALUES
 	 ('16a17a48-d09b-11ea-9579-bba61161b25a','DSynth','Data Synthesis Platform',NULL,'2020-07-28 01:25:10',1,1),
 	 ('639de2e2-d72a-11ea-b0b4-aa403f7fbe39','EpicHC','Epic',NULL,'2020-08-05 09:46:04',1,NULL),
 	 ('639ea3bc-d72a-11ea-b0b4-aa403f7fbe39','MedHost','MedHost',NULL,'2020-08-05 09:46:04',1,NULL),
