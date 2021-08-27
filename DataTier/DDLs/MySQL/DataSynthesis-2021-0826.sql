@@ -2080,10 +2080,10 @@ BEGIN
 END IF;
         END$$
 
-DROP TRIGGER IF EXISTS `refdata_application_uuid` $$
+DROP TRIGGER IF EXISTS `impl_application_uuid` $$
 CREATE
-    TRIGGER `refdata_application_uuid`
-    BEFORE INSERT ON `refdata_application`
+    TRIGGER `impl_application_uuid`
+    BEFORE INSERT ON `impl_application`
                FOR EACH ROW
 BEGIN
     IF new.AppGUID IS NULL THEN
@@ -2091,10 +2091,10 @@ BEGIN
 END IF;
         END$$
 
-DROP TRIGGER IF EXISTS `refdata_legalentity_uuid` $$
+DROP TRIGGER IF EXISTS `impl_legalentities_uuid` $$
 CREATE
-    TRIGGER `refdata_legalentity_uuid`
-    BEFORE INSERT ON `refdata_legalentity`
+    TRIGGER `impl_legalentities_uuid`
+    BEFORE INSERT ON `impl_legalentities`
                FOR EACH ROW
 BEGIN
     IF new.LegalEntityGUID IS NULL THEN
@@ -2103,10 +2103,10 @@ END IF;
         END$$
 
 
-DROP TRIGGER IF EXISTS `refdata_organization_uuid` $$
+DROP TRIGGER IF EXISTS `impl_organization_uuid` $$
 CREATE
-    TRIGGER `refdata_organization_uuid`
-    BEFORE INSERT ON `refdata_organization`
+    TRIGGER `impl_organization_uuid`
+    BEFORE INSERT ON `impl_organization`
                FOR EACH ROW
 BEGIN
     IF new.OrganizationGUID IS NULL THEN
