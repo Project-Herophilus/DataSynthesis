@@ -111,5 +111,5 @@ source DataGenerated\datagenerated_socialsecuritynumber.sql
 source DataGenerated\datagenerated_useridentities.sql
 source Terms\terms_umls_mrconoso.sql
 source Terms\terms_umls_mrconoso_2.sql
-source Terms\terms_umls_mrconoso_3.sql
+source Terms\terms_umls_mrconoso_3a.sql
 source Terms\terms_umls_mrconoso_4.sql

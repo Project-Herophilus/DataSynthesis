@@ -83,7 +83,6 @@ source ./Platform/1-platform_dataattributes.sql
 source ./ReferenceData/10-refdata_datagentypes.sql
 source ./Platform/2-platform_datastructures.sql
 source ./Platform/3-platform_datastructurestodataattributes.sql
-source ./Platform/platform_appsettings_dataattributes.sql
 source ./Platform/platform_config_datagen.sql
 source ./DataExisting/dataexisting_ababanking.sql
 source ./DataExisting/dataexisting_areacode.sql
@@ -112,5 +111,5 @@ source ./DataGenerated/datagenerated_socialsecuritynumber.sql
 source ./DataGenerated/datagenerated_useridentities.sql
 source ./Terms/terms_umls_mrconoso.sql
 source ./Terms/terms_umls_mrconoso_2.sql
-source ./Terms/terms_umls_mrconoso_3.sql
+source ./Terms/terms_umls_mrconoso_3a.sql
 source ./Terms/terms_umls_mrconoso_4.sql
