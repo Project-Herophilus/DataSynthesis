@@ -15,7 +15,7 @@ could take some work to setup based on security and environment!!!
 - DataTier-Visuals: Key visuals on how the DataSynthesis platform is designed.
 - EmbeddedDBs: Several embedded DBs
    
-### Install and Configuration
+## Install and Configuration
 While we have several RDBMS exports the core of our work has happened with MariaDB 10.x and MySQL 8.0.x on Windows, Linux and Mac and we do not require any
 custom configurations or add-ons. So any resource for your environment we would consider accurate and adequate.
 Also, we will leave securing the RDBMS layer to your liking and requirements!!!
