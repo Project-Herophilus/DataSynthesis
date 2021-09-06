@@ -13,7 +13,7 @@ The intent of the Data Seeeding is to support loading all the data we provide, i
 As with everything we do we keep the complete history so everyone can see the work that has been done.
 
 
-## MYSql/MariaDB - Linux (CentOS/RHEL/Mac) and/or Windows
+## MySql/MariaDB - Linux (CentOS/RHEL/Mac) and/or Windows
 
 We have included Linux and Non-Linux scripts for every release to ensure we have better potential data loading experiences.
 
