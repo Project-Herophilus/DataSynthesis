@@ -1,26 +1,25 @@
 # Background
-As we focus on <b>data being the asset</b> We wanted to ensure we brought forward a data enablement capability.
-Our logic was simple, for years companies have focused on most aspects of development, from the tooling to developing 
+As we thought about how to help healthcare we believed a focus on <b>data being the asset</b> was the path forward we needed to take and follow.
+As part of everything we do we want to ensure we are bringing forward data enablement capabilities.Our logic was simple, for years 
+companies have focused on most aspects of development, from the tooling to developing 
 the next generation of solutions to support their business needs and provide value. However, building great software 
-to help today's modern needs require data, massive amounts of production like data. While there are several great other 
-open source offerings out there we wanted to build something based on several of their capabilities and add additional
-capabilities over time. How and why is this the case? Data is the electricity that powers business and the cornerstone 
-of companies’ success in the digital era. 
+to help today's modern needs require data, in many cases, massive amounts of production like data. While there are numerous other 
+open source offerings out there we wanted to build something that could not only be used for traditional application based data needs but
+be used within integration effots as well. Since data is the electricity that powers business and the cornerstone 
+of companies’ success in the digital era, we wanted to take a more comperehensive focus on enabling organizations around synthetic data.
 
 With data being so critical, what is your companies focus on the need for meaningful realistic world based testing data? 
+We kept seeing the "Data Driven Organization" term pop up and really wanted to know what companies and people meant. Again, 
+we thought about synthetic data and how do we help build towards this. In order tp have a starting point we wanted to have some form of a defintion.
 To be a data-driven organization requires an overarching testing data culture that couples a number of elements, including 
 high-quality production like data, broad access and data literacy along with appropriate data-driven decision-making 
 governance and guidance processes. Companies that are successful in this space are quick at using data for all 
 aspects of their business needs successfully and are quick to spot opportunities, quick to
-assess ideas and adapt quickly to test, learn and drive future capabilities and needs from these experiences.
-
-The Data Synthesis platform is designed to generate and/or leverage and build upon one hundred percent freely available 
-information along with a subset of extensible data attributes and augment or construct it for various business needs. 
-The idea for Data Synthesis is in NO WAY new or unique, it comes from the struggle that every organization with 
-every resource on every project I have ever worked on. A data-driven organization does not have to come at a high price. 
-While it sounds complicated it is really about providing businesses a means for data collection, cleansing, hosting 
-and maintenance data while mitigating the risk of a data breach thru comprehensive testing processes and practices. 
-Data-driven organization can innovate continuously because they understand and can embrace new business models quickly. 
+assess ideas and adapt quickly to test, learn and drive future capabilities and needs from these experiences. A data-driven 
+organization does not have to come at a high price. While it sounds complicated it is really about providing businesses a 
+means for data collection, cleansing, hosting and maintenance data while mitigating the risk of a data breach thru comprehensive 
+testing processes and practices. Data-driven organization can innovate continuously because they understand and can 
+embrace new business models quickly. 
 Why should orgainzations risk <a href="https://www.breachlevelindex.com/" target="_blank">data breaches</a> or the 
 potential leakage of <a href="https://en.wikipedia.org/wiki/Protected_health_information" target="_blank">PHI (in healthcare)</a>
 or <a href="https://en.wikipedia.org/wiki/Personal_data" target="_blank">PII (In any other industry)</a>? In today's 
@@ -32,7 +31,11 @@ an expert in data management, defines production data as"information that is per
 professionals to conduct business processes." With these definitions it is easy to understand the creation of 
 synthetic data is an involved process that can be achieved by numerous measures and ways. Our way was to create a platform to
 synthesize data (Data Synthesis) for multiple needs based on items like industry standards, vendor data models, 
-custom defined models all in an on-demand manner.
+custom defined models all in an on-demand manner. The DataSynthesis platform is designed to generate and/or build upon the 
+extensible data attributes it has. As the platform bcontnues to matture there will be more data attributes added as well. 
+The idea for DataSynthesis is in NO WAY new or unique, it comes from the struggle that every organization with every 
+resource on every project I have ever worked on. 
+
 
 Data Synthesis has always intended to be operated under the open/community source model. This means we are providing
 the code for community enhancements and improvements to support the growth of underlying data access capabilities. We are 
