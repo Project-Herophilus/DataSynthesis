@@ -15,10 +15,10 @@ to solve this problem and it was just a matter of me learning how to use one or 
 For the path forward we wanted to include content to walk teams through the various aspects of the 
 data tier.
 
-* [DataTier General Readme](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-General.md)
-* [DataTier Setup Readme](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-Setup.md)
-* [DataTier Setup Management For Usage Readme](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-PlatformSetupMgmt.md)
-* [DataTier DataModel Readme](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-DataModel.md)
-* [DataTier-DataLoad](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md)
+* [DataTier General Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-General.md)
+* [DataTier Setup Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-Setup.md)
+* [DataTier Setup Management For Usage Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-PlatformSetupMgmt.md)
+* [DataTier DataModel Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-DataModel.md)
+* [DataTier-DataLoad](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md)
 
 Stay safe, stay strong and carry on!!! Happy Coding!!!!
