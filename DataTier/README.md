@@ -1,7 +1,5 @@
 # DataSynthesis-Data Tier
 This README.md is specific to anything for the DataSynthesis Data Tier.
-
-## Background
 DataSynthesis was started after my personal struggle with being able to leverage
 data for any level of integration, application development, varying data related
 (Data Warehouse, Big Data, Relational Data, AI/ML). This struggle had gone on for 
