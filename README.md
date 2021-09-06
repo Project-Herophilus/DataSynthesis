@@ -1,3 +1,13 @@
+# DataSynthesis Modules
+Here are the modules that make up DataSynthesis.
+
+| Type|Usage/Implementation |
+| -------------|----------|
+|[DataTier Readme](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier)| all the supported Database DDLs and Load Database scripts|
+|[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs)|APIs developed to support the DataSynthesis platform data needs.|
+|[DataTier Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)|Platform components that can build data from DataSynthesis for a variety of needs.|
+|[Web UI](https://github.com/Project-Herophilus/DataSynthesis/tree/main/WebPlatform-UI)|Eventual user interface for DataSynthesis.|
+
 # Background
 As we thought about how to help healthcare we believed a focus on <b>data being the asset</b> was the path forward we needed to take and follow.
 As part of everything we do we want to ensure we are bringing forward data enablement capabilities.Our logic was simple, for years 
@@ -36,7 +46,6 @@ extensible data attributes it has. As the platform bcontnues to matture there wi
 The idea for DataSynthesis is in NO WAY new or unique, it comes from the struggle that every organization with every 
 resource on every project I have ever worked on. 
 
-
 Data Synthesis has always intended to be operated under the open/community source model. This means we are providing
 the code for community enhancements and improvements to support the growth of underlying data access capabilities. We are 
 currently working on standing up the necessary artifacts. The code assets include a Web UI (at some point), APIs 
@@ -45,26 +54,5 @@ licensing model is <a href="https://opensource.org/licenses/Apache-2.0" target="
 
 # How Data Synthesis is Structured
 
-
-# Uses for DataSynthesis
-
-* Enterprise-wide data
-* Industry standards
-* Vendor-specific, and custom-designed data and models
-* On-demand access (tDaaS)
-* External data from any source
-* Microservices/API access
-* Any/multiple layers of metadata
-* Leverage the latest technology and be able to build out capabilities that accurately represent production data without exposing it</li>
-
-
-## DataSynthesis Modules
-
-| Type|Usage/Implementation |
-| -------------|----------|
-|[DataTier Readme](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier)| all the supported Database DDLs and Load Database scripts|
-|[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs)|APIs developed to support the DataSynthesis platform data needs.|
-|[DataTier Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)|Platform components that can build data from DataSynthesis for a variety of needs.|
-|[Web UI](https://github.com/Project-Herophilus/DataSynthesis/tree/main/WebPlatform-UI)|Eventual user interface for DataSynthesis.|
 
 *Enjoy and Happy Coding!!!*
