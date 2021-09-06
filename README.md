@@ -3,7 +3,7 @@ Here are the modules that make up DataSynthesis.
 
 | Type|Usage/Implementation |
 | -------------|----------|
-|[DataTier Readme](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier)| all the supported Database DDLs and Load Database scripts|
+|[DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier)| all the supported Database DDLs and Load Database scripts|
 |[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs)|APIs developed to support the DataSynthesis platform data needs.|
 |[DataTier Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)|Platform components that can build data from DataSynthesis for a variety of needs.|
 |[Web UI](https://github.com/Project-Herophilus/DataSynthesis/tree/main/WebPlatform-UI)|Eventual user interface for DataSynthesis.|
