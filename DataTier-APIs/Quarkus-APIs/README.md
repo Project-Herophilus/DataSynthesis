@@ -70,6 +70,41 @@ DataSynthesis APIs support OpenAPI 3.0 specifications and Swagger UI. Download t
 http://localhost:8080/openapi. Launch SwaggerUI from http://localhost:8080/swagger. There you can directly try out all
 available APIs to generate and retrieve synthetic data.
 
+Before the APIs can properly function you need to preload Platform, ReferenceData, DataExisting tables. See [DataTier-DataLoad](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md) Readme for more details. You can optional preload DataGenerated tables, or use API post methods to add more to DataGenerated tables.
+
+You can retrieve (GET) or add (POST) arbitrary number of records from/to DataGenerated tables 
+* addresses
+* area-codes (existing data, no POST)
+* dates-of-birth
+* employer-identification-numbers
+* first-names with gender
+* last-names 
+* phone-numbers
+* social-security-numbers
+* zip-codes (existing data, no POST)
+
+The following DataGenerated tables depend on regular expression patterns identified by `dataGenTypeId` to populate their entities:
+* account-numbers
+* bank-accounts
+* credit-cards
+* drivers-license-numbers
+* user-identities
+
+Each data table has a predefined `dataAttributeId`. Use GET `/api/v1/data-attributes` to find `dataAttributeId` for each table. Then use POST `/api/v1/data-gen-types` to add new `dataGenTypes`. Its `definition` attribute is a regex string, for example, MasterCard's regex is `^5[1-5][0-9]{14}$`. Set `statusID` attribute to 1. The following post body is an example for adding a new `dataGenType` for credit cards (whose dataAttributeId = 6):
+```
+  {
+    "dataAttributeID": 6,
+    "definition": "^5[1-5][0-9]{14}$",
+    "description": "Master",
+    "statusID": 1
+  }
+```
+
+We have preloaded 4 `dataGenTypes` for major credit cards, and 51 for drivers license numbers for all US states + DC. You can add more types for all tables listed above.
+
+Attribute `dataGenTypeId` is required to add new entities to these tables. It is optional for retrieving arbitrary number of records from them.
+
+
 ## Starting DataSynthesis - Containers (Docker)
 We have setup a combination of container images orchestrated using [docker-compose](https://docs.docker.com/compose/install/)
 * **MySQL** - running on port 3306
