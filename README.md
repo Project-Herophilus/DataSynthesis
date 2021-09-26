@@ -53,7 +53,16 @@ currently working on standing up the necessary artifacts. The code assets includ
 and the core repository patterns used to access the data structures offered within the platform. DataSynthesis open source 
 licensing model is <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache-2.0</a>.
 
-# How Data Synthesis is Structured
+# DataSynthesis: Becoming More Familiar
+
+## Step 1: DataTier
+
+[DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md) 
+
+## Step 2: Data Tier - APIs
+
+[Quarkus DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)
+
 
 
 *Enjoy and Happy Coding!!!*

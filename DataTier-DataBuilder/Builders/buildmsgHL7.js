@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');
 
-const hl7_versio= process.env.hl7_version;
+const hl7_version = process.env.hl7_version;
 const HL7Common = {
     fieldSeperator : "|",
     segmentSeperator : "\n",
