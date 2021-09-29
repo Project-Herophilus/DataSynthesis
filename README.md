@@ -56,13 +56,19 @@ licensing model is <a href="https://opensource.org/licenses/Apache-2.0" target="
 # DataSynthesis: Becoming More Familiar
 
 ## Step 1: DataTier
+At the core of DataSynthesis is the data tier that is designed to be extensible and support all the needs for the platform.
 
 [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md) 
 
 ## Step 2: Data Tier - APIs
+To support the needs of user requests are the data tier APIs. This API set is about being able to both generate data and persist it to the data tier.
 
 [Quarkus DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)
 
+## Step 3: Data Builder
+This is an API designed to support business users needs to build random data for usage.
+
+[Node Data Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)
 
 
 *Enjoy and Happy Coding!!!*
