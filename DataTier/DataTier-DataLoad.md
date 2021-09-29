@@ -17,25 +17,25 @@ As with everything we do we keep the complete history so everyone can see the wo
 
 We have included Linux and Non-Linux scripts for every release to ensure we have better potential data loading experiences.
 
-Steps to Run The Scripts:
+### Pre-Requisites
+It should be understood that the needed tools or CLI's and utilities should be installed.
+
+### Steps to Run The Scripts:
 1. Open Terminal Window or Command Prompt
 2. Make sure all the scripts into a specific defined directory that aligns with what is defined for the
-shell being used, for simplicity I put everything into the subdirectory DataSeeding. Then make sure the
+shell being used, for simplicity everything of substance is in the subdirectory DataSeeding. Then make sure the
 directories have correct permissions, I used chmod 777 to ensure correct permissions (it is understood that
 that these are very open permissions and system admins might not allow this level.
 
-3. From the command prompt run the specific cli with the complete path to the scripts:
-Mac Example (MySQL) <br/>
+### Mac Example - MySQL
+From the command prompt run the specific cli with the complete path to the scripts:
 a. /Applications/MySQLWorkbench.app/Contents/MacOS/mysql -u root -p datasynthesis<br/>
 b. Enter your password to the machine and then database server <br/>
 c. source /DataLoaders/MariaDB-DataLoader-DataSynthesis-v16-Linux.sql <br/>
 
-4. If you are using MariaDB on WIndows then: <br/>
+### Windows - MariaDB 
 a. mariadb -u root -p datasynthesis <br/>
 b. Enter your password to the machine and then database server <br/>
 c. source \DataLoaders\MariaDB-DataLoader-DataSynthesis-v16.sql <br/>
-
-
-
 
 Happy coding!!!
