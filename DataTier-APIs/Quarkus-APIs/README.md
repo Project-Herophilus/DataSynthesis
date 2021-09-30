@@ -72,6 +72,7 @@ available APIs to generate and retrieve synthetic data.
 
 Before the APIs can properly function you need to preload Platform, ReferenceData, DataExisting tables. See [DataTier-DataLoad](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md) Readme for more details. You can optional preload DataGenerated tables, or use API post methods to add more to DataGenerated tables.
 
+#### DataGenerated tables
 You can retrieve (GET) or add (POST) arbitrary number of records from/to DataGenerated tables 
 * addresses
 * area-codes (existing data, no POST)
@@ -104,6 +105,23 @@ We have preloaded 4 `dataGenTypes` for major credit cards, and 51 for drivers li
 
 Attribute `dataGenTypeId` is required to add new entities to these tables. It is optional for retrieving arbitrary number of records from them.
 
+#### Composite data
+You can create composite data sets constructed from existing base data types. All the base data are randomly selected from database, but the composite data are not persisted. The API endpoint is
+```
+GET /api/v1/data-structures?count=<number of records>&name=<name-of-data-structure>
+```
+Currently supported `name-of-data-structures` and their base types are:
+* Person Demographics (Last Name, First Name)
+* Bank Account (Bank Routing, Area Code)
+* US Phone Number (Area Code, Phone Number)
+* Complete Name (Last Name, First Name)
+* US Address (Address, Zip Code)
+
+Example output for query `http://localhost:8080/api/v1/data-structure?count=2&name=Complete%20Name`:
+```
+[{"lastName":"Simpson","firstName":"Jimmy","gender":"M"},
+{"lastName":"Anderson","firstName":"Cathy","gender":"F"}]
+```
 
 ## Starting DataSynthesis - Containers (Docker)
 We have setup a combination of container images orchestrated using [docker-compose](https://docs.docker.com/compose/install/)
