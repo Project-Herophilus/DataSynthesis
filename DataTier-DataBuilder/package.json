@@ -1,7 +1,7 @@
 {
-  "name": "stringtextoutput",
-  "version": "1.0.0",
-  "description": "String Test Node Based Application",
+  "name": "datatier-databuilder",
+  "version": "1.5.0",
+  "description": "DataSynthesis API Platform for DataBuilding",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
