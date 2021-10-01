@@ -1,4 +1,4 @@
-const db= require("../../DbConnections/mysql")
+const db= require("../../db-connections/mysql")
 const queryBuilder = require('../query-builder');
 const express = require("express");
 const router = express.Router();
@@ -39,6 +39,7 @@ router.get("/hl7-doc-generator", async(req, res) => {
           }, {}))
       })
       dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
+      console.log("dataresults" + dataResults)
       fs.writeFileSync('hl7-test.hl7', dataResults, 'utf8')
       res.send(dataResults)
   })

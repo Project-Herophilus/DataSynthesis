@@ -7,8 +7,8 @@
 const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');
-
-const hl7_versio= process.env.hl7_version;
+const { v4: uuidv4 } = require('uuid');
+const hl7_version= "2.5.1"
 const HL7Common = {
     fieldSeperator : "|",
     segmentSeperator : "\n",
@@ -16,33 +16,33 @@ const HL7Common = {
     fieldRepeat: "~"
 }
 
-const segmentEvents = {
-    msh: this.determineEvent('MSH'),
-    evn: this.determineEvent('EVN'),
-    pid: this.determineEvent('PID'),
-    pv1: this.determineEvent('PV1'),
-    in1: this.determineEvent('IN1'),
-    in2: this.determineEvent('IN2'),
-    dg1: this.determineEvent('DG1'),
-    pr1: this.determineEvent('PR1',),
-    obx: this.determineEvent('OBX'),
-    nte: this.determineEvent('NTE'),
-    orc: this.determineEvent('ORC'),
-    rxe: this.determineEvent ('RXE'),
-    rxr: this.determineEvent('RXR'), 
-    rxc: this.determineEvent('RXC')
-}
+// const segmentEvents = {
+//     msh: this.determineEvent('MSH'),
+//     evn: this.determineEvent('EVN'),
+//     pid: this.determineEvent('PID'),
+//     pv1: this.determineEvent('PV1'),
+//     in1: this.determineEvent('IN1'),
+//     in2: this.determineEvent('IN2'),
+//     dg1: this.determineEvent('DG1'),
+//     pr1: this.determineEvent('PR1',),
+//     obx: this.determineEvent('OBX'),
+//     nte: this.determineEvent('NTE'),
+//     orc: this.determineEvent('ORC'),
+//     rxe: this.determineEvent ('RXE'),
+//     rxr: this.determineEvent('RXR'), 
+//     rxc: this.determineEvent('RXC')
+// }
 
-const segmentEventsAdt = {
-    msh: this.determineEvent('MSH'),
-    evn: this.determineEvent('EVN'),
-    pid: this.determineEvent('PID'),
-    pv1: this.determineEvent('PV1'),
-    in1: this.determineEvent('IN1'),
-    in2: this.determineEvent('IN2'),
-    dg1: this.determineEvent('DG1'),
-    pr1: this.determineEvent('PR1')
-}
+// const segmentEventsAdt = {
+//     msh: this.determineEvent('MSH'),
+//     evn: this.determineEvent('EVN'),
+//     pid: this.determineEvent('PID'),
+//     pv1: this.determineEvent('PV1'),
+//     in1: this.determineEvent('IN1'),
+//     in2: this.determineEvent('IN2'),
+//     dg1: this.determineEvent('DG1'),
+//     pr1: this.determineEvent('PR1')
+// }
 const hl7_messages = [];
 module.exports = {
 
@@ -87,7 +87,7 @@ module.exports = {
             const timestamp = moment().format("yyyyMMDDHHMMSS");
             const security = ""
             const messagetype = `${doc_type}^${trigger_event}`
-            const messagecontrolid = `${sending_application}-${sending_facility}-${messagetype}${uuid()}`
+            const messagecontrolid = `${sending_application}-${sending_facility}-${messagetype}${uuidv4()}`
             const environment = "P"
             const version = "2.5.1"
             const eventtype = messagetype.split("^")[1]

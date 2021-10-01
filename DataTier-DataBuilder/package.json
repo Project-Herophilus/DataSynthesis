@@ -4,7 +4,8 @@
   "description": "String Test Node Based Application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [
     "mysql",
@@ -27,7 +28,8 @@
     "moment-timezone": "^0.5.31",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "random": "^3.0.3"
+    "random": "^3.0.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "mysql2": "^2.2.5"
