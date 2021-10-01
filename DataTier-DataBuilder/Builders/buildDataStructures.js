@@ -52,8 +52,6 @@ module.exports = {
                 const fullname = `${firstname}^${middlename}^${lastname}`
                 //CONCAT DATAEXISTING_ADDRESS AND ZIPCODEUS
                 const fullpatientaddress = `${row.AddressStreet}^${row.City}^${row.State}^${row.ZipCode}^${row.State}`
-                //RANDOMIZE
-                //const alternative_patientid = Math.floor(1000 + Math.random() * 9000)
                 //DATAGENERETED_DATEOFBIRTH AGE >10
                 const date = new Date(row.DateOfBirth)
                 const dt_birth = moment(date).format("yyyyMMDD")
@@ -67,13 +65,14 @@ module.exports = {
                 const ssn = row.SocialSecurityNumberValue
                 //DATAGENERATED_DRIVERLICENSES
                 const drivers_license_num = row.DLN
-
-                demographic_messages.push(
-                    `${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|
-                     ${business_phone}|${ssn}|${drivers_license_num}`.replace(/[\n\r]/g, '\r')
-                )
+                demographic_messages.push(`${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|${business_phone}${ssn}|${drivers_license_num}\n`)
             })
             return demographic_messages
+    },
+    handleDocType(doctype,version,count){
+        if (doctype == "ADT") {
+            return this.generateHL7_Record("ADT")
+        }
     }
 
 }
