@@ -42,11 +42,6 @@ module.exports = {
                 const sending_application = sending_app
                 const sending_facility = sending_fac
                 const timestamp = moment().format("yyyyMMDDHHMMSS");
-                const messagecontrolid = `${sending_application}-${sending_facility}-${uuid()}`
-                //DATAGENERATED_ACCOUNTNUMBERS
-                const patientid =row.AccountNumberValue
-                //DATAGENERATED_ACCOUNTNUMBERS
-                const patientid_list = row.AccountNumberValue
                 //DATAEXISTING_NAMEFIRST => RANDOMIZED
                 const firstname = row.FirstName
                 //RANDOMIZE LETTER
@@ -57,10 +52,6 @@ module.exports = {
                 const fullname = `${firstname}^${middlename}^${lastname}`
                 //CONCAT DATAEXISTING_ADDRESS AND ZIPCODEUS
                 const fullpatientaddress = `${row.AddressStreet}^${row.City}^${row.State}^${row.ZipCode}^${row.State}`
-                //RANDOMIZE
-                const alternative_patientid = Math.floor(1000 + Math.random() * 9000)
-                //DATAEXISTING_LASTNNAME =>RANDOMIZE
-                const mothers_maiden_name = rows[random_number].LastName
                 //DATAGENERETED_DATEOFBIRTH AGE >10
                 const date = new Date(row.DateOfBirth)
                 const dt_birth = moment(date).format("yyyyMMDD")
@@ -70,32 +61,11 @@ module.exports = {
                 const home_phone = `${row.AreaCodeValue}-${row.PhoneNumberValue}`
                 //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
                 const business_phone = `${row.AreaCodeValue}-${rows[random_number].PhoneNumberValue}`
-                //DATAGENERATED_ACCOUNTNUMBERS
-                const patient_acct_num = row.AccountNumberValue
                 //DATAGENERATED_SOCIALSECURITYNUMBER
                 const ssn = row.SocialSecurityNumberValue
                 //DATAGENERATED_DRIVERLICENSES
                 const drivers_license_num = row.DLN
-                //1434567516^LASTNAME^PHYSICIANFIRST
-                const ID6 = Math.floor(100000 + Math.random() * 900000)
-                const attending_physician =`{${ID6}^${rows[random_number].LastName}^${rows[random_number].FirstName}}`
-                //REFDATA
-                const hospital_service = "SURG"
-                //REFDATA
-                //ALL REFDATA FROM OTHER FIELDS ABOVE
-                const g_number = patient_acct_num
-                const g_name = fullname
-                const g_dob = dt_birth
-                const g_gender = gender
-                const g_type = ""
-                const g_relationship = relationships[Math.floor(Math.random()*relationships.length)]
-                const g_emp_name = ""
-                const g_emp_address = ""
-                const g_emp_phn = ""
-                demographic_messages.push(
-                    `${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|
-                     ${business_phone}${ssn}|${drivers_license_num}`.replace(/[\n\r]/g, '\r')
-                )
+                demographic_messages.push(`${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|${business_phone}${ssn}|${drivers_license_num}\n`)
             })
             return demographic_messages
     },

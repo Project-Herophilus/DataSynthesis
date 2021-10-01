@@ -36,7 +36,9 @@ router.get("/demographics-generator", async(req, res) => {
           }, {}))
       })
       dataResults = datastructuresBuilder.generateDemographic_Record(modifiedTuples, count, state, sending_app, sending_fac)
-      fs.writeFileSync('person-demographics.csv', dataResults, 'utf8')
+      dataResults.forEach(line=>{
+        fs.appendFileSync('person-demographics.csv', line, 'utf8')
+      })
       res.send(dataResults)
   })
 
