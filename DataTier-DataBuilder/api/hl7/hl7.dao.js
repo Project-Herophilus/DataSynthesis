@@ -1,6 +1,6 @@
 //*DAO Queries
 
-const db = require("../../db-connections/mysql");
+const db = require("../../General/dbConnections/mysql-connect");
 
 
 module.exports = {

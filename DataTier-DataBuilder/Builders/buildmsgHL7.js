@@ -2,8 +2,8 @@
 // var dataOutputFunctions = require('./dataOutputFunctions.js');
 // var randomFunctions = require('./randomFunctions.js');
 // var sqlDBRecordCountFunction = require('./dbQueries.js');
-// var awaitQueryFunctions = require('./dbQueries2.js');
-// const { eventNames } = require('../db-connections/mysql.js');
+// var awaitQueryFunctions = require('./dbQueriesReferenceData.js');
+// const { eventNames } = require('../dbConnections/mysql-connect.js');
 const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');

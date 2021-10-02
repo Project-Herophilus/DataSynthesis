@@ -7,9 +7,7 @@ dotenv.config({path: `${__dirname}/.env`})
 
 app.use('/', api);
 
-
-
-var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3003;
 const server = app.listen(port, function () {
     console.log("server running on port: " + port)
 });
