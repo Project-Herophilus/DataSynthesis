@@ -1,4 +1,4 @@
-const db= require("../../General/dbConnections/mysql-connect")
+const db= require("../../General/dbConnections/mysqlConnect")
 const queryBuilder = require('../query-builder');
 const express = require("express");
 const router = express.Router();

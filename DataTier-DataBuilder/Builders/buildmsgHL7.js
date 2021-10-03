@@ -3,7 +3,7 @@
 // var randomFunctions = require('./randomFunctions.js');
 // var sqlDBRecordCountFunction = require('./dbQueries.js');
 // var awaitQueryFunctions = require('./dbQueriesReferenceData.js');
-// const { eventNames } = require('../dbConnections/mysql-connect.js');
+// const { eventNames } = require('../dbConnections/mysqlConnect.js');
 const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');

@@ -1,11 +1,11 @@
-const db= require("../../General/dbConnections/mysql-connect")
-const queryBuilder = require('../querybuilderDataExisting');
+const db= require("../../../General/dbConnections/mysqlConnect")
+const queryBuilder = require('../../querybuilderDataExisting');
 const express = require("express");
 const router = express.Router();
-const datastructuresBuilder = require("../../Builders/buildDataStructures");
+const datastructuresBuilder = require("../../../Builders/buildDataExisting");
 const fs = require("fs");
 
-router.get("/demographics-generator", async(req, res) => {
+router.get("/ababanking", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
@@ -14,7 +14,7 @@ router.get("/demographics-generator", async(req, res) => {
   const sending_app = req.query.sending_app || "datasynthesis";
   const sending_fac = req.query.sending_fac || "datafacility"
  
-  db.query(queryBuilder.getData(count, state), (err, rows, fields)=>{
+  /*db.query(queryBuilder.getData(count, state), (err, rows, fields)=>{
       if(err) throw err;
       const tuples = [];
       const modifiedTuples = [];
@@ -40,7 +40,10 @@ router.get("/demographics-generator", async(req, res) => {
         fs.appendFileSync('person-demographics.csv', line, 'utf8')
       })
       res.send(dataResults)
-  })
+  })*/
+
+    dataResults = datastructuresBuilder.pullActiveRecords_ababanking(rows,count)
+    res.send(dataResults);
 
 });
 
