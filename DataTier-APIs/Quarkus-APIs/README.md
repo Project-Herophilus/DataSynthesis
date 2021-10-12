@@ -70,19 +70,20 @@ DataSynthesis APIs support OpenAPI 3.0 specifications and Swagger UI. Download t
 http://localhost:8080/openapi. Launch SwaggerUI from http://localhost:8080/swagger. There you can directly try out all
 available APIs to generate and retrieve synthetic data.
 
-Before the APIs can properly function you need to preload Platform, ReferenceData, DataExisting tables. See [DataTier-DataLoad](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md) Readme for more details. You can optional preload DataGenerated tables, or use API post methods to add more to DataGenerated tables.
+Before the APIs can properly function you need to preload Platform, ReferenceData, DataExisting tables. See [DataTier-DataLoad](https://github.com/RedHat-Healthcare/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md) Readme for more details. You can optionally preload DataGenerated tables, or use API post methods to add more to DataGenerated tables.
 
 #### DataGenerated tables
 You can retrieve (GET) or add (POST) arbitrary number of records from/to DataGenerated tables 
+* account-numbers
 * addresses
-* area-codes (existing data, no POST)
+* bank-accounts
+* credit-cards
 * dates-of-birth
-* employer-identification-numbers
-* first-names with gender
-* last-names 
+* drivers-license-numbers
+* employer-identification-numbers 
 * phone-numbers
 * social-security-numbers
-* zip-codes (existing data, no POST)
+* user-identities
 
 The following DataGenerated tables depend on regular expression patterns identified by `dataGenTypeId` to populate their entities:
 * account-numbers
@@ -104,6 +105,16 @@ Each data table has a predefined `dataAttributeId`. Use GET `/api/v1/data-attrib
 We have preloaded 4 `dataGenTypes` for major credit cards, and 51 for drivers license numbers for all US states + DC. You can add more types for all tables listed above.
 
 Attribute `dataGenTypeId` is required to add new entities to these tables. It is optional for retrieving arbitrary number of records from them.
+
+#### DataExisting tables
+You can retrieve (GET) arbitrary number of records from following DataExisting tables. You can also add (POST) new records one at a time except area-codes and zip-codes.
+* aba-bankings
+* area-codes (no POST)
+* companies
+* first-names
+* last-names
+* upc-codes
+* zip-codes (no POST)
 
 #### Composite data
 You can create composite data sets constructed from existing base data types. All the base data are randomly selected from database, but the composite data are not persisted. The API endpoint is

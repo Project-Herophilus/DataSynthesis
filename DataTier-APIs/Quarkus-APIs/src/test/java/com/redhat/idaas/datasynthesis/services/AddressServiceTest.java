@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import com.redhat.idaas.datasynthesis.models.DataGeneratedAddressesEntity;
+import com.redhat.idaas.datasynthesis.dtos.NameLast;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,8 +28,8 @@ public class AddressServiceTest {
     @Transactional
     public void testAddressGeneration() throws Exception {
         Common.seed();
-        nameService.insertNameLast("Last1");
-        nameService.insertNameLast("Last2");
+        nameService.insertNameLast(new NameLast("Last1"));
+        nameService.insertNameLast(new NameLast("Last2"));
 
         List<DataGeneratedAddressesEntity> list = addressService.generateAddresses(10);
         Assertions.assertEquals(10, list.size());

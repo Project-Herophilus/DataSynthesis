@@ -57,7 +57,7 @@ public class DataStructureService extends BaseService {
                     }
 
                 } catch (ClassNotFoundException e) {
-                    throw new DataSynthesisException("Invalid or unkown ServiceClassName " + className, e);
+                    throw new DataSynthesisException("Invalid or unknown ServiceClassName " + className, e);
                 }
             }
             

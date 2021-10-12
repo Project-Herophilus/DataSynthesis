@@ -37,8 +37,8 @@ public class NameLastService extends RandomizerService<DataExistingNameLastEntit
     }
 
     @Transactional
-    public boolean insertNameLast(String lastName) throws DataSynthesisException {
-        DataExistingNameLastEntity entity = new DataExistingNameLastEntity(lastName);
+    public boolean insertNameLast(NameLast name) throws DataSynthesisException {
+        DataExistingNameLastEntity entity = new DataExistingNameLastEntity(name.lastName);
         entity.setRegisteredApp(getRegisteredApp());
         entity.setStatus(getDefaultStatus());
         entity.setCreatedDate(new Timestamp(System.currentTimeMillis()));

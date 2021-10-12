@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "dataexisting_ababanking", schema = "datasynthesis", catalog = "")
-public class DataExistingAbaBankingEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataExistingAbaBankingEntity extends BaseEntity {
     private long abaBankingId;
     private String routingNumber;
     private String telegraphicName;

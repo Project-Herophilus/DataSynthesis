@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "dataexisting_companies", schema = "datasynthesis", catalog = "")
-public class DataExistingCompaniesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
+public class DataExistingCompaniesEntity extends BaseEntity {
     private long companiesId;
     private String companyName;
     private Timestamp createdDate;

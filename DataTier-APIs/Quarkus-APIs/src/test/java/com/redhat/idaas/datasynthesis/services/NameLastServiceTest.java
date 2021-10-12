@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.models.DataExistingNameLastEntity;
+import com.redhat.idaas.datasynthesis.dtos.NameLast;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,8 @@ public class NameLastServiceTest {
     @Transactional
     public void testInsertLastHappy() throws DataSynthesisException {
         Common.seed();
-        Assertions.assertTrue(service.insertNameLast("name1"));
-        Assertions.assertTrue(service.insertNameLast("name2"));
+        Assertions.assertTrue(service.insertNameLast(new NameLast("name1")));
+        Assertions.assertTrue(service.insertNameLast(new NameLast("name2")));
         Assertions.assertEquals(2, DataExistingNameLastEntity.count());
     }
 
@@ -31,8 +32,8 @@ public class NameLastServiceTest {
     @Transactional
     public void testInsertLastDuplicate() throws DataSynthesisException {
         Common.seed();
-        Assertions.assertTrue(service.insertNameLast("name1"));
-        Assertions.assertFalse(service.insertNameLast("name1"));
+        Assertions.assertTrue(service.insertNameLast(new NameLast("name1")));
+        Assertions.assertFalse(service.insertNameLast(new NameLast("name1")));
         Assertions.assertEquals(1, DataExistingNameLastEntity.count());
         validateNameLastEntity((DataExistingNameLastEntity)DataExistingNameLastEntity.listAll().get(0));
     }
@@ -48,7 +49,7 @@ public class NameLastServiceTest {
     @Transactional
     public void testInertLastNoSeed() {
         Assertions.assertThrows(DataSynthesisException.class, () -> {
-            service.insertNameLast("name1");
+            service.insertNameLast(new NameLast("name1"));
         });
     }
 }
