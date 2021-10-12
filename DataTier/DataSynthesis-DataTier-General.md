@@ -18,34 +18,31 @@ right.
   .Net Core but will be revisiting it as time permits.
   
 ## Data Model - Fit for Purpose
+As we looked to refocus we wanted to ensure the first thing we did as we revamped the entire data model was try and have 
+clarity and ease of understanding. This is very important as it is the foundation for all efforts.
 
-As we looked to refocus we wanted to ensure the first thing we did as we revamped the entire data  
-model was try and have clarity and ease of understanding. This is very important as it is the  
-foundation for all efforts.
+### Naming Convention: Built Around Purpose
+We wanted to make sure that the table names were easy to understand their purpose. While
+there is no easy pattern to leverage we tried to make the tablenames detailed enough to explain
+their purpose. Below is our explanation about the current reusable pattern we are currently using *{datapurpose_}tablepurpose*
 
-We also are now leveraging [Luqibase](https://www.liquibase.org/) for all database operations. While this is a learning effort this will help us long term version and track all database changes, enhancements 
-and also enable us to migrate between different RDBMs technologies as we look to the future without manual maintenance.
-
-### Naming Convention: DataPurpose
-We wanted to have a reusable pattern for use of reading and understand *{datapurpose_}tablepurpose*
-
-| Data Purpose | Details |
+| Data's Purpose | Details |
 |:---|:---|
 |auditing_(tablename)|Auditing data for platform|
 |databuilt_(tablename)|Data built from existing and/or generated sources. Intended to be more structured data|
 |dataexisting_(tablename)|Data from existing public sources|
 |datagenerated_(tablename)|Data generated from code and managed through data generation configuration|
+|impl_(tablename)|Data used specific to the implementation for using DataSynthesis|
 |platform_(tablename)|Any platform attributes or metadata|
 |refdata_(tablename)|Platform reference data|
 |termsdata_(tablename)|Terminology centric data for industry standards or persisting specific field level application level data |
 
-### Naming Convention: TableName
-We wanted to make sure that the table names were easy to understand their purpose. While
-there is no easy pattern to leverage we tried to make the tablenames detailed enough to explain
-their purpose
-
 ### Describing the Tables Purpose and Meaning
 We added a means to explain anything to the datamodel within the data itself. This
 was our catch all to ensure that even if interpretation was wrong we would define the
-tables and all other datamodel aspects. Look at the datamodel_ tables and all the details
-are contained within the data.
+tables and all other datamodel aspects. 
+
+Data Purpose | Details |
+|:---|:---|
+|datamodel_domain|Domains used in the data tier|
+|datamodel_datatables|Tabkes specifically used in the data tier|

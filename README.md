@@ -58,7 +58,7 @@ licensing model is <a href="https://opensource.org/licenses/Apache-2.0" target="
 
 ## Step 1: DataTier
 At the core of DataSynthesis is the data tier that is designed to be extensible and support all the needs for the platform.
-
+All things around the data tier are specifically contained within the link provided below.<br>
 [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md) 
 
 ## Step 2: Data Tier - APIs
