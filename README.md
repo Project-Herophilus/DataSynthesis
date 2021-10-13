@@ -44,9 +44,9 @@ professionals to conduct business processes." With these definitions it is easy 
 synthetic data is an involved process that can be achieved by numerous measures and ways. Our way was to create a platform to
 synthesize data (Data Synthesis) for multiple needs based on items like industry standards, vendor data models, 
 custom defined models all in an on-demand manner. The DataSynthesis platform is designed to generate and/or build upon the 
-extensible data attributes it has. As the platform bcontnues to matture there will be more data attributes added as well. 
+extensible data attributes it has. As the platform contnues to matture there will be more data attributes added as well. 
 The idea for DataSynthesis is in NO WAY new or unique, it comes from the struggle that every organization with every 
-resource on every project I have ever worked on. 
+resource on every project members of the Project Herophilus team have ever worked on across multiple industries. 
 
 Data Synthesis has always intended to be operated under the open/community source model. This means we are providing
 the code for community enhancements and improvements to support the growth of underlying data access capabilities. We are 
@@ -55,22 +55,28 @@ and the core repository patterns used to access the data structures offered with
 licensing model is <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache-2.0</a>.
 
 # DataSynthesis: Becoming More Familiar
+DataSynthesis consists of four key areas. 
 
-## Step 1: DataTier
+## 1: DataTier
 At the core of DataSynthesis is the data tier that is designed to be extensible and support all the needs for the platform.
 All things around the data tier are specifically contained within the link provided below.<br>
 [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md) 
 
-## Step 2: Data Tier - APIs
+## 2: Data Tier - APIs
 To support the needs of user requests are the data tier APIs. This API set is about being able to both generate 
 data and persist it to the data tier.
 
 [Quarkus DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)
 
-## Step 3: Data Builder(s)
+## 3: Data Builder(s)
 This is an API designed to support business users needs to build random data for usage.
 
 [Node Data Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)
+
+## 4: Web-UI(s)
+These are intended to be minimal viable usable products that can be used to look at the datatier of DataSynthesis you implement.
+
+[DataTier Web User Interfaces](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-WebUIs)
 
 
 *Enjoy and Happy Coding!!!*

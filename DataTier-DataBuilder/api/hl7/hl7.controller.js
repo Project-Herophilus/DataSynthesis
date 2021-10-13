@@ -1,8 +1,8 @@
-const db= require("../../General/dbConnections/mysqlConnect")
+const db= require("../../general/dbConnections/mysqlConnect")
 const queryBuilder = require('../query-builder');
 const express = require("express");
 const router = express.Router();
-const hl7Builder = require("../../Builders/buildmsgHL7");
+const hl7Builder = require("../../builders/buildmsgHL7");
 const fs = require("fs");
 
 router.get("/hl7-doc-generator", async(req, res) => {

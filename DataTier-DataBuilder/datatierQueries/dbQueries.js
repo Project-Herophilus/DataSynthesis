@@ -1,5 +1,5 @@
 var mysql      = require('mysql');
-var randomRecs = require('../General/randomFunctions.js')
+var randomRecs = require('../general/randomFunctions.js')
 
 var methods = {
     commonRecordCount: function (strQuery,value) {

@@ -32,9 +32,10 @@ as they already exist in the database, this quantity is just for raw data counts
 ApplicationID is the GUID that needs to be inserted into the database to tell the system which defined application (multiple defined application are supported) created the data.
 The base platform comes with over 50+ rules all associated to DataSynthesis (refdata_application).
 
-# Java APIs
-Java implemented codebase for implementing DataSynthesis.  
-This codebase enables connectivity and all capabilities within Data Tier. We have also included the data tier within this to ensure updates to data tier are carried through
+# Quarkus APIs
+When building the ways we could represent APIs we wanted to take a fresh perspective and decided to implement Quarkus and
+Node based APIs for DataSynthesis. The intent of these is to ensure connectivity and all capabilities within Data Tier. 
+We have also included the data tier within this to ensure updates to data tier are carried through
 This code provides several capabilities built into one codebase.
 
 ## Starting DataSynthesis - Local

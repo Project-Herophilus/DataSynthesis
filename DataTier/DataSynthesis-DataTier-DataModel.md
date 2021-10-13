@@ -1,35 +1,56 @@
 # DataSynthesis DataModel
-The following content is designed to specifically break up the datamodel
-into a few key areas.
+The following content is designed to specifically break up the datamodel into a few key areas.
 
-# DataSythesis Artifacts
-It is also important to note we have included several usable artifacts that  
-help provide a detailed understanding of the Datasynthesis Data Model.
+The platform data tier setup establishes several key reference and base data for the platform. We 
+have ensured we include required reference data and a ton of existing and generated data 
+to start. With all that being said as you look to add your organization we wanted to provide you some details
+and context as to how to ensure you maximize the platform and also use it effectively.
 
+# Key Groupings for DataSynthesis
+As with any data model/ data tier how data is logically constructed is key, it determines so many things like 
+extensibility and viability of overall platform.
 
-# DataSynthesis DataModel Explained
-The power of this platform is enabling the massive amount of ways data can be used and stored
-within the model. As part of that we want to ensure we try and provide as much detail as we
-can, we have several visuals we are providing to get everyone started.
+## Data Attributes
+Data attributes are a critical core component of the platform. They are the lowest common attributes to the platform. 
+As we think about this aspect they can come from existing or generated data that exists within the platform. This data 
+is provided via base insert loader scripts and is provided this way only. 
 
-# DataSynthesis Data Model Platform Setup for Usage Readme
-Now that we have given you a general rundown of the data tier amd
-how to get the database setup it is important for usage as you go
-to implement it.
+Here are some key points to understand:
+- dataexisting - all existing data is intended to be provided as is and was from a source, a series of sources, that 
+was at some time or still is pubicly available data. Aside from names (last and first names) there is NO MEANS provided
+by the platform to add tp this data, you most certainly can build your own but the platform does not provide it.
+- datagenerated - This data is all about critical data elements that are needed typically to support various implementations 
+types depending upon business needs like: social security numbers, drivers license numbers, bank account numbers, 
+credit card numbers, phone numbers, street addresses and so forth. A key capability the platform has built in is supporting the accurate generation
+of the data as well. Whether it is the correct format for state specific drivers license numbers, industry standard
+credit card numbers and the like we have done our best to make sure the data generated is meaningful. As it also infers
+data generated means that the platform comes with APIs capable of generating data based on how the platform is configured 
+for this need. The setup for this is done by data attribute.
 
-The platform data tier setup establishes several key reference and base data
-for the platform. We have ensured we include required reference data and
-a ton of existing and generated data to start. With all that being said
-as you look to add your organization we wanted to provide you some details
-and context as to how to ensure you maximize the platform and also use
-it effectively.
+## Data Structures
+This is all about Building out what complete data the platform can represent. The intent here is to take the data attributes
+and create them into reusable structures. Some examples:
+- Names: A combination of data attributes last name and first name.
+- Address: A combination of street address and location data (City, State, Zip Code).
+- Phone Number: A combination of an area code with a phone number
+- Demographic Data: A Combination of First Name, Last Name, Street Address, Location (City, State and Zip code), Area Code,
+Phone Number, Drivers License....
 
-# Hiarchy/Order of Setting Things Up
-Having installed the DDL and loaded the data into your platform now it might help to understand the
-hiarchy of how the data is used.
+Hopefully, this shows you the power of what can be created from data attributes...
+
+## Platform Reference Data
+Specific rules we want the platform to be able to process and maintain.
+
+## Terminologies
+Specific coded data and how we can enable it to be processed to enable more accurate and robust data processing.
+
+# Hierarchy/Order of Setting Things Up
+After implementing the DDL and seeding the DDL with data provided you will have over 180B combinations
+of usable data to start with. It might help to understand the internal corrlations of how the data needs to 
+be maintained to grow its capabilities and relevance for usage.
 
 1. Vendors - any company that has an application running in an Organization, they must be defined as a vendor.
-2. Legal Entities - This is intended to be a logicl grouper by what facilities/stores/orgs are associated to this legal entity.
+2. Legal Entities - This is intended to be a logical grouper by what facilities/stores/orgs are associated to this legal entity.
 3. Organizations - The specific locations dealing with ANY level of information. This can be thought of a clinic, store, practice, and so forth.
 4. Applications - anything that is producing data that you want to define data processing rules
    for. DataSynthesis is provided to the database as a defualt application as it is producing data. The
@@ -46,31 +67,3 @@ hiarchy of how the data is used.
 9. Terms Codeset To Application Values - This is where the specific details like code and description or code and complex data attributes are captured so when data
    will need to be generated we can make it real world based. This is ALWAYS built upon the Organization and Application sending the data.
 
-
-## Application Settings
-Application Settings are the way certain data and operations are tagged in the system
-so having these established and setup is key. Additionally, as new capabilities are added application
-settings are viewed by the platform as "tags".
-![AppSettings.png](DataTier-Visuals/AppSettings.png)
-
-## Data Generation
-Data generators is a critical key aspect of the platform that will continue to be leveraged and expanded.
-Data generation for the platform is intended to leverage code assets to build data artifacts based on
-how the platform is configured.
-![DataGenConfig.png](DataTier-Visuals/DataGenConfig.png)
-
-## Data Structures
-This is all about Building out what complete data the platform can represent.
-![DataStructure-Detail.png](DataTier-Visuals/DataStructure-Detail.png)
-
-## Organizations
-Who is using the data and where they are located.
-![Organizations.png](DataTier-Visuals/Organizations.png)
-
-## Rulesets
-Specific rules we want the platform to be able to process and maintain.
-![Rulesets.png](DataTier-Visuals/Rulesets.png)
-
-## Terms
-Specific coded data and how we can enable it to be processed to enable more accurate and robust data processing.
-![Terms.png](DataTier-Visuals/Terms.png)
