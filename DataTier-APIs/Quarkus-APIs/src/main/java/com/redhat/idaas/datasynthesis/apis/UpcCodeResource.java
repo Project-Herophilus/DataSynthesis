@@ -12,31 +12,31 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.redhat.idaas.datasynthesis.dtos.NameFirst;
+import com.redhat.idaas.datasynthesis.dtos.UpcCode;
+import com.redhat.idaas.datasynthesis.services.UpcCodeService;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
-import com.redhat.idaas.datasynthesis.services.NameFirstService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
-@Path("/first-names")
+@Path("/upc-codes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class FirstNameResource {
+public class UpcCodeResource {
     @Inject
-    NameFirstService service;
+    UpcCodeService service;
 
     @GET
-    public List<NameFirst> getFirstNames(
+    public List<UpcCode> getUpcCodes(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
-    
+
     @POST
     @APIResponse(responseCode = "201")
-    public Response generateFirstNames(NameFirst nameObj) throws DataSynthesisException {
-        service.insertNameFirst(nameObj);
+    public Response addUpcCode(UpcCode upc) throws DataSynthesisException {
+        service.insertUpcCode(upc);
         return Response.status(Status.CREATED).build();
     }
 }

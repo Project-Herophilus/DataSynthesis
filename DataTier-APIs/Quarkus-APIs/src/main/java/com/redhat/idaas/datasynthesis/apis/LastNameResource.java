@@ -36,7 +36,7 @@ public class LastNameResource {
     @POST
     @APIResponse(responseCode = "201")
     public Response generateLastNames(NameLast nameObj) throws DataSynthesisException {
-        service.insertNameLast(nameObj.lastName);
+        service.insertNameLast(nameObj);
         return Response.status(Status.CREATED).build();
     }
 }

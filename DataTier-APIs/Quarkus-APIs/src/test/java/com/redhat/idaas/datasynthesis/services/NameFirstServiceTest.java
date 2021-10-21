@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.models.DataExistingNameFirstEntity;
+import com.redhat.idaas.datasynthesis.dtos.NameFirst;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,8 +25,8 @@ public class NameFirstServiceTest {
     @Transactional
     public void testInsertFirstHappy() throws DataSynthesisException {
         Common.seed();
-        Assertions.assertTrue(service.insertNameFirst("name1", "F"));
-        Assertions.assertTrue(service.insertNameFirst("name1", "M"));
+        Assertions.assertTrue(service.insertNameFirst(new NameFirst("name1", "F")));
+        Assertions.assertTrue(service.insertNameFirst(new NameFirst("name1", "M")));
         Assertions.assertEquals(2, DataExistingNameFirstEntity.count());
     }
 
@@ -33,8 +34,8 @@ public class NameFirstServiceTest {
     @Transactional
     public void testInsertFirstDuplicate() throws DataSynthesisException {
         Common.seed();
-        Assertions.assertTrue(service.insertNameFirst("name1", "F"));
-        Assertions.assertFalse(service.insertNameFirst("name1", "F"));
+        Assertions.assertTrue(service.insertNameFirst(new NameFirst("name1", "F")));
+        Assertions.assertFalse(service.insertNameFirst(new NameFirst("name1", "F")));
         Assertions.assertEquals(1, DataExistingNameFirstEntity.count());
         validateNameFirstEntity((DataExistingNameFirstEntity) DataExistingNameFirstEntity.listAll().get(0));
     }
@@ -51,7 +52,7 @@ public class NameFirstServiceTest {
     @Transactional
     public void testInertFirstNoSeed() {
         Assertions.assertThrows(DataSynthesisException.class, () -> {
-            service.insertNameFirst("name1", "F");
+            service.insertNameFirst(new NameFirst("name1", "F"));
         });
     }
 
@@ -59,8 +60,8 @@ public class NameFirstServiceTest {
     @Transactional
     public void testGetWithFilter() throws DataSynthesisException {
         Common.seed();
-        service.insertNameFirst("name1", "F");
-        service.insertNameFirst("name2", "M");
+        service.insertNameFirst(new NameFirst("name1", "F"));
+        service.insertNameFirst(new NameFirst("name2", "M"));
         Set<DataExistingNameFirstEntity> results = service.findRandomRows(10, "gender", "F");
         Assertions.assertEquals(1, results.size());
         Assertions.assertEquals("F", results.toArray(new DataExistingNameFirstEntity[0])[0].getGender());

@@ -38,8 +38,8 @@ public class NameFirstService extends RandomizerService<DataExistingNameFirstEnt
     }
 
     @Transactional
-    public boolean insertNameFirst(String firstName, String gender) throws DataSynthesisException {
-        DataExistingNameFirstEntity entity = new DataExistingNameFirstEntity(firstName, gender);
+    public boolean insertNameFirst(NameFirst name) throws DataSynthesisException {
+        DataExistingNameFirstEntity entity = new DataExistingNameFirstEntity(name.firstName, name.gender);
         entity.setRegisteredApp(getRegisteredApp());
         entity.setStatus(getDefaultStatus());
         entity.setCreatedDate(new Timestamp(System.currentTimeMillis()));

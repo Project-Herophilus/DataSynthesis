@@ -12,31 +12,31 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.redhat.idaas.datasynthesis.dtos.NameFirst;
+import com.redhat.idaas.datasynthesis.dtos.Company;
+import com.redhat.idaas.datasynthesis.services.CompanyService;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
-import com.redhat.idaas.datasynthesis.services.NameFirstService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
-@Path("/first-names")
+@Path("/companies")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class FirstNameResource {
+public class CompanyResource {
     @Inject
-    NameFirstService service;
+    CompanyService service;
 
     @GET
-    public List<NameFirst> getFirstNames(
+    public List<Company> getCompanies(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
-    
+
     @POST
     @APIResponse(responseCode = "201")
-    public Response generateFirstNames(NameFirst nameObj) throws DataSynthesisException {
-        service.insertNameFirst(nameObj);
+    public Response addCompany(Company company) throws DataSynthesisException {
+        service.insertCompany(company);
         return Response.status(Status.CREATED).build();
     }
 }
