@@ -5,8 +5,10 @@ const router = express.Router();
 const dataexistingcontroller = require("./querydata/dataexisting.controller");
 const hl7controller = require("./hl7/hl7.controller");
 //const datastructures = require("./datastructures/datastructures.controller");
+const dataplatformcontroller = require("./querydata/dataplatform.controller");
 // Defined Specific Routers
 router.use('/api/querydata/dataexisting',dataexistingcontroller)
+router.use('/api/querydata/dataplatform',dataplatformcontroller)
 router.use('/api/hl7',hl7controller)
 //router.use('/api/datastructures',datastructures)
 
