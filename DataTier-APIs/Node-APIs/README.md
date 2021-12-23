@@ -1,19 +1,14 @@
-# DataTier-DataBuilder
+# DataTier-Node-APIs
 
-While there are long term plans to build out several different types and forms of Data Builders the current implementation is done in JavaScript and provides the ability to provide HL7 data specifically.
+While there are long term plans to build out several different types and forms of Data Builders the current implementation
+is done in JavaScript and provides the ability to provide HL7 data specifically.
 
-
-
-For these assets you will want to ensure you have the needed versions of Node, npm and yarn. 
-
-# Pre-Requisites
-
-## Key Node Packages
-https://www.npmjs.com/package/infinispan
-https://www.npmjs.com/package/kafkajs
+For these assets you will want to ensure you have the needed versions of Node, npm and yarn installed and working for your environment.
 
 # Settings
-All the settings used are within a .env file structured as follows
+The biggest thing to understand is that all settings for this are contained within a .env file. It is important to know 
+that if you clone the repository the file  WILL NOT be included or created. You must manually create a .env file and 
+the settings used are defined below.
 
 ```   
 # Database Tech
@@ -28,7 +23,11 @@ outputadapter=File
 # Output Setting
 ```
 
+
+# Pre-Requisites
+
 ## Mac
+We have many users specifically leveraging Macs
 https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
 
 brew install nodejs
@@ -36,15 +35,43 @@ brew install npm
 brew install yarn
 brew upgrade <package>
 
+## Node
+We always prefer to be very close to the latest Node and Project releases as their are constant performance and security
+enhancements occuring within the technology. 
+
+### Updating packages
+From command line at the project directory level or within IDE (depending upon capabilities of IDE) simply run:
+```
+yarn install
+```
+
+# IDE or Commond Line Experience
+If you are wanting to leverage the libraries and look at the code from a development experience perspective, then either
+having all the proper node 
+
 ## Running in IDE
 The following section is intended to cover generic IDE and platform usage
 
-### Updating packages
-From command line in project directory or within IDE (depending upon capabilities of IDE)
+### Starting the Solution 
+Always make sure you have updated the packages first
 
-yarn install
+To start the solution from the command line at the project level simply type:
+```
+npm start 
+```
 
-### Starting
-npm start
-nodemon start
+Or, if you want to work with it locally and potentially enhance it then from the base project level type:
+```
+nodemon app.js
+```
+
+
+# Testing APIs 
+To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs. 
+The intent is to that anyone can see how the APIs can be leveraged simply and directly.
+
+https://go.postman.co/workspace/DataSynthesis~7d70ed7c-dd18-48d6-95ec-f325d13e67f3/collection/3200250-6b8076ed-1d81-4b52-a00b-3634b33878a6
+
+
+Happy Coding
 

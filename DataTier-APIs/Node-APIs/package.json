@@ -1,7 +1,7 @@
 {
-  "name": "datatier-databuilder",
-  "version": "1.5.0",
-  "description": "DataSynthesis API Platform for DataBuilding",
+  "name": "datatier-api",
+  "version": "2.0.1",
+  "description": "DataSynthesis Node Based API for Platform",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

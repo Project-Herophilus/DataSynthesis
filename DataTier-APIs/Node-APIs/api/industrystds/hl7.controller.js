@@ -5,7 +5,7 @@ const router = express.Router();
 const hl7Builder = require("../../builders/buildmsgHL7");
 const fs = require("fs");
 
-router.get("/hl7-doc-generator", async(req, res) => {
+router.get("/industrystds-doc-generator", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
@@ -40,16 +40,16 @@ router.get("/hl7-doc-generator", async(req, res) => {
       })
       dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
       console.log("dataresults" + dataResults)
-      fs.writeFileSync('hl7-test.hl7', dataResults, 'utf8')
+      fs.writeFileSync('industrystds-test.industrystds', dataResults, 'utf8')
       res.send(dataResults)
   })
 
   
   // const result = hl7Builder.generateHL7_Record(rows, doc_type, trigger_event, count, state, sending_app, sending_fac)
   // console.log(result)
-  // fs.writeFileSync('hl7-test.hl7', result.replace(/[\n\r]/g, '\r'), 'utf8')
+  // fs.writeFileSync('industrystds-test.industrystds', result.replace(/[\n\r]/g, '\r'), 'utf8')
 
-  // res.sendFile('hl7-test.hl7', {root: path.join(__dirname, "../../")}, (err,data)=>{
+  // res.sendFile('industrystds-test.industrystds', {root: path.join(__dirname, "../../")}, (err,data)=>{
   //     if(err){
   //         console.err(err)
   //     }
