@@ -8,7 +8,7 @@ const datamodelcontroller = require("./querydata/datamodel.controller");
 const hl7controller = require("./industrystds/hl7.controller");
 const impldatacontroller = require("./querydata/implementationdata.controller");
 const refdatacontroller = require("./querydata/referencedata.controller");
-const termsdatacontroller = require("./querydata/termsdata.controller");
+const termdatacontroller = require("./querydata/termsdata.controller");
 //const datastructures = require("./datastructures/datastructures.controller");
 const dataplatformcontroller = require("./querydata/dataplatform.controller");
 // Defined Specific Routers - Tied to Constants
@@ -19,7 +19,6 @@ router.use('/api/querydata/dataplatform',dataplatformcontroller)
 router.use('/api/industrystds',hl7controller)
 router.use('/api/querydata/implementationdata',impldatacontroller)
 router.use('/api/querydata/referencedata',refdatacontroller)
-router.use('api/querydata/termsdata',termsdatacontroller)
-//router.use('/api/datastructures',datastructures)
+router.use('api/querydata/terminologydata',termdatacontroller)
 
 module.exports = router;

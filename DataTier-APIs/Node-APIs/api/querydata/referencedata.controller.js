@@ -57,7 +57,7 @@ router.get('/platformparamstodataattributes', function (req, res) {
 });
 
 router.get('/sensitivityflags', function (req, res) {
-    dbConnection.query('select * from refdata_sensitivtyflags where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_sensitivityflag where StatusID=1', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
@@ -92,7 +92,7 @@ router.get('/usstates', function (req, res) {
 });
 
 router.get('/vendors', function (req, res) {
-    dbConnection.query('select * from refdata_vendors where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_vendor where StatusID=1', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });

@@ -70,7 +70,7 @@ nodemon app.js
 To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs. 
 The intent is to that anyone can see how the APIs can be leveraged simply and directly.
 
-https://go.postman.co/workspace/DataSynthesis~7d70ed7c-dd18-48d6-95ec-f325d13e67f3/collection/3200250-6b8076ed-1d81-4b52-a00b-3634b33878a6
+https://www.postman.com/balanscott/workspace/datasynthesis/collection/16526170-6e45e3ca-8eaf-47c9-a0cb-0e024a852505
 
 
 Happy Coding
