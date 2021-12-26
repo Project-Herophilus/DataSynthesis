@@ -1,35 +1,36 @@
+const dbConnection = require("../../general/dbConnections/mysqlConnect");
 var mysql      = require('mysql');
 var randomRecs = require('../general/randomFunctions.js')
 
 var methods = {
     commonRecordCount: function (strQuery,value) {
-        var connection = mysql.createConnection({
+        /*var connection = mysql.createConnection({
             host     : 'localhost',
             user     : 'root',
             password : 'Developer123',
             database : 'datasynthesis'
-        })
-            connection.connect();
-            connection.query(strQuery, function(err, rows, fields)
+        })*/
+            dbConnection.connect();
+            dbConnection.query(strQuery, function(err, rows, fields)
             {
                 if (err) throw err;
                 rowLength = rows.length;
                 //console.log(rows[0]);
                 console.log(rowLength);
             });
-        connection.end();
+        dbConnection.end();
         return rowLength;
     },
     RecordSpecificResponse: function (strQuery, RecordNumber, callback) {
-        var connection = mysql.createConnection({
+        /*var connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
             password: 'Developer123',
             database: 'datasynthesis'
-        })
+        })*/
         var responseData = null;
-        connection.connect();
-        connection.query(strQuery, [true], (err, results, fields) => {
+        dbConnection.connect();
+        dbConnection.query(strQuery, [true], (err, results, fields) => {
         //connection.query(strQuery, function (err, rows, fields, results) {
             if (err) throw err;
             //console.log(rows[RecordNumber]);
@@ -38,18 +39,18 @@ var methods = {
             //responseData = rows[RecordNumber];
             //console.log(rowLength);
         });
-        connection.end();
+        dbConnection.end();
         //return results;
     },
     RandomRecordResponse: function (strQuery, recordCount) {
-        var connection = mysql.createConnection({
+       /* var connection = mysql.createConnection({
             host     : 'localhost',
             user     : 'root',
             password : 'Developer123',
             database : 'datasynthesis'
-        })
-        connection.connect();
-        connection.query(strQuery, function(err, rows, fields)
+        })*/
+        dbConnection.connect();
+        dbConnection.query(strQuery, function(err, rows, fields)
         {
             if (err) throw err;
             let rowLength = rows.length;
@@ -64,7 +65,7 @@ var methods = {
             //console.log(rows[0]);
             //console.log(rowLength);
         });
-        connection.end();
+        dbConnection.end();
     },
 
 };
