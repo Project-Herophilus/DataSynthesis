@@ -1,24 +1,33 @@
-// var dateFunctions = require('./dateTimeFunctions.js');
-// var dataOutputFunctions = require('./dataOutputFunctions.js');
-// var randomFunctions = require('./randomFunctions.js');
-// var sqlDBRecordCountFunction = require('./dbQueries.js');
-// var awaitQueryFunctions = require('./dbQueriesReferenceData.js');
-// const { eventNames } = require('../dbConnections/mysqlConnect.js');
-const dotenv = require('dotenv');
-dotenv.config({path: `../.env`})
-const moment = require('moment');
-const db= require("../../general/dbConnections/mysqlConnect")
-const queryBuilder = require('../query-builder');
+const dbConnection = require("../../general/dbConnections/mysqlConnect")
+const dbQueries = require('../../datatierQueries/dbQueries');
 const express = require("express");
 const router = express.Router();
+//const fs = require("fs");
 
-router.get("/industrystds-doc-generator", async(req, res) => {
-    let dataResults;
-    res.setHeader("Content-Type", "text/plain");
-    const count = req.query.count || 100;
-    const state = req.query.state || "TX";
-//const sending_app = req.query.sending_app || "datasynthesis";
-//const sending_fac = req.query.sending_fac || "datafacility"
+router.get('/status', function (req, res) {
+    dbConnection.query('select * from refdata_statuses', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
+});
+
+router.get("/returnGenLastName", async(req, res) => {
+    //let dataResults;
+    //res.setHeader("Content-Type", "text/plain");
+    //const count = req.query.count || 100;
+    //const state = req.query.state || "TX";
+    //const sending_app = req.query.sending_app || "datasynthesis";
+    //const sending_fac = req.query.sending_fac || "datafacility"
+
+    // Query Table
+    strQuery = "select count from dataexisting_namefirst";
+    //RecordLength - How to Return for a table
+    var recordLength = dbConnection.query(dbQueries.commonRecordCount(strQuery));
+    //Loops
+    //Query Specific Record
+    //How to Populate it to an object for usability
+    var dataResultsDTL;
+    res.send(recordLength);
     /*
     db.query(queryBuilder.getData(count, state), (err, rows, fields)=>{
         if(err) throw err;
