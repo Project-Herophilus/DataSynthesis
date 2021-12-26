@@ -7,7 +7,7 @@
 const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');
-const con = require("../general/dbConnections/mysqlConnect");
+const con = require("../general/connectors/dbConnections/mysqlConnect");
 
 module.exports= {
     pullActiveRecords_ababanking(rows, count) {

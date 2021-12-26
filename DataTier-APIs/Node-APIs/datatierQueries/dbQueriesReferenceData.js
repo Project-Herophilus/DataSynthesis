@@ -1,5 +1,5 @@
 var mysql      = require('mysql');
-var randomRecs = require('../general/randomFunctions.js')
+var randomRecs = require('../general/functions/randomFunctions.js')
 
 // https://evertpot.com/executing-a-mysql-query-in-nodejs/
 
