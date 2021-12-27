@@ -10,15 +10,34 @@ Starting in 2022 all development efforts and core database work will be done aga
 We will still continue to export DDLs for other databases. However, as with every effort these as a best effort unless otherwise 
 specifically stated.
 
-### Windows
-This is a quick take on how to setup the load scripts.
+### Pre-Requisites
+Make sure you have all the tools needed installed and configured for usage.
 
 1. After cloning the DataSynthesis repository.
 2. Load up a command prompt - You can also use the pqsql command prompt. You will just need
    to manually change directories to the base directory location where the load scripts is.
-3. For this example our directory is c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
-4. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql
 
+#### Mac
+On the Mac we have had several users complain of inconsistent install experiences and not being able to have psql easily
+accessible. For simplicity, we moved the psql.exe from the /Library/PostgresQL/<Version>/bin. For this example we will
+use the command /Library/PostgresQL/14/bin/psql
+1. For this example our directory is c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
+2. We open up a command prompt and run the following command (based on your system and install location):
+```
+cd /Users/alscott/Development/Project-Herophilus/DataSynthesis/DataTier/DataLoaders
+```
+3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
+   type in the password with every script that is run.
+
+
+#### Windows
+1. For this example our directory is c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
+2. We open up a command prompt and run the following command:
+```
+cd c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
+```
+3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
+type in the password with every script that is run.
 
 ## MySQL/MariaDB - Linux (CentOS/RHEL/Mac) and/or Windows
 

@@ -1,0 +1,52 @@
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/1-refdata_status.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/2-refdata_timezones.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/3-refdata_usstates.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/5-refdata_vendor.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/7-refdata_industrystd.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/8-refdata_sensitivityflag.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/9-refdata_codeset.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdata_countries.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdata_operationtype.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdata_terminologystd.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_legalentities.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_organization.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_application.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Other/datamodel_datatables.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Other/datamodel_domain.sql
+-- Single Inserts
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/1-platform_dataattributes.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/10-refdata_datagentypes.sql
+-- Single Inserts
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/2-platform_datastructures.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/3-platform_datastructurestodataattributes.sql
+-- Single Inserts
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datagen.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_ababanking_v2.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_areacode.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namefirst_1.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namefirst_2.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namefirst_3.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namelast_1.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namelast_2.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namelast_3.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namelast_4.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namelast_5.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_namelast_6.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_upccodes.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_zipcodeus_v2.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_accountnumber.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_addresses.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_bankaccount.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_creditcard.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_dateofbirth.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_driverslicenses_1.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_driverslicenses_2.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_driverslicenses_3.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_phonenumber.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_socialsecuritynumber.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_useridentities.sql
+@ psql:./Terms/terms_umls_mrconoso.sql:25001: ERROR:  character with byte sequence 0x81 in encoding "WIN1252" has no equiv
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Terms/terms_umls_mrconoso.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Terms/terms_umls_mrconoso_2.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Terms/terms_umls_mrconoso_3a.sql
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Terms/terms_umls_mrconoso_4.sql
