@@ -1,7 +1,8 @@
 # DataTier-Node-APIs
 
-While there are long term plans to build out several different types and forms of Data Builders the current implementation
-is done in JavaScript and provides the ability to provide HL7 data specifically.
+There is no specific plans to ONLY have one technology for APIs. Currently, we are working on 
+the best way to address and keep feature parity because we want to ensure that we dont limit 
+technology. 
 
 For these assets you will want to ensure you have the needed versions of Node, npm and yarn installed and working for your environment.
 
@@ -30,10 +31,17 @@ outputadapter=File
 We have many users specifically leveraging Macs
 https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
 
-brew install nodejs
-brew install npm
-brew install yarn
-brew upgrade <package>
+brew install nodejs <br/>
+brew install npm <br/>
+brew install yarn <br/>
+brew upgrade <package> <br/>
+
+# Windows
+Find the download from https://nodejs.org/en/download/ and install it.
+
+# Linux
+Depending on your flavor of Linux you will find the needed downloads
+https://nodejs.org/en/download/ or within your Linux implementation.
 
 ## Node
 We always prefer to be very close to the latest Node and Project releases as their are constant performance and security
@@ -42,10 +50,14 @@ enhancements occuring within the technology.
 ### Updating packages
 From command line at the project directory level or within IDE (depending upon capabilities of IDE) simply run:
 ```
+npm install
+```
+or
+```
 yarn install
 ```
 
-# IDE or Commond Line Experience
+# IDE or Command Line Experience
 If you are wanting to leverage the libraries and look at the code from a development experience perspective, then either
 having all the proper node 
 
@@ -64,7 +76,6 @@ Or, if you want to work with it locally and potentially enhance it then from the
 ```
 nodemon app.js
 ```
-
 
 # Testing APIs 
 To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs. 
