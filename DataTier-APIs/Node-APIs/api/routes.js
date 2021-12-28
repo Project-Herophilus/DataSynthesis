@@ -9,7 +9,7 @@ const hl7controller = require("./industrystds/hl7.controller");
 const impldatacontroller = require("./querydata/implementationdata.controller");
 const refdatacontroller = require("./querydata/referencedata.controller");
 const termdatacontroller = require("./querydata/termsdata.controller");
-//const datastructures = require("./datastructures/datastructures.controller");
+//const generatedata = require("./generatedata/generatedata.controller");
 const dataplatformcontroller = require("./querydata/dataplatform.controller");
 const datarndmcontroller = require("./querydata/randomdata.controller")
 // Defined Specific Routers - Tied to Constants

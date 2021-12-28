@@ -1,5 +1,3 @@
-
-
 module.exports = {
         getData(count, state){
             let query_string = "";

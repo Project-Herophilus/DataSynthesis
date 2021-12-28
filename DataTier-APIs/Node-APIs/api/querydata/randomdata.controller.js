@@ -1,5 +1,5 @@
 const dbConnection = require("../../general/connectors/dbConnections/mysqlConnect")
-const dbQueries = require('../../datatierQueries/dbQueries');
+const dbQueries = require('../../general/functions/datatier/dbQueries');
 const express = require("express");
 const router = express.Router();
 //const fs = require("fs");

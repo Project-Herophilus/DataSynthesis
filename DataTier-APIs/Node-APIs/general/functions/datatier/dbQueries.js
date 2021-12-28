@@ -1,6 +1,6 @@
-const dbConnection = require("../general/connectors/dbConnections/mysqlConnect");
+const dbConnection = require("../../connectors/dbConnections/mysqlConnect");
 var mysql      = require('mysql');
-var randomRecs = require('../general/functions/randomFunctions.js')
+var randomRecs = require('../general/randomFunctions.js')
 
 var methods = {
     commonRecordCount: function (strQuery,value) {

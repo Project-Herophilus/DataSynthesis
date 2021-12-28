@@ -2,16 +2,13 @@ const db= require("../../general/connectors/dbConnections/mysqlConnect")
 const queryBuilder = require('../../general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
-const hl7Builder = require("../../builders/buildmsgHL7");
+const datastructuresBuilder = require("../../builders/buildDataStructures");
 const fs = require("fs");
 
-router.get("/industrystds-doc-generator", async(req, res) => {
+router.get("/demographics-generator", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
-  const doc_type = req.query.doc_type || "ADT";
-  //TRIGGER EVENT = AO1,AO8,AO3
-  const trigger_event = req.query.trigger_event || "AO1";
   const count = req.query.count || 100;
   const state = req.query.state || "TX";
   const sending_app = req.query.sending_app || "datasynthesis";
@@ -38,15 +35,13 @@ router.get("/industrystds-doc-generator", async(req, res) => {
               return Object.assign(result,current)
           }, {}))
       })
-      dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
-      console.log("dataresults" + dataResults)
-      fs.writeFileSync('industrystds-test.industrystds', dataResults, 'utf8')
+      dataResults = datastructuresBuilder.generateDemographic_Record(modifiedTuples, count, state, sending_app, sending_fac)
+      dataResults.forEach(line=>{
+        fs.appendFileSync('person-demographics.csv', line, 'utf8')
+      })
       res.send(dataResults)
   })
+
 });
-
-router.get("/fhir-doc-generator", (req, res) => {});
-
-router.get("/ccda-doc-generator", (req, res) => {});
 
 module.exports = router;

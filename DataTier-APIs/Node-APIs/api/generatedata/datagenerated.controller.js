@@ -1,11 +1,11 @@
 const db= require("../../general/connectors/dbConnections/mysqlConnect")
-const queryBuilder = require('../query-builder');
+const queryBuilder = require('../../general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
 const datastructuresBuilder = require("../../builders/buildDataStructures");
 const fs = require("fs");
 
-router.get("/demographics-generator", async(req, res) => {
+router.get("/addresses", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
