@@ -5,15 +5,22 @@ require('dotenv').config({ path: path.resolve(__dirname, '../../../' +
         '.env') })
 
 const client = new Client({
-    user: process.env.dbuser,
+    user: 'postgres',
+    password: 'Developer123',
+    host: 'localhost',
+    database: 'datasynthesis',
+    port: '5432',
+    /*
+      user: process.env.dbuser,
+    password: process.env.dbpassword,
     host: process.env.dbhost,
     database: process.env.dbname,
-    password: process.env.dbpassword,
     port: process.env.dbport,
+     */
 });
 
 client.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connected to Postgress DB !");
 });
 module.exports = client;

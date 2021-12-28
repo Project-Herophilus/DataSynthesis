@@ -14,6 +14,6 @@ const con = db.createConnection({
 
 con.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connected to MySQL/Maria DB!");
 });
 module.exports = con;
