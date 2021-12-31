@@ -96,16 +96,6 @@ module.exports = {
                 const date = new Date(row.DateOfBirth)
                 const dt_birth = moment(date).format("yyyyMMDD")
                 //DATAEXISTING_FIRSTNAME/LASTNAME
-                const gender = row.Gender
-                //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-                const home_phone = `${row.AreaCodeValue}-${row.PhoneNumberValue}`
-                //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-                const business_phone = `${row.AreaCodeValue}-${rows[random_number].PhoneNumberValue}`
-                //DATAGENERATED_SOCIALSECURITYNUMBER
-                const ssn = row.SocialSecurityNumberValue
-                //DATAGENERATED_DRIVERLICENSES
-                const drivers_license_num = row.DLN
-                demographic_messages.push(`${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|${business_phone}${ssn}|${drivers_license_num}\n`)
             })
             return demographic_messages
     },

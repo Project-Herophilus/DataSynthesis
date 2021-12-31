@@ -1,4 +1,5 @@
-const dbConnection = require("../../general/connectors/dbConnections/mysqlConnect")
+//const dbConnection = require("../../general/connectors/dbConnections/mysqlConnect")
+const dbConnection = require("../../general/connectors/dbConnections/postgresqlConnect")
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
@@ -37,6 +38,14 @@ const fs = require("fs");
             res.end(JSON.stringify(results));
         });
     });
+    // rest api to get a area codes by state
+    // Example: http://localhost:3001/dataexisting/timezone/CST
+    router.get('/areacode/:timezone', function (req, res) {
+        dbConnection.query('select * from dataexisting_areacode where StatusID=1 and TimeZone=?', [req.params.timezone], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    });
 
     router.get('/companies', function (req, res) {
         dbConnection.query('select * from dataexisting_companies where StatusID=1', function (error, results, fields) {
@@ -45,6 +54,12 @@ const fs = require("fs");
         });
     });
 
+    router.get('/namefirst/:gender', function (req, res) {
+        dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and gender=?', [req.params.gender], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    });
     router.get('/namefirst/:firstnamechar/:gender', function (req, res) {
         dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and left(firstname,1)=? and gender=?', [req.params.firstnamechar, req.params.gender], function (error, results, fields) {
             if (error) throw error;
