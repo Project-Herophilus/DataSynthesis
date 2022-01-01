@@ -1,14 +1,19 @@
 # DataSynthesis Loading Seeded Data
-The easiest thing we could have done is make this a complete SaaS based offering. We are cognizant of the potential for partners to build out potential services 
-offering down the road. We also want to ensure that organizations can have control of the data.
+The easiest thing we could have done is make this a complete SaaS based offering. We are cognizant of the potential for 
+partners to build out potential services offering down the road. We also want to ensure that organizations can 
+have control of the data.
 
 # Data Loading 
-While we focus a lot on MariaDB / MySQL all the data load files are nothing more than insert into files.The scripts for simplicity are not hard coded and we do our best to test on multiple OS'es with the core databases that our teams use. However, with OS and RDBMS security enhancements always keep in mind there might be changes needed. The intent of the Data Seeeding is to support loading all the data we provide, if you wish to reduce the loaded data feel free to customize them. As with everything we do we keep the complete history so everyone can see the work that has been done.
+While we focused initially was around MariaDB / MySQL in 2022 we have decided to move to PostgresQL. We will continue
+to publish DDLs for it. The dataloading scripts are simplicistic inserts with NO specific RDBMS commands built into them.
+However, with OS and RDBMS security enhancements always keep in mind there might be changes needed. The intent of the 
+Data Seeeding is to support loading all the data we provide, if you wish to reduce the loaded data feel free to customize 
+them. As with everything we do we keep the complete history so everyone can see the work that has been done.
 
 ## Postgres
-Starting in 2022 all development efforts and core database work will be done against Postgres as the main database.
-We will still continue to export DDLs for other databases. However, as with every effort these as a best effort unless otherwise 
-specifically stated.
+As mentioned above starting in 2022 all development efforts and core database work will be done against Postgres as 
+the main database. We dont test for any specific version of PostgresQL. We will still continue to export DDLs for other 
+databases. However, as with every effort these as a best effort unless otherwise specifically stated.
 
 ### Pre-Requisites
 Make sure you have all the tools needed installed and configured for usage.

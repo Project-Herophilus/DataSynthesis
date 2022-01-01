@@ -9,7 +9,6 @@ For the path forward we wanted to include content to walk teams through the vari
 data tier.
 
 * [DataTier General Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-General.md)
-* [DataTier DataModel Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-DataModel.md)
 * [DataTier Setup Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-Setup.md)
 * [DataTier-DataLoad](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataTier-DataLoad.md)
 

@@ -4,7 +4,7 @@ going below our outside the recommendation is not something we can help with. Ho
 if you want to port it and put a pull request for other RDBMS or NoSQL data Technologies
 we welcome the assistance.
 
-### Reusable Assets
+## Reusable Assets
 In order to enable resources to have independence we have included several directories
 underneath the DataTier directory as follows:
 
@@ -16,14 +16,22 @@ could take some work to setup based on security and environment!!!
 - EmbeddedDBs: Several embedded DBs
    
 ## Install and Configuration
-While we have several RDBMS exports the core of our work has happened with MariaDB 10.x and MySQL 8.0.x 
-on Windows, Linux and Mac and we do not require any custom configurations or add-ons. So any resource 
-for your environment we would consider accurate and adequate. Also, we will leave securing the RDBMS 
-layer to your liking and requirements!!!
+As we have covered before in various content, we started with MySQL/MariaDB and in 2022 are moving to focus on 
+Postgres. The RDBMS has been tested on Windows, Linux and Mac and we do not require any custom configurations or 
+add-ons. So any resource for your environment we would consider accurate and adequate. Also, we will leave securing the RDBMS 
+layer to your business standards and requirements!!!
 
-### Setup DataSynthesis
+### Setup DataSynthesis Databases
 1. Get and import the DDL. 
-2. Use the Data Load files to update the database with data.
-   
+2. Use the Data Load files to update the database with data. We currently ONLY have scripts and test MySQL and PostgresQL
+and after January 15, 2022 testing of PostgresQL.
+
+[DataSynthesis DataTier_Setup](https://github.com/Project-Herophilus/DataSynthesis/blob/main/DataTier/DataSynthesis-DataTier-Setup.md)
+
+### DataSynthesis Data Tier
+Now, you are ready to go in using DataSynthesis!!!! Start accessing the data via queries or via the
+[DataSynthesis DataTier Geenral](https://github.com/Project-Herophilus/DataSynthesis/blob/main/DataTier/DataSynthesis-DataTier-DataModel.md)
+
+### Testing DataSynthesis
 Now, you are ready to go in using DataSynthesis!!!! Start accessing the data via queries or via the
 [DataSynthesis APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs). 
