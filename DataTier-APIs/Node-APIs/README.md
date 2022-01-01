@@ -24,7 +24,6 @@ outputadapter=File
 # Output Setting
 ```
 
-
 # Pre-Requisites
 
 ## Mac

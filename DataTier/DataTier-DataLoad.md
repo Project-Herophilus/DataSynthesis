@@ -21,6 +21,12 @@ Make sure you have all the tools needed installed and configured for usage.
 1. After cloning the DataSynthesis repository.
 2. Load up a command prompt - You can also use the pqsql command prompt. You will just need
    to manually change directories to the base directory location where the load scripts is.
+3. Make sure you have a .pgpass file created. This file can be wherever you want it to be but we are working with it at It is in the format of host:port:database:user:password
+the base directory of where the DataTier/DataLoaders are located.
+```
+localhost:5432:datasynthesis:postgres:Developer123
+```
+
 
 #### Mac
 On the Mac we have had several users complain of inconsistent install experiences and not being able to have psql easily
@@ -33,7 +39,6 @@ cd /Users/alscott/Development/Project-Herophilus/DataSynthesis/DataTier/DataLoad
 ```
 3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
    type in the password with every script that is run.
-
 
 #### Windows
 1. For this example our directory is c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
