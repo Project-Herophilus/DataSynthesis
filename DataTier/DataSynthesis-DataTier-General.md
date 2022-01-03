@@ -4,24 +4,21 @@ This document is intented to specifically cover the data model.
 ## Technologies
 
 As we discussed the initial data tier and model was built on SQL Server. This decision
-candidly was made because I spent over a decade emersed in this technology. While it
-helped us do wonderful work I made several errors because I made many decisions not
+candidly was made because the core team that started this effort spent over a decade emersed in this
+specific technology. While it helped us do wonderful work I made several errors because I made many decisions not
 thinking about RDBMS portability. It was clear that we needed to focus on another data
 technology and eventually backport the new data model to SQL Server when the time was 
-right.
+right. The project effort quickly moved to MySQL 8 / MariaDB. However, in 2022 all core efforts will be focused 
+around PostgresQL. To help implementations we have developed and will continue to maintain database load scripts 
+and backup files (where possible). 
 
-* RDBMS - The initial few resources were very comfortable with Microsoft technologies, so we started with SQL Server 2017 
-and then quickly moved to MySQL 8 / MariaDB. However, in 2022 all core efforts will be focused around PostgresQL.
-To help implementations we have developed and will continue to maintain database load scripts and backup files
-(where possible).
-* Development Technologies - We make every attempt to leverage industry leading development technologies to 
-leverage our data tier. Currently, we have support for Quarkus and Node (Express). We also have implemented 
+We make every attempt to leverage industry leading development technologies to 
+leverage our data tier. Currently, our APIs support for Quarkus and Node (Express). We also have implemented 
 .Net Core but will be revisiting it as time permits.
   
-## Data Model - Fit for Purpose
+## Data Model
 As we looked to refocus we wanted to ensure the first thing we did as we revamped the entire data model was try and have 
 clarity and ease of understanding. This is very important as it is the foundation for all efforts.
-
 The platform data tier setup establishes several key reference and base data for the platform. We
 have ensured we include required reference data and a ton of existing and generated data
 to start. With all that being said as you look to add your organization we wanted to provide you some details
@@ -30,7 +27,8 @@ and context as to how to ensure you maximize the platform and also use it effect
 ### Naming Convention: Built Around Purpose
 We wanted to make sure that the table names were easy to understand their purpose. While
 there is no easy pattern to leverage we tried to make the tablenames detailed enough to explain
-their purpose. Below is our explanation about the current reusable pattern we are currently using *{datapurpose_}tablepurpose*
+their purpose. Below is our explanation about the current reusable pattern we are currently using 
+*{datapurpose_}tablepurpose*
 
 | Data's Purpose | Details |
 |:---|:---|
