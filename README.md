@@ -4,10 +4,8 @@ Here are the modules that make up DataSynthesis.
 | Type|Usage/Implementation |
 | -------------|----------|
 |[DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier)| all the supported Database DDLs and Load Database scripts|
-|[Quarkus DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)|Quarkus based APIs to access datatier.|
-|[Express DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Express-APIs)|Javascript Express based APIs to access datatier.|
-|[DataTier Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)|Platform components that can build data from DataSynthesis for a variety of needs.|
-|[Web UI](https://github.com/Project-Herophilus/DataSynthesis/tree/main/WebPlatform-UI)|Eventual user interface for DataSynthesis.|
+|[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)|Quarkus and Node based APIs to access datatier. This includes building, generating and processing capabilities|
+|[DataTier Web UI](https://github.com/Project-Herophilus/DataSynthesis/tree/main/WebPlatform-UI)|Eventual user interface for DataSynthesis.|
 
 # Background
 As we thought about how to help healthcare we believed a focus on <b>data being the asset</b> was the path forward we needed 
@@ -66,14 +64,9 @@ All things around the data tier are specifically contained within the link provi
 To support the needs of user requests are the data tier APIs. This API set is about being able to both generate 
 data and persist it to the data tier.
 
-[Quarkus DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)
+[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/DataTier-APIs)
 
-## 3: Data Builder(s)
-This is an API designed to support business users needs to build random data for usage.
-
-[Node Data Builder](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-DataBuilder)
-
-## 4: Web-UI(s)
+## 3: Web-UI(s)
 These are intended to be minimal viable usable products that can be used to look at the datatier of DataSynthesis you implement.
 
 [DataTier Web User Interfaces](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-WebUIs)
