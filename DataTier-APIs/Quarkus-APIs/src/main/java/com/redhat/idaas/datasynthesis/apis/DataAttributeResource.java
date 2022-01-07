@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.DataAttribute;
 import com.redhat.idaas.datasynthesis.services.DataAttributeService;
 
@@ -17,6 +18,7 @@ public class DataAttributeResource {
     @Inject
     DataAttributeService service;
 
+    @Audited
     @GET
     public List<DataAttribute> getDataAttributes() {
         return service.retrieveAllDataAttributes();

@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.AreaCode;
 import com.redhat.idaas.datasynthesis.services.AreaCodeService;
 
@@ -22,6 +23,7 @@ public class AreaCodeResource {
     @Inject
     AreaCodeService service;
 
+    @Audited
     @GET
     public List<AreaCode> getAreaCodes(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {

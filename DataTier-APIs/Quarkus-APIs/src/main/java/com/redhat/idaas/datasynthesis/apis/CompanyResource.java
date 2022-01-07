@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.Company;
 import com.redhat.idaas.datasynthesis.services.CompanyService;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -27,12 +28,14 @@ public class CompanyResource {
     @Inject
     CompanyService service;
 
+    @Audited
     @GET
     public List<Company> getCompanies(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
 
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response addCompany(Company company) throws DataSynthesisException {

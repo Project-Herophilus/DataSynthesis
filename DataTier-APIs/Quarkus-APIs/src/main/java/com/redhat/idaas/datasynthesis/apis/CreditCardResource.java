@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.CreditCard;
 import com.redhat.idaas.datasynthesis.dtos.TypeAndCount;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -28,6 +29,7 @@ public class CreditCardResource {
     @Inject
     CreditCardService service;
     
+    @Audited
     @GET
     public List<CreditCard> getCreditCards(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count, 
@@ -35,6 +37,7 @@ public class CreditCardResource {
             return service.retrieveRandomCreditCards(count, dataGenTypeId);
     }
     
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response generateCreditCards(TypeAndCount countBody) throws DataSynthesisException {

@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.UserIdentity;
 import com.redhat.idaas.datasynthesis.dtos.UserIdentityWithType;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -28,6 +29,7 @@ public class UserIdentityResource {
     @Inject
     UserIdentityService service;
     
+    @Audited
     @GET
     public List<UserIdentity> getUserIdentities(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count,
@@ -35,6 +37,7 @@ public class UserIdentityResource {
             return service.retrieveRandomUserIdentities(count, dataGenTypeId);
     }
     
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response generateUserIdentities(UserIdentityWithType requestBody) throws DataSynthesisException {

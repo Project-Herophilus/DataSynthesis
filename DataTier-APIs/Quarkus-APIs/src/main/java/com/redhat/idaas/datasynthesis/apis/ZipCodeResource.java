@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.ZipCode;
 import com.redhat.idaas.datasynthesis.services.USZipCodeService;
 
@@ -22,6 +23,7 @@ public class ZipCodeResource {
     @Inject
     USZipCodeService service;
 
+    @Audited
     @GET
     public List<ZipCode> getAreaCodes(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
