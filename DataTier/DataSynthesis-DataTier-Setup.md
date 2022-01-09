@@ -30,7 +30,7 @@ and after January 15, 2022 testing of PostgresQL.
 
 ### DataSynthesis Data Tier
 Now, you are ready to go in using DataSynthesis!!!! Start accessing the data via queries or via the
-[DataSynthesis DataTier Geenral](https://github.com/Project-Herophilus/DataSynthesis/blob/main/DataTier/DataSynthesis-DataTier-DataModel.md)
+[DataSynthesis DataTier General](https://github.com/Project-Herophilus/DataSynthesis/blob/main/DataTier/DataSynthesis-DataTier-DataModel.md)
 
 ### Testing DataSynthesis
 Now, you are ready to go in using DataSynthesis!!!! Start accessing the data via queries or via the
