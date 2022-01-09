@@ -3,7 +3,8 @@ const dbConnection = require("../../general/connectors/dbConnections/postgresqlC
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-
+const statusID = 1;
+let dbUsed = process.env.rdbms;
 // Data Existing Queries
 
     router.get('/datatables', function (req, res) {
