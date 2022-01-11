@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.Count;
 import com.redhat.idaas.datasynthesis.dtos.PhoneNumber;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -28,12 +29,14 @@ public class PhoneNumberResource {
     @Inject
     PhoneNumberService service;
 
+    @Audited
     @GET
     public List<PhoneNumber> getPhoneNumbers(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
     
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response generatePhoneNumbers(Count countBody) throws DataSynthesisException {

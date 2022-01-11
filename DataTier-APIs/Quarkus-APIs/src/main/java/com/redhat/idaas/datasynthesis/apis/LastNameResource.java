@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.NameLast;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.services.NameLastService;
@@ -27,15 +28,17 @@ public class LastNameResource {
     @Inject
     NameLastService service;
 
+    @Audited
     @GET
     public List<NameLast> getLastNames(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
     
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
-    public Response generateLastNames(NameLast nameObj) throws DataSynthesisException {
+    public Response addLastName(NameLast nameObj) throws DataSynthesisException {
         service.insertNameLast(nameObj);
         return Response.status(Status.CREATED).build();
     }

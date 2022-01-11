@@ -51,6 +51,11 @@ to a database named datasynthesis with a user named root who has a password of D
 ```
 mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false -DDATABASE_NAME=datasynthesis -DDATABASE_HOST=127.0.0.1 -DDATABASE_USERNAME=root -DDATABASE_PASSWORD=Developer123 -DDATABASE_PORT=3306
 ```
+
+All API calls can be audited. This requires a running instance of iDaaS-KIC (https://github.com/Project-Herophilus/iDaaS-KIC/tree/main/iDaaS-KIC-Integration). By default auditing is turned off. The following command enables auditing with a working KIC URL.
+```
+mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false -Ddatasynthesis.audit=true -DDATABASE_NAME=datasynthesis -DDATABASE_HOST=127.0.0.1 -DDATABASE_USERNAME=root -DDATABASE_PASSWORD=Developer123 -DDATABASE_PORT=3306 -DAUDITING_URL=127.0.0.1:9970
+```
 ### Troubleshooting Issues
 If you get any errors around time zone issues you can set those through the MySQL Workbench and know the time difference
 from GMT to your time zone, for the example below we are setting it for CST which is +7 hours
@@ -174,12 +179,16 @@ DATABASE_PASSWORD
 quarkus.datasource.username
 quarkus.datasource.password
 quarkus.datasource.jdbc.url
+datasynthesis.audit
+com.redhat.idaas.datasynthesis.audit.IDaasKicService/mp-rest/url
 ```
 For example:
 ```
 mvn -Dquarkus.datasource.username=lskywalker \
     -Dquarkus.datasource.password=jedi \
+    -Ddatasynthesis.audit=true \
     -Dquarkus.datasource.jdbc.url=jdbc:mysql://10.210.21.77:3306/datasynthesis \
+    -Dcom.redhat.idaas.datasynthesis.audit.IDaasKicService/mp-rest/url=http:127.0.0.1:9970 \
     quarkus:dev
 ``` 
 ### Creating a native executable

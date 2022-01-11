@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.models.RefDataStatusEntity;
 
 @Path("/refdata-statuses")
@@ -15,8 +16,9 @@ import com.redhat.idaas.datasynthesis.models.RefDataStatusEntity;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RefDataStatusResource {
 
+    @Audited
     @GET
-    public List<RefDataStatusEntity> get() {
+    public List<RefDataStatusEntity> getRefDataStatusResources() {
         return RefDataStatusEntity.listAll();
     }
 }

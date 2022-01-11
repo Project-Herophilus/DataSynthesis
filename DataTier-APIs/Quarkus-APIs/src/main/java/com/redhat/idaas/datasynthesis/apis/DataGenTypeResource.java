@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.DataGenType;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.services.DataGenTypeService;
@@ -25,11 +26,13 @@ public class DataGenTypeResource {
     @Inject
     DataGenTypeService service;
 
+    @Audited
     @GET
     public List<DataGenType> getDataGenTypes() {
         return service.retrieveAllDataGenTypes();
     }
 
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response addDataGenType(DataGenType dataType) throws DataSynthesisException {

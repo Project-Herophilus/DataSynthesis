@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.AbaBanking;
 import com.redhat.idaas.datasynthesis.services.AbaBankingService;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -27,12 +28,14 @@ public class AbaBankingResource {
     @Inject
     AbaBankingService service;
 
+    @Audited
     @GET
     public List<AbaBanking> getAbaBankings(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
 
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response addAbaBanking(AbaBanking banking) throws DataSynthesisException {

@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.BankAccount;
 import com.redhat.idaas.datasynthesis.dtos.TypeAndCount;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -28,6 +29,7 @@ public class BankAccountResource {
     @Inject
     BankAccountService service;
     
+    @Audited
     @GET
     public List<BankAccount> getBankAccounts(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count, 
@@ -35,6 +37,7 @@ public class BankAccountResource {
             return service.retrieveRandomBankAccounts(count, dataGenTypeId);
     }
     
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
     public Response generateBankAccounts(TypeAndCount countBody) throws DataSynthesisException {

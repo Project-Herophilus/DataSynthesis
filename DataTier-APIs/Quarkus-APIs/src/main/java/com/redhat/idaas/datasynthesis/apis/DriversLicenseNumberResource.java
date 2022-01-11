@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.DLN;
 import com.redhat.idaas.datasynthesis.dtos.TypeAndCount;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
@@ -28,16 +29,18 @@ public class DriversLicenseNumberResource {
     @Inject
     DriversLicenseNumberService service;
     
+    @Audited
     @GET
-    public List<DLN> getCreditCards(
+    public List<DLN> getDriversLicenseNumbers(
         @Parameter(description = "number of random records to be retrieved") @QueryParam int count,
         @Parameter(required=false) @QueryParam Short dataGenTypeId) {
             return service.retrieveRandomDriverLicenses(count, dataGenTypeId);
     }
     
+    @Audited
     @POST
     @APIResponse(responseCode = "201")
-    public Response generateCreditCards(TypeAndCount countBody) throws DataSynthesisException {
+    public Response generateDriversLicenseNumbers(TypeAndCount countBody) throws DataSynthesisException {
         service.generatedDriverLicenses(countBody.count, countBody.dataGenTypeId);
         return Response.status(Status.CREATED).build();
     }

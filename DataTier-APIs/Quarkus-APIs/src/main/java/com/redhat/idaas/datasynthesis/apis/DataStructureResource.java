@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.dtos.DataStructure;
 import com.redhat.idaas.datasynthesis.exception.DataSynthesisException;
 import com.redhat.idaas.datasynthesis.services.DataStructureService;
@@ -25,9 +26,10 @@ public class DataStructureResource {
     DataStructureService service;
 
 
+    @Audited
     @GET
     public List<DataStructure> getDataStructureByName(@Parameter(description = "number of records to be retrieved") @QueryParam int count, 
-        @Parameter(description = "name of the data_struture") @QueryParam("name") String name) throws DataSynthesisException {
+        @Parameter(description = "name of the data_structure") @QueryParam("name") String name) throws DataSynthesisException {
         return service.retrieveDataStructures(name, count);
     }
 }

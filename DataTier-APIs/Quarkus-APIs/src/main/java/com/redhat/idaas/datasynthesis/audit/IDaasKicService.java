@@ -1,0 +1,14 @@
+package com.redhat.idaas.datasynthesis.audit;
+
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
+@Path("/message")
+@RegisterRestClient
+public interface IDaasKicService {
+    @POST
+    Response audit(AuditMessage auditMessage);
+}

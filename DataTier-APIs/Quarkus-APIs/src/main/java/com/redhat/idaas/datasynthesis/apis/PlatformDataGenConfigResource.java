@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.redhat.idaas.datasynthesis.audit.Audited;
 import com.redhat.idaas.datasynthesis.models.PlatformConfigDataGenEntity;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -18,8 +19,9 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class PlatformDataGenConfigResource {
 
+    @Audited
     @GET
-    public List<PlatformConfigDataGenEntity> get(@Parameter(required=false) @QueryParam Short status) {
+    public List<PlatformConfigDataGenEntity> getPlatformDataGenConfigResourcesByStatusId(@Parameter(required=false) @QueryParam Short status) {
         if (status == null)
             return PlatformConfigDataGenEntity.listAll();
         return PlatformConfigDataGenEntity.findByStatusId(status);
