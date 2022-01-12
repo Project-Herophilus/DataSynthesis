@@ -5,4 +5,4 @@ const router = express.Router();
 const fs = require("fs");
 let rdbmsType = process.env.rdbms;
 
-
+module.exports = router;

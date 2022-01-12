@@ -23,6 +23,4 @@ let dbUsed = process.env.rdbms;
         });
     });
 
-
-
     module.exports = router;

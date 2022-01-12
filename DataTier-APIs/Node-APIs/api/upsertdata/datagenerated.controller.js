@@ -13,3 +13,4 @@ module.exports = {
     geneticUpsert(rows, sending_app, sending_fac) {
     }
 }
+module.exports = router;
