@@ -82,12 +82,6 @@ router.get('/dateofbirth', function (req, res) {
         res.end(JSON.stringify(results));
     });
 });
-router.get('/dateofbirth/:ageequality', function (req, res) {
-    dbConnection.query('select * from datagenerated_dateofbirth where StatusID=1 and Age >=?',[req.params.ageequality] , function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
-});
 router.get('/dateofbirth/:age', function (req, res) {
     dbConnection.query('select * from datagenerated_dateofbirth where StatusID=1 and Age >=?',[req.params.age] , function (error, results, fields) {
         if (error) throw error;

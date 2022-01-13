@@ -62,26 +62,6 @@ let rdbmsType = process.env.rdbms;
                 res.end(JSON.stringify(results));
             });
         }
-
-    });
-    // rest api to get areacodes by timezones
-    // Example: http://localhost:3001/dataexisting/timezone/CST
-    router.get('/areacode/:timezone', function (req, res) {
-        if (rdbmsType =="mysql")
-        {
-            dbConnection.query('select * from dataexisting_areacode where StatusID=1 and TimeZone=?', [req.params.timezone], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-        if (rdbmsType =="postgreSQL")
-        {
-            const timeZoneVal = req.params.timezone;
-            dbConnection.query('select * from dataexisting_areacode where StatusID=1 and TimeZone=$1', [req.params.timezone], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
     });
 
     /*
@@ -104,8 +84,10 @@ let rdbmsType = process.env.rdbms;
         }
         if (rdbmsType =="postgreSQL")
         {
-            const compayNameVal = req.params.companyname;
-            dbConnection.query('select * from dataexisting_companies where StatusID=1 and companyname like $1', [req.params.companyname], function (error, results, fields) {
+            const companyNameVal = req.params.companyname;
+            // let sqlQuery = "select * from dataexisting_companies where StatusID=1 and companyname like "+ companyNameVal;
+            // console.log("Query: "+sqlQuery);
+            dbConnection.query('select * from dataexisting_companies where StatusID=1 and companyname like $1', ['%'+req.params.companyname+'%'], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
@@ -115,51 +97,18 @@ let rdbmsType = process.env.rdbms;
     /*
      *   NameFirst
      */
-    router.get('/namefirst/:gender', function (req, res) {
+    router.get('/namefirst/:firstnamelike/:gender', function (req, res) {
         if (rdbmsType =="mysql")
         {
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and gender=?', [req.params.gender], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-        if (rdbmsType =="postgreSQL")
-        {
-            const genderVal = req.params.gender;
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and gender=$1', [req.params.gender], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-    });
-    router.get('/namefirst/:firstnamechar/:gender', function (req, res) {
-        if (rdbmsType =="mysql")
-        {
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and left(firstname,1)=? and gender=?', [req.params.firstnamechar, req.params.gender], function (error, results, fields) {
+            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and left(firstname,1)=? and gender=?', [req.params.firstnamelike, req.params.gender], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
         }
         if (rdbmsType =="postgreSQL") {
             const genderVal = req.params.gender;
-            const firstNameCharVal = req.params.firstnamechar;
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and left(firstname,1)=$2 and gender=$1', [req.params.firstnamechar, req.params.gender], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-    });
-    router.get('/namefirst/:firstnamechar', function (req, res) {
-        if (rdbmsType =="mysql")
-        {
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and left(firstname,1)=?', [req.params.firstnamechar], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-        if (rdbmsType =="postgreSQL") {
-            const firstNameCharVal = req.params.firstnamechar;
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and left(firstname,1)=$1', [req.params.firstnamechar], function (error, results, fields) {
+            const firstNameCharVal = req.params.firstnamelike;
+            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and firstname like $1 and gender=$2', ['%'+req.params.firstnamelike+'%', req.params.gender], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
@@ -168,7 +117,7 @@ let rdbmsType = process.env.rdbms;
     router.get('/namefirst:likename', function (req, res) {
         if (rdbmsType =="mysql")
         {
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and namefirst like ?', [req.params.likename], function (error, results, fields) {
+            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and firstname like ?', [req.params.likename], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
@@ -176,7 +125,7 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const lastnameVal = req.params.likename;
-            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and namefirst like $1', [req.params.likename], function (error, results, fields) {
+            dbConnection.query('select * from dataexisting_namefirst where StatusID=1 and firstname like $1', ['%'+req.params.likename+'%'], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
@@ -193,23 +142,6 @@ let rdbmsType = process.env.rdbms;
     /*
      *    NameLast
      */
-    router.get('/namelast/:lastnamechar', function (req, res) {
-        if (rdbmsType =="mysql")
-        {
-            dbConnection.query('select * from dataexisting_namelast where StatusID=1 and left(lastname,1)=?', [req.params.lastnamechar], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-        if (rdbmsType =="postgreSQL")
-        {
-            const lastnameCharVal = req.params.lastnamechar;
-            dbConnection.query('select * from dataexisting_namelast where StatusID=1 and left(lastname,1)=$1', [req.params.lastnamechar], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-    });
     router.get('/namelast/:lastnamematch', function (req, res) {
         if (rdbmsType =="mysql")
         {
@@ -221,7 +153,7 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const lastnameCharVal = req.params.lastnamematch;
-            dbConnection.query('select * from dataexisting_namelast where StatusID=1 and lastname like $1', [req.params.lastnamematch], function (error, results, fields) {
+            dbConnection.query('select * from dataexisting_namelast where StatusID=1 and lastname like $1', ['%'+req.params.lastnamematch+'%'], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
@@ -240,7 +172,7 @@ let rdbmsType = process.env.rdbms;
     router.get('/upccodes/:productnamematch', function (req, res) {
         if (rdbmsType =="mysql")
         {
-            dbConnection.query('select * from dataexisting_upccodes where StatusID=1 and companyname like ?', [req.params.productnamematch], function (error, results, fields) {
+            dbConnection.query('select * from dataexisting_upccodes where StatusID=1 and upcproductname like ?', [req.params.productnamematch], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
@@ -248,24 +180,7 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const productNameVal = req.params.productnamematch;
-            dbConnection.query('select * from dataexisting_upccodes where StatusID=1 and productname like $1', [req.params.productnamematch], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-    });
-    router.get('/upccodes/:upccodematch', function (req, res) {
-        if (rdbmsType =="mysql")
-        {
-            dbConnection.query('select * from dataexisting_upccodes where StatusID=1 and upccode like ?', [req.params.upccodematch], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-        if (rdbmsType =="postgreSQL")
-        {
-            const upcCodeVal = req.params.upccodematch;
-            dbConnection.query('select * from dataexisting_upccodes where StatusID=1 and upccode like $1', [req.params.upccodematch], function (error, results, fields) {
+            dbConnection.query('select * from dataexisting_upccodes where StatusID=1 and upcproductname like $1', ['%'+req.params.productnamematch+'%'], function (error, results, fields) {
                 if (error) throw error;
                 res.end(JSON.stringify(results));
             });
