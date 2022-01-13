@@ -12,11 +12,37 @@ let rdbmsType = process.env.rdbms;
 /*
  *   Applications
  */
-router.get('/applications', function (req, res) {
-    dbConnection.query('select * from impl_application where StatusID=1', function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+router.get('/applications/:activeStatus', function (req, res) {
+    const activeStatus = req.params.activeStatus;
+    //console.log("Active Status: "+activeStatus);
+    let StatusID;
+    if (activeStatus == null || activeStatus == "active" )
+    {
+        StatusID = 'StatusID = 1';
+    }
+    if (activeStatus == "inactive")
+    {
+        StatusID = 'StatusID = 2';
+    }
+    if (activeStatus == "all")
+    {
+        StatusID = 'StatusID >=1 ';
+    }
+    if (rdbmsType =="mysql") {
+        dbConnection.query('select * from impl_application where StatusID='+StatusID, function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        let sqlQuery = 'select * from impl_application where '+StatusID;
+        console.log("SQL: "+sqlQuery);
+        dbConnection.query('select * from impl_application where '+StatusID, function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 
 router.get('/codesets', function (req, res) {
