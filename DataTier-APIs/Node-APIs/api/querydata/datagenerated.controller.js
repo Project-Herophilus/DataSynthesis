@@ -19,10 +19,21 @@ router.get('/accountnumbers', function (req, res) {
     });
 });
 router.get('/accountnumbers:/likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_accountnumbers where StatusID=1 and accountnumbervalue like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_accountnumbers where StatusID=1 and accountnumbervalue like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_accountnumbers where StatusID=1 and accountnumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 
 /*
@@ -35,10 +46,21 @@ router.get('/addresses', function (req, res) {
     });
 });
 router.get('/addresses:/likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_addresses where StatusID=1 and addressstreet like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_addresses where StatusID=1 and addressstreet like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_addresses where StatusID=1 and addressstreet like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 
 /*
@@ -51,10 +73,19 @@ router.get('/bankaccount', function (req, res) {
     });
 });
 router.get('/bankaccount:/likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_bankaccount where StatusID=1 and bankaccountvalue like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql") {
+        dbConnection.query('select * from datagenerated_bankaccount where StatusID=1 and bankaccountvalue like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL") {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_bankaccount where StatusID=1 and bankaccountvalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 
 /*
@@ -115,10 +146,21 @@ router.get('/ein', function (req, res) {
     });
 });
 router.get('/ein/:likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_ein where StatusID=1 and einvalue like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_ein where StatusID=1 and einvalue like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_ein where StatusID=1 and einvalue like ?', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 
 /*
@@ -131,10 +173,22 @@ router.get('/phonenumber', function (req, res) {
     });
 });
 router.get('/phonenumber/:likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_phonenumber where StatusID=1 and phonenumbervalue like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_phonenumber where StatusID=1 and phonenumbervalue like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_phonenumber where StatusID=1 and phonenumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+
 });
 
 /*
@@ -147,10 +201,21 @@ router.get('/socialsecuritynumber', function (req, res) {
     });
 });
 router.get('/socialsecuritynumber/:likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_socialsecuritynumber where StatusID=1 and socialsecuritynumbervalue like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_socialsecuritynumber where StatusID=1 and socialsecuritynumbervalue like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_socialsecuritynumber where StatusID=1 and socialsecuritynumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 /*
  *   User Identities
@@ -162,16 +227,39 @@ router.get('/useridentities', function (req, res) {
     });
 });
 router.get('/useridentities/:likesearch', function (req, res) {
-    dbConnection.query('select * from datagenerated_useridentities where StatusID=1 and useridentityvalue like ?', [req.params.likesearch], function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_useridentities where StatusID=1 and useridentityvalue like ?', [req.params.likesearch], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        dbConnection.query('select * from datagenerated_useridentities where StatusID=1 and useridentityvalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
-router.get('/useridentities/:domain', function (req, res) {
-    dbConnection.query('select * from datagenerated_useridentities where StatusID=1 and UserDomain=?',  [req.params.domain] ,function (error, results, fields) {
-        if (error) throw error;
-        res.end(JSON.stringify(results));
-    });
+router.get('/useridentities/:likesearch/:domain', function (req, res) {
+    if (rdbmsType =="mysql")
+    {
+        dbConnection.query('select * from datagenerated_useridentities where StatusID=1 and useridentityvalue like ? and UserDomain=?', [req.params.likesearch, req.params.domain] ,function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
+    if (rdbmsType =="postgreSQL")
+    {
+        const likeSearchVal = req.params.likesearch;
+        const domainSearchVal = req.params.domain;
+        dbConnection.query('select * from datagenerated_useridentities where StatusID=1 and useridentityvalue like $1 and UserDomain=$2', ['%'+req.params.likesearch+'%','%'+req.params.domain+'%'], function (error, results, fields) {
+            if (error) throw error;
+            res.end(JSON.stringify(results));
+        });
+    }
 });
 
 module.exports = router;
