@@ -10,28 +10,28 @@ let rdbmsType = process.env.rdbms;
 */
 
 router.get('/codesets', function (req, res) {
-    dbConnection.query('select * from refdata_codeset where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_codeset', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/countries', function (req, res) {
-    dbConnection.query('select * from refdata_countries where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_countries', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/datagentypes', function (req, res) {
-    dbConnection.query('select * from refdata_datagentypes where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_datagentypes', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/industrystd', function (req, res) {
-    dbConnection.query('select * from refdata_industrystd where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_industrystd', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
@@ -59,42 +59,42 @@ router.get('/platformparamstodataattributes', function (req, res) {
 });
 
 router.get('/sensitivityflags', function (req, res) {
-    dbConnection.query('select * from refdata_sensitivityflag where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_sensitivityflag', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/statuses', function (req, res) {
-    dbConnection.query('select * from refdata_status where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_status', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/terminologystd', function (req, res) {
-    dbConnection.query('select * from refdata_terminologystd where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_terminologystd', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/timezones', function (req, res) {
-    dbConnection.query('select * from refdata_timezones where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_timezones', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/usstates', function (req, res) {
-    dbConnection.query('select * from refdata_usstates where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_usstates', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
 });
 
 router.get('/vendors', function (req, res) {
-    dbConnection.query('select * from refdata_vendor where StatusID=1', function (error, results, fields) {
+    dbConnection.query('select * from refdata_vendor', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results));
     });
