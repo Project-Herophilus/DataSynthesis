@@ -77,15 +77,23 @@ module.exports = {
         const random_streetTypes = alphabet[Math.floor(Math.random() * streetTypes.length)];
         /*
         How can we create three formats that randomly we can reformat the data into
-         There are three US address formats:
-         number streetname-lastname streetType
-         number streetDirection streetname-lastname streetType
-         number streetname-lastname streetDirection streetType
+         There are a few formats US address formats:
+         number streetname(lastname) streetType
+         number streetDirection streetname(lastname) streetType
          */
             rows.forEach(row=>{
                 const sending_application = sending_app
                 const sending_facility = sending_fac
                 const timestamp = moment().format("yyyyMMDDHHMMSS");
+                // 1. pull in a random list of 15k last names for usage into an array
+                // 2. Loop through that array and consruct a variable that will use an
+                // 2. Build all potential relevant parts
+                // number street direction  streetTypes
+                // 3. Randomize the output format from
+                // number streetname(lastname) streetType
+                // number streetDirection streetname(lastname) streetType
+                // 4. build the specific street address output
+                // 5. Hand off to persistence-output tier
                 // Street Name is from LastName randomized
                 const streetname = row.LastName
                 //CONCAT ALL THREE
