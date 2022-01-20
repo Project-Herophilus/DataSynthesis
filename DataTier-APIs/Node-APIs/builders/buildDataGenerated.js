@@ -1,6 +1,10 @@
 const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');
+var Chance = require('chance');
+
+// Instantiate Chance so it can be used
+var chance = new Chance();
 
 const DelimsCommon = {
     fieldSeperator : "|",
@@ -106,6 +110,22 @@ module.exports = {
         // 5. Hand off to persistence-output tier
         // Street Name is from LastName randomized
     },
+    generateUSPhoneNumbers(number_of_phone_numbers, country){
+        // check typeof object 
+        //console.log(typeof object)
+        const phone_numbers = [];
+        console.log(typeof number_of_phone_numbers)
+        for (i=0; i<number_of_phone_numbers; i++){
+            if (country == "us"){
+                phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+            }
+            else {
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+        }
+        return phone_numbers
+    },
+
     generateAddressByState_Record(rows, count, sending_app, sending_fac){
 
     }
