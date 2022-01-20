@@ -13,6 +13,9 @@ module.exports = {
             query_string += ` select * from ${schema}.${table} limit ${count} ;`
             })
             return query_string;
+        },
+        getDataFromTable(table, limit){
+            return `select * from ${table} order by random() limit ${limit};`
         } 
 
 }

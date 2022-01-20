@@ -6,8 +6,8 @@ services:
     environment:
       DATABASE_NAME: datasynthesis
       DATABASE_HOST: host.docker.internal
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: Developer123
+      DATABASE_USERNAME: letmein
+      DATABASE_PASSWORD: datasynthesis
       DATABASE_PORT: 3306
     volumes:
       - "./:/app:Z,delegated"

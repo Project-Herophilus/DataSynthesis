@@ -9,9 +9,10 @@ const hl7controller = require("./industrystds/hl7.controller");
 const impldatacontroller = require("./querydata/implementationdata.controller");
 const refdatacontroller = require("./querydata/referencedata.controller");
 const termdatacontroller = require("./querydata/termsdata.controller");
+const generatedata = require("./generatedata/datagenerated.controller");
 //const generatedata = require("./generatedata/generatedata.controller");
 const dataplatformcontroller = require("./querydata/dataplatform.controller");
-const datarndmcontroller = require("./querydata/randomdata.controller")
+const datarndmcontroller = require("./querydata/randomdata.controller");
 // Defined Specific Routers - Tied to Constants
 router.use('/api/querydata/dataexisting', dataexistingcontroller)
 router.use('/api/querydata/datagenerated', dataegeneratedcontroller)
@@ -20,6 +21,7 @@ router.use('/api/querydata/dataplatform', dataplatformcontroller)
 router.use('/api/industrystds', hl7controller)
 router.use('/api/querydata/implementationdata', impldatacontroller)
 router.use('/api/querydata/referencedata', refdatacontroller)
-router.use('api/querydata/randomized', datarndmcontroller)
-router.use('api/querydata/terminologydata', termdatacontroller)
+router.use('/api/querydata/randomized', datarndmcontroller)
+router.use('/api/querydata/terminologydata', termdatacontroller)
+router.use('/api/generatedata/generate', generatedata)
 module.exports = router;
