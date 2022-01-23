@@ -3,8 +3,9 @@ const db= require("../../general/connectors/dbConnections/postgresqlConnect")
 const queryBuilder = require('../../general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
-const datastructuresBuilder = require("../../builders/buildDataStructures");
+const datastructuresBuilder = require("../../builders/buildComplexDataStructures");
 const fs = require("fs");
+//will contain all insert/upsert logic from data that is generated and synthesized
 
 router.get("/demographics-generator", async(req, res) => {
   let dataResults;
@@ -44,5 +45,14 @@ router.get("/demographics-generator", async(req, res) => {
   })
 
 });
+
+router.post("/data-generator", async(req, res) => {
+    req.query.count;
+    req.query.type;
+    //1. invoke buildDataGeneratedMethods
+    //database methods invoked 
+    //[{"address":"address1", "dob": dob1, "dln":dln1}]
+    //persist objects return from builders in a common format that the datbase accept
+})
 
 module.exports = router;

@@ -4,6 +4,7 @@ const moment = require('moment');
 var Chance = require('chance');
 const rng = require('./numberGenerators');
 generator = require('creditcard-generator')
+var RandExp = require('randexp'); // must require on node
 
 // Instantiate Chance so it can be used
 var chance = new Chance();
@@ -150,7 +151,10 @@ module.exports = {
         }
         return creditcard_numbers
     },
-    generateDLN(rows, stateCode){
+    generateDLN(number_of_dls, datagentype){
+        // 1. read config (state code and regex pattern)
+        // 2. generate random set of numbers/characters based on regex pattern 
+        return new RandExp('^[A-Z]{1}[0-9]{8}$').gen();
         /*
          * table platform_config_datagen are all the entries that should be able to be scheduled to run
          * it links via datagentypeid to refdata_datagentypes to the specific formats/regex needed to do the
@@ -225,3 +229,4 @@ module.exports = {
 // console.log(module.exports.generateEIN(10))
 // console.log(module.exports.generateDateOfBirths(1960, 10))
 // console.log(module.exports.generateCreditCards(12,'Discover'))
+console.log(module.exports.generateDLN('blah','blah'))

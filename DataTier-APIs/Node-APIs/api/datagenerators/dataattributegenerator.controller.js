@@ -3,7 +3,7 @@ const db= require("../../general/connectors/dbConnections/postgresqlConnect")
 const queryBuilder = require('../../general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
-const datastructuresGenerated = require("../../builders/buildDataGenerated");
+const datastructuresGenerated = require("../../builders/buildDataAttributes");
 const fs = require("fs");
 
 router.get("/addresses", async(req, res) => {
