@@ -2,7 +2,8 @@ const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');
 var Chance = require('chance');
-//generator = require('creditcard-generator')
+const rng = require('./numberGenerators');
+generator = require('creditcard-generator')
 
 // Instantiate Chance so it can be used
 var chance = new Chance();
@@ -105,33 +106,47 @@ module.exports = {
         // check typeof object
         //console.log(typeof object)
         const creditcard_numbers = [];
-        var ccSplitValue = null;
-        console.log(typeof ccName)
-        if (ccName="all")
+        var ccSplitValue = null;   
+        if (ccName=="all")
         {
             ccSplitValue = Math.floor(number_of_cards/4);
-            generator.GenCC("Amex", ccSplitValue);
-            generator.GenCC("VISA", ccSplitValue);
-            generator.GenCC("Mastercard", ccSplitValue);
-            generator.GenCC("Discover", ccSplitValue);
+            creditcard_numbers.push({
+                "cc_type": "Amex",
+                "cc_count": ccSplitValue, 
+                "cc_numbers": generator.GenCC("Amex", ccSplitValue)
+            });
+            creditcard_numbers.push({
+                "cc_type": "VISA",
+                "cc_count": ccSplitValue, 
+                "cc_numbers": generator.GenCC("VISA", ccSplitValue)
+            });
+            creditcard_numbers.push({
+                "cc_type": "Mastercard",
+                "cc_count": ccSplitValue, 
+                "cc_numbers": generator.GenCC("Mastercard", ccSplitValue)
+            });
+            creditcard_numbers.push({
+                "cc_type": "Discover",
+                "cc_count": ccSplitValue, 
+                "cc_numbers": generator.GenCC("Discover", ccSplitValue)
+            });
 
         }
-        else
-        {
-            for (i=0; i<number_of_cards; i++){
-                if (ccName == "Amex"){
-                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
-                }
-                if (ccName == "VISA"){
-                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
-                }
-                if (ccName == "Mastercard"){
-                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
-                }
-                if (ccName == "Discover"){
-                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
-                }
-            }
+        else if (ccName == "Amex"){
+            return generator.GenCC("Amex",number_of_cards)
+        }
+        else if (ccName == "VISA"){
+            return generator.GenCC("VISA",number_of_cards)
+        }
+        else if (ccName == "Mastercard"){
+            return generator.GenCC("Mastercard",number_of_cards)
+        }
+        else if (ccName == "Discover"){
+            return generator.GenCC("Discover",number_of_cards)
+        }
+        else {
+         console.log("Card type not recognized")
+         return "Card type not recgonized"
         }
         return creditcard_numbers
     },
@@ -144,32 +159,44 @@ module.exports = {
         */
 
     },
-    generateDateOfBirths(rows){
+    generateDateOfBirths(beginyear, count){
+        const dobs = [];
+        const start =  new Date(beginyear, 0, 1)
+        const end = new Date();
+        for(i=0; i<count; i++){
+            const DOB = new Date(start.getTime()+Math.random() * (end.getTime() - start.getTime()))
+            dobs.push(DOB.toJSON().substring(0,10))
+        }
+        return dobs
 
     },
-    generateEIN(rows){
-
+    generateEIN(count){
+        /*
+         *    ###-##-####
+         */
+        const einNumbers = [];
+        for (i=0; i<count; i++)
+        {
+            let ein_first = rng.generateRandomNumbers(99, 10)
+            let ein_second = rng.generateRandomNumbers(999999999, 10)
+            einNumbers.push(`${ein_first}-${ein_second}`)
+        }
+        return einNumbers
     },
-    generateSSN(rows)
+    generateSSN(count)
     {
         /*
          *    ###-##-####
          */
-        const ssNumbers = [];
-
-        for (i=0; i<number_of_phone_numbers; i++)
+        const ssnNumbers = [];
+        for (i=0; i<count; i++)
         {
-            var firstNumberStart = 1
-            var firstNumberEnd = 999
-            Math.floor((Math.random() * (firstNumberEnd - firstNumberStart + 1) + firstNumberStart));
-            var secondNumberStart = 1
-            var secondNumberEnd = 99
-            Math.floor((Math.random() * (secondNumberEnd - secondNumberStart + 1) + secondNumberStart));
-            var thirdNumberStart = 1
-            var thirddNumberEnd = 9999
-            Math.floor((Math.random() * (thirdNumberEnd - thirdNumberStart + 1) + thirdNumberStart));
+            let ssn_first = rng.generateRandomNumbers(999, 100)
+            let ssn_second = rng.generateRandomNumbers(99, 10)
+            let ssn_third = rng.generateRandomNumbers(9999, 1000)
+            ssnNumbers.push(`${ssn_first}-${ssn_second}-${ssn_third}`)
         }
-            return ssNumbers
+        return ssnNumbers
     },
     generateUserIdentities(rows){
 
@@ -178,7 +205,6 @@ module.exports = {
         // check typeof object 
         //console.log(typeof object)
         const phone_numbers = [];
-        console.log(typeof number_of_phone_numbers)
         for (i=0; i<number_of_phone_numbers; i++){
             if (country == "us"){
                 phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
@@ -194,3 +220,8 @@ module.exports = {
     }
 
 }
+
+// console.log(module.exports.generateSSN(10))
+// console.log(module.exports.generateEIN(10))
+// console.log(module.exports.generateDateOfBirths(1960, 10))
+// console.log(module.exports.generateCreditCards(12,'Discover'))
