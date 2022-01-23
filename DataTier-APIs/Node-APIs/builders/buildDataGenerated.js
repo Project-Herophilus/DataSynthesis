@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config({path: `../.env`})
 const moment = require('moment');
 var Chance = require('chance');
+//generator = require('creditcard-generator')
 
 // Instantiate Chance so it can be used
 var chance = new Chance();
@@ -67,7 +68,9 @@ module.exports = {
         })
         return demographic_messages
     },
+    generateAccountNumbers(rows){
 
+    },
     generateAddress_Record_US(rows){
         randomizer = function(array){
             return array[Math.floor(Math.random()*array.length-0)+0]
@@ -93,22 +96,83 @@ module.exports = {
             fullstreetaddress.push(random_street_template(row.lastname, random_index))
         })
         return fullstreetaddress
+    },
+    generateBankAccounts(rows){
+
+    },
+    generateCreditCards(number_of_cards, ccName){
+        // https://www.npmjs.com/package/creditcard-generator
+        // check typeof object
+        //console.log(typeof object)
+        const creditcard_numbers = [];
+        var ccSplitValue = null;
+        console.log(typeof ccName)
+        if (ccName="all")
+        {
+            ccSplitValue = Math.floor(number_of_cards/4);
+            generator.GenCC("Amex", ccSplitValue);
+            generator.GenCC("VISA", ccSplitValue);
+            generator.GenCC("Mastercard", ccSplitValue);
+            generator.GenCC("Discover", ccSplitValue);
+
+        }
+        else
+        {
+            for (i=0; i<number_of_cards; i++){
+                if (ccName == "Amex"){
+                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+                }
+                if (ccName == "VISA"){
+                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+                }
+                if (ccName == "Mastercard"){
+                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+                }
+                if (ccName == "Discover"){
+                    //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+                }
+            }
+        }
+        return creditcard_numbers
+    },
+    generateDLN(rows, stateCode){
         /*
-        How can we create three formats that randomly we can reformat the data into
-         There are a few formats US address formats:
-         number streetname(lastname) streetType
-         number streetDirection streetname(lastname) streetType
+         * table platform_config_datagen are all the entries that should be able to be scheduled to run
+         * it links via datagentypeid to refdata_datagentypes to the specific formats/regex needed to do the
+         * specific task
+         *
+        */
+
+    },
+    generateDateOfBirths(rows){
+
+    },
+    generateEIN(rows){
+
+    },
+    generateSSN(rows)
+    {
+        /*
+         *    ###-##-####
          */
-        // 1. pull in a random list of 15k last names for usage into an array
-        // 2. Loop through that array and consruct a variable that will use an
-        // 2. Build all potential relevant parts
-        // number street direction  streetTypes
-        // 3. Randomize the output format from
-        // number streetname(lastname) streetType
-        // number streetDirection streetname(lastname) streetType
-        // 4. build the specific street address output
-        // 5. Hand off to persistence-output tier
-        // Street Name is from LastName randomized
+        const ssNumbers = [];
+
+        for (i=0; i<number_of_phone_numbers; i++)
+        {
+            var firstNumberStart = 1
+            var firstNumberEnd = 999
+            Math.floor((Math.random() * (firstNumberEnd - firstNumberStart + 1) + firstNumberStart));
+            var secondNumberStart = 1
+            var secondNumberEnd = 99
+            Math.floor((Math.random() * (secondNumberEnd - secondNumberStart + 1) + secondNumberStart));
+            var thirdNumberStart = 1
+            var thirddNumberEnd = 9999
+            Math.floor((Math.random() * (thirdNumberEnd - thirdNumberStart + 1) + thirdNumberStart));
+        }
+            return ssNumbers
+    },
+    generateUserIdentities(rows){
+
     },
     generateUSPhoneNumbers(number_of_phone_numbers, country){
         // check typeof object 
@@ -125,7 +189,6 @@ module.exports = {
         }
         return phone_numbers
     },
-
     generateAddressByState_Record(rows, count, sending_app, sending_fac){
 
     }
