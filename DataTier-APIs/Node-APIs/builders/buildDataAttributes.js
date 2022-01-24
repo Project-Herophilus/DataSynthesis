@@ -70,8 +70,20 @@ module.exports = {
         })
         return demographic_messages
     },
-    generateAccountNumbers(rows){
-
+    generateGenericRegex(regExpression, count){
+        const generateddata = []
+        for(i=0; i<count; i++){
+            generateddata.push(new RandExp(regExpression).gen());
+        }
+        return generateddata
+    },
+    generateAccountNumbers(regExpression, count){
+       /* const accountnumbers = []
+        for(i=0; i<count; i++){
+            accountnumbers.push(new RandExp(regExpression).gen());
+        }
+        return accountnumbers*/
+        return this.generateGenericRegex(regExpression, count)
     },
     generateAddress_Record_US(rows){
         randomizer = function(array){
@@ -175,9 +187,6 @@ module.exports = {
 
     },
     generateEIN(count){
-        /*
-         *    ###-##-####
-         */
         const einNumbers = [];
         for (i=0; i<count; i++)
         {
@@ -189,9 +198,6 @@ module.exports = {
     },
     generateSSN(count)
     {
-        /*
-         *    ###-##-####
-         */
         const ssnNumbers = [];
         for (i=0; i<count; i++)
         {
@@ -202,14 +208,18 @@ module.exports = {
         }
         return ssnNumbers
     },
-    generateUserIdentities(rows){
-
+    generateUserIdentities(regExpression, count){
+        const accountnumbers = []
+        for(i=0; i<count; i++){
+            accountnumbers.push(new RandExp(regExpression).gen());
+        }
+        return accountnumbers
     },
-    generateUSPhoneNumbers(number_of_phone_numbers, country){
+    generateUSPhoneNumbers(country, count ){
         // check typeof object 
         //console.log(typeof object)
         const phone_numbers = [];
-        for (i=0; i<number_of_phone_numbers; i++){
+        for (i=0; i<count; i++){
             if (country == "us"){
                 phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
             }
@@ -229,4 +239,6 @@ module.exports = {
 // console.log(module.exports.generateEIN(10))
 // console.log(module.exports.generateDateOfBirths(1960, 10))
 // console.log(module.exports.generateCreditCards(12,'Discover'))
-console.log(module.exports.generateDLN('blah','blah'))
+//console.log(module.exports.generateDLN('blah','blah'))
+//console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
+//console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
