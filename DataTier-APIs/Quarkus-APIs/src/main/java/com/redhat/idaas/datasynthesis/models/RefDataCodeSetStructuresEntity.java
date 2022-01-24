@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_codesetstructures", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_codesetstructures")
 public class RefDataCodeSetStructuresEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long codeSetStructuresId;
     private String codeSetStructureName;

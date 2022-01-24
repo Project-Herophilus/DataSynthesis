@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "databuilt_address", schema = "datasynthesis", catalog = "")
+@Table(name = "databuilt_address")
 public class DataBuiltAddressEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase  {
     private long completeAddressId;
     private String address1;

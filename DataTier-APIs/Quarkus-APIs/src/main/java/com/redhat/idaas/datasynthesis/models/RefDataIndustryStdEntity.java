@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_industrystd", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_industrystd")
 public class RefDataIndustryStdEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private String industryStd;
     private String industryStdDesc;

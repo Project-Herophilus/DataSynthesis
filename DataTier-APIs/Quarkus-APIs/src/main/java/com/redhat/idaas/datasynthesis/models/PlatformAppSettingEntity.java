@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "platform_appsetting", schema = "datasynthesis", catalog = "")
+@Table(name = "platform_appsetting")
 public class PlatformAppSettingEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short appSettingsId;
     private String appSettingName;

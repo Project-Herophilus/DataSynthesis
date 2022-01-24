@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_legalentity", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_legalentity")
 public class RefDataLegalEntityEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private String legalEntityGuid;
     private String locationName;

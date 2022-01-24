@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "terms_codesetstoapplicationvalues", schema = "datasynthesis", catalog = "")
+@Table(name = "terms_codesetstoapplicationvalues")
 public class TermsCodeSetsToApplicationValuesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long codeSetToApplicationValuesId;
     private TermsCodeSetsToApplicationEntity codeSetToApplication;

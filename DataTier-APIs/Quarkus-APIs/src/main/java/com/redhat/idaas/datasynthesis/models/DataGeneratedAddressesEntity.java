@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "datagenerated_addresses", schema = "datasynthesis", catalog = "")
+@Table(name = "datagenerated_addresses")
 public class DataGeneratedAddressesEntity extends BaseEntity {
     private long addressId;
     private String addressStreet;

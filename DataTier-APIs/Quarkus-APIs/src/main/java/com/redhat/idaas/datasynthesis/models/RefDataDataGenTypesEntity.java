@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_datagentypes", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_datagentypes")
 public class RefDataDataGenTypesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short dataGenTypeId;
     private String dataGenTypeDescription;

@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "auditing_dataplatform", schema = "datasynthesis", catalog = "")
+@Table(name = "auditing_dataplatform")
 public class AuditingDataPlatformEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long dataPlatformId;
     private Timestamp dataProcessingDate;

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "platform_datastructurestodataattributes", schema = "datasynthesis", catalog = "")
+@Table(name = "platform_datastructurestodataattributes")
 public class PlatformDataStructuresToDataAttributesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short platformDataStructuresToDataAttributesId;
     private String compositeDataStructureName;

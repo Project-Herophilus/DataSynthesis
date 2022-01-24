@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_vendor", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_vendor")
 public class RefDataVendorEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private int vendorId;
     private String vendorName;

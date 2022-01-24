@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "platform_rulesets", schema = "datasynthesis", catalog = "")
+@Table(name = "platform_rulesets")
 public class PlatformRuleSetsEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long ruleId;
     private String ruleName;

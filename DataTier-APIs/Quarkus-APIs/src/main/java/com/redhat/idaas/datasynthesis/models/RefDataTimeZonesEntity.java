@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_timezones", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_timezones")
 public class RefDataTimeZonesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private String timeZoneValue;
     private String timeZoneDesc;

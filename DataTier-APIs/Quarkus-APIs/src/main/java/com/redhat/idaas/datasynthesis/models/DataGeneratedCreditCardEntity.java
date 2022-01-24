@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "datagenerated_creditcard", schema = "datasynthesis", catalog = "")
+@Table(name = "datagenerated_creditcard")
 public class DataGeneratedCreditCardEntity extends BaseEntity {
     private long creditCardId;
     private String creditCardNumber;

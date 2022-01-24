@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "databuilt_names", schema = "datasynthesis", catalog = "")
+@Table(name = "databuilt_names")
 public class DataBuiltNamesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long dataBuiltNamesId;
     private String completeName;

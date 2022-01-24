@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_sensitivityflag", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_sensitivityflag")
 public class RefDataSensitivityFlagEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short sensitiveFlagId;
     private String sensitiveFlagDesc;
