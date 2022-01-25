@@ -299,6 +299,7 @@ typings/
 
 # IntelliJ idea directory exclusion
 /.idea/
+/,vscode/
 
 # compiled output
 /dist
