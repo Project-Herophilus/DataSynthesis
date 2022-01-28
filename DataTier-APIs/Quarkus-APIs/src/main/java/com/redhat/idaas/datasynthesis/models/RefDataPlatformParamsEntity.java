@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_platformparams", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_platformparams")
 public class RefDataPlatformParamsEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short platformParamsId;
     private String platformParamValues;

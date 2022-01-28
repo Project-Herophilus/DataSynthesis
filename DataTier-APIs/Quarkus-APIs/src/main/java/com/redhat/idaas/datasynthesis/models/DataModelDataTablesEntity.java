@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "datamodel_datatables", schema = "datasynthesis", catalog = "")
+@Table(name = "datamodel_datatables")
 public class DataModelDataTablesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase  {
     private String tableName;
     private String tableInformation;

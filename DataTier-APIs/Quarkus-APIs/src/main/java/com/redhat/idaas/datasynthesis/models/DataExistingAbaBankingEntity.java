@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "dataexisting_ababanking", schema = "datasynthesis", catalog = "")
+@Table(name = "dataexisting_ababanking")
 public class DataExistingAbaBankingEntity extends BaseEntity {
     private long abaBankingId;
     private String routingNumber;
@@ -80,7 +80,7 @@ public class DataExistingAbaBankingEntity extends BaseEntity {
     }
 
     @Basic
-    @Column(name = "State", nullable = true, length = 2)
+    @Column(name = "Statecode", nullable = true, length = 2)
     public String getState() {
         return state;
     }

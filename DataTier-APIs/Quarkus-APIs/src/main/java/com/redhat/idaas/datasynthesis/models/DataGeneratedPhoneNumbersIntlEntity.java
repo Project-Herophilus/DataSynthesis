@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "datagenerated_phonenumbersintl", schema = "datasynthesis", catalog = "")
+@Table(name = "datagenerated_phonenumbersintl")
 public class DataGeneratedPhoneNumbersIntlEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long phoneNumberIntlId;
     private String phoneNumberValue;

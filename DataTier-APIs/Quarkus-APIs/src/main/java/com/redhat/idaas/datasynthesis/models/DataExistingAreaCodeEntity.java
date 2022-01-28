@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "dataexisting_areacode", schema = "datasynthesis", catalog = "")
+@Table(name = "dataexisting_areacode")
 public class DataExistingAreaCodeEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long areaCodeId;
     private String areaCodeValue;

@@ -6,7 +6,7 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@Path("/message")
+@Path("/idaas/KIC-Auditing-EndPoint/")
 @RegisterRestClient
 public interface IDaasKicService {
     @POST

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "datagenerated_bankaccount", schema = "datasynthesis", catalog = "")
+@Table(name = "datagenerated_bankaccount")
 public class DataGeneratedBankAccountEntity extends BaseEntity {
     private long bankAccountsId;
     private String bankAccountValue;

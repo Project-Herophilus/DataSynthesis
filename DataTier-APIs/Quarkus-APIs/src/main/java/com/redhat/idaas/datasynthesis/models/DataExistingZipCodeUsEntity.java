@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "dataexisting_zipcodeus", schema = "datasynthesis", catalog = "")
+@Table(name = "dataexisting_zipcodeus")
 public class DataExistingZipCodeUsEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long zipCodeId;
     private String zipCode;
@@ -71,7 +71,7 @@ public class DataExistingZipCodeUsEntity extends io.quarkus.hibernate.orm.panach
     }
 
     @Basic
-    @Column(name = "State", nullable = true, length = 2)
+    @Column(name = "StateCode", nullable = true, length = 2)
     public String getState() {
         return state;
     }
@@ -101,7 +101,7 @@ public class DataExistingZipCodeUsEntity extends io.quarkus.hibernate.orm.panach
     }
 
     @Basic
-    @Column(name = "Location", nullable = true, length = 99)
+    @Column(name = "Lctn", nullable = true, length = 99)
     public String getLocation() {
         return location;
     }

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "refdata_addressformattype", schema = "datasynthesis", catalog = "")
+@Table(name = "refdata_addressformattype")
 public class RefDataAddressFormatTypeEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short addressFormatTypeId;
     private String addressFormatTypeDesc;

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "auditing_datarequest", schema = "datasynthesis", catalog = "")
+@Table(name = "auditing_datarequest")
 public class AuditingDataRequestEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private long dataRequestId;
     private Timestamp dataRequestDate;

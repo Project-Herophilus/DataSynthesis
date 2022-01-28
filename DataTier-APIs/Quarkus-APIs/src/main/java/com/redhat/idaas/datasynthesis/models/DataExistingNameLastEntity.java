@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "dataexisting_namelast", schema = "datasynthesis", catalog = "")
+@Table(name = "dataexisting_namelast")
 public class DataExistingNameLastEntity extends BaseEntity {
     private long lastNameId;
     private String lastName;

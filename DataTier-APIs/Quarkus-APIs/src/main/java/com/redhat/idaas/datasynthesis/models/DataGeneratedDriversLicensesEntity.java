@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "datagenerated_driverslicenses", schema = "datasynthesis", catalog = "")
+@Table(name = "datagenerated_driverslicenses")
 public class DataGeneratedDriversLicensesEntity extends BaseEntity {
     private long driversLicensesId;
     private String dln;

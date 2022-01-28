@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import io.quarkus.panache.common.Parameters;
 
 @Entity
-@Table(name = "platform_dataattributes", schema = "datasynthesis", catalog = "")
+@Table(name = "platform_dataattributes")
 public class PlatformDataAttributesEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short platformDataAttributesId;
     private String dataAttributeName;
