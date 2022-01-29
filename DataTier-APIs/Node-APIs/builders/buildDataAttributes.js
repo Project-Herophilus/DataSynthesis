@@ -5,7 +5,7 @@ var Chance = require('chance');
 const rng = require('./numberGenerators');
 generator = require('creditcard-generator')
 var RandExp = require('randexp'); // must require on node
-
+const crypto = require("crypto");
 // Instantiate Chance so it can be used
 var chance = new Chance();
 
@@ -196,6 +196,20 @@ module.exports = {
         }
         return einNumbers
     },
+    generateSerialNumbers_Basic(regExpression,count)
+    {
+        return this.generateGenericRegex(regExpression, count)
+    },
+    generateSerialNumbers_Complex(count)
+    {
+        const serialNumbers = [];
+        for (i=0; i<count; i++)
+        {
+            let serialnumbervalue = crypto.randomBytes(8).toString("hex");
+            serialNumbers.push(`${serialnumbervalue}`)
+        }
+        return serialNumbers
+    },
     generateSSN(count)
     {
         const ssnNumbers = [];
@@ -235,6 +249,8 @@ module.exports = {
 
 }
 
+console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
+//console.log(module.exports.generateSerialNumbers_Complex(10));
 // console.log(module.exports.generateSSN(10))
 // console.log(module.exports.generateEIN(10))
 // console.log(module.exports.generateDateOfBirths(1960, 10))
