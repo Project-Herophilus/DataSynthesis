@@ -32,7 +32,6 @@ their purpose. Below is our explanation about the current reusable pattern we ar
 
 | Data's Purpose | Details |
 |:---|:---|
-|auditing_(tablename)|Auditing data for platform|
 |databuilt_(tablename)|Data built from existing and/or generated sources. Intended to be more structured data|
 |dataexisting_(tablename)|Data from existing public sources|
 |datagenerated_(tablename)|Data generated from code and managed through data generation configuration|
@@ -50,31 +49,6 @@ tables and all other datamodel aspects.
 |:---------------------|:------------------------------------------|
 | datamodel_domain     | Domains used in the data tier             |
 | datamodel_datatables | Tabkes specifically used in the data tier |
-
-
-## Data Model 
-
-## Data Attributes
-Data attributes are a critical core component of the platform. They are the lowest common attributes to the platform.
-As we think about this aspect they can come from existing or generated data that exists within the platform. This data
-is provided via base insert loader scripts and is provided this way only.
-
-## Data Structures
-This is all about Building out what complete data the platform can represent. The intent here is to take the data attributes
-and create them into reusable structures. Some examples:
-- Names: A combination of data attributes last name and first name.
-- Address: A combination of street address and location data (City, State, Zip Code).
-- Phone Number: A combination of an area code with a phone number
-- Demographic Data: A Combination of First Name, Last Name, Street Address, Location (City, State and Zip code), Area Code,
-  Phone Number, Drivers License....
-
-Hopefully, this shows you the power of what can be created from data attributes...
-
-## Platform Reference Data
-Specific rules we want the platform to be able to process and maintain.
-
-## Terminologies
-Specific coded data and how we can enable it to be processed to enable more accurate and robust data processing.
 
 # Hierarchy/Order of Setting Things Up
 After implementing the DDL and seeding the DDL with data provided you will have over 180B combinations
@@ -98,4 +72,28 @@ be maintained to grow its capabilities and relevance for usage.
    organization
 9. Terms Codeset To Application Values - This is where the specific details like code and description or code and complex data attributes are captured so when data
    will need to be generated we can make it real world based. This is ALWAYS built upon the Organization and Application sending the data.
+
+# Data Model 
+
+## Data Attributes
+Data attributes are a critical core component of the platform. They are the lowest common attributes to the platform.
+As we think about this aspect they can come from existing or generated data that exists within the platform. This data
+is provided via base insert loader scripts and is provided this way only.
+
+## Data Structures
+This is all about Building out what complete data the platform can represent. The intent here is to take the data attributes
+and create them into reusable structures. Some examples:
+- Names: A combination of data attributes last name and first name.
+- Address: A combination of street address and location data (City, State, Zip Code).
+- Phone Number: A combination of an area code with a phone number
+- Demographic Data: A Combination of First Name, Last Name, Street Address, Location (City, State and Zip code), Area Code,
+  Phone Number, Drivers License....
+
+Hopefully, this shows you the power of what can be created from data attributes...
+
+## Platform Reference Data
+Specific rules we want the platform to be able to process and maintain.
+
+## Terminologies
+Specific coded data and how we can enable it to be processed to enable more accurate and robust data processing.
 

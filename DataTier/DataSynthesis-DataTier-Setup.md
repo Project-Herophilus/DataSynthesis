@@ -8,12 +8,12 @@ we welcome the assistance.
 In order to enable resources to have independence we have included several directories
 underneath the DataTier directory as follows:
 
-- DDL: We publish all every export of the database we do as a complete DDL. These are organized by RDBMS or 
-Data Warehouse technology.
+- DDL: We publish updates when we do database updates, enhancements or fixes. We used to have several RDBMS, Embedded and
+and Data Warehouse included; however, we now only have PostgreSQL as of Feb 2022. If you have a need to convert the database to a different RDBMS you can work with us or use
+one of many common database management tools like RazorSQL.
 - DataLoaders: We recommend you use the latest versioned scripts
 for loading activities. We have also included a <version>-Linux for all other than Windows operating systems. The scripts
 could take some work to setup based on security and environment!!!
-- EmbeddedDBs: Several embedded DBs
    
 ## Install and Configuration
 As we have covered before in various content, we started with MySQL/MariaDB and in 2022 are moving to focus on 
