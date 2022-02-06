@@ -30,7 +30,7 @@ jobs:
     - run: npm i
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm publish dist
+    # - run: npm publish dist
     # - run: yarn build
     # Will need to add some tests before re-implementing this 
     # - run: npm test
