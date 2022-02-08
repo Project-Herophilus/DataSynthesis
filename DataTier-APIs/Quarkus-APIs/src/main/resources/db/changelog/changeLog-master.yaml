@@ -4510,4 +4510,211 @@ databaseChangeLog:
         referencedColumnNames: statusid
         referencedTableName: refdata_status
         validate: true
-
+- changeSet:
+    id: 1643756118110-207
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: einvalue, registeredapp
+        constraintName: datagenerated_ein_uindex
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1643756118110-208
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: firstname, gender, registeredapp
+        constraintName: dataexisting_namefirst_uindex
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1643756118110-209
+    author: jfroehli (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: lastname, registeredapp
+        constraintName: dataexisting_namelast_uindex
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1643756118110-210
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_addresses
+- changeSet:
+    id: 1643756118110-211
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_socialsecuritynumber
+- changeSet:
+    id: 1643756118110-212
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_upccodes
+- changeSet:
+    id: 1643756118110-213
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_useridentities
+- changeSet:
+    id: 1643756118110-214
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_areacode
+- changeSet:
+    id: 1643756118110-215
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_companies
+- changeSet:
+    id: 1643756118110-216
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_areacodeintl
+- changeSet:
+    id: 1643756118110-217
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_ein
+- changeSet:
+    id: 1643756118110-218
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_driverslicenses
+- changeSet:
+    id: 1643756118110-219
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_creditcard
+- changeSet:
+    id: 1643756118110-220
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_accountnumbers
+- changeSet:
+    id: 1643756118110-221
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_phonenumbersintl
+- changeSet:
+    id: 1643756118110-222
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_zipcodeintl
+- changeSet:
+    id: 1643756118110-223
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_ababanking
+- changeSet:
+    id: 1643756118110-224
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_zipcodeus
+- changeSet:
+    id: 1643756118110-225
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_bankaccount
+- changeSet:
+    id: 1643756118110-226
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: platform_dataattributes
+- changeSet:
+    id: 1643756118110-227
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_namelast
+- changeSet:
+    id: 1643756118110-228
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: dataexisting_namefirst
+- changeSet:
+    id: 1643756118110-229
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_phonenumber
+- changeSet:
+    id: 1643756118110-230
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: datagenerated_dateofbirth
+- changeSet:
+    id: 1643756118110-231
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: registeredapp
+        newDataType: VARCHAR(38)
+        tableName: platform_datastructurestodataattributes
+- changeSet:
+    id: 1643756118110-232
+    author: jfroehli
+    changes:
+    - modifyDataType:
+        columnName: appguid
+        newDataType: VARCHAR(38)
+        tableName: impl_application
