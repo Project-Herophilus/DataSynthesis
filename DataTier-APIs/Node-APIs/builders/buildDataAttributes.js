@@ -249,7 +249,7 @@ module.exports = {
 
 }
 
-console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
+//console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
 //console.log(module.exports.generateSerialNumbers_Complex(10));
 // console.log(module.exports.generateSSN(10))
 // console.log(module.exports.generateEIN(10))

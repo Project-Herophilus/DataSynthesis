@@ -1,5 +1,5 @@
 //const dbConnection = require("../../connectors/dbConnections/mysqlConnect");
-const dbConnection = require("../../connectors/dbConnections/postgresqlConnect");
+const dbConnection = require("../../../connectivity/general/connectors/dbConnections/postgresqlConnect");
 var mysql      = require('mysql');
 var randomRecs = require('../general/randomFunctions.js')
 

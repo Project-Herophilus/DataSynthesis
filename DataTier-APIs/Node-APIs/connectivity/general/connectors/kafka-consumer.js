@@ -1,6 +1,6 @@
 const kafka = require('../modern/kafka')
 const dotenv = require('dotenv')
-const routes = require('idaas-routes-config');
+const routes = require('connectivity/general/connectors/idaas-routes-config');
 const axios = require('axios')
 const url = process.env.IDAAS_FHIR_URL;
 dotenv.config({path: ".env"})
