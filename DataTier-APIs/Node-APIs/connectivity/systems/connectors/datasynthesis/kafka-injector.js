@@ -1,8 +1,7 @@
-
 const dotenv = require('dotenv');
-dotenv.config({path: `${__dirname}/.env`})
-
-  
+const path = require("path");
+dotenv.config({ path: path.resolve(__dirname, '../../../../' +
+    '.env') })
 // import the `Kafka` instance from the kafkajs library
 const { Kafka } = require("kafkajs")
 const config = process.env
@@ -10,15 +9,13 @@ const config = process.env
 const clientId = config.CLIENT_ID
 // we can define the list of brokers in the cluster
 const brokers = [config.KAFKA_SERVER]
-// this is the topic to which we want to write messages
-
 // initialize a new kafka client and initialize a producer from it
 const kafka = new Kafka({ clientId, brokers })
 const producer = kafka.producer()
 
 // we define an async function that writes a new message each second
 const produce = async (topic, message) => {
-    console.log("produce", message)
+    //console.log("produce", message)
     await producer.connect()
     try {
         await producer.send({

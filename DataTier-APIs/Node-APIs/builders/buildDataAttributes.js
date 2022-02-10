@@ -9,6 +9,7 @@ const crypto = require("crypto");
 // Instantiate Chance so it can be used
 var chance = new Chance();
 
+
 const DelimsCommon = {
     fieldSeperator : "|",
     segmentSeperator : "\n",
@@ -198,6 +199,7 @@ module.exports = {
     },
     generateSerialNumbers_Basic(regExpression,count)
     {
+
         return this.generateGenericRegex(regExpression, count)
     },
     generateSerialNumbers_Complex(count)
