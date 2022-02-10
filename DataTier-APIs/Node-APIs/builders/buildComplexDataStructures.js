@@ -20,6 +20,5 @@ module.exports = {
         //pass platformdataattributesid to platform_dataattributes to return matching table 
         //pull from the relevant table through the api and randomize based on the no_recs required
         //merge appropriate datastructure tables together (Person Demographics) and then return randomized merged set 
-        
     }
 }

@@ -1,45 +1,37 @@
-const api = require("../../../../api/routes")
+
 const dotenv = require('dotenv');
-const express = require('express')
 dotenv.config({path: `${__dirname}/.env`})
-//const kafkaConnect = require("/general/connectors/modern/kafka")
-//const consumer = kafka.consumer({ groupId: process.env.DEFAULT_GROUP})
-const clientId = "my-app"
+
+  
+// import the `Kafka` instance from the kafkajs library
 const { Kafka } = require("kafkajs")
-let kafkaBroker = process.env.kafka_server;
-const kafka = new Kafka({ clientId, kafkaBroker })
-const producer = kafka.producer()
-const topic = "message-log"
+const config = process.env
+// the client ID lets kafka know who's producing the messages
+const clientId = config.CLIENT_ID
+// we can define the list of brokers in the cluster
+const brokers = [config.KAFKA_SERVER]
+// this is the topic to which we want to write messages
 
-console.log("App running ");
 // initialize a new kafka client and initialize a producer from it
-// we define an async function that writes a new message each second
-const produce = async () => {
-    console.log("Connecting to Kafka ");
-    await producer.connect()
-    console.log("Connected to Kafka ");
-    let i = 0
-    // after the produce has connected, we start an interval timer
-    setInterval(async () => {
-        try {
-            // send a message to the configured topic with
-            // the key and value formed from the current value of `i`
-            await producer.send({
-                topic,
-                messages: [
-                    {
-                        key: String(i),
-                        value: "this is message " + i,
-                    },
-                ],
-            })
+const kafka = new Kafka({ clientId, brokers })
+const producer = kafka.producer()
 
-            // if the message is written successfully, log it and increment `i`
-            console.log("writes: ", i)
-            i++
-        } catch (err) {
-            console.error("could not write message " + err)
-        }
-    }, 1000)
+// we define an async function that writes a new message each second
+const produce = async (topic, message) => {
+    console.log("produce", message)
+    await producer.connect()
+    try {
+        await producer.send({
+            topic, 
+            messages: [
+                {key: String(0), 
+                value: JSON.stringify(message)}
+            ]
+        })
+    }
+    catch(err) {
+        console.error("could not write message"+ err)
+    }
 }
-module.exports = produce;
+
+module.exports = produce 
