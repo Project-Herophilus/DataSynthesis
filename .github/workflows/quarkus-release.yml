@@ -29,6 +29,7 @@ jobs:
       with:
         token: ${{ secrets.HEROPHILUS_ACCESS_TOKEN }}
     - name: Java Maven release
+      id: maven-release
       uses: qcastel/github-actions-maven-release@v1.12.16
       env:
         JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
@@ -40,4 +41,5 @@ jobs:
         maven-args: "-Dmaven.deploy.skip=true"
         git-release-bot-name: "idaas-bot"
         maven-project-folder: ./DataTier-APIs/Quarkus-APIs
+    - run: "echo Release Output: ${{ steps.maven-release.outputs.data }}"
 
