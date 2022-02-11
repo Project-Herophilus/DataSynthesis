@@ -17,7 +17,7 @@ jobs:
       - uses: octokit/request-action@v2.x
         id: get_latest_tag
         with:
-          route: GET /repos/jayfray12/DataSynthesis-1/tags/latest
+          route: GET /repos/jayfray12/DataSynthesis-1/tags
           owner: jayfray12
           repo: DataSynthesis-1
         env:
