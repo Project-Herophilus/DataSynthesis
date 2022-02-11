@@ -39,4 +39,5 @@ jobs:
         version-minor: ${{ github.event.inputs.increment-minor }}
         maven-args: "-Dmaven.deploy.skip=true"
         git-release-bot-name: "idaas-bot"
+        maven-project-folder: ./DataTier-APIs/Quarkus-APIs
 
