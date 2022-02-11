@@ -3,9 +3,9 @@ name: "tagged-release"
 on:
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: ./DataTier-APIs/Quarkus-APIs
+# defaults:
+#   run:
+#     working-directory: ./DataTier-APIs/Quarkus-APIs
 jobs:
   tagged-release:
     name: "Tagged Release"
