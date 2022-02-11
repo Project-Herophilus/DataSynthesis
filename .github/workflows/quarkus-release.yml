@@ -52,7 +52,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: echo ::set-output name=tag_name::$(echo '${{ steps.get_latest_tag.outputs.data }}' | jq .[-1].name -r)
       id: tag-name
-    - run: "echo Tag1: ${{ steps.tag-1.outputs.tag_name }}"
+    - run: "echo Tag: ${{ steps.tag-name.outputs.tag_name }}"
     - name: Checkout source
       uses: actions/checkout@v2
       with:
@@ -71,7 +71,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.HEROPHILUS_ACCESS_TOKEN }}
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        automatic_release_tag: ${{ steps.tag-1.outputs.tag_name }}
+        automatic_release_tag: ${{ steps.tag-name.outputs.tag_name }}
         repo_token: "${{ secrets.HEROPHILUS_ACCESS_TOKEN }}"
         prerelease: false
         files: |
