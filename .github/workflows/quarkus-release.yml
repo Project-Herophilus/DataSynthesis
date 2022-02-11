@@ -60,11 +60,11 @@ jobs:
     - name: "Build & test"
       run: mvn -B package -Dquarkus.package.type=uber-jar --file pom.xml
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.HEROPHILUS_ACCESS_TOKEN }}
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         automatic_release_tag: ${{ steps.tag-1.outputs.tag_name }}
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        repo_token: "${{ secrets.HEROPHILUS_ACCESS_TOKEN }}"
         prerelease: false
         files: |
           DataTier-APIs/Quarkus-APIs/target/*.jar
