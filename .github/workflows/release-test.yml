@@ -24,6 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo '${{ steps.get_latest_tag.outputs.data }}' >> tags.json
       - run: cat tags.json
+      - run: jq .[0].name tags.json -r
       - name: Extract tag name
         uses: sergeysova/jq-action@v2
         id: tag-name
