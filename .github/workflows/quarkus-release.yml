@@ -59,7 +59,8 @@ jobs:
         distribution: 'adopt'
     - name: "Build & test"
       run: mvn -B package -Dquarkus.package.type=uber-jar --file pom.xml
-
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
         automatic_release_tag: ${{ steps.tag-1.outputs.tag_name }}
