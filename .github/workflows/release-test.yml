@@ -28,4 +28,5 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            target/*.jar
+            README.md
+            DataTier-APIs/Quarkus-APIs/target/*.jar
