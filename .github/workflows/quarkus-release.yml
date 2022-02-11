@@ -58,7 +58,7 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: "Build & test"
-      run: mvn -B clean package -Dquarkus.package.type=uber-jar --file pom.xml
+      run: mvn -B package -Dquarkus.package.type=uber-jar --file pom.xml
 
     - uses: "marvinpinto/action-automatic-releases@latest"
       with:
