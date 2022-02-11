@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.redhat.idaas</groupId>
     <artifactId>idaas-datasynthesis</artifactId>
-    <version>3.0.4-SNAPSHOT</version>
+    <version>3.0.4</version>
     <name>iDAAS DataSystesis</name>
 
     <properties>
@@ -60,7 +60,7 @@
 		<connection>scm:git:https://github.com/Project-Herophilus/DataSynthesis.git</connection>
 		<url>https://github.com/Project-Herophilus/DataSynthesis</url>
 		<developerConnection>scm:git:https://github.com/Project-Herophilus/DataSynthesis.git</developerConnection>
-    	<tag>HEAD</tag>
+    	<tag>v3.0.4</tag>
   	</scm>
 
     <dependencies>
