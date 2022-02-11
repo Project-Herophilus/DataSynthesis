@@ -24,6 +24,7 @@ jobs:
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
+          automatic_release_tag: v3.0.1
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
