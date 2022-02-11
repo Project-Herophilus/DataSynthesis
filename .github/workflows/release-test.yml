@@ -22,11 +22,12 @@ jobs:
           repo: DataSynthesis-1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "${{ steps.get_latest_tag.outputs.data }}" >> tags.json
       - name: Extract tag name
         uses: sergeysova/jq-action@v2
         id: tag-name
         with:
-          cmd: echo "${{ steps.get_latest_tag.outputs.data }}" >> tags.json && jq -r '.[0].name' tags.json
+          cmd: jq .[0].name tags.json -r
       - run: "echo Tag: ${{ steps.tag-name.outputs.data }}"
       - run: "echo Tag1: ${{ fromJson(steps.get_latest_tag.outputs.data).name }}"
 #       - name: Set up JDK 11
