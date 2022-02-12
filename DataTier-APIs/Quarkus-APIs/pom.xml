@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.redhat.idaas</groupId>
     <artifactId>idaas-datasynthesis</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.9-SNAPSHOT</version>
     <name>iDAAS DataSystesis</name>
 
     <properties>
@@ -20,7 +20,7 @@
         <jacoco.version>0.8.4</jacoco.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<scm.url>https://github.com/RedHat-Healthcare/DataSynthesis</scm.url>
+		<scm.url>https://github.com/Project-Herophilus/DataSynthesis</scm.url>
     </properties>
     
     <dependencyManagement>
@@ -57,9 +57,9 @@
 	</developers>
 
     <scm>
-		<connection>scm:git:https://github.com/RedHat-Healthcare/DataSynthesis.git</connection>
-		<url>https://github.com/RedHat-Healthcare/DataSynthesis</url>
-		<developerConnection>scm:git:https://github.com/RedHat-Healthcare/DataSynthesis.git</developerConnection>
+		<connection>scm:git:https://github.com/Project-Herophilus/DataSynthesis.git</connection>
+		<url>https://github.com/Project-Herophilus/DataSynthesis</url>
+		<developerConnection>scm:git:https://github.com/Project-Herophilus/DataSynthesis.git</developerConnection>
     	<tag>HEAD</tag>
   	</scm>
 
