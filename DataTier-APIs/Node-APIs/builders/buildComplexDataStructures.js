@@ -72,7 +72,10 @@ module.exports = {
           console.log(sql_query)
       })
       db.RecordSpecificResponse(sql_query).then(resp=>{
-        console.log(resp.rows)
+        resp.forEach(data=>{
+            data_structure_complete.push(data.rows)
+        })
+        console.log(data_structure_complete)
         })
     });
     //query platform_datastructures where datastructure == datastructure
