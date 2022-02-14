@@ -38,6 +38,7 @@
     "pg": "8.7.1",
     "randexp": "^0.5.3",
     "random": "^3.0.3",
+    "tedious": "^14.3.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
