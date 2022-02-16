@@ -8,13 +8,13 @@ const fs = require("fs");
 
 //Outputs
 const topicOutput = require("./connectivity/systems/connectors/datasynthesis/kafka-injector")
-
 const topicName="generatedData";
-//console.log("")
-//console.log(datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
-let recRequestCount = 20
-//topicOutput(topicName,datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10))
-datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',20)
+
+let transactionCount = 20
+// Write Directly to Topic all the data as one transaction
+//topicOutput(topicName,datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',transactionCount))
+// Write the data per transaction and persist it to the topic
+datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',transactionCount)
 .forEach(msg=>{
     const dataObject = {"date":new Date(),"serialnumber":msg}
     //topicOutput(topicName,msg)
