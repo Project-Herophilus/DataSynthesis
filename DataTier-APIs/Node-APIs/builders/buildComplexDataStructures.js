@@ -66,6 +66,7 @@ module.exports = {
         `;
     db.RecordSpecificResponse(data_structure_query).then((res) => {
       let sql_query = "";
+      let final_array = [];
       res.rows.forEach(datastructure=>{
           const table_filter = table_to_field_name.filter(table => table.platformtablename == datastructure.platformtablename)
           sql_query += `select ${table_filter[0].platformfieldname} from ${table_filter[0].platformtablename} order by random() limit ${no_recs};`
@@ -75,9 +76,12 @@ module.exports = {
         resp.forEach(data=>{
             data_structure_complete.push(data.rows)
         })
-        console.log(data_structure_complete)
+        let merged_array = Array.from({
+          length: data_structure_complete[0].length
+        }, (_, index) => Object.assign({}, ...data_structure_complete.map(({[index]: obj}) => obj)))
+        console.log(merged_array)
         })
-    });
+        });
     //query platform_datastructures where datastructure == datastructure
     //return matching platform_datastructure_id and pass to next query
     //next query will be to platform_datastructurestoattributees
