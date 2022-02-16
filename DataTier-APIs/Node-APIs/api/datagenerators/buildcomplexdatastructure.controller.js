@@ -7,7 +7,7 @@ const datastructuresBuilder = require("../../builders/buildComplexDataStructures
 const fs = require("fs");
 //will contain all insert/upsert logic from data that is generated and synthesized
 
-router.get("/demographics-generator", async(req, res) => {
+/*router.get("/demographics-generator", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
@@ -44,15 +44,20 @@ router.get("/demographics-generator", async(req, res) => {
       res.send(dataResults)
   })
 
-});
+});*/
 
-router.post("/data-generator", async(req, res) => {
+router.get("/datagenerator/:datastructure", async(req, res) => {
     req.query.count;
     req.query.type;
-    //1. invoke buildDataGeneratedMethods
-    //database methods invoked 
-    //[{"address":"address1", "dob": dob1, "dln":dln1}]
-    //persist objects return from builders in a common format that the datbase accept
-})
+    const count = req.query.count || 5000;
+    if (count > 5000)
+    {
+       let count = 5000;
+    }
+    const datastructurename = req.query.datastructure || "Person Demographics";
+    res.setHeader("Content-Type", "text/plain");
+    dataResults = datastructuresBuilder.buildComplexDataStructure(datastructurename,count);
+    res.send(dataResults);
+});
 
 module.exports = router;
