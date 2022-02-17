@@ -15,13 +15,14 @@ let transactionCount = 20
 // Write Directly to Topic all the data as one transaction
 //topicOutput(topicName,datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',transactionCount))
 // Write the data per transaction and persist it to the topic
-datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',transactionCount)
-.forEach(msg=>{
-    const dataObject = {"date":new Date(),"serialnumber":msg}
-    //topicOutput(topicName,msg)
-    topicOutput(topicName,dataObject)
-})
-buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000).forEach(msg=>{
-    const dataObject = {"date": new Date(), "Person Demographics": msg}
-    topicOutput(topicName, dataObject)
+// datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',transactionCount)
+// .forEach(msg=>{
+//     const dataObject = {"date":new Date(),"serialnumber":msg}
+//     //topicOutput(topicName,msg)
+//     topicOutput(topicName,dataObject)
+// })
+buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000).then(resp=>{
+    console.log(resp)
+}).catch(err=>{
+    console.log(err)
 })

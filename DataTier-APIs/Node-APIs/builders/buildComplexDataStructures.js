@@ -41,8 +41,9 @@ const table_to_field_name = [
 ];
 
 module.exports = {
-  buildComplexDataStructure(datastructure, no_recs) {
+  async buildComplexDataStructure(datastructure, no_recs) {
     let merged_array = [];
+    const data_structure_complete = [];
     const data_structure_query = `select
         platform_datastructurestodataattributes.platformdatastructurestodataattributesid,
         platform_datastructurestodataattributes.platformdatastructuresid,
@@ -64,14 +65,14 @@ module.exports = {
         order by
         platform_datastructurestodataattributes.platformdatastructuresid
         `;
-    db.RecordSpecificResponse(data_structure_query).then((res) => {
+    const result = await db.RecordSpecificResponse(data_structure_query).then(async res => {
       let sql_query = "";
       res.rows.forEach(datastructure=>{
           const table_filter = table_to_field_name.filter(table => table.platformtablename == datastructure.platformtablename)
           sql_query += `select ${table_filter[0].platformfieldname} from ${table_filter[0].platformtablename} order by random() limit ${no_recs};`
           console.log(sql_query)
       })
-      db.RecordSpecificResponse(sql_query).then(resp=>{
+      await db.RecordSpecificResponse(sql_query).then(resp=>{
         resp.forEach(data=>{
             data_structure_complete.push(data.rows)
         })
@@ -79,7 +80,8 @@ module.exports = {
           length: data_structure_complete[0].length
         }, (_, index) => Object.assign({}, ...data_structure_complete.map(({[index]: obj}) => obj)))
         })
-        });
         return merged_array
+        });
+        return result;
   }
 };
