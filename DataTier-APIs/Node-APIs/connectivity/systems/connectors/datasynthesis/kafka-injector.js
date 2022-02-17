@@ -6,9 +6,9 @@ dotenv.config({ path: path.resolve(__dirname, '../../../../' +
 const { Kafka } = require("kafkajs")
 const config = process.env
 // the client ID lets kafka know who's producing the messages
-const clientId = config.CLIENT_ID
+const clientId = config.kafka_clientid
 // we can define the list of brokers in the cluster
-const brokers = [config.KAFKA_SERVER]
+const brokers = [config.kafka_server]
 // initialize a new kafka client and initialize a producer from it
 const kafka = new Kafka({ clientId, brokers })
 const producer = kafka.producer()
@@ -27,7 +27,7 @@ const produce = async (topic, message) => {
         })
     }
     catch(err) {
-        console.error("could not write message"+ err)
+        console.error("Could not write out message to Kafka "+ err)
     }
 }
 

@@ -70,7 +70,7 @@ module.exports = {
       res.rows.forEach(datastructure=>{
           const table_filter = table_to_field_name.filter(table => table.platformtablename == datastructure.platformtablename)
           sql_query += `select ${table_filter[0].platformfieldname} from ${table_filter[0].platformtablename} order by random() limit ${no_recs};`
-          console.log(sql_query)
+          //console.log(sql_query)
       })
       await db.RecordSpecificResponse(sql_query).then(resp=>{
         resp.forEach(data=>{
