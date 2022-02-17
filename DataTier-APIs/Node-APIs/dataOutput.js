@@ -4,6 +4,7 @@ const queryBuilder = require('./general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
 const datastructuresGenerated = require("./builders/buildDataAttributes");
+const buildComplexDataStructure = require("./builders/buildComplexDataStructures");
 const fs = require("fs");
 
 //Outputs
@@ -19,4 +20,8 @@ datastructuresGenerated.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[
     const dataObject = {"date":new Date(),"serialnumber":msg}
     //topicOutput(topicName,msg)
     topicOutput(topicName,dataObject)
+})
+buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000).forEach(msg=>{
+    const dataObject = {"date": new Date(), "Person Demographics": msg}
+    topicOutput(topicName, dataObject)
 })
