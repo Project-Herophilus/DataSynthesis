@@ -23,7 +23,7 @@ let transactionCount = 20
 // })
 buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000).then(resp=>{
     resp.forEach(msg=>{
-       const dataObject = {"date":new Date(),"serialnumber":msg}
+       const dataObject = {"date":new Date(),"Person Demographics":msg}
         topicOutput(topicName,dataObject)
         })
 }).catch(err=>{
