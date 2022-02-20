@@ -1,11 +1,12 @@
 const kafka = require('../modern/kafka')
 const dotenv = require('dotenv')
-const routes = require('connectivity/general/connectors/idaas-routes-config');
+require('dotenv').config({ path: path.resolve(__dirname, '../../../../' + '.env') })
+const iDaaSRoutes = require('connectivity/systems/connectors/idaas/idaas-routes-config');
 const axios = require('axios')
-const url = process.env.IDAAS_FHIR_URL;
-dotenv.config({path: ".env"})
+const path = require("path");
+const url = process.env.iDaaS_FHIR_Server_URI;
 const consumer = kafka.consumer({
-  groupId: process.env.DEFAULT_GROUP
+  groupId: process.env.kafka_group
 })
 
 const main = async () => {
@@ -16,10 +17,11 @@ const main = async () => {
     fromBeginning: true
   })
 
+  // Process FHIR Resources
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
         const entryResources = JSON.parse(message.value.toString())
-        console.log(routes)
+        console.log(iDaaSRoutes)
         entryResources.entry.forEach(resource=>{
             const route = routes[resource.resource.resourceType]
             console.log("resourceType" + resource.resource.resourceType)
