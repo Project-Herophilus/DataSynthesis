@@ -7,12 +7,12 @@ const db = require("./connectivity/general/connectors/dbConnections/postgresqlCo
 const queryBuilder = require('./general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
-const datastructuresGenerated = require("./builders/buildDataAttributes");
+const buildDataAttributes = require("./builders/buildDataAttributes");
 const buildComplexDataStructure = require("./builders/buildComplexDataStructures");
 const fs = require("fs");
 
 //Outputs
-const topicOutput = require("./connectivity/systems/connectors/datasynthesis/kafka-injector")
+const topicOutput = require("./connectivity/general/connectors/kafka-producer")
 const topicName="generatedData";
 
 let transactionCount = 20

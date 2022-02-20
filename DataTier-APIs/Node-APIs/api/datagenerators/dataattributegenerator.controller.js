@@ -3,7 +3,7 @@ const db= require("../../connectivity/general/connectors/dbConnections/postgresq
 const queryBuilder = require('../../general/functions/datatier/query-builder');
 const express = require("express");
 const router = express.Router();
-const datastructuresGenerated = require("../../builders/buildDataAttributes");
+const datasattributesGenerator = require("../../builders/buildDataAttributes");
 const fs = require("fs");
 
 router.get("/addresses", async(req, res) => {
@@ -15,7 +15,7 @@ router.get("/addresses", async(req, res) => {
  
   db.query(queryBuilder.getDataFromTable(table, limit), (err, rows, fields)=>{
       if(err) throw err;
-    const results = datastructuresGenerated.generateAddress_Record_US(rows.rows)
+    const results = datasattributesGenerator.generateAddress_Record_US(rows.rows)
     res.json(results)
   })
 
@@ -24,7 +24,7 @@ router.get("/addresses", async(req, res) => {
 router.get("/phone-numbers", async(req, res) => {
     const number_of_phone_numbers = parseInt(req.query.count) || 1000;
     const country = req.query.country || "US";
-    const results = datastructuresGenerated.generateUSPhoneNumbers(number_of_phone_numbers, country)
+    const results = datasattributesGenerator.generateUSPhoneNumbers(number_of_phone_numbers, country)
     res.json(results)
   
   });
