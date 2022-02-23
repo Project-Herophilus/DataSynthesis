@@ -2,7 +2,7 @@
 const dotenv = require('dotenv');
 const path = require("path");
 const config = process.env
-dotenv.config({ path: path.resolve(__dirname, '.env') })
+dotenv.config({ path: path.resolve(__dirname, './.env') })
 const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
 const queryBuilder = require('./general/functions/datatier/query-builder');
 const express = require("express");
@@ -26,7 +26,7 @@ let transactionCount = 20
 //     topicOutput(topicName,dataObject)
 // })
 
-let outputType = config.outputType;
+let outputType = config.outputAdapter;
 let componentName;
 let methodName;
 
@@ -41,9 +41,10 @@ if (outputType == "kafka") {
         console.log(dataObjectResponse[i].toString());
     }
 }*/
-    componentName = "buildComplexDataStructure";
-    methodName ="PersonDemographics";
+componentName = "buildComplexDataStructure";
+methodName ="PersonDemographics";
     buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000).then(resp=>{
+        console.log("hello")
         resp.forEach(msg=>{
             const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
                 "componentName": componentName,"methodName": methodName,"Person Demographics":msg}
@@ -55,9 +56,8 @@ if (outputType == "kafka") {
             }
             if (outputType=="file")
             {
-                fs.appendFile(componentName+'_'+methodName+'.dat', JSON.stringify(dataObject+"/n"), (err) => {
+                fs.appendFileSync(componentName+'_'+methodName+'.dat', JSON.stringify(dataObject)+"\n", (err) => {
                     if (err) { console.log(err); }
-                    //console.log("Appended");
                 });
             }
         })
