@@ -12,7 +12,8 @@ const buildComplexDataStructure = require("./builders/buildComplexDataStructures
 const fs = require("fs");
 
 //Outputs
-const topicOutput = require("./connectivity/general/connectors/kafka-producer")
+const topicOutput = require("./connectivity/general/connectors/kafka-producer");
+const { data } = require('./general/functions/general/randomFunctions');
 const topicName="generatedData";
 
 let transactionCount = 20
@@ -43,25 +44,32 @@ if (outputType == "kafka") {
 }*/
 componentName = "buildComplexDataStructure";
 methodName ="PersonDemographics";
-    buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000).then(resp=>{
-        console.log("hello")
-        resp.forEach(msg=>{
-            const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
-                "componentName": componentName,"methodName": methodName,"Person Demographics":msg}
-            //console.log(dataObject)
-            if (outputType=="kafka")
-            {
-                //const dataObject = {"date":new Date(),"Person Demographics":msg}
-                topicOutput(topicName,dataObject)
-            }
-            if (outputType=="file")
-            {
-                fs.appendFileSync(componentName+'_'+methodName+'.dat', JSON.stringify(dataObject)+"\n", (err) => {
-                    if (err) { console.log(err); }
-                });
-            }
-        })
-        //.catch(err=>{
-        //console.log(err)
+buildComplexDataStructure.buildComplexDataStructure(config.DataStructure, 5000).then(resp=>{
+    const finalDataOutPut = []
+    resp.forEach(msg=>{
+        const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
+            "componentName": componentName,"methodName": methodName,[config.DataStructure]:msg}
+        finalDataOutPut.push(dataObject)
     })
+    externalizeDataOutput(finalDataOutPut, outputType)
+})
+.catch(err=>{
+    console.log(err)})
+
+const externalizeDataOutput = function(dataoutput, adapter){
+    if (adapter=="kafka")
+    {
+        dataoutput.forEach(msg=>{
+            topicOutput(topicName,msg)
+        })
+    }
+    if (adapter=="file")
+    {
+        dataoutput.forEach(msg=>{
+            fs.appendFileSync(componentName+'_'+methodName+'.dat', JSON.stringify(msg)+"\n", (err) => {
+                if (err) { console.log(err); }
+            });
+        })
+    }
+}
 
