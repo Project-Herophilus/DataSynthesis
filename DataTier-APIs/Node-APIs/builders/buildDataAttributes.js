@@ -199,7 +199,6 @@ module.exports = {
     },
     generateSerialNumbers_Basic(regExpression,count)
     {
-
         return this.generateGenericRegex(regExpression, count)
     },
     generateSerialNumbers_Complex(count)
@@ -251,12 +250,12 @@ module.exports = {
 
 }
 
-//console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
-//console.log(module.exports.generateSerialNumbers_Complex(10));
+// console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
+// console.log(module.exports.generateSerialNumbers_Complex(10));
 // console.log(module.exports.generateSSN(10))
 // console.log(module.exports.generateEIN(10))
 // console.log(module.exports.generateDateOfBirths(1960, 10))
 // console.log(module.exports.generateCreditCards(12,'Discover'))
-//console.log(module.exports.generateDLN('blah','blah'))
-//console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
-//console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
+// console.log(module.exports.generateDLN('blah','blah'))
+// console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
+// console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
