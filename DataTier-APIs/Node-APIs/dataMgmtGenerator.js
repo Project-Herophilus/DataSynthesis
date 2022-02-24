@@ -16,19 +16,21 @@ const rng = require("./builders/numberGenerators");
 const dbConnection = require("./connectivity/general/connectors/dbConnections/postgresqlConnect");
 const auditingDetail = require("./general/functions/auditing")
 const dataGenConfigurationDetails = [];
-
-function intervalFunc() {
+let rows = "hello"
+async function intervalFunc() {
     console.log('Retrieving Information Needed for Data Generation');
-    auditingDetail.generate_auditrecord(1,"a","b");
-    /*tablename ="platform_config_datagen";
-    dataObjectResponse = queryBuilder.getDataGenConfig(tablename);
-    console.log(dataObjectResponse);
+    // auditingDetail.generate_auditrecord(1,"a","b");
+    //tablename ="platform_config_datagen";
+    sql_string = queryBuilder.getDataGenConfig();
+    //loop through each dataconfig and establsish data attribute and data attribute generation
     //dataQuery = queryProcessor.RecordSpecificResponse(dataObjectResponse);
-    const dataQuery = queryProcessor.RunSpecificQuery(dataObjectResponse);
-    console.log(dataQuery.toString());*/
+    const results = await queryProcessor.RunSpecificQuery(sql_string)
+    return results
+    //console.log(dataQuery.toString());*/
     // 600000 ms in 10 minutes
 }
-
-setInterval(intervalFunc, 1500);
+intervalFunc().then(resp=>{
+    console.log(resp)
+})
 
 

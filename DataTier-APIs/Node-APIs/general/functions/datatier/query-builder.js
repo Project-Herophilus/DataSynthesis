@@ -17,7 +17,7 @@ module.exports = {
         getDataFromTable(table, limit){
             return `select * from ${table} order by random() limit ${limit};`
         },
-        getDataGenConfig(table){
+        getDataGenConfig(){
             return `select * from platform_config_datagen a,refdata_datagentypes b where a.datagentypeid=b.datagentypeid`
         }
 
