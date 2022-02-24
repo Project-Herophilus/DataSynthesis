@@ -16,7 +16,7 @@ const rng = require("./builders/numberGenerators");
 const dbConnection = require("./connectivity/general/connectors/dbConnections/postgresqlConnect");
 const auditingDetail = require("./general/functions/auditing")
 const dataGenConfigurationDetails = [];
-let rows = "hello"
+
 async function intervalFunc() {
     console.log('Retrieving Information Needed for Data Generation');
     // auditingDetail.generate_auditrecord(1,"a","b");
