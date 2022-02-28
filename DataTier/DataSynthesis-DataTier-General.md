@@ -1,22 +1,48 @@
 # DataModel General
 This document is intented to specifically cover the data model.
 
-## Technologies
-
+# Data Technologies
 As we discussed the initial data tier and model was built on SQL Server. This decision
 candidly was made because the core team that started this effort spent over a decade emersed in this
 specific technology. While it helped us do wonderful work I made several errors because I made many decisions not
 thinking about RDBMS portability. It was clear that we needed to focus on another data
 technology and eventually backport the new data model to SQL Server when the time was 
 right. The project effort quickly moved to MySQL 8 / MariaDB. However, in 2022 all core efforts will be focused 
-around PostgresQL. To help implementations we have developed and will continue to maintain database load scripts 
-and backup files (where possible). 
+around PostgresQL and SnowFlake. To help implementations we have developed and will continue to maintain database 
+load scripts and backup files (where possible). 
 
 We make every attempt to leverage industry leading development technologies to 
 leverage our data tier. Currently, our APIs support for Quarkus and Node (Express). We also have implemented 
 .Net Core but will be revisiting it as time permits.
+
+# Data Tier - Overview
+
+
+
+## Data Attributes
+Data attributes are a critical core component of the platform. They are the lowest common attributes to the platform.
+As we think about this aspect they can come from existing or generated data that exists within the platform. This data
+is provided via base insert loader scripts and is provided this way only.
+
+## Data Structures
+This is all about Building out what complete data the platform can represent. The intent here is to take the data attributes
+and create them into reusable structures. Some examples:
+- Names: A combination of data attributes last name and first name.
+- Address: A combination of street address and location data (City, State, Zip Code).
+- Phone Number: A combination of an area code with a phone number
+- Demographic Data: A Combination of First Name, Last Name, Street Address, Location (City, State and Zip code), Area Code,
+  Phone Number, Drivers License....
+
+## Platform Reference Data
+Specific rules we want the platform to be able to process and maintain.
+
+## Terminologies
+Specific coded data and how we can enable it to be processed to enable more accurate and robust data processing.
+
+
+
   
-## Data Model
+# Data Model
 As we looked to refocus we wanted to ensure the first thing we did as we revamped the entire data model was try and have 
 clarity and ease of understanding. This is very important as it is the foundation for all efforts.
 The platform data tier setup establishes several key reference and base data for the platform. We
@@ -72,28 +98,4 @@ be maintained to grow its capabilities and relevance for usage.
    organization
 9. Terms Codeset To Application Values - This is where the specific details like code and description or code and complex data attributes are captured so when data
    will need to be generated we can make it real world based. This is ALWAYS built upon the Organization and Application sending the data.
-
-# Data Model 
-
-## Data Attributes
-Data attributes are a critical core component of the platform. They are the lowest common attributes to the platform.
-As we think about this aspect they can come from existing or generated data that exists within the platform. This data
-is provided via base insert loader scripts and is provided this way only.
-
-## Data Structures
-This is all about Building out what complete data the platform can represent. The intent here is to take the data attributes
-and create them into reusable structures. Some examples:
-- Names: A combination of data attributes last name and first name.
-- Address: A combination of street address and location data (City, State, Zip Code).
-- Phone Number: A combination of an area code with a phone number
-- Demographic Data: A Combination of First Name, Last Name, Street Address, Location (City, State and Zip code), Area Code,
-  Phone Number, Drivers License....
-
-Hopefully, this shows you the power of what can be created from data attributes...
-
-## Platform Reference Data
-Specific rules we want the platform to be able to process and maintain.
-
-## Terminologies
-Specific coded data and how we can enable it to be processed to enable more accurate and robust data processing.
 

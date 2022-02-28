@@ -1,0 +1,7 @@
+Remove all data and delete any FK data
+--------------------------------------
+TRUNCATE TABLE invoices RESTART IDENTITY CASCADE;
+
+Truncate table and Restart Identity Keys
+----------------------------------------
+TRUNCATE TABLE invoices RESTART IDENTITY;

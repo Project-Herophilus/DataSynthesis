@@ -299,7 +299,10 @@ typings/
 
 # IntelliJ idea directory exclusion
 /.idea/
-/,vscode/
+/DataTier-APIs/Node-APIs/.idea/
+/DataTier-APIs/Quarkus-APIs/.idea/
+/DataTier-WebUIs/reactui/.idea/
+/DataTier-WebUIs/vueui/.idea/
 
 # compiled output
 /dist
@@ -340,6 +343,7 @@ bower_components
 *.sublime-workspace
 
 # IDE - VSCode
+./.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
