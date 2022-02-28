@@ -27,7 +27,6 @@ the base directory of where the DataTier/DataLoaders are located.
 localhost:5432:datasynthesis:postgres:Developer123
 ```
 
-
 #### Mac
 On the Mac we have had several users complain of inconsistent install experiences and not being able to have psql easily
 accessible. For simplicity, we moved the psql.exe from the /Library/PostgresQL/<Version>/bin. For this example we will
@@ -38,7 +37,12 @@ use the command /Library/PostgresQL/14/bin/psql
 cd /Users/alscott/Development/Project-Herophilus/DataSynthesis/DataTier/DataLoaders
 ```
 3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
-   type in the password with every script that is run.
+   type in the password with every script that is run. Below is an example of how the command should look:
+
+```
+/Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d dev_datasynthesis -p 5432 -f ./Platform/3-platform_datastructurestodataattributes.sql
+
+```
 
 #### Windows
 1. For this example our directory is c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
@@ -48,31 +52,6 @@ cd c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
 ```
 3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
 type in the password with every script that is run.
-
-## MySQL/MariaDB - Linux (CentOS/RHEL/Mac) and/or Windows
-
-We have included Linux and Non-Linux scripts for every release to ensure we have better potential data loading experiences.
-
-### Pre-Requisites
-It should be understood that the needed tools or CLI's and utilities should be installed.
-
-### Steps to Run The Scripts:
-1. Open Terminal Window or Command Prompt
-2. Make sure all the scripts into a specific defined directory that aligns with what is defined for the
-shell being used, for simplicity everything of substance is in the subdirectory DataSeeding. Then make sure the
-directories have correct permissions, I used chmod 777 to ensure correct permissions (it is understood that
-that these are very open permissions and system admins might not allow this level.
-
-#### Mac - MySQL
-From the command prompt run the specific cli with the complete path to the scripts:
-a. /Applications/MySQLWorkbench.app/Contents/MacOS/mysql -u root -p datasynthesis<br/>
-b. Enter your password to the machine and then database server <br/>
-c. source /DataLoaders/MariaDB-DataLoader-DataSynthesis-v16-Linux.sql <br/>
-
-#### Windows - MariaDB 
-a. mariadb -u root -p datasynthesis <br/>
-b. Enter your password to the machine and then database server <br/>
-c. source \DataLoaders\MariaDB-DataLoader-DataSynthesis-v16.sql <br/>
 
 
 Happy coding!!!
