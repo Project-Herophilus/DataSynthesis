@@ -47,7 +47,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD",
+      default: "Data Synthesis",
     },
     sidebarBackgroundImage: {
       type: String,
@@ -85,7 +85,7 @@ export default {
         backgroundImage: `url(${this.sidebarBackgroundImage})`,
       };
     },
-  },
+  }
 };
 </script>
 <style>

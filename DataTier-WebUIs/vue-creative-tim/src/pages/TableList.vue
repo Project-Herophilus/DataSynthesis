@@ -6,8 +6,8 @@
       >
         <md-card>
           <md-card-header data-background-color="green">
-            <h4 class="title">Simple Table</h4>
-            <p class="category">Here is a subtitle for this table</p>
+            <h4 class="title">Reference Tables</h4>
+            <p class="category">reference tables</p>
           </md-card-header>
           <md-card-content>
             <simple-table table-header-color="green"></simple-table>
@@ -20,8 +20,8 @@
       >
         <md-card class="md-card-plain">
           <md-card-header data-background-color="green">
-            <h4 class="title">Table on Plain Background</h4>
-            <p class="category">Here is a subtitle for this table</p>
+            <h4 class="title">Implementation Tables</h4>
+            <p class="category">tables for implementation</p>
           </md-card-header>
           <md-card-content>
             <ordered-table></ordered-table>
