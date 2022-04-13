@@ -165,11 +165,10 @@
       >
         <md-card>
           <md-card-header data-background-color="orange">
-            <h4 class="title">Employees Stats</h4>
-            <p class="category">New employees on 15th September, 2016</p>
+            <h4 class="title">Platform Tables Reference List</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table :items="data_tables" table-header-color="orange"></ordered-table>
+            <ordered-table :items="data_tables" table-header-color="orange" v-if="data_tables.length > 0"></ordered-table>
           </md-card-content>
         </md-card>
       </div>

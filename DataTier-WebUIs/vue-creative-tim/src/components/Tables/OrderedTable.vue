@@ -1,6 +1,39 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="items"></v-data-table>
+    <v-data-table :headers="headers" :items="items">
+      <template v-slot:item="row">
+        <tr>
+          <td>{{ row.item.tablename }}</td>
+          <td>{{ row.item.tableinformation }}</td>
+          <td>
+            <v-btn
+              class="mx-2"
+              fab
+              dark
+              small
+              color="pink"
+              @click="onButtonClick(row.item)"
+            >
+              <v-icon dark>mdi-heart</v-icon>
+            </v-btn>
+          </td>
+        </tr>
+      </template>
+    </v-data-table>
+    <v-dialog v-model="showModal" width="400">
+      <v-card class="modal">
+        <v-card-title class="modal-title">Selection Options</v-card-title>
+        <v-card-text></v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            @click="onButtonClick()"
+            >Confirm</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -22,19 +55,35 @@ export default {
   data() {
     return {
       selected: [],
+      headers: [],
+      showModal: false
     };
   },
-  computed: {
-    headers() {
+  computed: {},
+  methods: {
+    populated_table_data() {
       const keys = Array.from(
         this.items.reduce((a, c) => {
           Object.keys(c).forEach((e) => a.add(e));
           return a;
         }, new Set())
       );
-      console.log(keys)
-      return keys
+      keys.forEach((item) => {
+        console.log(item);
+        this.headers.push({
+          text: item,
+          align: "left",
+          sortable: true,
+          value: item,
+        });
+      });
     },
+    onButtonClick() {
+      this.showModal = !this.showModal;
+    },
+  },
+  beforeMount() {
+    setTimeout(this.populated_table_data(), 2000);
   },
 };
 </script>
