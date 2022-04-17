@@ -1,6 +1,8 @@
 // Include all APIs and components to pull data
 const dotenv = require('dotenv');
 const path = require("path");
+const uuid = require('uuid');
+const crypto = require('crypto');
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
 const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
@@ -32,16 +34,9 @@ let componentName;
 let methodName;
 
 const appName="DataSynthesis";
-const appGUID=""
-/*let dataObjectResponse = [];
-dataObjectResponse = buildComplexDataStructure.buildComplexDataStructure("Person Demographics", 5000);
-console.log(outputType)
-console.log(dataObjectResponse )
-if (outputType == "kafka") {
-    for (let i = 0; i < dataObjectResponse.length; i++) {
-        console.log(dataObjectResponse[i].toString());
-    }
-}*/
+//console.log(crypto.randomUUID());
+//console.log(`Here is a test v4 uuid: ${uuid.v4()}`);
+const appGUID=uuid.v4();
 componentName = "buildComplexDataStructure";
 methodName ="PersonDemographics";
 buildComplexDataStructure.buildComplexDataStructure(config.DataStructure, 5000).then(resp=>{

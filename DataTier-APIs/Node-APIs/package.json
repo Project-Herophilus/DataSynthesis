@@ -4,7 +4,8 @@
   "description": "DataSynthesis Node Based API for Platform",
   "main": "app.js",
   "scripts": {
-    "dist": "mkdir -p dist && cp -R node_modules api builders general parsers app.js package.json dist"
+    "dist": "mkdir -p dist && cp -R node_modules api builders general parsers app.js package.json dist",
+    "start": "node app.js"
   },
   "keywords": [
     "mysql",
