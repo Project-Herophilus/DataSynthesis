@@ -6,7 +6,7 @@ const router = express.Router();
 const hl7Builder = require("../../builders/buildmsgHL7");
 const fs = require("fs");
 
-router.get("/industrystds-doc-generator", async(req, res) => {
+router.get("/generator-hl7", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
