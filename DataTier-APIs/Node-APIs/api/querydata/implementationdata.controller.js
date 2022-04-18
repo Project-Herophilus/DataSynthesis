@@ -38,7 +38,7 @@ router.get('/applications/:activeStatus', function (req, res) {
     if (rdbmsType =="postgreSQL")
     {
         let sqlQuery = 'select * from impl_application where '+StatusID;
-        console.log("SQL: "+sqlQuery);
+        //console.log("SQL: "+sqlQuery);
         dbConnection.query('select * from impl_application where '+StatusID, function (error, results, fields) {
             if (error) throw error;
             res.end(JSON.stringify(results));

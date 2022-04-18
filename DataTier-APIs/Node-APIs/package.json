@@ -4,7 +4,8 @@
   "description": "DataSynthesis Node Based API for Platform",
   "main": "app.js",
   "scripts": {
-    "dist": "mkdir -p dist && cp -R node_modules api builders general parsers app.js package.json dist"
+    "dist": "mkdir -p dist && cp -R node_modules api builders general parsers app.js package.json dist",
+    "start": "node app.js"
   },
   "keywords": [
     "mysql",
@@ -36,7 +37,7 @@
     "morgan": "~1.9.1",
     "mssqlserver": "0.0.2",
     "mysql": "^2.18.1",
-    "npm": "^8.4.1",
+    "npm": "^8.7.0",
     "pg": "8.7.1",
     "randexp": "^0.5.3",
     "random": "^3.0.3",
