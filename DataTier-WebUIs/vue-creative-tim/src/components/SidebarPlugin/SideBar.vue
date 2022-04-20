@@ -51,11 +51,11 @@ export default {
     },
     sidebarBackgroundImage: {
       type: String,
-      default: require("@/assets/img/sidebar-2.jpg"),
+      default: require("@/assets/img/MarketingDarkSide.png"),
     },
     imgLogo: {
       type: String,
-      default: require("@/assets/img/vue-logo.png"),
+      default: require("@/assets/img/developer-general.jpg"),
     },
     sidebarItemColor: {
       type: String,
@@ -82,7 +82,7 @@ export default {
   computed: {
     sidebarStyle() {
       return {
-        backgroundImage: `url(${this.sidebarBackgroundImage})`,
+        color: "white",
       };
     },
   }

@@ -7,14 +7,10 @@
           <td>{{ row.item.tableinformation }}</td>
           <td>
             <v-btn
-              class="mx-2"
-              fab
-              dark
-              small
-              color="pink"
+              color="white"
               @click="onButtonClick(row.item)"
             >
-              <v-icon dark>mdi-heart</v-icon>
+            <a style="white"> View </a>
             </v-btn>
           </td>
         </tr>

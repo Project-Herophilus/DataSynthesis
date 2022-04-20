@@ -14,17 +14,15 @@
           </md-card-content>
         </md-card>
       </div>
-
       <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
+        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
       >
-        <md-card class="md-card-plain">
-          <md-card-header data-background-color="green">
-            <h4 class="title">Implementation Tables</h4>
-            <p class="category">tables for implementation</p>
+        <md-card>
+          <md-card-header data-background-color="orange">
+            <h4 class="title">Platform Tables Reference List</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table></ordered-table>
+            <ordered-table :items="data_tables" table-header-color="orange" v-if="data_tables.length > 0"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
