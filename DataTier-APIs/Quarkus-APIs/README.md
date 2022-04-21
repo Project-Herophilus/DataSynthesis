@@ -180,7 +180,7 @@ quarkus.datasource.username
 quarkus.datasource.password
 quarkus.datasource.jdbc.url
 datasynthesis.audit
-com.redhat.idaas.datasynthesis.audit.IDaasKicService/mp-rest/url
+io.connectedhealth.idaas.datasynthesis.audit.IDaasKicService/mp-rest/url
 ```
 For example:
 ```
@@ -188,7 +188,7 @@ mvn -Dquarkus.datasource.username=lskywalker \
     -Dquarkus.datasource.password=jedi \
     -Ddatasynthesis.audit=true \
     -Dquarkus.datasource.jdbc.url=jdbc:mysql://10.210.21.77:3306/datasynthesis \
-    -Dcom.redhat.idaas.datasynthesis.audit.IDaasKicService/mp-rest/url=http:127.0.0.1:9970 \
+    -Dio.connectedhealth.idaas.datasynthesis.audit.IDaasKicService/mp-rest/url=http:127.0.0.1:9970 \
     quarkus:dev
 ``` 
 ### Creating a native executable

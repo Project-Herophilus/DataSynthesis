@@ -15,7 +15,8 @@ const fs = require("fs");
       res.send(dataResults)
 */
 
-router.get("/datastructure/:datastructurename", async(req, res) => {
+router.get("/namedstructure/:datastructurename/:count", async(req
+                                                              , res) => {
     req.query.count;
     req.query.type;
     const count = req.query.count || 5000;

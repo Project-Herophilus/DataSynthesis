@@ -76,6 +76,11 @@ Or, if you want to work with it locally and potentially enhance it then from the
 nodemon app.js
 ```
 
+To access specific features there are set of ways these can be accessed.
+
+
+
+
 # Testing APIs 
 To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs. 
 The intent is to that anyone can see how the APIs can be leveraged simply and directly.
