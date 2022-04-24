@@ -39,7 +39,8 @@ router.get("/generator-hl7", async(req, res) => {
               return Object.assign(result,current)
           }, {}))
       })
-      dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
+      dataResults = hl7Builder.generateHL7_Record(doc_type, trigger_event, count, state, sending_app, sending_fac);
+          //.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
       console.log("dataresults" + dataResults)
       fs.writeFileSync('industrystds-test.industrystds', dataResults, 'utf8')
       res.send(dataResults)

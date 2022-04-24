@@ -239,7 +239,31 @@ module.exports = {
                 phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
             }
             else {
+                // https://chancejs.com/location/phone.html
                 phone_numbers.push(chance.phone({ country: country }))
+            }
+        }
+        return phone_numbers
+    },
+    generateIntlPhoneNumbers(country, count ){
+        // check typeof object
+        //console.log(typeof object)
+        const phone_numbers = [];
+        for (i=0; i<count; i++){
+            if (country == "fr"){
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "uk") {
+                // https://chancejs.com/location/phone.html
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "nz") {
+                // We create our own custom logic as this is unaupported in existing library
+                //phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "in") {
+                // https://chancejs.com/location/phone.html
+                //phone_numbers.push(chance.phone({ country: country }))
             }
         }
         return phone_numbers
@@ -259,3 +283,4 @@ module.exports = {
 // console.log(module.exports.generateDLN('blah','blah'))
 // console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
 // console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
+// console.log(module.exports.generateIntlPhoneNumbers('in',1000))
