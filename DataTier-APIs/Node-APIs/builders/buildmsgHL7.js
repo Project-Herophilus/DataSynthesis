@@ -39,7 +39,10 @@ module.exports = {
         const random_number = Math.floor(Math.random() * (count - 0) + 0);
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const random_letter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        console.log("generate rows"+rows)
         if(hl7_version == "2.5.1"){
+            console.log("looping rows")
+            console.log(rows)
             rows.forEach(row=>{
             const sending_application = sending_app
             const sending_facility = sending_fac

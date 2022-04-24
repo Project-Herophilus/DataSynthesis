@@ -1,7 +1,9 @@
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../../../' + '.env') })
 module.exports = {
         getData(count, state){
             let query_string = "";
-            const schema = "datasynthesis"
+            const schema = process.env.PostgreSQL_URL.split('/')[3]
             const tables = ['dataexisting_areacode','dataexisting_namefirst',
             'dataexisting_namelast','dataexisting_zipcodeus',
             'datagenerated_addresses','datagenerated_accountnumbers', 
@@ -10,7 +12,7 @@ module.exports = {
             'datagenerated_phonenumber'
         ]
             tables.forEach(table=>{
-            query_string += ` select * from ${schema}.${table} limit ${count} ;`
+            query_string += ` select * from ${table} limit ${count} ;`
             })
             return query_string;
         },

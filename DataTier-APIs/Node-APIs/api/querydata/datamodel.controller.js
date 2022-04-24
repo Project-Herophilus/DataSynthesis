@@ -8,7 +8,7 @@ let dbUsed = process.env.rdbms;
 // Data Existing Queries
 
     router.get('/datatables', function (req, res) {
-        dbConnection.query('select * from datamodel_datatables where StatusID=1', function (error, results, fields) {
+        dbConnection.query('select tablename,tableinformation from datamodel_datatables where StatusID=1', function (error, results, fields) {
             if (error) throw error;
             res.end(JSON.stringify(results));
             res.status(200).send();
