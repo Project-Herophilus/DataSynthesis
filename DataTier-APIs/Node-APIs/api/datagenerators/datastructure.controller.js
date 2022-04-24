@@ -15,10 +15,7 @@ const fs = require("fs");
       res.send(dataResults)
 */
 
-router.get("/namedstructure/:datastructurename/:count", async(req
-                                                              , res) => {
-    req.query.count;
-    req.query.type;
+router.get("/namedstructure", async(req, res) => {
     const count = req.query.count || 5000;
     if (count > 5000)
     {
@@ -26,7 +23,7 @@ router.get("/namedstructure/:datastructurename/:count", async(req
     }
     const datastructurename = req.query.datastructurename || "Person Demographics";
     res.setHeader("Content-Type", "text/plain");
-    dataResults = datastructuresBuilder.buildComplexDataStructure(datastructurename,count);
+    dataResults = await datastructuresBuilder.buildComplexDataStructure(datastructurename,count);
     res.send(dataResults);
 });
 
