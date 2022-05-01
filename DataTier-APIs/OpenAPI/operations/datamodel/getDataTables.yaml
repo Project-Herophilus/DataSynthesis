@@ -1,0 +1,7 @@
+summary: "skd"
+get:
+    operationId: getDataModelDataTables
+    summary: Retrieves data about data tables
+    responses:
+        '200':
+            $ref: '../../responses/datamodel.yaml#/tableInfoResponse'

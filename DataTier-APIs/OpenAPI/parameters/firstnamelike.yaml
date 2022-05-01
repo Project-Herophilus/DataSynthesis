@@ -1,0 +1,5 @@
+name: firstnamelike
+schema:
+    type: string
+in: path
+required: true

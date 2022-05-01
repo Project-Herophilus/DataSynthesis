@@ -1,0 +1,355 @@
+openapi: 3.0.2
+info:
+  title: Query API
+  description: A list of get API calls that allows for pulling data
+  contact:
+    name: A helpful contact
+    url: https://github.com/Project-Herophilus/DataSynthesis/issues
+  version: '1.0'
+servers:
+  - url: http://localhost:3001/api/querydata
+paths:
+  /datamodel/datatables:
+    summary: skd
+    get:
+      operationId: getDataModelDataTables
+      summary: Retrieves data about data tables
+      responses:
+        '200':
+          $ref: '#/components/responses/tableInfoResponse'
+  /datamodel/datadomain:
+    get:
+      operationId: getDataDomain
+      summary: Retrieves data domain information
+      responses:
+        '200':
+          $ref: '#/components/responses/datadomainResponse'
+  /dataexisting/ababanking:
+    get:
+      operationId: getAbaBankingInformation
+      summary: Retrieves abaBanking information
+      responses:
+        '200':
+          $ref: '#/components/responses/ababanking_response'
+  /dataexisting/ababanking/{statecode}:
+    get:
+      operationId: getAbaBankingInformationWithStateCode
+      summary: Retrieves abaBanking information
+      responses:
+        '200':
+          $ref: '#/components/responses/ababanking_response'
+    parameters:
+      - $ref: '#/components/parameters/statecode'
+  /dataexisting/areacode:
+    get:
+      operationId: getDataExistingAreaCode
+      summary: Retrieves data about area codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+  /dataexisting/areacode/{statecode}:
+    get:
+      operationId: getAreaCodeWithStateCode
+      summary: Retrieves data about area codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: '#/components/parameters/statecode'
+  /dataexisting/companies:
+    get:
+      operationId: getCompanies
+      summary: Retrieves data about companies
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+  /dataexisting/companies/{companyname}:
+    get:
+      operationId: getCompaniesWithCompanyName
+      summary: Retrieves data about companies
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: '#/components/parameters/companyname'
+  /dataexisting/namefirst/{firstnamelike}/{gender}:
+    get:
+      operationId: getFirstNameWithFirstNameAndGender
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: '#/components/parameters/firstnamelike'
+      - $ref: '#/components/parameters/gender'
+  /dataexisting/namefirst{likename}:
+    get:
+      operationId: getFirstNameWithFirstNameLike
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: '#/components/parameters/likename'
+  /dataexisting/namefirst:
+    get:
+      operationId: getFirstName
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: |-
+            A response
+            With Multiple lines
+  /dataexisting/namelast/{lastnamematch}:
+    get:
+      operationId: getLastNameWithMatch
+      summary: Retrieves data about lastnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: '#/components/parameters/lastnamematch'
+  /dataexisting/namelast:
+    get:
+      operationId: getLastName
+      summary: Retrieves data about lastnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+  /dataexisting/upccodes:
+    get:
+      operationId: getUPCCodes
+      summary: Retrieves data about upc codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+  /dataexisting/upccodes/{productnamematch}:
+    get:
+      operationId: getUPCCodesWithProductNameMatch
+      summary: Retrieves data about upc codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+    parameters:
+      - $ref: '#/components/parameters/productnamematch'
+  /dataexisting/zipcodeus:
+    get:
+      operationId: getZipCodeUS
+      summary: Retrieves data about zipCodes in US
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+  /dataexisting/zipcodeus/{statecode}:
+    get:
+      operationId: getZipCodeUSWithStateCode
+      summary: Retrieves data about zipCodes in US with State Code
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+    parameters:
+      - $ref: '#/components/parameters/statecode'
+components:
+  schemas:
+    dataTableInfoRecord:
+      title: Root Type for datatableInfoRecord
+      description: ''
+      type: object
+      properties:
+        tablename:
+          type: string
+        tableinformation:
+          type: string
+      example:
+        tablename: ATable
+        tableinformation: This is a description of the table
+    queryResponseSharedFields:
+      type: object
+      properties:
+        command:
+          type: string
+        rowCount:
+          type: integer
+    datamodelRecord:
+      description: ''
+      required:
+        - domainname
+        - statusid
+      type: object
+      properties:
+        domainname:
+          description: ''
+          type: string
+        domaininformation:
+          description: ''
+          type: string
+        statusid:
+          description: ''
+          type: integer
+        createddate:
+          format: date-time
+          description: ''
+          type: string
+    base_audit_record:
+      description: ''
+      type: object
+      properties:
+        createddate:
+          format: date-time
+          description: ''
+          type: string
+        statusid:
+          description: ''
+          type: integer
+        registeredapp:
+          description: ''
+          type: string
+    base_audit_record_with_user:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            createduser:
+              description: ''
+              type: string
+        - $ref: '#/components/schemas/base_audit_record'
+    ababanking_record:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            ababankingid:
+              description: I think this might be an integer?!
+              type: integer
+            routingnumber:
+              description: ''
+              type: string
+            telegraphicname:
+              description: ''
+              type: string
+            customername:
+              description: ''
+              type: string
+            city:
+              description: ''
+              type: string
+            statecode:
+              description: ''
+              type: string
+            zipcode:
+              description: ''
+              type: string
+        - $ref: '#/components/schemas/base_audit_record_with_user'
+  responses:
+    tableInfoResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dataTableInfoRecord'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+          examples:
+            Example DataTables Response:
+              value:
+                command: Select
+                rowCount: 2
+                rows:
+                  - tablename: auditing_dataplatform
+                    tableinformation: >-
+                      Platform Auditing - Data Requests Made from Within the
+                      Platform
+                  - tablename: auditing_datarequest
+                    tableinformation: Platform Auditing - Data Requests Made within the platform
+      description: This Query Reponse contains information about data tables.
+    datadomainResponse:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/datamodelRecord'
+      description: ''
+    ababanking_response:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ababanking_record'
+      description: ''
+  parameters:
+    statecode:
+      name: statecode
+      schema:
+        type: string
+      in: path
+      required: true
+    companyname:
+      name: companyname
+      schema:
+        type: string
+      in: path
+      required: true
+    firstnamelike:
+      name: firstnamelike
+      schema:
+        type: string
+      in: path
+      required: true
+    gender:
+      name: gender
+      schema:
+        type: string
+      in: path
+      required: true
+    likename:
+      name: likename
+      schema:
+        type: string
+      in: path
+      required: true
+    lastnamematch:
+      name: lastnamematch
+      schema:
+        type: string
+      in: path
+      required: true
+    productnamematch:
+      name: productnamematch
+      schema:
+        type: string
+      in: path
+      required: true
