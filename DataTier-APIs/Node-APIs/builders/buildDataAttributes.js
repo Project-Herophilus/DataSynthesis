@@ -18,21 +18,7 @@ const DelimsCommon = {
 
 const demographic_messages = [];
 module.exports = {
-    /*
-     *  Data Queries
-     *  We will use USState param to pull City, State, ZipCode from dataexisting_usstates
-     *  For AreaCodes we will want to pull list of areacodes based on state
-     *  We will want to pull 100 FirstNames and Genders in General - These will be used to populate GT1/NK1 values since name will already be known
-     *  Clinicians - We will want to pull 120 firstnames and lastnames randomly - dataexisting_lastname, dataexisting_firstname
-     *  Names - Pull in 500 complete names randomly, gender will be part of this pull - dataexisting_lastname, dataexisting_firstname
-     *  Address - pull 500 Street Addreses - datagenerated_addresses
-     *  This will be used and concatenated with random city, state and zip initially pulled
-     *  PhoneNumbers - datagenerated_phonenumbers combined with random area codes pulled from State
-     *  DatOfBirth - datagenerate_dateofbirth
-     *  DLN - datagenerated_droverslicensenumber
-     *  SSN - datagenerated_socialsecuritynumber
-     *
-     */
+
     generatebasicref(rows, count, sending_app, sending_fac){
         //Create different templates for different types
         const relationships = ["Mother", "Father", "Sister", "Brother", "Aunt", "Uncle"];
@@ -71,6 +57,10 @@ module.exports = {
         })
         return demographic_messages
     },
+    /*
+     *  Generic Method for reuse that enables generation of a defined count of messages
+     *  Based on a provided regex
+     */
     generateGenericRegex(regExpression, count){
         const generateddata = []
         for(i=0; i<count; i++){
@@ -78,6 +68,9 @@ module.exports = {
         }
         return generateddata
     },
+    /*
+     *   Generate Account Numbers based on a specific regular expression and count provided
+     */
     generateAccountNumbers(regExpression, count){
        /* const accountnumbers = []
         for(i=0; i<count; i++){
