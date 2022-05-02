@@ -1,0 +1,22 @@
+{
+  "name": "openapi",
+  "version": "1.0.0",
+  "description": "A project for generating openapi spec and clients",
+  "main": "index.js",
+  "scripts": {
+    "lint-api": "openapi lint ./openapi-spec.yaml",
+    "bundle-api": "openapi bundle ./openapi-spec.yaml --output ./generated-open-api-spec/openapi-spec.yaml",
+    "generate-angular-client": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g typescript-angular -o ./generated-clients/typescript-angular --additional-properties=ngVersion=6.1.7,npmName=restClient,supportsES6=true,npmVersion=6.9.0,withInterfaces=true",
+    "generate-node-client": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g typescript-node -o ./generated-clients/typescript-node",
+    "generate-java-client": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g java -o ./generated-clients/java",
+    "generate-go-client": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g go -o ./generated-clients/go",
+    "generate-nodejs-express-server": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g nodejs-express-server -o ./generated-servers/nodejs-express-server",
+    "generate-java-camel-server": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g java-camel -o ./generated-servers/java-camel",
+    "generate-kotlin-server": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g kotlin-server -o ./generated-servers/kotlin-server",
+    "generate-go-server": "openapi-generator-cli generate -i generated-open-api-spec/openapi-spec.yaml -g go-server -o ./generated-servers/go-server"
+  },
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.1",
+    "@redocly/openapi-cli": "^1.0.0-beta.94"
+  }
+}

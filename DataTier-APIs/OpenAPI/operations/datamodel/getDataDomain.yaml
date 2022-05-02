@@ -1,0 +1,6 @@
+get:
+  operationId: getDataDomain
+  summary: Retrieves data domain information
+  responses:
+      '200':
+          $ref: '../../responses/datamodel.yaml#/datadomainResponse'

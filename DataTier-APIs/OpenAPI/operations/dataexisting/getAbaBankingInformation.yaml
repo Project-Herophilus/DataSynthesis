@@ -1,0 +1,6 @@
+get:
+  operationId: getAbaBankingInformation
+  summary: Retrieves abaBanking information
+  responses:
+      '200':
+          $ref: '../../responses/dataexisting.yaml#/ababanking_response'

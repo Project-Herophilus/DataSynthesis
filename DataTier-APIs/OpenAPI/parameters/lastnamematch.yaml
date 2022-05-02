@@ -1,0 +1,5 @@
+name: lastnamematch
+schema:
+    type: string
+in: path
+required: true
