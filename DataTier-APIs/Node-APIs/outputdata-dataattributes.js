@@ -75,13 +75,15 @@ if(dataattributeName=='accountnumber')
 }
 if(dataattributeName=='ssn')
 {
-        buildDataAttributes.generateSSN(50).then(resp=>{
-        const finalDataOutPut = []
+        console.log("Invoking generateSSN")
+        buildDataAttributes.generateSSN(500).then(resp=>{
+        //const finalDataOutPut = [] = await buildDataAttributes.generateSSN(500).then(resp=>{
         resp.forEach(msg=>{
             const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
                 "componentName": componentName,"methodName": methodName,"data":msg}
             finalDataOutPut.push(dataObject)
         })
+            //console.log("Data: "+finalDataOutPut)
         /*
         endTime = new Date();
         // Auditing - Publish
@@ -101,6 +103,7 @@ if(dataattributeName=='ssn')
         .catch(err=>{
             console.log(err)
         })
+    //console.log(finalDataOutput.toString());
 }
 
 // console.log(generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));

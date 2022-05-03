@@ -6,6 +6,7 @@ const rng = require('./numberGenerators');
 generator = require('creditcard-generator')
 var RandExp = require('randexp'); // must require on node
 const crypto = require("crypto");
+const {promises} = require("fs");
 // Instantiate Chance so it can be used
 var chance = new Chance();
 
@@ -214,6 +215,7 @@ module.exports = {
             let ssn_third = rng.generateRandomNumbers(9999, 1000)
             ssnNumbers.push(`${ssn_first}-${ssn_second}-${ssn_third}`)
         }
+        //return new Promise(ssnNumbers)
         return ssnNumbers
     },
     generateUserIdentities(regExpression, count){

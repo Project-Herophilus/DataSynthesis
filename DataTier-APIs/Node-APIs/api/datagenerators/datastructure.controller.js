@@ -5,15 +5,6 @@ const express = require("express");
 const router = express.Router();
 const datastructuresBuilder = require("../../builders/buildComplexDataStructures");
 const fs = require("fs");
-//will contain all insert/upsert logic from data that is generated and synthesized
-
-/*
-      dataResults = datastructuresBuilder.generateDemographic_Record(modifiedTuples, count, state, sending_app, sending_fac)
-      dataResults.forEach(line=>{
-        fs.appendFileSync('person-demographics.csv', line, 'utf8')
-      })
-      res.send(dataResults)
-*/
 
 router.get("/namedstructure", async(req, res) => {
     const count = req.query.count || 5000;
