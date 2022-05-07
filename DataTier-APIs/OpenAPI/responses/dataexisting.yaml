@@ -1,8 +1,0 @@
-ababanking_response:
-  content:
-      application/json:
-          schema:
-              type: array
-              items:
-                  $ref: '../schemas/dataexisting/ababanking_record.yaml'
-  description: ''

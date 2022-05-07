@@ -1,5 +1,5 @@
 name: companyname
 schema:
-    type: string
+  type: string
 in: path
 required: true

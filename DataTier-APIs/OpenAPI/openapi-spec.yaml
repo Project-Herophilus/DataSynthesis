@@ -5,154 +5,144 @@ info:
   contact:
     name: A helpful contact
     url: https://github.com/Project-Herophilus/DataSynthesis/issues
-  version: "1.0"
+  version: '1.0'
 servers:
-- url: http://localhost:3001/api/querydata
+  - url: http://localhost:3001/api/querydata
 paths:
-    /datamodel/datatables:
-        $ref: './operations/datamodel/getDataTables.yaml'
-    /datamodel/datadomain:
-        $ref: './operations/datamodel/getDataDomain.yaml'
-    /dataexisting/ababanking:
-        $ref: './operations/dataexisting/getAbaBankingInformation.yaml'
-    /dataexisting/ababanking/{statecode}:
-        $ref: './operations/dataexisting/getAbaBankingInformationWithStateCode.yaml'
-    /dataexisting/areacode:
-        get:
-            operationId: getDataExistingAreaCode
-            summary: Retrieves data about area codes
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-    /dataexisting/areacode/{statecode}:
-        get:
-            operationId: getAreaCodeWithStateCode
-            summary: Retrieves data about area codes
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-        parameters:
-            - $ref: './parameters/statecode.yaml'
-    /dataexisting/companies:
-        get:
-            operationId: getCompanies
-            summary: Retrieves data about companies
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-    
-    /dataexisting/companies/{companyname}:
-        get:
-            operationId: getCompaniesWithCompanyName
-            summary: Retrieves data about companies
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-        parameters:
-            - $ref: './parameters/companyname.yaml'
-                
-    /dataexisting/namefirst/{firstnamelike}/{gender}:
-        get:
-            operationId: getFirstNameWithFirstNameAndGender
-            summary: Retrieves data about firstnames
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-        parameters:
-            - $ref: './parameters/firstnamelike.yaml'
-            - $ref: './parameters/gender.yaml'
-    /dataexisting/namefirst{likename}:
-        get:
-            operationId: getFirstNameWithFirstNameLike
-            summary: Retrieves data about firstnames
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-        parameters:
-            - $ref: './parameters/likename.yaml'
-    /dataexisting/namefirst:
-        get:
-            operationId: getFirstName
-            summary: Retrieves data about firstnames
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: |-
-                        A response
-                        With Multiple lines
-    /dataexisting/namelast/{lastnamematch}:
-        get:
-            operationId: getLastNameWithMatch
-            summary: Retrieves data about lastnames
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-        parameters:
-            - $ref: './parameters/lastnamematch.yaml'
-    /dataexisting/namelast:
-        get:
-            operationId: getLastName
-            summary: Retrieves data about lastnames
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A response
-    /dataexisting/upccodes:
-        get:
-            operationId: getUPCCodes
-            summary: Retrieves data about upc codes
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A description
-    /dataexisting/upccodes/{productnamematch}:
-        get:
-            operationId: getUPCCodesWithProductNameMatch
-            summary: Retrieves data about upc codes
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A description
-        parameters:
-            - $ref: './parameters/productnamematch.yaml'
-    /dataexisting/zipcodeus:
-        get:
-            operationId: getZipCodeUS
-            summary: Retrieves data about zipCodes in US
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A description
-    /dataexisting/zipcodeus/{statecode}:
-        get:
-            operationId: getZipCodeUSWithStateCode
-            summary: Retrieves data about zipCodes in US with State Code
-            responses:
-                '200':
-                    content:
-                        application/json: {}
-                    description: A description
-        parameters:
-            - $ref: './parameters/statecode.yaml'
+  /datamodel/datatables:
+    $ref: './operations/datamodel/getDataTables.yaml'
+  /datamodel/datadomain:
+    $ref: './operations/datamodel/getDataDomain.yaml'
+  /dataexisting/ababanking:
+    $ref: './operations/dataexisting/getAbaBankingInformation.yaml'
+  /dataexisting/ababanking/{statecode}:
+    $ref: './operations/dataexisting/getAbaBankingInformationWithStateCode.yaml'
+  /dataexisting/areacode:
+    $ref: './operations/dataexisting/getAreaCodes.yaml'
+  /dataexisting/areacode/{statecode}:
+    get:
+      operationId: getAreaCodeWithStateCode
+      summary: Retrieves data about area codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: './parameters/statecode.yaml'
+  /dataexisting/companies:
+    get:
+      operationId: getCompanies
+      summary: Retrieves data about companies
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
 
-        
-        
+  /dataexisting/companies/{companyname}:
+    get:
+      operationId: getCompaniesWithCompanyName
+      summary: Retrieves data about companies
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: './parameters/companyname.yaml'
+
+  /dataexisting/namefirst/{firstnamelike}/{gender}:
+    get:
+      operationId: getFirstNameWithFirstNameAndGender
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: './parameters/firstnamelike.yaml'
+      - $ref: './parameters/gender.yaml'
+  /dataexisting/namefirst{likename}:
+    get:
+      operationId: getFirstNameWithFirstNameLike
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: './parameters/likename.yaml'
+  /dataexisting/namefirst:
+    get:
+      operationId: getFirstName
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: |-
+            A response
+            With Multiple lines
+  /dataexisting/namelast/{lastnamematch}:
+    get:
+      operationId: getLastNameWithMatch
+      summary: Retrieves data about lastnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+    parameters:
+      - $ref: './parameters/lastnamematch.yaml'
+  /dataexisting/namelast:
+    get:
+      operationId: getLastName
+      summary: Retrieves data about lastnames
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A response
+  /dataexisting/upccodes:
+    get:
+      operationId: getUPCCodes
+      summary: Retrieves data about upc codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+  /dataexisting/upccodes/{productnamematch}:
+    get:
+      operationId: getUPCCodesWithProductNameMatch
+      summary: Retrieves data about upc codes
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+    parameters:
+      - $ref: './parameters/productnamematch.yaml'
+  /dataexisting/zipcodeus:
+    get:
+      operationId: getZipCodeUS
+      summary: Retrieves data about zipCodes in US
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+  /dataexisting/zipcodeus/{statecode}:
+    get:
+      operationId: getZipCodeUSWithStateCode
+      summary: Retrieves data about zipCodes in US with State Code
+      responses:
+        '200':
+          content:
+            application/json: {}
+          description: A description
+    parameters:
+      - $ref: './parameters/statecode.yaml'

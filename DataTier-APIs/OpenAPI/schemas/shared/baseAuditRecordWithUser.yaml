@@ -1,0 +1,9 @@
+description: ''
+type: object
+allOf:
+  - type: object
+    properties:
+      createduser:
+        description: ''
+        type: string
+  - $ref: baseAuditRecord.yaml

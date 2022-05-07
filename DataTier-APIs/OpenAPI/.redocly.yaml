@@ -3,12 +3,12 @@ organization: 'herophilus'
 # Used for easier integration with the API registry and hosted Reference docs,
 # not required for local OpenAPI CLI usage.
 apis:
-# A collection of objects, each representing one API.
-# An API should be defined by a name, an optional version,
-# and the path to the root OpenAPI document.
-# Additionally, each API can have its own lint and features.openapi
-# sections for fine-grained control.
-# Example:
+  # A collection of objects, each representing one API.
+  # An API should be defined by a name, an optional version,
+  # and the path to the root OpenAPI document.
+  # Additionally, each API can have its own lint and features.openapi
+  # sections for fine-grained control.
+  # Example:
   main:
     root: ./openapi/openapi.yaml
     lint:
@@ -16,7 +16,7 @@ apis:
         example-rule: warn
 lint:
   extends:
-    -  minimal
+    - minimal
     # https://redocly.com/docs/cli/resources/built-in-rules/
     # Will want to implement recommended rules with some modification eventually
     # -  recommended
@@ -26,7 +26,6 @@ lint:
     # This issue remains open https://github.com/Redocly/openapi-cli/issues/552
     no-invalid-media-type-examples:
       disallowAdditionalProperties: false
-  
 # Global configuration for the lint command.
 
 #features.mockServer:
