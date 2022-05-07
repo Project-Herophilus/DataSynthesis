@@ -7,7 +7,8 @@ let auditingType = process.env.auditing
 let auditingTopicName =process.env.auditingTopicName
 
 module.exports = {
-    generate_auditrecord(count, component, application) {
+    generate_auditrecord(count, component, application, startTime, EndTime) {
+        //Datw Code
         let date_ob = new Date();
         let time_ob = date_ob.toJSON().split('T')[1];
         time_ob = time_ob.toString();
@@ -18,12 +19,15 @@ module.exports = {
         auditObj.component = component;   // Alternative
         auditObj.application = application;
         auditObj.eventdate = date_ob.toJSON().substring(0,10);
-        auditObj.eventtime = time_ob;
+        auditObj.startTime = startTime;
+        auditObj.endTime = endTime;
+        auditObj.runTime = endTime - startTime;
+        //auditObj.eventtime = time_ob;
         // Invoke Kafka To Send to
-        if (auditingType=="true")
-        {
+        //if (auditingType=="true")
+        //{
             auditingKafka(auditingTopicName,auditObj);
-        }
+        //}
         //return auditObj
     }
 }
