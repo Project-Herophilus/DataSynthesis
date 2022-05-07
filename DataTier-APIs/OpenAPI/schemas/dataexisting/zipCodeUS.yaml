@@ -1,0 +1,30 @@
+description: ''
+type: object
+allOf:
+  - type: object
+    properties:
+      zipcodeid:
+        description: placeholder
+        type: integer
+      zipcode:
+        description: placeholder
+        type: string
+      zipcodetype:
+        description: placeholder
+        type: string
+      city:
+        description: placeholder
+        type: string
+      statecode:
+        description: placeholder
+        type: string
+      lattitude:
+        description: placeholder
+        type: string
+      longitude:
+        description: placeholder
+        type: string
+      lctn:
+        description: placeholder
+        type: string
+  - $ref: ../shared/baseAuditRecordWithUser.yaml

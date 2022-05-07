@@ -1,0 +1,8 @@
+get:
+  operationId: getLastNameWithMatch
+  summary: Retrieves data about lastnames
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/lastNameListResponse.yaml
+parameters:
+  - $ref: '../../parameters/lastnamematch.yaml'

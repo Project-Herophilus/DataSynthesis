@@ -1,0 +1,14 @@
+content:
+  application/json:
+    schema:
+      type: object
+      allOf:
+        - properties:
+            rows:
+              type: array
+              items:
+                $ref: '../../schemas/dataexisting/firstName.yaml'
+        - $ref: '../../schemas/shared/queryResponseSharedFields.yaml'
+description: |-
+  A response
+  With Multiple lines

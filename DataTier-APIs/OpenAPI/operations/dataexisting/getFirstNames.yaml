@@ -1,0 +1,6 @@
+get:
+  operationId: getFirstNames
+  summary: Retrieves data about firstnames
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/firstNameListResponse.yaml

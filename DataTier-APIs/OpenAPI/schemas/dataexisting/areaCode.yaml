@@ -1,0 +1,18 @@
+description: ''
+type: object
+allOf:
+  - type: object
+    properties:
+      areacodeid:
+        description: placeholder
+        type: integer
+      areacodevalue:
+        description: placeholder
+        type: string
+      timezone:
+        description: placeholder
+        type: string
+      statecode:
+        description: placeholder
+        type: string
+  - $ref: ../shared/baseAuditRecordWithUser.yaml
