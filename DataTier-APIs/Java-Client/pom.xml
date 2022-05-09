@@ -232,6 +232,7 @@
             </build>
         </profile>
         <profile>
+            <!-- mvn clean compile -P generate-openapi -->
             <id>generate-openapi</id>
             <build>
                 <plugins>
