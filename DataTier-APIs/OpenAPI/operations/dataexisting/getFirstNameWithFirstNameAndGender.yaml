@@ -1,0 +1,9 @@
+get:
+  operationId: getFirstNameWithFirstNameAndGender
+  summary: Retrieves data about firstnames
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/firstNameListResponse.yaml
+parameters:
+  - $ref: '../../parameters/firstnamelike.yaml'
+  - $ref: '../../parameters/gender.yaml'

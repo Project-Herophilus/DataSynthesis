@@ -1,0 +1,15 @@
+description: ''
+type: object
+allOf:
+  - type: object
+    properties:
+      firstnameid:
+        description: placeholder
+        type: integer
+      firstname:
+        description: placeholder
+        type: string
+      gender:
+        description: placeholder
+        type: string
+  - $ref: ../shared/baseAuditRecordWithUser.yaml

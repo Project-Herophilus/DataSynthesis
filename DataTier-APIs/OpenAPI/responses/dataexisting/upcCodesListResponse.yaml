@@ -1,0 +1,12 @@
+content:
+  application/json:
+    schema:
+      type: object
+      allOf:
+        - properties:
+            rows:
+              type: array
+              items:
+                $ref: '../../schemas/dataexisting/upcCode.yaml'
+        - $ref: '../../schemas/shared/queryResponseSharedFields.yaml'
+description: ''

@@ -1,0 +1,15 @@
+description: ''
+type: object
+allOf:
+  - type: object
+    properties:
+      upccodeid:
+        description: placeholder
+        type: integer
+      upccodename:
+        description: placeholder
+        type: string
+      upcproductname:
+        description: placeholder
+        type: string
+  - $ref: ../shared/baseAuditRecordWithUser.yaml

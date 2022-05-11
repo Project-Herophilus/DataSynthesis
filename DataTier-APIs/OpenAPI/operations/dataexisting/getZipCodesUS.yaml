@@ -1,0 +1,6 @@
+get:
+  operationId: getZipCodesUS
+  summary: Retrieves data about zipCodes in US
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/zipCodeUSListResponse.yaml

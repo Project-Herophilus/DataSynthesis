@@ -1,0 +1,8 @@
+get:
+  operationId: getUPCCodesWithProductNameMatch
+  summary: Retrieves data about upc codes
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/upcCodesListResponse.yaml
+parameters:
+  - $ref: '../../parameters/productnamematch.yaml'
