@@ -20,21 +20,20 @@ module.exports = {
     processDataOutput(msg,datastructureName) {
         let outputType = config.outputAdapter;
         const dataoutput =[];
-        systemOutputName = datastructureName.replace(/\s/g, "");
+        systemOutputName = datastructureName;
         if (outputType == "kafka") {
-            dataoutput.forEach(msg => {
+            msg.forEach(msg => {
                 // topicOutput(topicName,msg)
                 topicOutput(systemOutputName, msg)
             })
         }
         if (outputType == "file") {
-            dataoutput.forEach(msg => {
-                fs.appendFileSync(componentName + '_' + systemOutputName + '.dat', JSON.stringify(msg) + "\n", (err) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            })
+            let text = msg.join('\n');
+            fs.appendFileSync(datastructureName + '.dat', text, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
         }
     }
 }

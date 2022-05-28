@@ -17,7 +17,7 @@ const dataOutputting = require("./general/functions/general/dataOutput")
 const topicOutput = require("./connectivity/general/connectors/kafka-producer");
 const { data } = require('./general/functions/general/randomFunctions');
 const topicName="generatedData";
-
+const args = process.argv.slice(2);
 let outputType = config.outputAdapter;
 let componentName;
 let methodName;
@@ -30,7 +30,7 @@ let systemOutputName;
  */
 //dataattributeName = ['accountnumber'];
 //dataattributeName = 'address_us';
-dataattributeName = 'ssn';
+dataattributeName = args[0];
 const regularExp ='';
 //const dataattributeName = ['',''];
 
@@ -38,7 +38,7 @@ const appName="DataSynthesis";
 const appGUID=uuid.v4();
 const runQuantity = 5000;
 
-componentName = "builDataAttriubutes";
+componentName = "buildDataAttriubutes";
 // Set Start Value for timing
 let startTime = new Date();
 // Call Method
@@ -75,32 +75,10 @@ if(dataattributeName=='accountnumber')
 }
 if(dataattributeName=='ssn')
 {
-        buildDataAttributes.generateSSN(50).then(resp=>{
-        const finalDataOutPut = []
-        resp.forEach(msg=>{
-            const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
-                "componentName": componentName,"methodName": methodName,"data":msg}
-            finalDataOutPut.push(dataObject)
-        })
-        /*
-        endTime = new Date();
-        // Auditing - Publish
-        auditing.generate_auditrecord(runQuantity,componentName,appName,startTime,endTime);
-        // Auditing Values
-        startTime = new Date();
-        // Output Record
-        //externalizeDataOutput(finalDataOutPut, outputType)
-        dataOutputting.processDataOutput(finalDataOutPut, datastructureName);
-        // Audit
-        endTime = new Date();
-        componentName = "DataOutput";
-        auditing.generate_auditrecord(runQuantity,componentName,appName,startTime,endTime);
+        console.log("Invoking generateSSN")
+        social_security_numbers = buildDataAttributes.generateSSN(500)
+        dataOutputting.processDataOutput(social_security_numbers, methodName);
 
-         */
-    })
-        .catch(err=>{
-            console.log(err)
-        })
 }
 
 // console.log(generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));

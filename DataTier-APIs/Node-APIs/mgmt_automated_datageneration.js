@@ -26,11 +26,22 @@ async function intervalFunc() {
     //dataQuery = queryProcessor.RecordSpecificResponse(dataObjectResponse);
     const results = await queryProcessor.RunSpecificQuery(sql_string)
     return results
-    //console.log(dataQuery.toString());*/
-    // 600000 ms in 10 minutes
 }
 intervalFunc().then(resp=>{
-    console.log(resp)
+    //console.log(resp)
+    //const mgmtDataGeneration = [];
+    //const res =resp.responseText
+    /*for (const keyData in resp)
+    {
+        console.log("Config ID:"+keyData.datagenconfigid)
+    }*/
+    resp.rows.forEach(row=>{
+       console.log("Data Generation Config: "+resp.row.datagenconfigid)
+       //console.log(resp.datatypegenconfigname)
+    })
+
 })
 
+// Run This on an interval the timeout amount is in milliseconds so 10000 is 10 seconds
+setInterval(intervalFunc,10000)
 
