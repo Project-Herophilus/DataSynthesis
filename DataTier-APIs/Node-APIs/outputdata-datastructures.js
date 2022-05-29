@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
 const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('./general/functions/datatier/query-builder');
+const queryBuilder = require('./general/functions/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
 const buildDataAttributes = require("./builders/buildDataAttributes");
@@ -24,6 +24,8 @@ let componentName;
 let methodName;
 let datastructureName;
 let systemOutputName;
+// Global Variable for usage in platform
+global.__basedir = __dirname;
 
 /* DataStructureName
  * This must match the name in the platform_datastructures table from the field

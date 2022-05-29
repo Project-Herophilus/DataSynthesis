@@ -28,8 +28,24 @@ module.exports = {
             })
         }
         if (outputType == "file") {
+            /*
+             *   Setting Path
+             */
+
+            //var dirPath = path.resolve(__dirname, 'data-outputdata'+path.sep);
+            //var base_path = __basedir
+            var dirPath = __basedir+path.sep+'api-dataoutput'+path.sep;
+            console.log("Directory Path: "+dirPath);
+            // Check if exists if not create
+            if (fs.existsSync(dirPath)) {
+            } else {
+                //console.log("DOES NOT exist:", path);
+                fs.mkdirSync(dirPath, { recursive: true });
+            }
             let text = msg.join('\n');
-            fs.appendFileSync(datastructureName + '.dat', text, (err) => {
+            var fName = dirPath + datastructureName+'.dat'
+            console.log("File Name: "+fName);
+            fs.appendFileSync(dirPath+path.sep+ datastructureName + '.dat', text, (err) => {
                 if (err) {
                     console.log(err);
                 }

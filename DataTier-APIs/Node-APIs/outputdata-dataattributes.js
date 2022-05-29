@@ -6,7 +6,7 @@ const crypto = require('crypto');
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
 const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('./general/functions/datatier/query-builder');
+const queryBuilder = require('./general/functions/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
 const buildDataAttributes = require("./builders/buildDataAttributes");
@@ -23,13 +23,10 @@ let componentName;
 let methodName;
 let dataattributeName;
 let systemOutputName;
+// Global Variable for usage in platform
+global.__basedir = __dirname;
 
-/* DataAttributeName or DataAttributeNames
- * Single dataattributeName =['']
- * Multiple dataattributeName = ['',''];
- */
-//dataattributeName = ['accountnumber'];
-//dataattributeName = 'address_us';
+
 dataattributeName = args[0];
 const regularExp ='';
 //const dataattributeName = ['',''];

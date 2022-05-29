@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const express = require('express')
 const app = express();
 dotenv.config({path: `${__dirname}/.env`})
+// Global Variable for usage in platform
+global.__basedir = __dirname;
 
 var port = process.env.PORT || 3001;
 //need to invoke config functions to store all configuration necessary in memory at start up or refresh 
