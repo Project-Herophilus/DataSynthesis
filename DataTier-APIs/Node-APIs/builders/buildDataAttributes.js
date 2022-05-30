@@ -106,8 +106,12 @@ module.exports = {
         })
         return fullstreetaddress
     },
-    generateBankAccounts(rows){
 
+    /*
+     *      Generate Bank Accounts
+     */
+    generateBankAccounts(regExpression, count){
+        return this.generateGenericRegex(regExpression, count)
     },
     generateCreditCards(number_of_cards, ccName){
         // https://www.npmjs.com/package/creditcard-generator
@@ -119,12 +123,12 @@ module.exports = {
         {
             ccSplitValue = Math.floor(number_of_cards/4);
             creditcard_numbers.push({
-                "cc_type": "Amex",
+                "cc_type": "AMEX",
                 "cc_count": ccSplitValue, 
                 "cc_numbers": generator.GenCC("Amex", ccSplitValue)
             });
             creditcard_numbers.push({
-                "cc_type": "VISA",
+                "cc_type": "Visa",
                 "cc_count": ccSplitValue, 
                 "cc_numbers": generator.GenCC("VISA", ccSplitValue)
             });
@@ -140,10 +144,10 @@ module.exports = {
             });
 
         }
-        else if (ccName == "Amex"){
+        else if (ccName == "AMEX"){
             return generator.GenCC("Amex",number_of_cards)
         }
-        else if (ccName == "VISA"){
+        else if (ccName == "Visa"){
             return generator.GenCC("VISA",number_of_cards)
         }
         else if (ccName == "Mastercard"){
@@ -168,7 +172,6 @@ module.exports = {
          * specific task
          *
         */
-
     },
     generateDateOfBirths(beginyear, count){
         const dobs = [];
@@ -179,7 +182,6 @@ module.exports = {
             dobs.push(DOB.toJSON().substring(0,10))
         }
         return dobs
-
     },
     generateEIN(count){
         const einNumbers = [];
@@ -190,6 +192,44 @@ module.exports = {
             einNumbers.push(`${ein_first}-${ein_second}`)
         }
         return einNumbers
+    },
+    generatePhoneNumbersUS(country, count ){
+        // check typeof object
+        //console.log(typeof object)
+        const phone_numbers = [];
+        for (i=0; i<count; i++){
+            if (country == "us"){
+                phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+            }
+            else {
+                // https://chancejs.com/location/phone.html
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+        }
+        return phone_numbers
+    },
+    generatePhoneNumbersIntl(country, count ){
+        // check typeof object
+        //console.log(typeof object)
+        const phone_numbers = [];
+        for (i=0; i<count; i++){
+            if (country == "fr"){
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "uk") {
+                // https://chancejs.com/location/phone.html
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "nz") {
+                // We create our own custom logic as this is unaupported in existing library
+                //phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "in") {
+                // https://chancejs.com/location/phone.html
+                //phone_numbers.push(chance.phone({ country: country }))
+            }
+        }
+        return phone_numbers
     },
     generateSerialNumbers_Basic(regExpression,count)
     {
@@ -225,44 +265,7 @@ module.exports = {
         }
         return accountnumbers
     },
-    generateUSPhoneNumbers(country, count ){
-        // check typeof object 
-        //console.log(typeof object)
-        const phone_numbers = [];
-        for (i=0; i<count; i++){
-            if (country == "us"){
-                phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
-            }
-            else {
-                // https://chancejs.com/location/phone.html
-                phone_numbers.push(chance.phone({ country: country }))
-            }
-        }
-        return phone_numbers
-    },
-    generateIntlPhoneNumbers(country, count ){
-        // check typeof object
-        //console.log(typeof object)
-        const phone_numbers = [];
-        for (i=0; i<count; i++){
-            if (country == "fr"){
-                phone_numbers.push(chance.phone({ country: country }))
-            }
-            else if (country == "uk") {
-                // https://chancejs.com/location/phone.html
-                phone_numbers.push(chance.phone({ country: country }))
-            }
-            else if (country == "nz") {
-                // We create our own custom logic as this is unaupported in existing library
-                //phone_numbers.push(chance.phone({ country: country }))
-            }
-            else if (country == "in") {
-                // https://chancejs.com/location/phone.html
-                //phone_numbers.push(chance.phone({ country: country }))
-            }
-        }
-        return phone_numbers
-    },
+
     generateAddressByState_Record(rows, count, sending_app, sending_fac){
 
     }

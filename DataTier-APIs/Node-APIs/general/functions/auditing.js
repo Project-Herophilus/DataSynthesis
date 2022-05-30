@@ -4,7 +4,7 @@ const moment = require('moment');
 var RandExp = require('randexp'); // must require on node
 const auditingKafka = require("../../connectivity/general/connectors/kafka-producer")
 let auditingType = process.env.auditing
-let auditingTopicName =process.env.auditingTopicName
+let auditingTopicName = process.env.auditingTopicName
 
 module.exports = {
     generate_auditrecord(count, component, application, startTime, EndTime) {
