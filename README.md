@@ -1,12 +1,3 @@
-# DataSynthesis Modules
-Here are the modules that make up DataSynthesis.
-
-| Type|Usage/Implementation |
-| -------------|----------|
-|[DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier)| all the supported Database DDLs and Load Database scripts|
-|[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)|Quarkus and Node based APIs to access datatier. This includes building, generating and processing capabilities|
-|[DataTier Web UI](https://github.com/Project-Herophilus/DataSynthesis/tree/main/WebPlatform-UI)|Eventual user interface for DataSynthesis.|
-
 # Background
 As we thought about how to help healthcare we believe a focus on <b>data being the asset</b> is the path forward we need
 to be our baseline. A key part we want to ensure is a focus on a variety of data enablement capabilities. Our 
