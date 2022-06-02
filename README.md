@@ -54,7 +54,8 @@ DataSynthesis consists of three core areas.
 
 ## 1: DataTier
 At the core of DataSynthesis is the data tier that is designed to be extensible and support all the needs for the platform.
-All things around the data tier are specifically contained within the link provided below.<br>
+All things around the data tier are specifically contained within the link provided below.
+
 [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md) 
 
 ## 2: Data Tier - APIs
