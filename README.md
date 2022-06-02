@@ -50,7 +50,7 @@ and the core repository patterns used to access the data structures offered with
 licensing model is <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache-2.0</a>.
 
 # DataSynthesis: Becoming More Familiar
-DataSynthesis consists of four key areas. 
+DataSynthesis consists of three core areas. 
 
 ## 1: DataTier
 At the core of DataSynthesis is the data tier that is designed to be extensible and support all the needs for the platform.
