@@ -18,11 +18,11 @@ psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_application_v2.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Other/datamodel_datatables.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Other/datamodel_domain.sql
-psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/1-platform_dataattributes_v3.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_dataattributes.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/10-refdata_datagentypes.sql
-psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/2-platform_datastructures_v2.sql
-psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/3-platform_datastructurestodataattributes.sql
-psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_dataattributes_generator.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures_dtl.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_ababanking.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_areacode.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_companies.sql

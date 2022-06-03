@@ -304,6 +304,9 @@ typings/
 /DataTier-WebUIs/reactui/.idea/
 /DataTier-WebUIs/vueui/.idea/
 
+/DataTier-APIs/Node-APIs/.env
+/DataTier-APIs/Node-APIs/.gitignore
+/DataTier-APIs/Node-APIs/api-dataoutput
 # compiled output
 /dist
 /tmp
