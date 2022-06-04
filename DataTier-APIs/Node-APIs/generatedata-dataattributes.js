@@ -13,134 +13,209 @@ const buildDataAttributes = require("./builders/buildDataAttributes");
 const auditing = require("./general/platform/auditing");
 const fs = require("fs");
 const dataOutputting = require("./general/platform/dataOutput")
+const { data } = require('./general/functions/general/randomFunctions');
 //Outputs
 const topicOutput = require("./connectivity/general/connectors/kafka-producer");
-const { data } = require('./general/functions/general/randomFunctions');
-const topicName="generatedData";
-const args = process.argv.slice(2);
+// Global Variable for usage in platform
+global.__basedir = __dirname;
 
 let outputType = config.outputAdapter;
 let componentName;
 let methodName;
 var dataattributeName;
-let systemOutputName;
-// Global Variable for usage in platform
-global.__basedir = __dirname;
+var runCount;
 
-dataattributeName = args[0];
-const regularExp ='';
+let systemOutputName;
+const args = process.argv.slice(2);
+
 const appName="DataSynthesis";
 const appGUID=uuid.v4();
+
+dataattributeName = args[0];
+runCount = args[1];
+
+// Set Start Value for timing
+let auditEventMessage ="";
+let startTime = new Date();
 const runQuantity = 5000;
 componentName = "buildDataAttriubutes";
-// Set Start Value for timing
-let startTime = new Date();
 methodName ="buildDataAttributes_"+dataattributeName.replace(/\s/g, "");
 
 /*
- *  Code Method to Return Data
+ *
+ * Code Methods to Return Data
+ *
+ * Mixed Regex: ^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$
+ * Number Regex: ^[0-9]{9}$
+ *
  */
 
-// Mixed Regex: ^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$
-// Number Regex: ^[0-9]{9}$
+/*
+ *  This works on command line options to run:
+ *  This example invokes the node base data generator for data attributes
+ *  Below this example will create accountnumbers with one of two random regular expressions
+ *  if no second argument is specified then the const runQuantity value is used
+ *  (currently set by default is 5000)
+ *  Example:    node generatedata-dataattributes.js accountnumber
+ *  This example will create 525 accountnumbers with one of two random regular expressions
+ *  Example:    node generatedata-dataattributes.js accountnumber 525
+ */
 
-if(dataattributeName=='accountnumber')
+if(dataattributeName=='accountnumbers')
 {
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
     var randomValues = ["^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$","^[0-9]{9}$"];
     var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
-    console.log("Invoking Data Generator for Account Numnbers")
-    console.log("Random Value Used for Generation: "+randomValueSelection)
-    accountnumbersDtl = buildDataAttributes.generateAccountNumbers(randomValueSelection, 500)
+    auditEventMessage ="Invoking Data Generator for  "+ runCount+" Account Numbers"
+    auditEventMessage = auditEventMessage +" with Random Value Used for Generation: "+randomValueSelection;
+    console.log(auditEventMessage);
+    accountnumbersDtl = buildDataAttributes.generateAccountNumbers(randomValueSelection, runCount)
     dataOutputting.processDataOutput(accountnumbersDtl, methodName);
 }
 
 /*
- *   Error is invocation with rows error
+ *   row.forEach not a function
+ *
  */
 if(dataattributeName=='address-us')
 {
-    console.log("Invoking generate Addresses US")
-    addressDtl = buildDataAttributes.generateAddress_Record_US(500)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage ="Invoking Data Generator for "+ runCount+" US based addresses"
+    console.log(auditEventMessage)
+    addressDtl = buildDataAttributes.generateAddress_Record_US(runCount)
     dataOutputting.processDataOutput(addressDtl, methodName);
 }
 if(dataattributeName=='bankaccounts')
 {
-    // Number Regex: ^[0-9]{9}$
-    console.log("Invoking generate Bank Accounts")
-    bankaccountDtl = buildDataAttributes.generateBankAccounts("^[0-9]{9}$",500)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage ="Invoking Data Generator for "+ runCount+" Bank Accounts"
+    console.log(auditEventMessage)
+    bankaccountDtl = buildDataAttributes.generateBankAccounts("^[0-9]{9}$",runCount)
     dataOutputting.processDataOutput(bankaccountDtl, methodName);
 }
 
-if(dataattributeName=='creditcard')
+if(dataattributeName=='creditcards')
 {
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
     var randomValues = ["Visa","Mastervard","Discover","AMEX"];
     var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
-    console.log("Invoking generate Credit Cards")
-    console.log("Random Value Used for Generation: "+randomValueSelection)
-    creditcardDtl = buildDataAttributes.generateCreditCards(5000,randomValueSelection)
+    auditEventMessage ="Invoking Data Generator for "+ runCount+" Credit Cards with random selected Card: "+randomValueSelection;
+    console.log(auditEventMessage)
+    creditcardDtl = buildDataAttributes.generateCreditCards(runCount,randomValueSelection)
     dataOutputting.processDataOutput(creditcardDtl, methodName);
 }
 
-if(dataattributeName=='dob')
+if(dataattributeName=='dobs')
 {
-    console.log("Invoking generate Date of Birth")
-    dobDtl = buildDataAttributes.generateDateOfBirths(1950,500)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage = "Invoking Data Generator for "+ runCount+" Date of Births"
+    console.log(auditEventMessage)
+    dobDtl = buildDataAttributes.generateDateOfBirths(1950,runCount)
     dataOutputting.processDataOutput(dobDtl, methodName);
 }
 
-if(dataattributeName=='dln')
+if(dataattributeName=='dlns')
 {
-    console.log("Invoking generate Date of Birth")
-    dobDtl = buildDataAttributes.generateDLN(1,500)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage ="Invoking Data Generator for "+ runCount+" US Drivers Licenses "
+    console.log(auditEventMessage)
+    dobDtl = buildDataAttributes.generateDLN(runCount,"")
     dataOutputting.processDataOutput(dobDtl, methodName);
 }
 
-if(dataattributeName=='ein')
+if(dataattributeName=='eins')
 {
-    console.log("Invoking generate EIN - Employer Identification Number")
-    dobDtl = buildDataAttributes.generateEIN(5000)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage ="Invoking Data Generator for "+ runCount+" EIN - Employer Identification Numbers"
+    console.log(auditEventMessage)
+    dobDtl = buildDataAttributes.generateEIN(runCount)
     dataOutputting.processDataOutput(dobDtl, methodName);
 }
 
 if(dataattributeName=='phonenumber-us')
 {
-    console.log("Invoking generate Phone Number - US")
-    phonenumberDtl = buildDataAttributes.generatePhoneNumbersUS("us",5000)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage="Invoking Data Generator for "+ runCount+" US Phone Numbers"
+    console.log(auditEventMessage)
+    phonenumberDtl = buildDataAttributes.generatePhoneNumbersUS("us",runCount)
     dataOutputting.processDataOutput(phonenumberDtl, methodName);
 }
 
 if(dataattributeName=='phonenumber-intl')
 {
-    console.log("Invoking generate Phone Number - Intl")
-    phonenumberDtl = buildDataAttributes.generatePhoneNumbersIntl("uk",5000)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage ="Invoking Data Generator for "+ runCount+" Intl Phone Numbers"
+    console.log(auditEventMessage)
+    phonenumberDtl = buildDataAttributes.generatePhoneNumbersIntl("uk",runCount)
     dataOutputting.processDataOutput(phonenumberDtl, methodName);
 }
 
 if(dataattributeName=='serialnumbers')
 {
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
     var randomValues = ["^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$","^[0-9]{9}$"];
     var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
-    console.log("Invoking generate Serial Numbers")
+    auditEventMessage="Invoking Data Generator for "+ runCount+" Serial Numbers with random value:"+ randomValueSelection;
+    console.log("Invoking Data Generator for "+ runCount+" Social Security Numbers")
     console.log("Random Value Used for Generation: "+randomValueSelection)
-    serialNumberDtl = buildDataAttributes.generateSerialNumbers_Basic(randomValueSelection,500)
+    serialNumberDtl = buildDataAttributes.generateSerialNumbers_Basic(randomValueSelection,runCount)
     //serialNumberDtl = buildDataAttributes.generateSerialNumbers_Complex(5000)
     dataOutputting.processDataOutput(serialNumberDtl, methodName);
 }
 
-if(dataattributeName=='ssn')
+if(dataattributeName=='ssns')
 {
-    console.log("Invoking generate SSN")
-    socialsecurityDtl = buildDataAttributes.generateSSN(500)
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
+    auditEventMessage="Invoking Data Generator for "+ runCount+" Social Security Numbers";
+    console.log(auditEventMessage)
+    socialsecurityDtl = buildDataAttributes.generateSSN(runCount)
     dataOutputting.processDataOutput(socialsecurityDtl, methodName);
 }
 
 if(dataattributeName=='useridentities')
 {
+    if(runCount==null)
+    {
+        runCount = runQuantity;
+    }
     var randomValues = ["^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$","^[0-9]{9}$"];
     var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
-    console.log("Invoking generate User Identities")
-    console.log("Random Value Used for Generation: "+randomValueSelection)
-    useridentityDtl = buildDataAttributes.generateUserIdentities(randomValueSelection,500)
+    auditEventMessage="Invoking Data Generator for "+ runCount+" User Identities with random value:"+ randomValueSelection;
+    console.log(auditEventMessage)
+    useridentityDtl = buildDataAttributes.generateUserIdentities(randomValueSelection,runCount)
     dataOutputting.processDataOutput(useridentityDtl, methodName);
 
 }
