@@ -1,7 +1,7 @@
 //const dbConnection = require("../../connectors/dbConnections/mysqlConnect");
 //var mysql = require("mysql");
-const dbConnection = require("../../../connectivity/general/connectors/dbConnections/postgresqlConnect");
-var randomRecs = require("../general/randomFunctions.js");
+const dbConnection = require("../../connectivity/general/connectors/dbConnections/postgresqlConnect");
+var randomRecs = require("../functions/general/randomFunctions.js");
 
 module.exports = {
   commonRecordCount: function (strQuery, value) {

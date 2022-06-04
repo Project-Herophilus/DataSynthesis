@@ -12,16 +12,37 @@ that if you clone the repository the file  WILL NOT be included or created. You 
 the settings used are defined below.
 
 ```   
-# Database Tech
-database=mysql
-# Database Setting
-dbhost=hostname or ip
-dbuser=username
-dbpassword=password
-db=datasynthesis
+# Auditing
+auditing=false
+auditingTopicName=kic_dataintgrtntransactions
+appintegrationauditingTopicName=kic_appintgrtntransactions
 # Output
-outputadapter=File
+# values: kafka kafka-datapersistence file rdbms nosql
+outputAdapter=file
 # Output Setting
+edi_location
+fhir_location
+hl7_location
+# Kafka Settings
+kafka_server=localhost:9092
+kafka_group=""
+KAFKA_CONSUMER_TOPIC= ""
+KAFKA_PRODUCE_TOPIC=""
+kafka_client_id="1234"
+# Database Tech
+rdbms=postgreSQL
+# Postgres Database Setting
+PostgreSQL_URL=postgres://postgres:Developer123@localhost:5432/datasynthesis+
+# MySQL/MariaDB Database Setting
+#dbhost=127.0.0.1
+#dbuser=root
+#dbpassword=Developer123
+#db=datasynthesis
+# Vendor Centric Settings
+# iDaaS
+iDaaS_FHIR_Server_URI=""
+iDaaS_Cloud=true
+iDaaS_Cloud_Kafka=
 ```
 
 # Pre-Requisites
@@ -76,9 +97,9 @@ Or, if you want to work with it locally and potentially enhance it then from the
 nodemon app.js
 ```
 
-To access specific features there are set of ways these can be accessed.
-
-
+# Implementation and Usage
+The capabilities delivered through this code base are extensive, below is a series of links to help guide specific implementation
+needs and usage based scenarios.
 
 
 # Testing APIs 

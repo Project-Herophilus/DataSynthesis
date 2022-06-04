@@ -7,11 +7,12 @@ const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
 const express = require("express");
 const router = express.Router();
-const buildDataAttributes = require("../../../builders/buildDataAttributes");
-const buildComplexDataStructures = require("../../../builders/buildComplexDataStructures");
-const auditing = require("../auditing");
+const buildDataAttributes = require("../../builders/buildDataAttributes");
+const buildComplexDataStructures = require("../../builders/buildComplexDataStructures");
+const auditing = require("./auditing");
 const fs = require("fs");
-const topicOutput = require("../../../connectivity/general/connectors/kafka-producer");
+const topicOutput = require("../../connectivity/general/connectors/kafka-producer");
+const datapersist = require("./datapersistence");
 
 module.exports = {
     /*
@@ -23,17 +24,20 @@ module.exports = {
         systemOutputName = datastructureName;
         if (outputType == "kafka") {
             msg.forEach(msg => {
-                // topicOutput(topicName,msg)
                 topicOutput(systemOutputName, msg)
+            })
+        }
+        if (outputType == "kafka-datapersistence") {
+            // This is intended to build out specific kafka topic for data
+            msg.forEach(msg => {
+                datapersist.generate_datapersistence_record("datagenerator","datasynthesis",datastructureName,msg)
+                //topicOutput(systemOutputName, msg)
             })
         }
         if (outputType == "file") {
             /*
              *   Setting Path
              */
-
-            //var dirPath = path.resolve(__dirname, 'data-outputdata'+path.sep);
-            //var base_path = __basedir
             var dirPath = __basedir+path.sep+'api-dataoutput'+path.sep;
             console.log("Directory Path: "+dirPath);
             // Check if exists if not create

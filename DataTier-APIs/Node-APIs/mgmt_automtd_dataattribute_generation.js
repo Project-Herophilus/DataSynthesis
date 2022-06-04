@@ -4,8 +4,8 @@ const path = require("path");
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('./general/functions/datatier/reusableQueries');
-const queryProcessor = require('./general/functions/datatier/dbQueries');
+const queryBuilder = require('./general/datatier/reusableQueries');
+const queryProcessor = require('./general/datatier/dbQueries');
 const express = require("express");
 const router = express.Router();
 const buildDataAttributes = require("./builders/buildDataAttributes");
@@ -14,7 +14,7 @@ const fs = require("fs");
 const datasattributesGenerator = require("./builders/buildDataAttributes");
 const rng = require("./builders/numberGenerators");
 const dbConnection = require("./connectivity/general/connectors/dbConnections/postgresqlConnect");
-const auditingDetail = require("./general/functions/auditing")
+const auditingDetail = require("./general/platform/auditing")
 const dataGenConfigurationDetails = [];
 // Global Variable for usage in platform
 global.__basedir = __dirname;

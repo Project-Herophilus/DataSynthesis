@@ -3,7 +3,7 @@
 2. Use the id as a key to platform_datastructurestoattributes
 3. 
 */
-const db = require("../general/functions/datatier/dbQueries");
+const db = require("../general/datatier/dbQueries");
 const table_to_field_name = [
   { platformtablename: "dataexisting_namelast", platformfieldname: "lastname" },
   {

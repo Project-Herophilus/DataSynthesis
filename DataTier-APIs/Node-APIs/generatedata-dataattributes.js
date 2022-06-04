@@ -6,13 +6,13 @@ const crypto = require('crypto');
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
 const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('./general/functions/datatier/reusableQueries');
+const queryBuilder = require('./general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
 const buildDataAttributes = require("./builders/buildDataAttributes");
-const auditing = require("./general/functions/auditing");
+const auditing = require("./general/platform/auditing");
 const fs = require("fs");
-const dataOutputting = require("./general/functions/general/dataOutput")
+const dataOutputting = require("./general/platform/dataOutput")
 //Outputs
 const topicOutput = require("./connectivity/general/connectors/kafka-producer");
 const { data } = require('./general/functions/general/randomFunctions');
@@ -41,12 +41,16 @@ methodName ="buildDataAttributes_"+dataattributeName.replace(/\s/g, "");
  *  Code Method to Return Data
  */
 
+// Mixed Regex: ^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$
+// Number Regex: ^[0-9]{9}$
+
 if(dataattributeName=='accountnumber')
 {
-    console.log("Invoking Data Generator for Account Numnbers with generic regex")
-    // Mixed Regex: ^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$
-    // Number Regex: ^[0-9]{9}$
-    accountnumbersDtl = buildDataAttributes.generateAccountNumbers("^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$", 500)
+    var randomValues = ["^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$","^[0-9]{9}$"];
+    var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
+    console.log("Invoking Data Generator for Account Numnbers")
+    console.log("Random Value Used for Generation: "+randomValueSelection)
+    accountnumbersDtl = buildDataAttributes.generateAccountNumbers(randomValueSelection, 500)
     dataOutputting.processDataOutput(accountnumbersDtl, methodName);
 }
 
@@ -67,34 +71,13 @@ if(dataattributeName=='bankaccounts')
     dataOutputting.processDataOutput(bankaccountDtl, methodName);
 }
 
-/*
- *   Error is imsg.join is not a function error
- */
-
 if(dataattributeName=='creditcard')
 {
+    var randomValues = ["Visa","Mastervard","Discover","AMEX"];
+    var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
     console.log("Invoking generate Credit Cards")
-    // Need to automatically select one credit card randomly
-    /*for (let i = 0; i < 20; i++)
-    {
-        const randomIndex = Math.floor(Math.random() * (2 - 0) + 0);
-        const randomSelection = {
-            0: `A`,
-            1: `B`
-        }
-        console.log("Value Returned: "+randomSelection[randomIndex]);
-    }*/
-
-    /*const randomIndex = Math.floor(Math.random() * (4 - 0) + 0);
-    const randomSelection = {
-        0: `Visa`,
-        1: `Mastercard`,
-        2: 'Discover',
-        3: 'Visa'
-    }
-    return randomSelection[randomIndex];
-    */
-    creditcardDtl = buildDataAttributes.generateCreditCards(5000)
+    console.log("Random Value Used for Generation: "+randomValueSelection)
+    creditcardDtl = buildDataAttributes.generateCreditCards(5000,randomValueSelection)
     dataOutputting.processDataOutput(creditcardDtl, methodName);
 }
 
@@ -135,10 +118,11 @@ if(dataattributeName=='phonenumber-intl')
 
 if(dataattributeName=='serialnumbers')
 {
+    var randomValues = ["^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$","^[0-9]{9}$"];
+    var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
     console.log("Invoking generate Serial Numbers")
-    // Mixed Regex: ^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$
-    // Number Regex: ^[0-9]{9}$
-    serialNumberDtl = buildDataAttributes.generateSerialNumbers_Basic(500)
+    console.log("Random Value Used for Generation: "+randomValueSelection)
+    serialNumberDtl = buildDataAttributes.generateSerialNumbers_Basic(randomValueSelection,500)
     //serialNumberDtl = buildDataAttributes.generateSerialNumbers_Complex(5000)
     dataOutputting.processDataOutput(serialNumberDtl, methodName);
 }
@@ -152,10 +136,11 @@ if(dataattributeName=='ssn')
 
 if(dataattributeName=='useridentities')
 {
-    //0: `^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$`,
-    //1: `^[0-9]{9}$`
+    var randomValues = ["^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$","^[0-9]{9}$"];
+    var randomValueSelection = randomValues[Math.floor(Math.random()*randomValues.length)];
     console.log("Invoking generate User Identities")
-    useridentityDtl = buildDataAttributes.generateUserIdentities('[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',500)
+    console.log("Random Value Used for Generation: "+randomValueSelection)
+    useridentityDtl = buildDataAttributes.generateUserIdentities(randomValueSelection,500)
     dataOutputting.processDataOutput(useridentityDtl, methodName);
 
 }

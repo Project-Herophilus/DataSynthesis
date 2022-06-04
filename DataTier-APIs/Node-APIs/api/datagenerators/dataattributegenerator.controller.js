@@ -1,6 +1,6 @@
 //const db= require("../../general/connectors/dbConnections/mysqlConnect")
 const db= require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('../../general/functions/datatier/reusableQueries');
+const queryBuilder = require('../../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
 const datasattributesGenerator = require("../../builders/buildDataAttributes");
