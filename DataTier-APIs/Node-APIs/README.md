@@ -46,9 +46,14 @@ iDaaS_Cloud_Kafka=
 ```
 
 # Pre-Requisites
+This section is intended to help with any pre-requisites and we have tried to make them as
+specific to OS as we can.
+
+In general, we have developed and tested this code with NodeJS versions: 12, 14, 16 and 17.
+With versions above 16 there are some additional commands to run before starting anything.
 
 ## Mac
-We have many users specifically leveraging Macs
+We have many users specifically leveraging Macs, please follow this link:
 https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
 
 brew install nodejs <br/>
@@ -82,10 +87,23 @@ If you are wanting to leverage the libraries and look at the code from a develop
 having all the proper node 
 
 ## Running in IDE
-The following section is intended to cover generic IDE and platform usage
+The following section is intended to cover generic IDE and platform usage. To date though as long as IDEs have been 
+setup and are working with Node then we have seen no issues. 
 
 ### Starting the Solution 
-Always make sure you have updated the packages first
+Always make sure you have either install or updated the packages first:
+
+Install:
+
+```
+npm install
+```
+
+Upgrade:
+
+```
+npm upgrade
+```
 
 To start the solution from the command line at the project level simply type:
 ```
@@ -98,9 +116,16 @@ nodemon app.js
 ```
 
 # Implementation and Usage
-The capabilities delivered through this code base are extensive, below is a series of links to help guide specific implementation
-needs and usage based scenarios.
+The capabilities delivered through this code base are extensive, below is a series of links to help guide specific 
+implementation needs and usage based scenarios. Within the capabilities provided by the developed Node-APIs.
 
+
+
+
+| Node Implementation Type | Description                                                            |
+|--------------------------|------------------------------------------------------------------------| 
+|[Node APIs](Usage-Node-APIs.md)  | APIs developed to provided DataSynthesis data access and functionality |    
+|[Node Usage](Usage-Node-Assets.md)| Assets developed to provided DataSynthesis platform.                   |
 
 # Testing APIs 
 To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs. 
