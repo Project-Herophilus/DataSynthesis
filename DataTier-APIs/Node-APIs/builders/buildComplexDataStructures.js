@@ -3,7 +3,7 @@
 2. Use the id as a key to platform_datastructurestoattributes
 3. 
 */
-const db = require("../general/functions/datatier/dbQueries");
+const db = require("../general/datatier/dbQueries");
 const table_to_field_name = [
   { platformtablename: "dataexisting_namelast", platformfieldname: "lastname" },
   {
@@ -44,7 +44,28 @@ module.exports = {
   async buildComplexDataStructure(datastructure, no_recs) {
     let merged_array = [];
     const data_structure_complete = [];
-    const data_structure_query = `select
+    const dataQuery = `select
+        platform_config_datastructures_dtl.platformdatastructurestodataattributesid,
+        platform_config_datastructures_dtl.platformdatastructuresid,
+        platform_config_datastructures.datastructurename,
+        platform_config_datastructures_dtl.platformdataattributesid,
+        platform_dataattributes.dataattributename,
+        platform_dataattributes.platformtablename
+        from platform_config_datastructures_dtl, platform_dataattributes,
+        platform_config_datastructures
+        where
+        platform_config_datastructures_dtl.platformdataattributesid =
+        platform_dataattributes.platformdataattributesid
+        and
+        platform_config_datastructures_dtl.platformdatastructuresid =
+        platform_config_datastructures.platformdatastructuresid
+        and
+        platform_config_datastructures_dtl.statusid =1
+        and platform_config_datastructures.datastructurename='${datastructure}'
+        order by 
+        platform_config_datastructures_dtl.platformdatastructuresid
+    `;
+    const data_structure_query2 = `select
         platform_datastructurestodataattributes.platformdatastructurestodataattributesid,
         platform_datastructurestodataattributes.platformdatastructuresid,
         platform_datastructures.datastructurename,
@@ -65,7 +86,7 @@ module.exports = {
         order by
         platform_datastructurestodataattributes.platformdatastructuresid
         `;
-    const result = await db.RecordSpecificResponse(data_structure_query).then(async res => {
+    const result = await db.RecordSpecificResponse(dataQuery).then(async res => {
       let sql_query = "";
       res.rows.forEach(datastructure=>{
           const table_filter = table_to_field_name.filter(table => table.platformtablename == datastructure.platformtablename)
