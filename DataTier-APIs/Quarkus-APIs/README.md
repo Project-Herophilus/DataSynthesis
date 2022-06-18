@@ -1,4 +1,10 @@
-# Background and Understanding - Data Tier
+# Quarkus APIs
+This is a Quarkus application (https://quarkus.io/). It can easily be run by the following 2 ways:
+When building the ways we could represent APIs we wanted to take a fresh perspective and decided to implement multiple
+programming languages based APIs, we wanted to start with two very cloud native technologies: Quarkus and
+Node. This content will specifically ONLY address the Quarkus APIs.
+
+# Step One - Data Tier
 Below are the links that we have included within the Data Tier.
 
 On a medium powered virtual machine we have been able to get the data tier setup in just under 10 minutes!!!
@@ -32,39 +38,88 @@ as they already exist in the database, this quantity is just for raw data counts
 ApplicationID is the GUID that needs to be inserted into the database to tell the system which defined application (multiple defined application are supported) created the data.
 The base platform comes with over 50+ rules all associated to DataSynthesis (refdata_application).
 
-# Quarkus APIs
-When building the ways we could represent APIs we wanted to take a fresh perspective and decided to implement Quarkus and
-Node based APIs for DataSynthesis. The intent of these is to ensure connectivity and all capabilities within Data Tier. 
-We have also included the data tier within this to ensure updates to data tier are carried through
-This code provides several capabilities built into one codebase.
+# Step 2: Using the Quarkus API's
+## How To Get, Build and Run iDaaS-Connect Assets
+Within each submodule/design pattern/reference architecture in this repository there is a specific README.md. It is
+intended to follow a specific format that covers a solution definition, how we look to continually improve, pre-requisities,
+implementation details including specialized configuration, known issues and their potential resolutions.
+However, there are a lot of individual capabilities, we have tried to keep content relevant and specific to
+cover specific topics.
+- For cloning, building and running of assets that content can be found
+  [here](https://github.com/Project-Herophilus/Project-Herophilus-Assets/blob/main/CloningBuildingRunningSolution.md).
+- Within each implementation there is a management console, the management console provides the same
+  interface and capabilities no matter what implementation you are working within, some specifics and
+  and details can be found [here](https://github.com/Project-Herophilus/Project-Herophilus-Assets/blob/main/AdministeringPlatform.md).
 
-## Starting DataSynthesis - Local
-This is a Quarkus application (https://quarkus.io/) that can easily be run by the following 2 ways:
+## Maven Command
+You can start the entire platform from a command line through Maven. In order to do this you will just need to know 
+the key database details: database host address, port, username and password. 
 
-### Maven Command
-You can start the entire platform from a command line through Maven. This example will ALSO enable you to leverage a
-standalone database instance. The database instance MUST be seeded with data from the existing DataSynthesis data loading  
+1. This example will ALSO enable you to leverage a standalone database instance. The database instance MUST be seeded with data from the existing DataSynthesis data loading  
 scripts and processes.
 
-The following command specifically shows you specifically how to connect to a database server on IP 127.0.0.1 on Port 3306
-to a database named datasynthesis with a user named root who has a password of Developer123
+The following command specifically shows you how to start the Quarkus APIs. The following command 
+will start up the Quarkus APIs, Connect to a specific PostgresQL Database, sip all the developed tests and 
+not validate the datamodel. You will notice there is a -D before every command, this is not a typo but
+a way that specifically defines attributes. This is absolutely critical so that the application.properties
+file can accept the specific attributes and their values.
+
+| Attribute                                         | Attribute Value|
+|---------------------------------------------------|----------------|
+| Avoid Recreating the datamodel and overwriting it |-Dquarkus.liquibase.migrate-at-start=false |
+| Database Name                                     |-DDATABASE_NAME=dev_datasynthesis |
+| Database Host (Name or IP)                        |-DDATABASE_HOST=192.168.1.101 |
+| Database User Name                                |-DDATABASE_USERNAME=postgres |
+| Database Password                                 |-DDATABASE_PASSWORD=MyData |
+| Database Port                                     |-DDATABASE_PORT=5432  |
+| Skip Tests                                        |-DskipTests |
+| No DataModel Validation                           |-Dquarkus.hibernate-orm.validate-in-dev-mode=false|
 ```
-mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false -DDATABASE_NAME=datasynthesis -DDATABASE_HOST=127.0.0.1 -DDATABASE_USERNAME=root -DDATABASE_PASSWORD=Developer123 -DDATABASE_PORT=3306
+mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false -DDATABASE_NAME=dev_datasynthesis 
+-DDATABASE_HOST=192.168.1.101 -DDATABASE_USERNAME=postgres 
+-DDATABASE_PASSWORD=MyData -DDATABASE_PORT=5432 -DskipTests -Dquarkus.hibernate-orm.validate-in-dev-mode=false
 ```
 
-All API calls can be audited. This requires a running instance of iDaaS-KIC (https://github.com/Project-Herophilus/iDaaS-KIC/tree/main/iDaaS-KIC-Integration). By default auditing is turned off. The following command enables auditing with a working KIC URL.
+2. This example enables auditing. While very similiar to the command above there is a specific new attribute. 
+In order to support all API calls can be audited, we have tied this into the community project iDaaS-KIC 
+(https://github.com/Project-Herophilus/iDaaS-KIC/tree/main/iDaaS-KIC-Integration). By default auditing is turned off. 
+The following command enables auditing with a working KIC URL.
+
+| Attribute                                         | Attribute Value|
+|---------------------------------------------------|----------------|
+| Avoid Recreating the datamodel and overwriting it |-Dquarkus.liquibase.migrate-at-start=false |
+| Enable Auditing                                   |-Ddatasynthesis.audit=true|
+| Auditing (iDaaS KIC URL)                          |-DAUDITING_URL=127.0.0.1:9970|
+| Database Name                                     |-DDATABASE_NAME=dev_datasynthesis |
+| Database Host (Name or IP)                        |-DDATABASE_HOST=192.168.1.101 |
+| Database User Name                                |-DDATABASE_USERNAME=postgres |
+| Database Password                                 |-DDATABASE_PASSWORD=MyData |
+| Database Port                                     |-DDATABASE_PORT=5432  |
+| Skip Tests                                        |-DskipTests |
+| No DataModel Validation                           |-Dquarkus.hibernate-orm.validate-in-dev-mode=false|
+
 ```
-mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false -Ddatasynthesis.audit=true -DDATABASE_NAME=datasynthesis -DDATABASE_HOST=127.0.0.1 -DDATABASE_USERNAME=root -DDATABASE_PASSWORD=Developer123 -DDATABASE_PORT=3306 -DAUDITING_URL=127.0.0.1:9970
+mvn quarkus:dev -Dquarkus.liquibase.migrate-at-start=false -Ddatasynthesis.audit=true -DAUDITING_URL=127.0.0.1:9970
+-DDATABASE_NAME=dev_datasynthesis 
+-DDATABASE_HOST=192.168.1.101 -DDATABASE_USERNAME=postgres 
+-DDATABASE_PASSWORD=MyData -DDATABASE_PORT=5432 -DskipTests -Dquarkus.hibernate-orm.validate-in-dev-mode=false
 ```
-### Troubleshooting Issues
-If you get any errors around time zone issues you can set those through the MySQL Workbench and know the time difference
-from GMT to your time zone, for the example below we are setting it for CST which is +7 hours
-```
-SET GLOBAL time_zone = '+07:00';
-SELECT @@GLOBAL.time_zone, @@SESSION.time_zone;
-SET SESSION time_zone = '+07:00';
-SELECT @@GLOBAL.time_zone, @@SESSION.time_zone;
-```
+# Using the APIs
+
+## API Background and Design Philosophy
+The focus for the platform has been about enabling resources and systems to have a massive amount of data easily 
+accessible and available in a highly extensible manner. When building such a system we went through several design
+phases and testing phases. Here are some key philisophical things we wanted to ensure as we have gone down this path:
+1. Support a consistent data experience
+- We enforced some data naming conventions. Also, this would be position us as we continue to expand and extend this platform.
+If there is EVERY a question on anything in the datamodel details are maintained in several files that start with
+datamodel_. 
+- We have a general approach for all aspects that the data tier supporting the platform maintains. Our goal here is to 
+provide extensibility and enable human readable understanding before delving into data visuals. Every
+table implemented has a _ within them, by doing this it is intended to be <feature area>_<specific purpose> for any table referenced.
+- 
+2. Provide seperation of concerns from the data tier outword
+
 ### Testing the DataSynthesis APIs
 For simplicity we will just discuss how to test from a web browser; however, as said on the main README.md there is an
 included Insomnia API JSON file for those that like using an IDE based tool.
