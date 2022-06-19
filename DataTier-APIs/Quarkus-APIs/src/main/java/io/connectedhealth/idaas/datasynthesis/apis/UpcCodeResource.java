@@ -3,6 +3,7 @@ package io.connectedhealth.idaas.datasynthesis.apis;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -31,7 +32,7 @@ public class UpcCodeResource {
     @Audited
     @GET
     public List<UpcCode> getUpcCodes(
-        @Parameter(description = "number of random records to be retrieved") @QueryParam int count) {
+        @Parameter(description = "number of random records to be retrieved") @DefaultValue("500") @QueryParam int count) {
             return service.retrieveRandomData(count);
     }
 

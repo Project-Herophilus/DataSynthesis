@@ -19,7 +19,7 @@ import io.connectedhealth.idaas.datasynthesis.services.DataGenTypeService;
 
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
-@Path("/data-gen-types")
+@Path("/datagentypes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class DataGenTypeResource {

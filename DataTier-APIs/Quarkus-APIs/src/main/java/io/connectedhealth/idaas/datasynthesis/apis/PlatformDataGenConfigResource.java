@@ -14,7 +14,7 @@ import io.connectedhealth.idaas.datasynthesis.models.PlatformConfigDataGenEntity
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
-@Path("/platform-config-datagens")
+@Path("/platformconfigdatageneration")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class PlatformDataGenConfigResource {
