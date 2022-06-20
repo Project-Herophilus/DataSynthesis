@@ -33,7 +33,7 @@ public class CreditCardResource {
     @Audited
     @GET
     public List<CreditCard> getCreditCards(
-        @Parameter(description = "number of random records to be retrieved") @QueryParam int count, 
+        @Parameter(description = "number of random records to be retrieved") @DefaultValue("500") @QueryParam int count,
         @Parameter(required=false) @QueryParam Short dataGenTypeId) {
             return service.retrieveRandomCreditCards(count, dataGenTypeId);
     }

@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.models.RefDataStatusEntity;
 
-@Path("/refdata-statuses")
+@Path("/statuscodes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RefDataStatusResource {

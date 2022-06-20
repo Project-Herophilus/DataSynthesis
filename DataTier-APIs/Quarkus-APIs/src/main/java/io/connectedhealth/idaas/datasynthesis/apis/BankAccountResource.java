@@ -3,6 +3,7 @@ package io.connectedhealth.idaas.datasynthesis.apis;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -22,7 +23,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
-@Path("/bank-accounts")
+@Path("/bankaccounts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class BankAccountResource {
@@ -32,7 +33,7 @@ public class BankAccountResource {
     @Audited
     @GET
     public List<BankAccount> getBankAccounts(
-        @Parameter(description = "number of random records to be retrieved") @QueryParam int count, 
+        @Parameter(description = "number of random records to be retrieved")  @DefaultValue("500") @QueryParam int count,
         @Parameter(required=false) @QueryParam Short dataGenTypeId) {        
             return service.retrieveRandomBankAccounts(count, dataGenTypeId);
     }

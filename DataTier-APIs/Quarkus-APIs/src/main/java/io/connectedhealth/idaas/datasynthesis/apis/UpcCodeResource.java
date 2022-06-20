@@ -22,7 +22,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
-@Path("/upc-codes")
+@Path("/upccodes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UpcCodeResource {

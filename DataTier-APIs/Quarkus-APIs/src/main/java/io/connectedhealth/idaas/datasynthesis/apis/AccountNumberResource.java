@@ -33,7 +33,7 @@ public class AccountNumberResource {
     @Audited
     @GET
     public List<AccountNumber> getAccountNumbers(
-        @Parameter(description = "number of random records to be retrieved") @QueryParam int count,  
+        @Parameter(description = "number of random records to be retrieved")  @DefaultValue("500") @QueryParam int count,
         @Parameter(required = false, description = "optional") @QueryParam Short dataGenTypeId) {
             return service.retrieveRandomAccountNumbers(count, dataGenTypeId);
     }
