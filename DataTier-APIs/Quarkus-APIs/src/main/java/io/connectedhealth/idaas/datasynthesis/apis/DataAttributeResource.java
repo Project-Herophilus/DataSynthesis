@@ -12,7 +12,7 @@ import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.DataAttribute;
 import io.connectedhealth.idaas.datasynthesis.services.DataAttributeService;
 
-@Path("/data-attributes")
+@Path("/dataattributes")
 @Produces(MediaType.APPLICATION_JSON)
 public class DataAttributeResource {
     @Inject
