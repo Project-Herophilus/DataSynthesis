@@ -88,8 +88,9 @@ if(dataattributeName=='address-us')
     }
     auditEventMessage ="Invoking Data Generator for "+ runCount+" US based addresses"
     console.log(auditEventMessage)
-    addressDtl = buildDataAttributes.generateAddress_Record_US(runCount)
-    dataOutputting.processDataOutput(addressDtl, methodName);
+    buildDataAttributes.generateAddress_Record_US(runCount).then(resp=>{
+        dataOutputting.processDataOutput(resp, methodName);
+    })
 }
 if(dataattributeName=='bankaccounts')
 {

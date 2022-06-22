@@ -27,7 +27,7 @@ module.exports = {
      *   messagetype is combination of MessageType^TriggerEvent
      *   SendingApp
      *   SendingFacility
-     *   USState
+     *   USstate
      */
 
     /*
@@ -57,19 +57,19 @@ module.exports = {
             const eventtype = messagetype.split("^")[1]
             const set_id = "1"
             //DATAGENERATED_ACCOUNTNUMBERS 
-            const patientid =row.AccountNumberValue
+            const patientid =row.accountnumbervalue
             //DATAGENERATED_ACCOUNTNUMBERS
-            const patientid_list = row.AccountNumberValue
+            const patientid_list = row.accountnumbervalue
             //DATAEXISTING_NAMEFIRST => RANDOMIZED
-            const firstname = row.FirstName
+            const firstname = row.firstname
             //RANDOMIZE LETTER
             const middlename = random_letter
             //DATAEXISTING_NAMELAST => RANDOMIZED
-            const lastname = row.LastName
+            const lastname = row.lastname
             //CONCAT ALL THREE
             const fullname = `${firstname}^${middlename}^${lastname}^^^`
-            //CONCAT DATAEXISTING_ADDRESS AND ZIPCODEUS
-            const fullpatientaddress = `${row.AddressStreet}^^${row.City}^${row.State}^${row.ZipCode}^USA^^^${row.State}`
+            //CONCAT DATAEXISTING_ADDRESS AND zipcodeUS
+            const fullpatientaddress = `${row.addressstreet}^^${row.city}^${row.state}^${row.zipcode}^USA^^^${row.state}`
             //LEAVE BLANK
             const allergy_type_code = ""
             //LEAVE AS IS
@@ -79,20 +79,20 @@ module.exports = {
             //RANDOMIZE
             const alternative_patientid = Math.floor(1000 + Math.random() * 9000)
             //DATAEXISTING_LASTNNAME =>RANDOMIZE
-            const mothers_maiden_name = rows[random_number].LastName
-            //DATAGENERETED_DATEOFBIRTH AGE >10
-            const date = new Date(row.DateOfBirth)
+            const mothers_maiden_name = rows[random_number].lastname
+            //DATAGENERETED_dateofbirth AGE >10
+            const date = new Date(row.dateofbirth)
             const dt_birth = moment(date).format("yyyyMMDD")
-            //DATAEXISTING_FIRSTNAME/LASTNAME
+            //DATAEXISTING_firstname/lastname
             const gender = row.Gender
             //DATAEXISTING_REF
             const ethnic_group = "B"
             //HARDCODE TO USA
             const country_code = "USA"
             //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-            const home_phone = `${row.AreaCodeValue}-${row.PhoneNumberValue}`
+            const home_phone = `${row.areacodevalue}-${row.phonenumbervalue}`
             //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-            const business_phone = `${row.AreaCodeValue}-${rows[random_number].PhoneNumberValue}`
+            const business_phone = `${row.areacodevalue}-${rows[random_number].phonenumbervalue}`
             //REFDATA_CODETERMS_APPLICATION
             const primary_lang ="EN"
             //REFDATA
@@ -100,9 +100,9 @@ module.exports = {
             //REFDATA
             const religion = "NA"
             //DATAGENERATED_ACCOUNTNUMBERS
-            const patient_acct_num = row.AccountNumberValue
+            const patient_acct_num = row.accountnumbervalue
             //DATAGENERATED_SOCIALSECURITYNUMBER
-            const ssn = row.SocialSecurityNumberValue
+            const ssn = row.socialsecuritynumbervalue
             //DATAGENERATED_DRIVERLICENSES
             const drivers_license_num = row.DLN
             //REFDATA
@@ -115,12 +115,12 @@ module.exports = {
             const preadmit_num = ""
             //BLANK 
             const prior_patient_loc = ""
-            //1434567516^LASTNAME^PHYSICIANFIRST
+            //1434567516^lastname^PHYSICIANFIRST
             const ID6 = Math.floor(100000 + Math.random() * 900000)
-            const attending_physician =`{${ID6}^${rows[random_number].LastName}^${rows[random_number].FirstName}}`
-            const referring_physcian = `{${ID6}^${rows[random_number].LastName}^${rows[random_number].FirstName}}`
-            const consulting_physcian = `{${ID6}^${rows[random_number].LastName}^${rows[random_number].FirstName}}`
-            const admitting_doctor = `{${ID6}^${rows[random_number].LastName}^${rows[random_number].FirstName}}`
+            const attending_physician =`${ID6}^${rows[random_number].lastname}^${rows[random_number].firstname}`
+            const referring_physcian = `${ID6}^${rows[random_number].lastname}^${rows[random_number].firstname}`
+            const consulting_physcian = `${ID6}^${rows[random_number].lastname}^${rows[random_number].firstname}`
+            const admitting_doctor = `${ID6}^${rows[random_number].lastname}^${rows[random_number].firstname}`
             //REFDATA
             const hospital_service = "SURG"
             //REFDATA

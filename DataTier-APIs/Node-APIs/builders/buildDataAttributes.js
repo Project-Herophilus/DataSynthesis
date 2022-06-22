@@ -92,14 +92,8 @@ module.exports = {
         sqlQueryLastNames = `select lastname from dataexisting_namelast order by random() limit ${rows};`
         console.log(sqlQueryLastNames)
         // Process Query for Random Last Names
-        //lastnames = await db.RecordSpecificResponse(sqlQueryLastNames)
-        /*
-        lastnames = dbQueries.getDataFromTable("dataexisting_namelast",rows).then(resp => {
-            resp.forEach(data => {
-                randomLastNames.push(data.rows)
-            })
-        })*/
-        // console.log(rows)
+        lastnames = await db.RecordSpecificResponse(sqlQueryLastNames)
+        console.log(lastnames.rows)
         const minLocationNumber = 1
         const maxLocationNumber = 9999
         //console.log(Math.floor(result))
@@ -114,8 +108,7 @@ module.exports = {
             }
             return address_templates[random_index]
         }
-
-        rows.forEach(row => {
+        lastnames.rows.forEach(row => {
             const random_index = Math.floor(Math.random() * (maxLocationNumber - minLocationNumber) + minLocationNumber);
             fullstreetaddress.push(random_street_template(row.lastname, random_index))
         })

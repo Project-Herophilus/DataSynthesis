@@ -6,7 +6,7 @@ dotenv.config({path: `${__dirname}/.env`})
 // Global Variable for usage in platform
 global.__basedir = __dirname;
 
-var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3002;
 //need to invoke config functions to store all configuration necessary in memory at start up or refresh 
 app.use(function (req, res, next) {
     /*var err = new Error('Not Found');
