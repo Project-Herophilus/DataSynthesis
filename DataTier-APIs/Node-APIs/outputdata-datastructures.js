@@ -62,7 +62,16 @@ buildComplexDataStructures.buildComplexDataStructure(datastructureName, runQuant
     startTime = new Date();
     // Output Record
     //externalizeDataOutput(finalDataOutPut, outputType)
-    dataOutputting.processDataOutput(finalDataOutPut, datastructureName);
+    var csv = require("csvtojson");
+
+    // Convert a csv file with csvtojson
+    csvFilePath='/Users/jonathanmyer/Desktop/cognitive-classifier-resources/_europe2_ausp-20180801203752358.csv'
+    csv()
+    .fromFile(csvFilePath)
+    .then(function(jsonArrayObj){ //when parse finished, result will be emitted here.
+        console.log(jsonArrayObj); 
+    })
+    // dataOutputting.processDataOutput(finalDataOutPut, datastructureName);
     // Audit
     endTime = new Date();
     componentName = "DataOutput";

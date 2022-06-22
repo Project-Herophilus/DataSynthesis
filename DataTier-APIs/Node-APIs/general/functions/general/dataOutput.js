@@ -11,21 +11,24 @@ const buildDataAttributes = require("../../../builders/buildDataAttributes");
 const buildComplexDataStructures = require("../../../builders/buildComplexDataStructures");
 const auditing = require("../auditing");
 const fs = require("fs");
-const topicOutput = require("../../../connectivity/general/connectors/kafka-producer");
+const topicOutput = require("../../../connectivity/general/connectors/kafka-producer-aws");
 
 module.exports = {
     /*
      *  Method to output data
      */
-    processDataOutput(msg,datastructureName) {
+    processDataOutput(topic,msg,count) {
         let outputType = config.outputAdapter;
         const dataoutput =[];
-        systemOutputName = datastructureName;
+        // systemOutputName = datastructureName;
         if (outputType == "kafka") {
-            msg.forEach(msg => {
-                // topicOutput(topicName,msg)
-                topicOutput(systemOutputName, msg)
-            })
+            // msg.forEach(msg=>{
+            //     topicOutput(topic, msg)
+            // })
+            //For one execption column use 10
+            for(let i=0; i<count; i++){
+                topicOutput(topic, msg[i])
+            }
         }
         if (outputType == "file") {
             let text = msg.join('\n');

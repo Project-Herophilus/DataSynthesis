@@ -18,7 +18,7 @@ const produce = async (topic, message) => {
     //console.log("produce", message)
     await producer.connect()
     try {
-        await producer.send({
+        await producer.senad({
             topic, 
             messages: [
                 {key: String(0), 
