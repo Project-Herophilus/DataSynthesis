@@ -168,31 +168,21 @@
             <h4 class="title">Platform Tables Reference List</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table :items="data_tables" table-header-color="orange" v-if="data_tables.length > 0"></ordered-table>
+            <ordered-table :items="data_tables" :reference_table="true" table-header-color="orange" v-if="data_tables.length > 0" @tableclicked="populateResultsTable" style="max-height:600px; overflow:scroll"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
       <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
+        class="md-layout-item md-xlarge-size-100 md-xsmall-size-100 md-size-50"
       >
-        <nav-tabs-card>
-          <template slot="content">
-            <span class="md-nav-tabs-title">Tasks:</span>
-            <md-tabs class="md-success" md-alignment="left">
-              <md-tab id="tab-home" md-label="Bugs" md-icon="bug_report">
-                <nav-tabs-table></nav-tabs-table>
-              </md-tab>
-
-              <md-tab id="tab-pages" md-label="Website" md-icon="code">
-                <nav-tabs-table></nav-tabs-table>
-              </md-tab>
-
-              <md-tab id="tab-posts" md-label="server" md-icon="cloud">
-                <nav-tabs-table></nav-tabs-table>
-              </md-tab>
-            </md-tabs>
-          </template>
-        </nav-tabs-card>
+              <md-card>
+          <md-card-header data-background-color="orange">
+            <h4 class="title">Table Results</h4>
+          </md-card-header>
+          <md-card-content>
+            <ordered-table :items="result_fields" table-header-color="orange" v-if="result_fields.length > 0" style="max-height:600px; overflow:scroll"></ordered-table>
+          </md-card-content>
+        </md-card>
       </div>
     </div>
   </div>
@@ -210,12 +200,21 @@ export default {
   },
   data() {
     return {
-      data_tables: []
+      data_tables: [],
+      result_fields: [],
+      table_chosen: ""
     }
   },
   methods: {
     populatedDataTables(data_response){
       this.data_tables = data_response
+    },
+    populateResultsTable(table){
+      console.log(table)
+      api.getTableResults(table).then(resp=>{
+        this.result_fields = resp.data.rows;
+        console.log(this.result_fields)
+      })
     }
   },
   mounted(){

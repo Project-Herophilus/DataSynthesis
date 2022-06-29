@@ -11,7 +11,7 @@
         <md-icon>dashboard</md-icon>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/table">
+      <sidebar-link to="/datamanagement">
         <md-icon>library_books</md-icon>
         <p>Data Management</p>
       </sidebar-link>

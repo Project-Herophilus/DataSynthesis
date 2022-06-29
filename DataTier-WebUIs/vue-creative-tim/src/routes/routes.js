@@ -13,22 +13,22 @@ const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/datamanagement",
     children: [
-      {
-        path: "dashboard",
-        name: "Dashboard",
-        component: Dashboard,
-      },
+      // {
+      //   path: "dashboard",
+      //   name: "Dashboard",
+      //   component: Dashboard,
+      // },
       {
         path: "user",
         name: "User Profile",
         component: UserProfile,
       },
       {
-        path: "table",
+        path: "datamanagement",
         name: "Table List",
-        component: TableList,
+        component: Dashboard,
       },
       {
         path: "typography",
