@@ -7,6 +7,6 @@ csvFilePath='/Users/jonathanmyer/Desktop/cognitive-classifier-resources/_europe2
 csv()
 .fromFile(csvFilePath)
 .then(function(jsonArrayObj){ //when parse finished, result will be emitted here.
-    dataOutputting.processDataOutput('erpsource3',jsonArrayObj,2);
+    dataOutputting.processDataOutput('erpsource3',jsonArrayObj,6);
 })
 
