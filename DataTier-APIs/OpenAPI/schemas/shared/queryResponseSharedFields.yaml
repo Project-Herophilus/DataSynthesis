@@ -1,0 +1,6 @@
+type: object
+properties:
+  command:
+    type: string
+  rowCount:
+    type: integer

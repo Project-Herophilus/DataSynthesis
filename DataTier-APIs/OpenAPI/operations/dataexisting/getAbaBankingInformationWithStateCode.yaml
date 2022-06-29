@@ -1,0 +1,8 @@
+get:
+  operationId: getAbaBankingInformationWithStateCode
+  summary: Retrieves abaBanking information
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/ababankingResponse.yaml
+parameters:
+  - $ref: '../../parameters/statecode.yaml'

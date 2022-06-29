@@ -17,7 +17,7 @@ on:
         default: "false"
 defaults:
   run:
-    working-directory: ./DataTier-APIs/Quarkus-APIs
+    working-directory: release/DataTier-APIs/Quarkus-APIs
 
 jobs:
   release:
@@ -28,7 +28,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.HEROPHILUS_ACCESS_TOKEN }}
+        path: release
     - name: Java Maven release
+      id: maven-release
       uses: qcastel/github-actions-maven-release@v1.12.16
       env:
         JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
@@ -39,4 +41,39 @@ jobs:
         version-minor: ${{ github.event.inputs.increment-minor }}
         maven-args: "-Dmaven.deploy.skip=true"
         git-release-bot-name: "idaas-bot"
+        maven-project-folder: release/DataTier-APIs/Quarkus-APIs
+    - uses: octokit/request-action@v2.x
+      id: get_latest_tag
+      with:
+        route: GET /repos/Project-Herophilus/DataSynthesis/tags
+        owner: Project-Herophilus
+        repo: DataSynthesis
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: echo ::set-output name=tag_name::$(echo '${{ steps.get_latest_tag.outputs.data }}' | jq .[0].name -r)
+      id: tag-name
+    - run: "echo Tag: ${{ steps.tag-name.outputs.tag_name }}"
+    - name: Checkout source
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.HEROPHILUS_ACCESS_TOKEN }}
+        path: tag
+        ref: refs/tags/${{ steps.tag-name.outputs.tag_name }}
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: "Build & test"
+      run: mvn -B package -Dquarkus.package.type=uber-jar --file pom.xml
+      working-directory: tag/DataTier-APIs/Quarkus-APIs
+      env:
+        GITHUB_TOKEN: ${{ secrets.HEROPHILUS_ACCESS_TOKEN }}
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        automatic_release_tag: ${{ steps.tag-name.outputs.tag_name }}
+        repo_token: "${{ secrets.HEROPHILUS_ACCESS_TOKEN }}"
+        prerelease: false
+        files: |
+          tag/DataTier-APIs/Quarkus-APIs/target/*.jar
 

@@ -1,0 +1,6 @@
+get:
+  operationId: getAreaCodes
+  summary: Retrieves data about area codes
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/areaCodeListResponse.yaml

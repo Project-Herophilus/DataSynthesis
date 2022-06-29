@@ -1,0 +1,8 @@
+get:
+  operationId: getZipCodesUSWithStateCode
+  summary: Retrieves data about zipCodes in US with State Code
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/zipCodeUSListResponse.yaml
+parameters:
+  - $ref: '../../parameters/statecode.yaml'

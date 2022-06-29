@@ -1,0 +1,527 @@
+openapi: 3.0.2
+info:
+  title: Query API
+  description: A list of get API calls that allows for pulling data
+  license:
+    name: Parent Project License (Apache 2.0 License)
+    url: https://github.com/Project-Herophilus/DataSynthesis/blob/main/LICENSE
+  contact:
+    name: A helpful contact
+    url: https://github.com/Project-Herophilus/DataSynthesis/issues
+  version: '1.0'
+servers:
+  - url: http://localhost:3001/api/querydata
+paths:
+  /datamodel/datatables:
+    summary: skd
+    get:
+      operationId: getDataModelDataTables
+      summary: Retrieves data about data tables
+      responses:
+        '200':
+          $ref: '#/components/responses/tableInfoResponse'
+  /datamodel/datadomain:
+    get:
+      operationId: getDataDomain
+      summary: Retrieves data domain information
+      responses:
+        '200':
+          $ref: '#/components/responses/dataDomainResponse'
+  /dataexisting/ababanking:
+    get:
+      operationId: getAbaBankingInformation
+      summary: Retrieves abaBanking information
+      responses:
+        '200':
+          $ref: '#/components/responses/ababankingResponse'
+  /dataexisting/ababanking/{statecode}:
+    get:
+      operationId: getAbaBankingInformationWithStateCode
+      summary: Retrieves abaBanking information
+      responses:
+        '200':
+          $ref: '#/components/responses/ababankingResponse'
+    parameters:
+      - $ref: '#/components/parameters/statecode'
+  /dataexisting/areacode:
+    get:
+      operationId: getAreaCodes
+      summary: Retrieves data about area codes
+      responses:
+        '200':
+          $ref: '#/components/responses/areaCodeListResponse'
+  /dataexisting/areacode/{statecode}:
+    get:
+      operationId: getAreaCodeWithStateCode
+      summary: Retrieves data about area codes
+      responses:
+        '200':
+          $ref: '#/components/responses/areaCodeListResponse'
+    parameters:
+      - $ref: '#/components/parameters/statecode'
+  /dataexisting/companies:
+    get:
+      operationId: getCompanies
+      summary: Retrieves data about companies
+      responses:
+        '200':
+          $ref: '#/components/responses/companyListResponse'
+  /dataexisting/companies/{companyname}:
+    get:
+      operationId: getCompaniesByCompanyName
+      summary: Retrieves data about companies
+      responses:
+        '200':
+          $ref: '#/components/responses/companyListResponse'
+    parameters:
+      - $ref: '#/components/parameters/companyname'
+  /dataexisting/namefirst/{firstnamelike}/{gender}:
+    get:
+      operationId: getFirstNameWithFirstNameAndGender
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          $ref: '#/components/responses/firstNameListResponse'
+    parameters:
+      - $ref: '#/components/parameters/firstnamelike'
+      - $ref: '#/components/parameters/gender'
+  /dataexisting/namefirst{likename}:
+    get:
+      operationId: getFirstNameWithFirstNameLike
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          $ref: '#/components/responses/firstNameListResponse'
+    parameters:
+      - $ref: '#/components/parameters/likename'
+  /dataexisting/namefirst:
+    get:
+      operationId: getFirstNames
+      summary: Retrieves data about firstnames
+      responses:
+        '200':
+          $ref: '#/components/responses/firstNameListResponse'
+  /dataexisting/namelast/{lastnamematch}:
+    get:
+      operationId: getLastNameWithMatch
+      summary: Retrieves data about lastnames
+      responses:
+        '200':
+          $ref: '#/components/responses/lastNameListResponse'
+    parameters:
+      - $ref: '#/components/parameters/lastnamematch'
+  /dataexisting/namelast:
+    get:
+      operationId: getLastName
+      summary: Retrieves data about lastnames
+      responses:
+        '200':
+          $ref: '#/components/responses/lastNameListResponse'
+  /dataexisting/upccodes:
+    get:
+      operationId: getUPCCodes
+      summary: Retrieves data about upc codes
+      responses:
+        '200':
+          $ref: '#/components/responses/upcCodesListResponse'
+  /dataexisting/upccodes/{productnamematch}:
+    get:
+      operationId: getUPCCodesWithProductNameMatch
+      summary: Retrieves data about upc codes
+      responses:
+        '200':
+          $ref: '#/components/responses/upcCodesListResponse'
+    parameters:
+      - $ref: '#/components/parameters/productnamematch'
+  /dataexisting/zipcodeus:
+    get:
+      operationId: getZipCodesUS
+      summary: Retrieves data about zipCodes in US
+      responses:
+        '200':
+          $ref: '#/components/responses/zipCodeUSListResponse'
+  /dataexisting/zipcodeus/{statecode}:
+    get:
+      operationId: getZipCodesUSWithStateCode
+      summary: Retrieves data about zipCodes in US with State Code
+      responses:
+        '200':
+          $ref: '#/components/responses/zipCodeUSListResponse'
+    parameters:
+      - $ref: '#/components/parameters/statecode'
+components:
+  schemas:
+    dataTableInfoRecord:
+      title: Root Type for datatableInfoRecord
+      description: ''
+      type: object
+      properties:
+        tablename:
+          type: string
+        tableinformation:
+          type: string
+      example:
+        tablename: ATable
+        tableinformation: This is a description of the table
+    queryResponseSharedFields:
+      type: object
+      properties:
+        command:
+          type: string
+        rowCount:
+          type: integer
+    datamodelRecord:
+      description: ''
+      required:
+        - domainname
+        - statusid
+      type: object
+      properties:
+        domainname:
+          description: ''
+          type: string
+        domaininformation:
+          description: ''
+          type: string
+        statusid:
+          description: ''
+          type: integer
+        createddate:
+          format: date-time
+          description: ''
+          type: string
+    baseAuditRecord:
+      description: ''
+      type: object
+      properties:
+        createddate:
+          format: date-time
+          description: ''
+          type: string
+        statusid:
+          description: ''
+          type: integer
+        registeredapp:
+          description: ''
+          type: string
+    baseAuditRecordWithUser:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            createduser:
+              description: ''
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecord'
+    abaBankingRecord:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            ababankingid:
+              description: I think this might be an integer?!
+              type: integer
+            routingnumber:
+              description: ''
+              type: string
+            telegraphicname:
+              description: ''
+              type: string
+            customername:
+              description: ''
+              type: string
+            city:
+              description: ''
+              type: string
+            statecode:
+              description: ''
+              type: string
+            zipcode:
+              description: ''
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+    areaCode:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            areacodeid:
+              description: placeholder
+              type: integer
+            areacodevalue:
+              description: placeholder
+              type: string
+            timezone:
+              description: placeholder
+              type: string
+            statecode:
+              description: placeholder
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+    company:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            companiesid:
+              description: placeholder
+              type: integer
+            companiesname:
+              description: placeholder
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+    firstName:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            firstnameid:
+              description: placeholder
+              type: integer
+            firstname:
+              description: placeholder
+              type: string
+            gender:
+              description: placeholder
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+    lastName:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            lastnameid:
+              description: placeholder
+              type: integer
+            lastname:
+              description: placeholder
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+    upcCode:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            upccodeid:
+              description: placeholder
+              type: integer
+            upccodename:
+              description: placeholder
+              type: string
+            upcproductname:
+              description: placeholder
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+    zipCodeUS:
+      description: ''
+      type: object
+      allOf:
+        - type: object
+          properties:
+            zipcodeid:
+              description: placeholder
+              type: integer
+            zipcode:
+              description: placeholder
+              type: string
+            zipcodetype:
+              description: placeholder
+              type: string
+            city:
+              description: placeholder
+              type: string
+            statecode:
+              description: placeholder
+              type: string
+            lattitude:
+              description: placeholder
+              type: string
+            longitude:
+              description: placeholder
+              type: string
+            lctn:
+              description: placeholder
+              type: string
+        - $ref: '#/components/schemas/baseAuditRecordWithUser'
+  responses:
+    tableInfoResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/dataTableInfoRecord'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+          examples:
+            Example DataTables Response:
+              value:
+                command: Select
+                rowCount: 2
+                rows:
+                  - tablename: auditing_dataplatform
+                    tableinformation: >-
+                      Platform Auditing - Data Requests Made from Within the
+                      Platform
+                  - tablename: auditing_datarequest
+                    tableinformation: Platform Auditing - Data Requests Made within the platform
+      description: This Query Reponse contains information about data tables.
+    dataDomainResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/datamodelRecord'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+    ababankingResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/abaBankingRecord'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+    areaCodeListResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/areaCode'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+    companyListResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/company'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+    firstNameListResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/firstName'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: |-
+        A response
+        With Multiple lines
+    lastNameListResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/lastName'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+    upcCodesListResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/upcCode'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+    zipCodeUSListResponse:
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+              - properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/zipCodeUS'
+              - $ref: '#/components/schemas/queryResponseSharedFields'
+      description: ''
+  parameters:
+    statecode:
+      name: statecode
+      schema:
+        type: string
+      in: path
+      required: true
+    companyname:
+      name: companyname
+      schema:
+        type: string
+      in: path
+      required: true
+    firstnamelike:
+      name: firstnamelike
+      schema:
+        type: string
+      in: path
+      required: true
+    gender:
+      name: gender
+      schema:
+        type: string
+      in: path
+      required: true
+    likename:
+      name: likename
+      schema:
+        type: string
+      in: path
+      required: true
+    lastnamematch:
+      name: lastnamematch
+      schema:
+        type: string
+      in: path
+      required: true
+    productnamematch:
+      name: productnamematch
+      schema:
+        type: string
+      in: path
+      required: true

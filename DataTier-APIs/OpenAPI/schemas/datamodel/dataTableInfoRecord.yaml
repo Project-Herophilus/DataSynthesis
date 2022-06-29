@@ -1,0 +1,11 @@
+title: Root Type for datatableInfoRecord
+description: ''
+type: object
+properties:
+  tablename:
+    type: string
+  tableinformation:
+    type: string
+example:
+  tablename: ATable
+  tableinformation: This is a description of the table

@@ -1,0 +1,8 @@
+get:
+  operationId: getCompaniesByCompanyName
+  summary: Retrieves data about companies
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/companyListResponse.yaml
+parameters:
+  - $ref: '../../parameters/companyname.yaml'

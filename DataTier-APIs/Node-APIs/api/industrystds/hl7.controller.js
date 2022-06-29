@@ -1,12 +1,12 @@
 //const db= require("../../general/connectors/dbConnections/mysqlConnect")
-const db= require("../../general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('../../general/functions/datatier/query-builder');
+const db= require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
+const queryBuilder = require('../../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
 const hl7Builder = require("../../builders/buildmsgHL7");
 const fs = require("fs");
 
-router.get("/industrystds-doc-generator", async(req, res) => {
+router.get("/generator-hl7", async(req, res) => {
   let dataResults;
   res.setHeader("Content-Type", "text/plain");
   //DOC TYPE = ADT
@@ -23,7 +23,7 @@ router.get("/industrystds-doc-generator", async(req, res) => {
       const tuples = [];
       const modifiedTuples = [];
       rows.forEach((row,i)=>{
-            row.forEach((object, index)=>{
+            row.rows.forEach((object, index)=>{
                 if(tuples.length <= index){
                     tuples[index] = []
                     tuples[index].push(object)
@@ -41,7 +41,7 @@ router.get("/industrystds-doc-generator", async(req, res) => {
       })
       dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
       console.log("dataresults" + dataResults)
-      fs.writeFileSync('industrystds-test.industrystds', dataResults, 'utf8')
+      fs.writeFileSync('industrystds-test.industrystds', dataResults.toString(), 'utf8')
       res.send(dataResults)
   })
 });

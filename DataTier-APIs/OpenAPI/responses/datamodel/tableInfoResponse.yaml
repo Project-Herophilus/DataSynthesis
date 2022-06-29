@@ -1,0 +1,23 @@
+content:
+  application/json:
+    schema:
+      type: object
+      allOf:
+        - properties:
+            rows:
+              type: array
+              items:
+                $ref: '../../schemas/datamodel/dataTableInfoRecord.yaml'
+        - $ref: '../../schemas/shared/queryResponseSharedFields.yaml'
+    # This issue remains open https://github.com/Redocly/openapi-cli/issues/552
+    examples:
+      Example DataTables Response:
+        value:
+          command: 'Select'
+          rowCount: 2
+          rows:
+            - tablename: auditing_dataplatform
+              tableinformation: Platform Auditing - Data Requests Made from Within the Platform
+            - tablename: auditing_datarequest
+              tableinformation: Platform Auditing - Data Requests Made within the platform
+description: This Query Reponse contains information about data tables.

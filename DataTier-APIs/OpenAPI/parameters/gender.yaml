@@ -1,0 +1,5 @@
+name: gender
+schema:
+  type: string
+in: path
+required: true

@@ -1,0 +1,13 @@
+description: ''
+type: object
+properties:
+  createddate:
+    format: date-time
+    description: ''
+    type: string
+  statusid:
+    description: ''
+    type: integer
+  registeredapp:
+    description: ''
+    type: string

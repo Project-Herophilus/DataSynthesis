@@ -1,0 +1,8 @@
+get:
+  operationId: getAreaCodeWithStateCode
+  summary: Retrieves data about area codes
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/areaCodeListResponse.yaml
+parameters:
+  - $ref: '../../parameters/statecode.yaml'

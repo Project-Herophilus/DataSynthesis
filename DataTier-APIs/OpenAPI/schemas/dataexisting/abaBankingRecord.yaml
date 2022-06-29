@@ -1,0 +1,27 @@
+description: ''
+type: object
+allOf:
+  - type: object
+    properties:
+      ababankingid:
+        description: I think this might be an integer?!
+        type: integer
+      routingnumber:
+        description: ''
+        type: string
+      telegraphicname:
+        description: ''
+        type: string
+      customername:
+        description: ''
+        type: string
+      city:
+        description: ''
+        type: string
+      statecode:
+        description: ''
+        type: string
+      zipcode:
+        description: ''
+        type: string
+  - $ref: ../shared/baseAuditRecordWithUser.yaml

@@ -1,5 +1,5 @@
 //const db = require("../../general/connectors/dbConnections/mysqlConnect")
-const dbConnection = require("../../general/connectors/dbConnections/postgresqlConnect")
+const dbConnection = require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");

@@ -1,0 +1,19 @@
+description: ''
+required:
+  - domainname
+  - statusid
+type: object
+properties:
+  domainname:
+    description: ''
+    type: string
+  domaininformation:
+    description: ''
+    type: string
+  statusid:
+    description: ''
+    type: integer
+  createddate:
+    format: date-time
+    description: ''
+    type: string

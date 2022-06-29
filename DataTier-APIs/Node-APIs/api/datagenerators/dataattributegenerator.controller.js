@@ -1,9 +1,9 @@
 //const db= require("../../general/connectors/dbConnections/mysqlConnect")
-const db= require("../../general/connectors/dbConnections/postgresqlConnect")
-const queryBuilder = require('../../general/functions/datatier/query-builder');
+const db= require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
+const queryBuilder = require('../../general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
-const datastructuresGenerated = require("../../builders/buildDataAttributes");
+const dataattributesGenerator = require("../../builders/buildDataAttributes");
 const fs = require("fs");
 
 router.get("/addresses", async(req, res) => {
@@ -12,19 +12,15 @@ router.get("/addresses", async(req, res) => {
   //DOC TYPE = ADT
   const table = req.query.table;
   const limit = req.query.limit || 1000;
- 
-  db.query(queryBuilder.getDataFromTable(table, limit), (err, rows, fields)=>{
-      if(err) throw err;
-    const results = datastructuresGenerated.generateAddress_Record_US(rows.rows)
-    res.json(results)
-  })
+  const results = await dataattributesGenerator.generateAddress_Record_US(limit)
+  res.json(results)
 
 });
 
 router.get("/phone-numbers", async(req, res) => {
     const number_of_phone_numbers = parseInt(req.query.count) || 1000;
     const country = req.query.country || "US";
-    const results = datastructuresGenerated.generateUSPhoneNumbers(number_of_phone_numbers, country)
+    const results = dataattributesGenerator.generateUSPhoneNumbers(number_of_phone_numbers, country)
     res.json(results)
   
   });

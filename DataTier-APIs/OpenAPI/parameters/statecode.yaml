@@ -1,0 +1,5 @@
+name: statecode
+schema:
+  type: string
+in: path
+required: true

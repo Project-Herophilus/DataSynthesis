@@ -1,0 +1,6 @@
+get:
+  operationId: getUPCCodes
+  summary: Retrieves data about upc codes
+  responses:
+    '200':
+      $ref: ../../responses/dataexisting/upcCodesListResponse.yaml

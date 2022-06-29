@@ -6,6 +6,10 @@ const rng = require('./numberGenerators');
 generator = require('creditcard-generator')
 var RandExp = require('randexp'); // must require on node
 const crypto = require("crypto");
+const {promises} = require("fs");
+const db = require("../general/datatier/dbQueries");
+const dbQueries = require("../general/datatier/reusableQueries");
+
 // Instantiate Chance so it can be used
 var chance = new Chance();
 
@@ -17,21 +21,8 @@ const DelimsCommon = {
 
 const demographic_messages = [];
 module.exports = {
+
     /*
-     *  Data Queries
-     *  We will use USState param to pull City, State, ZipCode from dataexisting_usstates
-     *  For AreaCodes we will want to pull list of areacodes based on state
-     *  We will want to pull 100 FirstNames and Genders in General - These will be used to populate GT1/NK1 values since name will already be known
-     *  Clinicians - We will want to pull 120 firstnames and lastnames randomly - dataexisting_lastname, dataexisting_firstname
-     *  Names - Pull in 500 complete names randomly, gender will be part of this pull - dataexisting_lastname, dataexisting_firstname
-     *  Address - pull 500 Street Addreses - datagenerated_addresses
-     *  This will be used and concatenated with random city, state and zip initially pulled
-     *  PhoneNumbers - datagenerated_phonenumbers combined with random area codes pulled from State
-     *  DatOfBirth - datagenerate_dateofbirth
-     *  DLN - datagenerated_droverslicensenumber
-     *  SSN - datagenerated_socialsecuritynumber
-     *
-     */
     generatebasicref(rows, count, sending_app, sending_fac){
         //Create different templates for different types
         const relationships = ["Mother", "Father", "Sister", "Brother", "Aunt", "Uncle"];
@@ -69,7 +60,11 @@ module.exports = {
             demographic_messages.push(`${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|${business_phone}${ssn}|${drivers_license_num}\n`)
         })
         return demographic_messages
-    },
+    },*/
+    /*
+     *  Generic Method for reuse that enables generation of a defined count of messages
+     *  Based on a provided regex
+     */
     generateGenericRegex(regExpression, count){
         const generateddata = []
         for(i=0; i<count; i++){
@@ -77,6 +72,9 @@ module.exports = {
         }
         return generateddata
     },
+    /*
+     *   Generate Account Numbers based on a specific regular expression and count provided
+     */
     generateAccountNumbers(regExpression, count){
        /* const accountnumbers = []
         for(i=0; i<count; i++){
@@ -85,34 +83,43 @@ module.exports = {
         return accountnumbers*/
         return this.generateGenericRegex(regExpression, count)
     },
-    generateAddress_Record_US(rows){
-        randomizer = function(array){
-            return array[Math.floor(Math.random()*array.length-0)+0]
-         }
-        // console.log(rows)
+    async generateAddress_Record_US(rows) {
+
+        const randomLastNames = []
+        randomizer = function (array) {
+            return array[Math.floor(Math.random() * array.length - 0) + 0]
+        }
+        sqlQueryLastNames = `select lastname from dataexisting_namelast order by random() limit ${rows};`
+        console.log(sqlQueryLastNames)
+        // Process Query for Random Last Names
+        lastnames = await db.RecordSpecificResponse(sqlQueryLastNames)
+        console.log(lastnames.rows)
         const minLocationNumber = 1
         const maxLocationNumber = 9999
         //console.log(Math.floor(result))
-        const streetDirection = ["N", "S", "E", "W", "NE","NW","SE","SW"];
+        const streetDirection = ["N", "S", "E", "W", "NE", "NW", "SE", "SW"];
         const streetTypes = ["Lane", "Way", "Drive", "Avenue"];
         const fullstreetaddress = []
-        const random_street_template = function(lastname, streetNumber){
-            const random_index = Math.floor(Math.random()*(2-0)+0);
+        const random_street_template = function (lastname, streetNumber) {
+            const random_index = Math.floor(Math.random() * (2 - 0) + 0);
             const address_templates = {
                 0: `${streetNumber} ${lastname} ${randomizer(streetTypes)}`,
                 1: `${streetNumber} ${randomizer(streetDirection)} ${lastname} ${randomizer(streetTypes)}`
             }
             return address_templates[random_index]
         }
-
-        rows.forEach(row=>{
-            const random_index = Math.floor(Math.random()*(maxLocationNumber - minLocationNumber) + minLocationNumber);
+        lastnames.rows.forEach(row => {
+            const random_index = Math.floor(Math.random() * (maxLocationNumber - minLocationNumber) + minLocationNumber);
             fullstreetaddress.push(random_street_template(row.lastname, random_index))
         })
         return fullstreetaddress
     },
-    generateBankAccounts(rows){
 
+    /*
+     *      Generate Bank Accounts
+     */
+    generateBankAccounts(regExpression, count){
+        return this.generateGenericRegex(regExpression, count)
     },
     generateCreditCards(number_of_cards, ccName){
         // https://www.npmjs.com/package/creditcard-generator
@@ -124,12 +131,12 @@ module.exports = {
         {
             ccSplitValue = Math.floor(number_of_cards/4);
             creditcard_numbers.push({
-                "cc_type": "Amex",
+                "cc_type": "AMEX",
                 "cc_count": ccSplitValue, 
                 "cc_numbers": generator.GenCC("Amex", ccSplitValue)
             });
             creditcard_numbers.push({
-                "cc_type": "VISA",
+                "cc_type": "Visa",
                 "cc_count": ccSplitValue, 
                 "cc_numbers": generator.GenCC("VISA", ccSplitValue)
             });
@@ -145,10 +152,10 @@ module.exports = {
             });
 
         }
-        else if (ccName == "Amex"){
+        else if (ccName == "AMEX"){
             return generator.GenCC("Amex",number_of_cards)
         }
-        else if (ccName == "VISA"){
+        else if (ccName == "Visa"){
             return generator.GenCC("VISA",number_of_cards)
         }
         else if (ccName == "Mastercard"){
@@ -163,16 +170,10 @@ module.exports = {
         }
         return creditcard_numbers
     },
-    generateDLN(number_of_dls, datagentype){
+    generateDLN(number_of_dls, usstate){
         // 1. read config (state code and regex pattern)
         // 2. generate random set of numbers/characters based on regex pattern 
         return new RandExp('^[A-Z]{1}[0-9]{8}$').gen();
-        /*
-         * table platform_config_datagen are all the entries that should be able to be scheduled to run
-         * it links via datagentypeid to refdata_datagentypes to the specific formats/regex needed to do the
-         * specific task
-         *
-        */
 
     },
     generateDateOfBirths(beginyear, count){
@@ -184,7 +185,6 @@ module.exports = {
             dobs.push(DOB.toJSON().substring(0,10))
         }
         return dobs
-
     },
     generateEIN(count){
         const einNumbers = [];
@@ -195,6 +195,44 @@ module.exports = {
             einNumbers.push(`${ein_first}-${ein_second}`)
         }
         return einNumbers
+    },
+    generatePhoneNumbersUS(country, count ){
+        // check typeof object
+        //console.log(typeof object)
+        const phone_numbers = [];
+        for (i=0; i<count; i++){
+            if (country == "us"){
+                phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+            }
+            else {
+                // https://chancejs.com/location/phone.html
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+        }
+        return phone_numbers
+    },
+    generatePhoneNumbersIntl(country, count ){
+        // check typeof object
+        //console.log(typeof object)
+        const phone_numbers = [];
+        for (i=0; i<count; i++){
+            if (country == "fr"){
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "uk") {
+                // https://chancejs.com/location/phone.html
+                phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "nz") {
+                // We create our own custom logic as this is unaupported in existing library
+                //phone_numbers.push(chance.phone({ country: country }))
+            }
+            else if (country == "in") {
+                // https://chancejs.com/location/phone.html
+                //phone_numbers.push(chance.phone({ country: country }))
+            }
+        }
+        return phone_numbers
     },
     generateSerialNumbers_Basic(regExpression,count)
     {
@@ -220,6 +258,7 @@ module.exports = {
             let ssn_third = rng.generateRandomNumbers(9999, 1000)
             ssnNumbers.push(`${ssn_first}-${ssn_second}-${ssn_third}`)
         }
+        //return new Promise(ssnNumbers)
         return ssnNumbers
     },
     generateUserIdentities(regExpression, count){
@@ -229,32 +268,21 @@ module.exports = {
         }
         return accountnumbers
     },
-    generateUSPhoneNumbers(country, count ){
-        // check typeof object 
-        //console.log(typeof object)
-        const phone_numbers = [];
-        for (i=0; i<count; i++){
-            if (country == "us"){
-                phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
-            }
-            else {
-                phone_numbers.push(chance.phone({ country: country }))
-            }
-        }
-        return phone_numbers
-    },
+
     generateAddressByState_Record(rows, count, sending_app, sending_fac){
 
     }
 
+
 }
 
-console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
-//console.log(module.exports.generateSerialNumbers_Complex(10));
+// console.log(module.exports.generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));
+// console.log(module.exports.generateSerialNumbers_Complex(10));
 // console.log(module.exports.generateSSN(10))
 // console.log(module.exports.generateEIN(10))
 // console.log(module.exports.generateDateOfBirths(1960, 10))
 // console.log(module.exports.generateCreditCards(12,'Discover'))
-//console.log(module.exports.generateDLN('blah','blah'))
-//console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
-//console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
+// console.log(module.exports.generateDLN('blah','blah'))
+// console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
+// console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
+// console.log(module.exports.generateIntlPhoneNumbers('in',1000))
