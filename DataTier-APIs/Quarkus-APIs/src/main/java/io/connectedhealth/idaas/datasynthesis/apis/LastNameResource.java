@@ -32,8 +32,9 @@ public class LastNameResource {
     @Audited
     @GET
     public List<NameLast> getLastNames(
-        @Parameter(description = "number of random records to be retrieved") @DefaultValue("500") @QueryParam int count) {
-            return service.retrieveRandomData(count);
+        @Parameter(description = "number of random records to be retrieved") @DefaultValue("500") @QueryParam int count,
+        @Parameter(description = "Optional param to filter by frist letter of last name") @QueryParam String firstLetter) {
+            return service.retrieveNameLasts(count, firstLetter);
     }
     
     @Audited

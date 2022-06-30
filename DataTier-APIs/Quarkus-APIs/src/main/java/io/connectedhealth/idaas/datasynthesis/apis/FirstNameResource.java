@@ -32,8 +32,11 @@ public class FirstNameResource {
     @Audited
     @GET
     public List<NameFirst> getFirstNames(
-        @Parameter(description = "number of random records to be retrieved")  @DefaultValue("500") @QueryParam int count) {
-            return service.retrieveRandomData(count);
+        @Parameter(description = "number of random records to be retrieved")  @DefaultValue("500") @QueryParam int count,
+        @Parameter(description = "Optional param to filter by gender") @QueryParam String gender,
+        @Parameter(description = "Optional param to filter by frist letter of first name") @QueryParam String firstLetter) {
+
+            return service.retrieveNameFirsts(count, gender, firstLetter);
     }
     
     @Audited

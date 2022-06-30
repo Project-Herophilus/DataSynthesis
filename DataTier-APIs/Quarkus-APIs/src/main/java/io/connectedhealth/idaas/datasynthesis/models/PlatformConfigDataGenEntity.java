@@ -14,12 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "platform_config_datagen")
+@Table(name = "platform_config_dataattributes")
 public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panache.PanacheEntityBase {
     private short dataGenConfigId;
     private String dataTypeGenConfigName;
     private Integer runQuantity;
-    private Short minuteInterval;
     private Timestamp createdDate;
     private String createdUser;
     private RefDataStatusEntity status;
@@ -59,16 +58,6 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
     }
 
     @Basic
-    @Column(name = "MinuteInterval", nullable = true)
-    public Short getMinuteInterval() {
-        return minuteInterval;
-    }
-
-    public void setMinuteInterval(Short minuteInterval) {
-        this.minuteInterval = minuteInterval;
-    }
-
-    @Basic
     @Column(name = "CreatedDate", nullable = true)
     public Timestamp getCreatedDate() {
         return createdDate;
@@ -98,7 +87,7 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
 			return false;
 		PlatformConfigDataGenEntity other = (PlatformConfigDataGenEntity) o;
 		return java.util.Objects.equals(dataGenConfigId, other.dataGenConfigId) && java.util.Objects.equals(dataTypeGenConfigName, other.dataTypeGenConfigName) && 
-			java.util.Objects.equals(runQuantity, other.runQuantity) && java.util.Objects.equals(minuteInterval, other.minuteInterval) && 
+			java.util.Objects.equals(runQuantity, other.runQuantity) && 
 			java.util.Objects.equals(createdDate, other.createdDate) && java.util.Objects.equals(createdUser, other.createdUser) && 
 			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(application, other.application) && 
 			java.util.Objects.equals(dataAttribute, other.dataAttribute) && java.util.Objects.equals(dataGenType, other.dataGenType);
@@ -106,7 +95,7 @@ public class PlatformConfigDataGenEntity extends io.quarkus.hibernate.orm.panach
 
     @Override
     public int hashCode() {
-		return java.util.Objects.hash(dataGenConfigId, dataTypeGenConfigName, runQuantity, minuteInterval,
+		return java.util.Objects.hash(dataGenConfigId, dataTypeGenConfigName, runQuantity,
 					createdDate, createdUser, status, application,
 					dataAttribute, dataGenType);
 	}

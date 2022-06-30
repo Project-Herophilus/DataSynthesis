@@ -46,11 +46,17 @@ public class NameFirstService extends RandomizerService<DataExistingNameFirstEnt
         return entity.safePersist();
     }
 
-    public List<NameFirst> retrieveNameFirsts(int count, String gender) {
-        if (gender == null) {
+    public List<NameFirst> retrieveNameFirsts(int count, String gender, String firstLetter) {
+        String likeFL = wrapForLike(firstLetter, false, true);
+
+        if (null == gender && null == likeFL) {
             return retrieveRandomData(count);
+        } else if (null == gender) {
+            return retrieveRandomData(count, "firstName like ?1", likeFL);
+        } else if (null == likeFL) {
+            return retrieveRandomData(count, "gender", gender);
         }
             
-        return retrieveRandomData(count, "gender", gender);
+        return retrieveRandomData(count, "gender = ?1 and firstName like ?2", gender, likeFL);
     }
 }

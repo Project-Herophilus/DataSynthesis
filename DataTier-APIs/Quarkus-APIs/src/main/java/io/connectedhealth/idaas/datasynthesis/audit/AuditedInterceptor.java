@@ -16,7 +16,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 @Priority(2000)
 public class AuditedInterceptor {
     @ConfigProperty(name = "datasynthesis.audit")
-    private boolean audit;
+    boolean audit;
 
     @Inject
     @RestClient

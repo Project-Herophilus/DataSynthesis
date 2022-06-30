@@ -21,7 +21,7 @@ import io.quarkus.arc.Arc;
 public class DataStructureService extends BaseService {
 
     @Inject
-    private MeterRegistry registry;
+    MeterRegistry registry;
     
     public List<DataStructure> retrieveDataStructures(String name, int count) throws DataSynthesisException {
         Timer.Sample timer = Timer.start(registry);
