@@ -1,19 +1,28 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="items">
+    <v-data-table :headers="headers" :items="items" v-if="reference_table">
       <template v-slot:item="row">
         <tr>
           <td>{{ row.item.tablename }}</td>
           <td>{{ row.item.tableinformation }}</td>
-          <td>
+          <td v-if="reference_table">
             <v-btn
               color="white"
-              @click="onButtonClick(row.item)"
+              @click="onButtonClick(row.item.tablename)"
             >
             <a style="white"> View </a>
             </v-btn>
           </td>
         </tr>
+      </template>
+    </v-data-table>
+    <v-data-table :headers="headers" :items="items" :search="search" v-else>
+        <template v-slot:top>
+        <v-text-field
+          v-model="search"
+          label="Search (UPPER CASE ONLY)"
+          class="mx-4"
+        ></v-text-field>
       </template>
     </v-data-table>
     <v-dialog v-model="showModal" width="400">
@@ -47,12 +56,17 @@ export default {
         return [];
       },
     },
+    reference_table: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
       selected: [],
       headers: [],
-      showModal: false
+      showModal: false,
+      search: '',
     };
   },
   computed: {},
@@ -74,7 +88,8 @@ export default {
         });
       });
     },
-    onButtonClick() {
+    onButtonClick(table) {
+      this.$emit("tableclicked",table)
       this.showModal = !this.showModal;
     },
   },
