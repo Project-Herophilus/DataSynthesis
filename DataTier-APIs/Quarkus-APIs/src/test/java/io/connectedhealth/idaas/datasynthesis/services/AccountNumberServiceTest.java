@@ -21,7 +21,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @TestTransaction
 public class AccountNumberServiceTest {
     @Inject
-    AccountNumberService service;
+    AccountNumbersService service;
 
     private final static String GOLD_FORMAT = "^G4[0-9]{12}(?:[0-9]{3})?$";
     private final static String PLATINUM_FORMAT = "^P5[1-5][0-9]{14}$";

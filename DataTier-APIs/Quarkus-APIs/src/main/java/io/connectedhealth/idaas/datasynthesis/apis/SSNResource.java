@@ -17,7 +17,7 @@ import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.Count;
 import io.connectedhealth.idaas.datasynthesis.dtos.SSN;
 import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
-import io.connectedhealth.idaas.datasynthesis.services.SSNService;
+import io.connectedhealth.idaas.datasynthesis.services.SocialSecurityNumberService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
@@ -28,7 +28,7 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class SSNResource {
     @Inject
-    SSNService ssnService;
+    SocialSecurityNumberService ssnService;
 
     @Audited
     @GET

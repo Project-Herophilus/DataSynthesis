@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response.Status;
 
 import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.UpcCode;
-import io.connectedhealth.idaas.datasynthesis.services.UpcCodeService;
+import io.connectedhealth.idaas.datasynthesis.services.UpcCodesService;
 import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -27,7 +27,7 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UpcCodeResource {
     @Inject
-    UpcCodeService service;
+    UpcCodesService service;
 
     @Audited
     @GET

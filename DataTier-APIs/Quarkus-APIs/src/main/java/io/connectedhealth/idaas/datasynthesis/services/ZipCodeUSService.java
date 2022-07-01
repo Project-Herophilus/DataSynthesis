@@ -10,7 +10,7 @@ import io.connectedhealth.idaas.datasynthesis.models.DataExistingZipCodeUsEntity
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class USZipCodeService extends RandomizerService<DataExistingZipCodeUsEntity, ZipCode> {
+public class ZipCodeUSService extends RandomizerService<DataExistingZipCodeUsEntity, ZipCode> {
 
     @Override
     protected long count(Object... queryOpts) {

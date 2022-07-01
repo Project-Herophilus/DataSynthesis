@@ -13,7 +13,7 @@ import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class CompanyService extends RandomizerService<DataExistingCompaniesEntity, Company> {
+public class CompaniesService extends RandomizerService<DataExistingCompaniesEntity, Company> {
 
     @Override
     protected long count(Object... queryOpts) {

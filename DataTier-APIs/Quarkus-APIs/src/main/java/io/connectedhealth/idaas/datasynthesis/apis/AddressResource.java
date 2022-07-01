@@ -17,7 +17,7 @@ import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.Address;
 import io.connectedhealth.idaas.datasynthesis.dtos.Count;
 import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
-import io.connectedhealth.idaas.datasynthesis.services.AddressService;
+import io.connectedhealth.idaas.datasynthesis.services.AddressesService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
@@ -28,7 +28,7 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class AddressResource {
     @Inject
-    AddressService service;
+    AddressesService service;
 
     @Audited
     @GET

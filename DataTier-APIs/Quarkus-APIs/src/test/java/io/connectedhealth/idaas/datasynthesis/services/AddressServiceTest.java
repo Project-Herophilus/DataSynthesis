@@ -19,7 +19,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @TestTransaction
 public class AddressServiceTest {
     @Inject
-    AddressService addressService;
+    AddressesService addressService;
 
     @Inject
     NameLastService nameService;
@@ -47,12 +47,12 @@ public class AddressServiceTest {
         Assertions.assertTrue(Integer.parseInt(segments[i++]) < 10000);
 
         if (segments.length == 4) {
-            Assertions.assertTrue(Arrays.stream(AddressService.DIRECTIONS).anyMatch(segments[i]::equals));
+            Assertions.assertTrue(Arrays.stream(AddressesService.DIRECTIONS).anyMatch(segments[i]::equals));
             i++;
         }
         Assertions.assertTrue(segments[i].equals("Last1") || segments[i].equals("Last2"));
         i++;
 
-        Assertions.assertTrue(Arrays.stream(AddressService.STREET_TYPES).anyMatch(segments[i]::equals));
+        Assertions.assertTrue(Arrays.stream(AddressesService.STREET_TYPES).anyMatch(segments[i]::equals));
     }
 }

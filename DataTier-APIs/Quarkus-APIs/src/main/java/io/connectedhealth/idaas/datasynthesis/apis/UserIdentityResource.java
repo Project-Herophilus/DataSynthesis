@@ -17,7 +17,7 @@ import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.UserIdentity;
 import io.connectedhealth.idaas.datasynthesis.dtos.UserIdentityWithType;
 import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
-import io.connectedhealth.idaas.datasynthesis.services.UserIdentityService;
+import io.connectedhealth.idaas.datasynthesis.services.UserIdentitiesService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
@@ -28,7 +28,7 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserIdentityResource {
     @Inject
-    UserIdentityService service;
+    UserIdentitiesService service;
     
     @Audited
     @GET

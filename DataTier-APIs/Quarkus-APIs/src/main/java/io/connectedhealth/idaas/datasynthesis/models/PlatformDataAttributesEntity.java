@@ -26,6 +26,7 @@ public class PlatformDataAttributesEntity extends io.quarkus.hibernate.orm.panac
     private RefDataStatusEntity status;
     private RefDataApplicationEntity registeredApp;
     private RefDataSensitivityFlagEntity sensitivityFlag;
+    private String platformTableName;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,6 +79,16 @@ public class PlatformDataAttributesEntity extends io.quarkus.hibernate.orm.panac
         this.platformDataAttributeGuid = platformDataAttributeGuid;
     }
 
+    @Basic
+    @Column(name = "PlatformTableName", nullable = true, length = 38)
+    public String getPlatformTableName() {
+        return platformTableName;
+    }
+
+    public void setPlatformTableName(String platformTableName) {
+        this.platformTableName = platformTableName;
+    }
+
     @Override
     public boolean equals(Object o) {
 		if (this == o)
@@ -88,14 +99,14 @@ public class PlatformDataAttributesEntity extends io.quarkus.hibernate.orm.panac
 			return false;
 		PlatformDataAttributesEntity other = (PlatformDataAttributesEntity) o;
 		return java.util.Objects.equals(platformDataAttributesId, other.platformDataAttributesId) && java.util.Objects.equals(dataAttributeName, other.dataAttributeName) && java.util.Objects.equals(createdDate, other.createdDate) && 
-			java.util.Objects.equals(createdUser, other.createdUser) && java.util.Objects.equals(platformDataAttributeGuid, other.platformDataAttributeGuid) && 
+			java.util.Objects.equals(createdUser, other.createdUser) && java.util.Objects.equals(platformDataAttributeGuid, other.platformDataAttributeGuid) && java.util.Objects.equals(platformTableName, other.platformTableName) && 
 			java.util.Objects.equals(status, other.status) && java.util.Objects.equals(registeredApp, other.registeredApp) && 
 			java.util.Objects.equals(sensitivityFlag, other.sensitivityFlag);
 	}
 
     @Override
     public int hashCode() {
-		return java.util.Objects.hash(platformDataAttributesId, dataAttributeName, createdDate, createdUser, platformDataAttributeGuid,
+		return java.util.Objects.hash(platformDataAttributesId, dataAttributeName, createdDate, createdUser, platformDataAttributeGuid, platformTableName,
 					status, registeredApp, sensitivityFlag);
 	}
 

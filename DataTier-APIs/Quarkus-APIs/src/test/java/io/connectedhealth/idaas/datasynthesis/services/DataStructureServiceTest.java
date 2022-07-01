@@ -1,6 +1,8 @@
 package io.connectedhealth.idaas.datasynthesis.services;
 
+import java.beans.Transient;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -38,23 +40,16 @@ public class DataStructureServiceTest {
         PlatformDataAttributesEntity attrEntity = new PlatformDataAttributesEntity();
         attrEntity.setPlatformDataAttributesId((short)1);
         attrEntity.setDataAttributeName("Names - Last");
+        attrEntity.setPlatformTableName("dataexisting_namelast");
         attributes.add(attrEntity);
         attrEntity = new PlatformDataAttributesEntity();
         attrEntity.setPlatformDataAttributesId((short)2);
         attrEntity.setDataAttributeName("Names - First");
+        attrEntity.setPlatformTableName("dataexisting_namefirst");
         attributes.add(attrEntity);
 
         PanacheMock.mock(PlatformDataAttributesEntity.class);
         Mockito.when(PlatformDataAttributesEntity.findByPlatformDataStructure(Mockito.anyString())).thenReturn(attributes);
-
-        PlatformAppSettingsDataAttributesEntity last = new PlatformAppSettingsDataAttributesEntity();
-        last.setServiceClassName("NameLastService");
-        PlatformAppSettingsDataAttributesEntity first = new PlatformAppSettingsDataAttributesEntity();
-        first.setServiceClassName("NameFirstService");
-
-        PanacheMock.mock(PlatformAppSettingsDataAttributesEntity.class);
-        Mockito.when(PlatformAppSettingsDataAttributesEntity.findByPlatformDataAttribute(Mockito.eq((short)1))).thenReturn(last);
-        Mockito.when(PlatformAppSettingsDataAttributesEntity.findByPlatformDataAttribute(Mockito.eq((short)2))).thenReturn(first);
 
         PanacheMock.mock(DataExistingNameFirstEntity.class);
         Mockito.when(DataExistingNameFirstEntity.count()).thenReturn(10L);
@@ -84,5 +79,35 @@ public class DataStructureServiceTest {
 
         List<DataStructure> structures = service.retrieveDataStructures("Person Demographics", 10);
         Assertions.assertEquals(10, structures.size());
+    }
+
+    @Test
+    public void testTableNameToClassName() {
+        List<String> tableNames = Arrays.asList("dataexisting_areacode","datagenerated_addresses","dataexisting_zipcodeus","datagenerated_phonenumber","datagenerated_creditcard","datagenerated_bankaccount","datagenerated_dateofbirth","datagenerated_driverslicenses","datagenerated_socialsecuritynumber","dataexisting_upccodes","dataexisting_companies","datagenrated_ein","datagenerated_accountnumbers","datagenerated_useridentities","dataexisting_ababanking","datagenerated_phonenumbersintl","dataexisting_areacodeintl","dataexisting_zipcodeintl","dataexisting_namefirst","datagenerated_serialnumbers");
+
+        boolean error = false;
+        for (String tableName : tableNames) {
+            String className = service.getClassName(tableName);
+            if (null == className) {
+                System.err.println("No ClassName for tablename: " + tableName);
+                error = true;
+                continue;
+            }
+
+            try {
+                Class.forName(className);
+            } catch (Exception e) {
+                System.err.println("Cannot load calss for tablename: " + tableName);
+                error = true;
+            }
+        }
+
+        // Commented for now until we get the following Data Generators:
+        // datagenerated_phonenumbersintl
+        // dataexisting_areacodeintl
+        // dataexisting_zipcodeintl
+        // datagenerated_serialnumbers
+
+        // Assertions.assertEquals(false, error);
     }
 }

@@ -24,7 +24,7 @@ import io.quarkus.test.junit.QuarkusTest;
 public class SSNServiceTest {
 
     @Inject
-    SSNService service;
+    SocialSecurityNumberService service;
 
     @Test
     @Transactional
