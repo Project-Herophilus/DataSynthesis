@@ -17,7 +17,7 @@ import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.AccountNumber;
 import io.connectedhealth.idaas.datasynthesis.dtos.TypeAndCount;
 import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
-import io.connectedhealth.idaas.datasynthesis.services.AccountNumberService;
+import io.connectedhealth.idaas.datasynthesis.services.AccountNumbersService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
@@ -28,7 +28,7 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class AccountNumberResource {
     @Inject
-    AccountNumberService service;
+    AccountNumbersService service;
     
     @Audited
     @GET

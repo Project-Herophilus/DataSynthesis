@@ -20,7 +20,7 @@ import io.connectedhealth.idaas.datasynthesis.models.RefDataStatusEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class AccountNumberService extends RandomizerService<DataGeneratedAccountNumbersEntity, AccountNumber> {
+public class AccountNumbersService extends RandomizerService<DataGeneratedAccountNumbersEntity, AccountNumber> {
 
     @Override
     protected long count(Object... queryOpts) {

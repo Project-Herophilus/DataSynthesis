@@ -19,7 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class SSNService extends RandomizerService<DataGeneratedSocialSecurityNumberEntity, SSN> {
+public class SocialSecurityNumberService extends RandomizerService<DataGeneratedSocialSecurityNumberEntity, SSN> {
     @Override
     protected long count(Object... queryOpts) {
         if (queryOpts.length <= 1) {

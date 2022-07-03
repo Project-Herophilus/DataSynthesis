@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.ZipCode;
-import io.connectedhealth.idaas.datasynthesis.services.USZipCodeService;
+import io.connectedhealth.idaas.datasynthesis.services.ZipCodeUSService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
@@ -23,7 +23,7 @@ import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ZipCodeResource {
     @Inject
-    USZipCodeService service;
+    ZipCodeUSService service;
 
     @Audited
     @GET

@@ -13,7 +13,7 @@ import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class UpcCodeService extends RandomizerService<DataExistingUpcCodesEntity, UpcCode> {
+public class UpcCodesService extends RandomizerService<DataExistingUpcCodesEntity, UpcCode> {
 
     @Override
     protected long count(Object... queryOpts) {

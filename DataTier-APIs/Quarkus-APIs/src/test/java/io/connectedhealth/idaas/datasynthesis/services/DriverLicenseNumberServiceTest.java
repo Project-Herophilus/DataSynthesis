@@ -20,7 +20,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @TestTransaction
 public class DriverLicenseNumberServiceTest {
     @Inject
-    DriversLicenseNumberService service;
+    DriversLicensesService service;
 
     private short[] initDB() {
         Common.seed();

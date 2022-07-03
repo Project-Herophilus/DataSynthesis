@@ -19,7 +19,7 @@ import io.connectedhealth.idaas.datasynthesis.models.RefDataStatusEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class AddressService extends RandomizerService<DataGeneratedAddressesEntity, Address> {
+public class AddressesService extends RandomizerService<DataGeneratedAddressesEntity, Address> {
     final static String[] STREET_TYPES = new String[] {"Way", "Ave", "Lane", "Street", "Court", "Place", "Walk", "Pike", "Run"};
     final static String[] DIRECTIONS = new String[] {"N", "S", "E", "W", "NW", "NE", "SW", "SE"};
 

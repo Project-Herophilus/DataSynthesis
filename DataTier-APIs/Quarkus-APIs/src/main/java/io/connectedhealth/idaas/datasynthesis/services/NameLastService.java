@@ -2,6 +2,7 @@ package io.connectedhealth.idaas.datasynthesis.services;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -43,5 +44,15 @@ public class NameLastService extends RandomizerService<DataExistingNameLastEntit
         entity.setStatus(getDefaultStatus());
         entity.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         return entity.safePersist();
+    }
+
+    public List<NameLast> retrieveNameLasts(int count, String firstLetter) {
+        String likeFL = wrapForLike(firstLetter, false, true);
+
+        if (null == likeFL) {
+            return retrieveRandomData(count);
+        }
+            
+        return retrieveRandomData(count, "lastName like ?1", likeFL);
     }
 }

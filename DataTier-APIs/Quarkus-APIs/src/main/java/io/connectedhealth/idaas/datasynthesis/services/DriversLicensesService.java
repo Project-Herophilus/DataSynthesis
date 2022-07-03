@@ -28,7 +28,7 @@ import io.connectedhealth.idaas.datasynthesis.models.RefDataUsStatesEntity;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
-public class DriversLicenseNumberService extends RandomizerService<DataGeneratedDriversLicensesEntity, DLN> {
+public class DriversLicensesService extends RandomizerService<DataGeneratedDriversLicensesEntity, DLN> {
     // format is based on https://www.mvrdecoder.com/content/drvlicformats.aspx
     // https://ntsi.com/drivers-license-format/ is outdated
     //
