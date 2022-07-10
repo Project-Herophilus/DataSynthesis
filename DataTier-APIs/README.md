@@ -38,10 +38,18 @@ For these pre-requisites there is both a development/implementation and also pro
     - Open Source and Web based: [Kowl](https://github.com/redpanda-data/kowl)
     - Desktop Based and Paid Product after trial: [Offset Explorer](https://www.kafkatool.com/)
 
-| Type                                                                                                                     |Usage/Implementation |
-|--------------------------------------------------------------------------------------------------------------------------|----------|
-| [Quarkus DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)        |Quarkus based APIs to access datatier.|
-| [Node (Express) DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Express-APIs) |Javascript Express based APIs to access datatier.|
+# Platform APIs
+To support access to DataSynthesis we currently have two specific technologies that provide 
+access to a configured DataSynthesis data tier. 
+
+| API (By Programming Language)                                                                              |Usage/Implementation |
+|------------------------------------------------------------------------------------------------------------|----------|
+| [Quarkus](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs)        |Quarkus based APIs to access datatier.|
+| [Node (Express)](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Express-APIs) |Javascript Express based APIs to access datatier.|
+
+# OpenAPI - Coming Soon
+We have a community member that has started working with us on building out the needed assets for OpenAPI, we anticipate
+this coming in the Fall of 2022.
 
 # API Testing
 To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs.

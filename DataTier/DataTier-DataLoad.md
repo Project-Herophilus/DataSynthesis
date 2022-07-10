@@ -12,16 +12,21 @@ them. As with everything we do we keep the complete history so everyone can see 
 
 ## Postgres
 As mentioned above starting in 2022 all development efforts and core database work will be done against Postgres as 
-the main database. We dont test for any specific version of PostgresQL. We will still continue to export DDLs for other 
+the main database. We dont test for any specific version of PostgresQL but have heard through various implementatyions either
+in public clouds or on premise that these scripts work from v9.6 forward. We will still continue to export DDLs for other 
 databases. However, as with every effort these as a best effort unless otherwise specifically stated.
 
 ### Pre-Requisites
 Make sure you have all the tools needed installed and configured for usage.
 
-1. After cloning the DataSynthesis repository.
-2. Load up a command prompt - You can also use the pqsql command prompt. You will just need
-   to manually change directories to the base directory location where the load scripts is.
-3. Make sure you have a .pgpass file created. This file can be wherever you want it to be but we are working with it at It is in the format of host:port:database:user:password
+1. Clone the DataSynthesis repository. 
+2. Go to the \DataLoaders directory where you cloned the DataSynthesis repository, we maintain ALL
+relevant load scripts as single files so you should REALLY focus on the latest versioned one by the data technology you
+are using.
+3. Load up a command prompt - You can also use the pqsql command prompt if you wish. 
+To simplify the experience you should change directories to the base directory location where the load scripts is. By doing
+this all the scripts will be able to find the corresponding directies and scripts as is.
+4. If you DO NOT not to enter the user name and password for EVERY script to run then make sure you have a .pgpass file created. This file can be wherever you want it to be but we are working with it at It is in the format of host:port:database:user:password
 the base directory of where the DataTier/DataLoaders are located.
 ```
 localhost:5432:datasynthesis:postgres:Developer123

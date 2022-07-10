@@ -1,11 +1,16 @@
 # DataSynthesis-Data Tier
-The DataSynthesis Data Tier is the ONLY focused around the datamodel/data tier core asset(s). 
-For simplicity sake this is focused around the DDLs (Database Defintion Language),
-Data Loaders (bulk loaders - SQL insert scripts) and DataTier-APIs (APIs to access the data and
-as needed generate more data) that can be used.
+This sections is ONLY attended to address all things specific to the DataSynthesis Data Tier. 
+Te areas that constitute this section consist of: 
 
-## More Details and Implementation Information
-For the path forward we wanted to include content to walk teams through the various aspects of the 
+| Area           | Description                                                                                                                           | Location         |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| Backups        | Database Backups By Technology                                                                                                        | https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/Backups |
+| DataLoaders    | All Things needed to load a data tier with the needed data, focus is PostgresQL centric assets but loader files are basic sql inserts | https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/DataLoaders |
+| Data Tier DDLs | Database Defintion Language for Data Tier Technologies that are seperated by directories per specific technology                      | https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/DDLs    |
+| SQL            | Helpful SQL queries to do certain activities within the platform                                                                      | https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/SQL     |
+
+## Additional Details and Implementation Information
+For the path forward we wanted to include content to walk teams through the various aspects of the
 data tier.
 
 * [DataTier General Readme](https://github.com/Project-Herophilus/DataSynthesis/blob/master/DataTier/DataSynthesis-DataTier-General.md)
