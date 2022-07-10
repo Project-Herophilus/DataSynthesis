@@ -74,7 +74,7 @@ All things around the data tier are specifically contained within the link provi
 To support the needs of user requests are the data tier APIs. This API set is about being able to both generate 
 data and persist it to the data tier. The Data Tier APIs consist of Node and Quarkus APIs.
 
-[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/DataTier-APIs)
+[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/README.md)
 
 ## 3: Web-UI(s)
 These are intended to be minimal viable usable products that can be used to look at the datatier of DataSynthesis you implement.

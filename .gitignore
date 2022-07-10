@@ -301,7 +301,7 @@ typings/
 /.idea/
 /DataTier-APIs/Node-APIs/.idea/
 /DataTier-APIs/Quarkus-APIs/.idea/
-/DataTier-WebUIs/reactui/.idea/
+/DataTier-WebUIs/DataSynthesis-WebUI-REACT/.idea/
 /DataTier-WebUIs/vueui/.idea/
 
 /DataTier-APIs/Node-APIs/.env
