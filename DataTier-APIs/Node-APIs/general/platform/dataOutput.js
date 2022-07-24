@@ -4,7 +4,7 @@ const path = require("path");
 const uuid = require('uuid');
 const crypto = require('crypto');
 const config = process.env
-dotenv.config({ path: path.resolve(__dirname, './.env') })
+//dotenv.config({ path: path.resolve(__dirname, './.env') })
 const express = require("express");
 const router = express.Router();
 const buildDataAttributes = require("../../builders/buildDataAttributes");

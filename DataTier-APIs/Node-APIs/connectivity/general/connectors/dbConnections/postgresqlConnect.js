@@ -1,10 +1,9 @@
 /* https://node-postgres.com/features/connecting */
 const { Pool, Client } = require('pg');
 const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, '../../../../' + '.env') })
-//const connectionString = 'postgresql://dbuser:secretpassword@database.server.com:3211/mydb'
+//require('dotenv').config({ path: path.resolve(__dirname, '../../../../' + '.env') })
 
-let connectionString= process.env.PostgreSQL_URL;
+let connectionString= process.env.dbURL;
 /*
 const pool = new Pool({
     connectionString,

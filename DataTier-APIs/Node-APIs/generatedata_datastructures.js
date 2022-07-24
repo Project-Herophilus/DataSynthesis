@@ -5,7 +5,8 @@ const uuid = require('uuid');
 const crypto = require('crypto');
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
-const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+//const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+const db = require("./connectivity/general/connectors/dbConnections/dbGenericConnector")
 const queryBuilder = require('./general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
