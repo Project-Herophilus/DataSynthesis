@@ -47,7 +47,7 @@ if (datastructureName  == null)
 
 const appName="DataSynthesis";
 const appGUID=uuid.v4();
-const runQuantity = 5000;
+const runQuantity = process.env.runQuantity;
 componentName = "buildComplexDataStructures";
 // Set Start Value for timing
 let startTime = new Date();

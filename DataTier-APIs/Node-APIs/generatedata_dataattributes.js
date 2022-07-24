@@ -38,7 +38,7 @@ runCount = args[1];
 // Set Start Value for timing
 let auditEventMessage ="";
 let startTime = new Date();
-const runQuantity = 5000;
+const runQuantity = process.env.runQuantity;
 componentName = "buildDataAttriubutes";
 methodName ="buildDataAttributes_"+dataattributeName.replace(/\s/g, "");
 

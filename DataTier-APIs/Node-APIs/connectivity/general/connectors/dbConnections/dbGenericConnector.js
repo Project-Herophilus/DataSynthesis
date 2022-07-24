@@ -5,6 +5,7 @@
 /* https://node-postgres.com/features/connecting */
 const { Pool, Client } = require('pg');
 const db = require('mysql');
+var snowflake = require('snowflake-sdk');
 const path = require('path')
 
 client = new Client();
@@ -37,6 +38,30 @@ if (process.env.rdbms ="mySQL")
     });*/
 }
 if (process.env.rdbms="snowflake")
-{}
+{
+    /*
+    // Create a Connection object that we can use later to connect.
+    var client = snowflake.createConnection( {
+            account: account,
+            username: user,
+            password: password
+        }
+    );
+
+    // Try to connect to Snowflake, and check whether the connection was successful.
+    client.connect(
+        function(err, conn) {
+            if (err) {
+                console.error('Unable to connect to Snowflake: ' + err.message);
+            }
+            else {
+                console.log('Successfully connected to Snowflake.');
+                // Optional: store the connection ID.
+                connection_ID = conn.getId();
+            }
+        }
+    );
+     */
+}
 
 module.exports = client;

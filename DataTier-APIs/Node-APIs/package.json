@@ -49,6 +49,7 @@
     "randexp": "^0.5.3",
     "random": "^3.0.3",
     "snowflake": "^0.1.2",
+    "snowflake-sdk": "^1.6.11",
     "tedious": "^14.3.0",
     "uuid": "^8.3.2"
   },

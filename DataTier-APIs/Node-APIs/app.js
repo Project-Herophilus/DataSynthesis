@@ -25,7 +25,20 @@ app.use(function (req, res, next) {
   });
 app.use('/', api);
 const server = app.listen(port, function () {
-    console.log("server running on port: " + port)
+    console.log("=========================")
+    console.log("System Values Set:")
+    console.log("Server running on port [http_port]: " + port)
+    console.log("Data Geenration Quantity [runQuantity]: "+process.env.runQuantity)
+    console.log("Auditing Values Set:")
+    console.log("Auditing [auditing]: "+process.env.auditing)
+    console.log("Publish Auditing Topic Name [kic_dataintgrtntransactions]: "+process.env.auditingTopicName)
+    console.log("Outputting Values Set:")
+    console.log("Output Adapter [outputAdapter]: "+process.env.outputAdapter)
+    console.log("Kafka Server [kafka_server]: "+process.env.kafka_server)
+    console.log("RDBMS Values Set:")
+    console.log("RDBMS [rdbms]: "+process.env.rdbms)
+    console.log("=========================")
+
 });
 
 module.exports = server;
