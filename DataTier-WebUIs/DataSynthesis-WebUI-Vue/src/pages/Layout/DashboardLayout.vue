@@ -13,7 +13,7 @@
       </sidebar-link>
       <sidebar-link to="/datamanagement">
         <md-icon>library_books</md-icon>
-        <p>Data Management</p>
+        <p>Data Viewer</p>
       </sidebar-link>
       <sidebar-link to="/platformadmin">
         <md-icon>content_paste</md-icon>
