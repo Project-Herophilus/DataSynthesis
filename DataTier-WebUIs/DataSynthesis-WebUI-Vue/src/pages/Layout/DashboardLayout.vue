@@ -17,7 +17,7 @@
       </sidebar-link>
       <sidebar-link to="/platformadmin">
         <md-icon>content_paste</md-icon>
-        <p>Platform Admin</p>
+        <p>Data Structure Operations</p>
       </sidebar-link>
       <sidebar-link to="/auditing">
         <md-icon>bubble_chart</md-icon>

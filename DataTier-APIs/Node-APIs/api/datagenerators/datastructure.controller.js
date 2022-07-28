@@ -14,6 +14,7 @@ router.get("/namedstructure", async(req, res) => {
     }
     const datastructurename = req.query.datastructurename || "Person Demographics";
     res.setHeader("Content-Type", "text/plain");
+    console.log(datastructurename)
     dataResults = await datastructuresBuilder.buildComplexDataStructure(datastructurename,count);
     res.send(dataResults);
 });

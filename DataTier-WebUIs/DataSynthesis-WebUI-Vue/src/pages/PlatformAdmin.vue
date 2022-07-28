@@ -6,10 +6,10 @@
       >
         <md-card>
           <md-card-header data-background-color="orange">
-            <h4 class="title">Platform Tables Reference List</h4>
+            <h4 class="title">Data Structures List</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table :items="data_tables" :reference_table="true" table-header-color="orange" v-if="data_tables.length > 0" @tableclicked="populateResultsTable" style="max-height:600px; overflow:scroll"></ordered-table>
+            <ordered-table :items="data_tables" :reference_table="true" :platform_table="true" table-header-color="orange" v-if="data_tables.length > 0" @tableclicked="populateResultsTable" style="max-height:600px; overflow:scroll"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
@@ -18,7 +18,7 @@
       >
               <md-card>
           <md-card-header data-background-color="orange">
-            <h4 class="title">Table Results</h4>
+            <h4 class="title">Data Attributes</h4>
           </md-card-header>
           <md-card-content>
             <ordered-table :items="result_fields" table-header-color="orange" v-if="result_fields.length > 0" style="max-height:600px; overflow:scroll"></ordered-table>
@@ -49,17 +49,18 @@ export default {
   methods: {
     populatedDataTables(data_response){
       this.data_tables = data_response
+      console.log(this.data_tables)
     },
-    populateResultsTable(table){
-      console.log(table)
-      api.getTableResults(table).then(resp=>{
-        this.result_fields = resp.data.rows;
-        console.log(this.result_fields)
+    populateResultsTable(datastructurename){
+        console.log(datastructurename)
+      api.getDataStructureDetails(datastructurename).then(resp=>{
+          console.log(resp)
+        this.result_fields = resp.data
       })
     }
   },
   mounted(){
-    api.getDomainTables().then(resp=>{
+    api.getDataStructures().then(resp=>{
       this.populatedDataTables(resp.data.rows)
     }).catch(error=>{
       console.log(`error: ${error}`)

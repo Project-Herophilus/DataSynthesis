@@ -8,8 +8,15 @@ export default {
   getDomainTables() {
     return HTTP().get(`/api/querydata/datamodel/datatables`);
   },
+  getDataStructures(){
+    return HTTP().get(`/api/querydata/dataplatform/datastructures`)
+  },
   getTableResults(table){
     console.log(table)
     return HTTP().get(`/api/querydata${apimap[table]}?limit=50`)
+  },
+  getDataStructureDetails(datastructure){
+    console.log(datastructure)
+    return HTTP().get(`/api/generatedata/generatedatastructures/namedstructure?count=5000&datastructurename=${datastructure}`)
   }
 }
