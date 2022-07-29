@@ -31,9 +31,18 @@ public class AbaBankingService extends RandomizerService<DataExistingAbaBankingE
         return DataExistingAbaBankingEntity.find((String)queryOpts[0], Arrays.copyOfRange(queryOpts, 1, queryOpts.length));
     }
 
+    public AbaBanking retrieve(long id) throws DataSynthesisException {
+        DataExistingAbaBankingEntity entity = DataExistingAbaBankingEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
+    }
+
     @Override
     protected AbaBanking mapEntityToDTO(DataExistingAbaBankingEntity e) {
         AbaBanking ab = new AbaBanking();
+        ab.id = e.getAbaBankingId();
         ab.city = e.getCity();
         ab.customerName = e.getCustomerName();
         ab.state = e.getState();

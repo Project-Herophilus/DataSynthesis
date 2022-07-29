@@ -38,7 +38,9 @@ public class PhoneNumberService extends RandomizerService<DataGeneratedPhoneNumb
 
     @Override
     protected PhoneNumber mapEntityToDTO(DataGeneratedPhoneNumberEntity e) {
-        return new PhoneNumber(e.getPhoneNumberValue());
+        PhoneNumber number = new PhoneNumber(e.getPhoneNumberValue());
+        number.id = e.getPhoneNumberId();
+        return number;
     }
 
     // Generate Data
@@ -69,5 +71,13 @@ public class PhoneNumberService extends RandomizerService<DataGeneratedPhoneNumb
         }
 
         return phoneNumberList;
+    }
+
+    public PhoneNumber retrieve(long id) throws DataSynthesisException {
+        DataGeneratedPhoneNumberEntity entity = DataGeneratedPhoneNumberEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }

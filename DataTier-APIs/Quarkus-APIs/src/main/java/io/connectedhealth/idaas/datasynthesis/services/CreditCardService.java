@@ -41,9 +41,17 @@ public class CreditCardService extends RandomizerService<DataGeneratedCreditCard
 
     @Override
     protected CreditCard mapEntityToDTO(DataGeneratedCreditCardEntity e) {
-        return new CreditCard(e.getCreditCardNumber(), e.getCreditCardName());
+        CreditCard cc = new CreditCard(e.getCreditCardNumber(), e.getCreditCardName());
+        cc.id = e.getCreditCardId();
+        return cc;
     }
 
+    public CreditCard retrieve(long id) throws DataSynthesisException {
+        DataGeneratedCreditCardEntity entity = DataGeneratedCreditCardEntity.findById(id);
+        if(entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
+    }
     
     public List<CreditCard> retrieveRandomCreditCards(int count, Short typeId) {
         if (typeId == null) {

@@ -33,7 +33,9 @@ public class UpcCodesService extends RandomizerService<DataExistingUpcCodesEntit
 
     @Override
     protected UpcCode mapEntityToDTO(DataExistingUpcCodesEntity e) {
-        return new UpcCode(e.getUpcCodeName(), e.getUpcProductName());
+        UpcCode code = new UpcCode(e.getUpcCodeName(), e.getUpcProductName());
+        code.id = e.getUpcCodeId();
+        return code;
     }
 
     @Transactional
@@ -45,5 +47,13 @@ public class UpcCodesService extends RandomizerService<DataExistingUpcCodesEntit
         entity.setStatus(getDefaultStatus());
         entity.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         return entity.safePersist();
+    }
+
+    public UpcCode retrieve(long id) throws DataSynthesisException {
+        DataExistingUpcCodesEntity entity = DataExistingUpcCodesEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }

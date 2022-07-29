@@ -38,7 +38,9 @@ public class SocialSecurityNumberService extends RandomizerService<DataGenerated
 
     @Override
     protected SSN mapEntityToDTO(DataGeneratedSocialSecurityNumberEntity entity) {
-        return new SSN(entity.getSocialSecurityNumberValue());
+        SSN ssn = new SSN(entity.getSocialSecurityNumberValue());
+        ssn.id = entity.getSocialSecurityNumberId();
+        return ssn;
     } 
 
     // Generate Data
@@ -72,5 +74,13 @@ public class SocialSecurityNumberService extends RandomizerService<DataGenerated
         }
 
         return ssnList;
+    }
+
+    public SSN retrieve(long id) throws DataSynthesisException {
+        DataGeneratedSocialSecurityNumberEntity entity = DataGeneratedSocialSecurityNumberEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }

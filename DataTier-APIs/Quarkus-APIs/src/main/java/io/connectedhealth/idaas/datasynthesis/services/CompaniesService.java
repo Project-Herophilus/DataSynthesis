@@ -33,7 +33,16 @@ public class CompaniesService extends RandomizerService<DataExistingCompaniesEnt
 
     @Override
     protected Company mapEntityToDTO(DataExistingCompaniesEntity e) {
-        return new Company(e.getCompanyName());
+        Company company = new Company(e.getCompanyName());
+        company.id = e.getCompaniesId();
+        return company;
+    }
+
+    public Company retrieve(long id) throws DataSynthesisException {
+        DataExistingCompaniesEntity entity = DataExistingCompaniesEntity.findById(id);
+        if(entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
     }
 
     @Transactional
