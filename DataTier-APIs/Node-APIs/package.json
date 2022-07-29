@@ -5,11 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dist": "mkdir -p dist && cp -R node_modules api builders general parsers app.js package.json dist",
-    "start": "node app.js",
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit"
+    "start": "node app.js"
   },
   "keywords": [
     "mysql",
