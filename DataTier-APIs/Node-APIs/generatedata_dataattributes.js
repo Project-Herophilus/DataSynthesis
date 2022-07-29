@@ -4,8 +4,9 @@ const path = require("path");
 const uuid = require('uuid');
 const crypto = require('crypto');
 const config = process.env
-dotenv.config({ path: path.resolve(__dirname, './.env') })
-const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+//dotenv.config({ path: path.resolve(__dirname, './.env') })
+//const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+const db = require("./connectivity/general/connectors/dbConnections/dbGenericConnector")
 const queryBuilder = require('./general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
@@ -37,7 +38,7 @@ runCount = args[1];
 // Set Start Value for timing
 let auditEventMessage ="";
 let startTime = new Date();
-const runQuantity = 5000;
+const runQuantity = process.env.runQuantity;
 componentName = "buildDataAttriubutes";
 methodName ="buildDataAttributes_"+dataattributeName.replace(/\s/g, "");
 

@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 const path = require("path");
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, '.env') })
-const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+//const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+const dbConnection = require("./connectivity/general/connectors/dbConnections/dbGenericConnector")
 const queryBuilder = require('./general/datatier/reusableQueries');
 const queryProcessor = require('./general/datatier/dbQueries');
 const express = require("express");

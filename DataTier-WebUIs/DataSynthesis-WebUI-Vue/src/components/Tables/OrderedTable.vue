@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="items" v-if="reference_table">
+    <v-data-table :headers="headers" :items="items" v-if="reference_table && !platform_table">
       <template v-slot:item="row">
         <tr>
           <td>{{ row.item.tablename }}</td>
@@ -9,6 +9,21 @@
             <v-btn
               color="white"
               @click="onButtonClick(row.item.tablename)"
+            >
+            <a style="white"> View </a>
+            </v-btn>
+          </td>
+        </tr>
+      </template>
+    </v-data-table>
+    <v-data-table :headers="headers" :items="items" v-if="reference_table && platform_table">
+      <template v-slot:item="row">
+        <tr>
+          <td>{{ row.item.datastructurename }}</td>
+          <td v-if="reference_table">
+            <v-btn
+              color="white"
+              @click="onButtonClick(row.item.datastructurename)"
             >
             <a style="white"> View </a>
             </v-btn>
@@ -58,6 +73,10 @@ export default {
     },
     reference_table: {
       type: Boolean,
+      default: false
+    },
+    platform_table: {
+      type: Boolean, 
       default: false
     }
   },

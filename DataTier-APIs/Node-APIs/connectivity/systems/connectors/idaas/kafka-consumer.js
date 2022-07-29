@@ -1,6 +1,6 @@
 const kafka = require('../modern/kafka')
 const dotenv = require('dotenv')
-require('dotenv').config({ path: path.resolve(__dirname, '../../../../' + '.env') })
+//require('dotenv').config({ path: path.resolve(__dirname, '../../../../' + '.env') })
 const iDaaSRoutes = require('connectivity/systems/connectors/idaas/idaas-routes-config');
 const axios = require('axios')
 const path = require("path");

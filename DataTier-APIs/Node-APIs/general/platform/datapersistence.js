@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config({path: `../../.env`})
+//dotenv.config({path: `../../.env`})
 const moment = require('moment');
 var RandExp = require('randexp'); // must require on node
 const datapersistenceKafka = require("../../connectivity/general/connectors/kafka-producer")

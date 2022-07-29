@@ -5,7 +5,8 @@ const uuid = require('uuid');
 const crypto = require('crypto');
 const config = process.env
 dotenv.config({ path: path.resolve(__dirname, './.env') })
-const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+//const db = require("./connectivity/general/connectors/dbConnections/postgresqlConnect")
+const db = require("./connectivity/general/connectors/dbConnections/dbGenericConnector")
 const queryBuilder = require('./general/datatier/reusableQueries');
 const express = require("express");
 const router = express.Router();
@@ -46,7 +47,7 @@ if (datastructureName  == null)
 
 const appName="DataSynthesis";
 const appGUID=uuid.v4();
-const runQuantity = 5000;
+const runQuantity = process.env.runQuantity;
 componentName = "buildComplexDataStructures";
 // Set Start Value for timing
 let startTime = new Date();

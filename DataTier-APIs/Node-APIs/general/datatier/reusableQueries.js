@@ -1,9 +1,9 @@
 const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, '../../../' + '.env') })
+//require('dotenv').config({ path: path.resolve(__dirname, '../../../' + '.env') })
 module.exports = {
         getData(count, state){
             let query_string = "";
-            const schema = process.env.PostgreSQL_URL.split('/')[3]
+            const schema = process.env.dbURL.split('/')[3]
             const tables = ['dataexisting_areacode','dataexisting_namefirst',
             'dataexisting_namelast','dataexisting_zipcodeus',
             'datagenerated_addresses','datagenerated_accountnumbers', 

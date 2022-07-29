@@ -80,6 +80,6 @@ data and persist it to the data tier. The Data Tier APIs consist of Node and Qua
 These are intended to be minimal viable usable products that can be used to look at the datatier of DataSynthesis you implement.
 
 [DataTier Web User Interfaces](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-WebUIs)
-This is in the works as we have just wrapped up the core Express Node API rework in January 2022.
+
 
 *Enjoy and Happy Coding!!!*
