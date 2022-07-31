@@ -5,12 +5,12 @@
 /* https://node-postgres.com/features/connecting */
 const { Pool, Client } = require('pg');
 const db = require('mysql');
-var snowflake = require('snowflake-sdk');
+// var snowflake = require('snowflake-sdk');
 const path = require('path')
 
 client = new Client();
 
-if (process.env.rdbms ="postgreSQL") {
+if (process.env.rdbms =="postgreSQL") {
     let connectionString = process.env.dbURL;
     client = new Client({
         connectionString,
@@ -20,7 +20,7 @@ if (process.env.rdbms ="postgreSQL") {
         console.log("Connected to Postgress DB !");
     });
 }
-if (process.env.rdbms ="mySQL")
+if (process.env.rdbms =="mySQL")
 {
  /*   client = db.createConnection({
         host: process.env.dbHost,
@@ -37,7 +37,7 @@ if (process.env.rdbms ="mySQL")
         console.log("Connected to MySQL/Maria DB!");
     });*/
 }
-if (process.env.rdbms="snowflake")
+if (process.env.rdbms=="snowflake")
 {
     /*
     // Create a Connection object that we can use later to connect.
