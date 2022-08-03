@@ -42,7 +42,16 @@ public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBir
 
     @Override
     protected BirthDate mapEntityToDTO(DataGeneratedDateOfBirthEntity e) {
-        return new BirthDate(e.getDateOfBirth(), e.getDateOfBirthDate(), e.getAge());
+        BirthDate bod = new BirthDate(e.getDateOfBirth(), e.getDateOfBirthDate(), e.getAge());
+        bod.id = e.getDateofBirthsId();
+        return bod;
+    }
+
+    public BirthDate retrieve(long id) throws DataSynthesisException {
+        DataGeneratedDateOfBirthEntity entity = DataGeneratedDateOfBirthEntity.findById(id);
+        if(entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
     }
 
     // Create Generated Data

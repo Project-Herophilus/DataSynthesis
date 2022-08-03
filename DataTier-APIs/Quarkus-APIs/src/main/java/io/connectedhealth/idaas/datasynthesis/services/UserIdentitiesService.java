@@ -40,7 +40,9 @@ public class UserIdentitiesService extends RandomizerService<DataGeneratedUserId
 
     @Override
     protected UserIdentity mapEntityToDTO(DataGeneratedUserIdentitiesEntity e) {
-        return new UserIdentity(e.getUserIdentityValue(), e.getUserDomain(), e.getAdditionalAttributes());
+        UserIdentity user = new UserIdentity(e.getUserIdentityValue(), e.getUserDomain(), e.getAdditionalAttributes());
+        user.id = e.getUserIdentitiesId();
+        return user;
     }
 
     public List<UserIdentity> retrieveRandomUserIdentities(int count, Short typeId) {
@@ -80,5 +82,13 @@ public class UserIdentitiesService extends RandomizerService<DataGeneratedUserId
         }
 
         return results;
+    }
+
+    public UserIdentity retrieve(long id) throws DataSynthesisException {
+        DataGeneratedUserIdentitiesEntity entity = DataGeneratedUserIdentitiesEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }

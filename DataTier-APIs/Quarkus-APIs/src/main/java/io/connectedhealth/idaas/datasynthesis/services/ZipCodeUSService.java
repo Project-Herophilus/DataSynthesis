@@ -5,6 +5,7 @@ import java.util.Arrays;
 import javax.enterprise.context.ApplicationScoped;
 
 import io.connectedhealth.idaas.datasynthesis.dtos.ZipCode;
+import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.connectedhealth.idaas.datasynthesis.models.DataExistingZipCodeUsEntity;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
@@ -30,6 +31,16 @@ public class ZipCodeUSService extends RandomizerService<DataExistingZipCodeUsEnt
 
     @Override
     protected ZipCode mapEntityToDTO(DataExistingZipCodeUsEntity e) {
-        return new ZipCode(e.getZipCode(), e.getState(), e.getCity());
+        ZipCode zipCode = new ZipCode(e.getZipCode(), e.getState(), e.getCity());
+        zipCode.id = e.getZipCodeId();
+        return zipCode;
+    }
+
+    public ZipCode retrieve(long id) throws DataSynthesisException {
+        DataExistingZipCodeUsEntity entity = DataExistingZipCodeUsEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }

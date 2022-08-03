@@ -38,7 +38,9 @@ public class EINService extends RandomizerService<DataGeneratedEinEntity, EIN> {
 
     @Override
     protected EIN mapEntityToDTO(DataGeneratedEinEntity e) {
-        return new EIN(e.getEinValue());
+        EIN ein = new EIN(e.getEinValue());
+        ein.id = e.getEinid();
+        return ein;
     }
 
     // Generate Data
@@ -69,5 +71,13 @@ public class EINService extends RandomizerService<DataGeneratedEinEntity, EIN> {
         }
 
         return einNumberList;
+    }
+
+    public EIN retrieve(long id) throws DataSynthesisException {
+        DataGeneratedEinEntity entity = DataGeneratedEinEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);        
     }
 }

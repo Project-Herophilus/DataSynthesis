@@ -38,9 +38,18 @@ public class AccountNumbersService extends RandomizerService<DataGeneratedAccoun
         return DataGeneratedAccountNumbersEntity.find((String)queryOpts[0], Arrays.copyOfRange(queryOpts, 1, queryOpts.length));
     }
 
+    public AccountNumber retrieve(long id) throws DataSynthesisException {
+        DataGeneratedAccountNumbersEntity entity = DataGeneratedAccountNumbersEntity.findById(id);
+        if(entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
+    }
+
     @Override
     protected AccountNumber mapEntityToDTO(DataGeneratedAccountNumbersEntity e) {
-        return new AccountNumber(e.getAccountNumberValue());
+        AccountNumber account = new AccountNumber(e.getAccountNumberValue());
+        account.id = e.getAccountNumbersId();
+        return account;
     }
  
     public List<AccountNumber> retrieveRandomAccountNumbers(int count, Short typeId) {

@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -35,6 +36,13 @@ public class DateOfBirthResource {
     public List<BirthDate> getDOBs(
         @Parameter(description = "number of random records to be retrieved") @DefaultValue("500") @QueryParam int count) {
             return dobService.retrieveRandomData(count);
+    }
+
+    @Audited
+    @GET
+    @Path("/{id}")
+    public BirthDate getDOB(@PathParam("id") long id) throws DataSynthesisException {
+        return dobService.retrieve(id);
     }
     
     @Audited

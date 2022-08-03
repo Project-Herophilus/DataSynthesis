@@ -34,7 +34,9 @@ public class NameLastService extends RandomizerService<DataExistingNameLastEntit
 
     @Override
     protected NameLast mapEntityToDTO(DataExistingNameLastEntity e) {
-        return new NameLast(e.getLastName());
+        NameLast name = new NameLast(e.getLastName());
+        name.id = e.getLastNameId();
+        return name;
     }
 
     @Transactional
@@ -54,5 +56,13 @@ public class NameLastService extends RandomizerService<DataExistingNameLastEntit
         }
             
         return retrieveRandomData(count, "lastName like ?1", likeFL);
+    }
+
+    public NameLast retrieve(long id) throws DataSynthesisException {
+        DataExistingNameLastEntity entity = DataExistingNameLastEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }
