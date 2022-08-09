@@ -31,7 +31,7 @@
         </tr>
       </template>
     </v-data-table>
-    <v-data-table :headers="headers" :items="items" :search="search" v-else>
+    <v-data-table :headers="headers" :items="items" :search="search" v-if="!reference_table">
         <template v-slot:top>
         <v-text-field
           v-model="search"

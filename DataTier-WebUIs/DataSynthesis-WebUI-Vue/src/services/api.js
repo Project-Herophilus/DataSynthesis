@@ -2,7 +2,15 @@ import HTTP from "./HTTP";
 // import apimap from "../configs/table_to_api_map";
 const apimap = {
   "dataexisting_ababanking": '/dataexisting/ababanking',
-  "<table>": "<path>"
+  "dataexisting_areacode": "/dataexisting/areacode",
+  "dataexisting_areacodeintl":"/dataexisting/areacodeintl",
+  "dataexisting_companies": "/dataexisting/companies",
+  "dataexisting_upccodes": "/dataexisting/upcodes",
+  "dataexisting_namefirst": "/dataexisting/namefirst",
+  "dataexisting_namelast": "/dataexisting/namelast",
+  "datagenerated_accountnumbers": "/datagenerated/accountnumbers",
+  "dataexisting_zipcodeus": "/dataexisting/zipcodeus",
+  "dataexisting_zipcodeintl": "/dataexisting/zipcodeintl"
 }
 export default {
   getDomainTables() {
