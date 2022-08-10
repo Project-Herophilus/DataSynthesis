@@ -40,7 +40,16 @@ public class BankAccountService extends RandomizerService<DataGeneratedBankAccou
 
     @Override
     protected BankAccount mapEntityToDTO(DataGeneratedBankAccountEntity e) {
-        return new BankAccount(e.getBankAccountValue());
+        BankAccount account = new BankAccount(e.getBankAccountValue());
+        account.id = e.getBankAccountsId();
+        return account;
+    }
+
+    public BankAccount retrieve(long id) throws DataSynthesisException {
+        DataGeneratedBankAccountEntity entity = DataGeneratedBankAccountEntity.findById(id);
+        if (entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
     }
  
     public List<BankAccount> retrieveRandomBankAccounts(int count, Short typeId) {

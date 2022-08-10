@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import io.connectedhealth.idaas.datasynthesis.dtos.AreaCode;
 import io.connectedhealth.idaas.datasynthesis.models.DataExistingAreaCodeEntity;
+import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
@@ -30,6 +31,15 @@ public class AreaCodeService extends RandomizerService<DataExistingAreaCodeEntit
     
     @Override
     protected AreaCode mapEntityToDTO(DataExistingAreaCodeEntity e) {
-        return new AreaCode(e.getAreaCodeValue(), e.getTimeZone().getTimeZoneValue(), e.getState().getStateId());
+        AreaCode code = new AreaCode(e.getAreaCodeValue(), e.getTimeZone().getTimeZoneValue(), e.getState().getStateId());
+        code.id = e.getAreaCodeId();
+        return code;
+    }
+
+    public AreaCode retrieve(long id) throws DataSynthesisException {
+        DataExistingAreaCodeEntity entity = DataExistingAreaCodeEntity.findById(id);
+        if(entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
     }
 }

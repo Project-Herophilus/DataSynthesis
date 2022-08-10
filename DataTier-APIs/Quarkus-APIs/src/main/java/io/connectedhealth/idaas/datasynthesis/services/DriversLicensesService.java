@@ -84,7 +84,9 @@ public class DriversLicensesService extends RandomizerService<DataGeneratedDrive
 
     @Override
     protected DLN mapEntityToDTO(DataGeneratedDriversLicensesEntity e) {
-        return new DLN(e.getDln(), e.getState().getStateId(), null);
+        DLN dln = new DLN(e.getDln(), e.getState().getStateId(), null);
+        dln.id = e.getDriversLicensesId();
+        return dln;
     }
 
     @Transactional
@@ -140,5 +142,13 @@ public class DriversLicensesService extends RandomizerService<DataGeneratedDrive
         
         RefDataDataGenTypesEntity dataType = RefDataDataGenTypesEntity.findById(typeId);
         return retrieveRandomData(count, "DataGenTypeID", dataType);
+    }
+
+    public DLN retrieve(long id)  throws DataSynthesisException{
+        DataGeneratedDriversLicensesEntity entity = DataGeneratedDriversLicensesEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }

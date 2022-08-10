@@ -41,7 +41,16 @@ public class AddressesService extends RandomizerService<DataGeneratedAddressesEn
 
     @Override
     protected Address mapEntityToDTO(DataGeneratedAddressesEntity e) {
-        return new Address(e.getAddressStreet());
+        Address address = new Address(e.getAddressStreet());
+        address.id = e.getAddressId();
+        return address;
+    }
+
+    public Address retrieve(long id) throws DataSynthesisException {
+        DataGeneratedAddressesEntity entity = DataGeneratedAddressesEntity.findById(id);
+        if(entity == null)
+            throw new DataSynthesisException("Record does not exist");
+        return mapEntityToDTO(entity);
     }
 
     @Transactional

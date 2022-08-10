@@ -5,6 +5,9 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 @Schema(name = "NameFirst")
 public class NameFirst {
+    @Schema(readOnly = true)
+    public long id;
+
     public String firstName;
 
     @Schema(enumeration = {"F", "M"})

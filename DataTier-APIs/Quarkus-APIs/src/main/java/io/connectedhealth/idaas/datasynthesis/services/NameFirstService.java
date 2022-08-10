@@ -34,7 +34,9 @@ public class NameFirstService extends RandomizerService<DataExistingNameFirstEnt
 
     @Override
     protected NameFirst mapEntityToDTO(DataExistingNameFirstEntity e) {
-        return new NameFirst(e.getFirstName(), e.getGender());
+        NameFirst name = new NameFirst(e.getFirstName(), e.getGender());
+        name.id =  e.getFirstNameId();
+        return name;
     }
 
     @Transactional
@@ -58,5 +60,13 @@ public class NameFirstService extends RandomizerService<DataExistingNameFirstEnt
         }
             
         return retrieveRandomData(count, "gender = ?1 and firstName like ?2", gender, likeFL);
+    }
+
+    public NameFirst retrieve(long id) throws DataSynthesisException {
+        DataExistingNameFirstEntity entity = DataExistingNameFirstEntity.findById(id);
+        if (entity == null) {
+            throw new DataSynthesisException("record does not exist");
+        }
+        return mapEntityToDTO(entity);
     }
 }
