@@ -21,7 +21,7 @@
             <h4 class="title">Data Attributes</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table :items="result_fields" table-header-color="orange" v-if="result_fields.length > 0" style="max-height:600px; overflow:scroll"></ordered-table>
+            <ordered-table :items="result_fields" :reference_table="false" :platform_table="true" table-header-color="orange" v-if="result_fields.length > 0" style="max-height:600px; overflow:scroll"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
@@ -52,6 +52,7 @@ export default {
       console.log(this.data_tables)
     },
     populateResultsTable(datastructurename){
+      this.result_fields = [];
         console.log(datastructurename)
       api.getDataStructureDetails(datastructurename).then(resp=>{
           console.log(resp)

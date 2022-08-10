@@ -28,11 +28,11 @@
     <div class="main-panel">
       <top-navbar></top-navbar>
 
-      <fixed-plugin
+      <!-- <fixed-plugin
         :color.sync="sidebarBackground"
         :image.sync="sidebarBackgroundImage"
       >
-      </fixed-plugin>
+      </fixed-plugin> -->
 
       <dashboard-content> </dashboard-content>
 
@@ -46,7 +46,7 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "@/pages/Layout/MobileMenu.vue";
-import FixedPlugin from "./Extra/FixedPlugin.vue";
+// import FixedPlugin from "./Extra/FixedPlugin.vue";
 
 export default {
   components: {
@@ -54,7 +54,7 @@ export default {
     DashboardContent,
     ContentFooter,
     MobileMenu,
-    FixedPlugin,
+    // FixedPlugin,
   },
   data() {
     return {
