@@ -26,5 +26,9 @@ export default {
   getDataStructureDetails(datastructure){
     console.log(datastructure)
     return HTTP().get(`/api/generatedata/generatedatastructures/namedstructure?count=5000&datastructurename=${datastructure}`)
+  },
+  createDataStructures(data){
+    console.log(data)
+    return HTTP().post(`/api/upsertdata/datamanagement/createdatastructure`,JSON.stringify(data))
   }
 }
