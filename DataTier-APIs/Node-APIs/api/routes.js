@@ -13,6 +13,7 @@ const generatedata = require("./datagenerators/dataattributegenerator.controller
 const generatedatastructurescontroller = require("./datagenerators/datastructure.controller");
 const dataplatformcontroller = require("./querydata/dataplatform.controller");
 const datarndmcontroller = require("./querydata/randomdata.controller");
+const datamanagementcontroller = require("./upsertdata/datamanagement.controller");
 // Defined Specific Routers - Tied to Constants
 router.use('/api/querydata/dataexisting', dataexistingcontroller)
 router.use('/api/querydata/datagenerated', dataegeneratedcontroller)
@@ -25,4 +26,5 @@ router.use('/api/querydata/randomized', datarndmcontroller)
 router.use('/api/querydata/terminologydata', termdatacontroller)
 router.use('/api/generatedata/generate', generatedata)
 router.use('/api/generatedata/generatedatastructures', generatedatastructurescontroller)
+router.use('/api/upsertdata/datamanagement', datamanagementcontroller)
 module.exports = router;
