@@ -2,12 +2,15 @@ const api = require("./api/routes")
 //const dotenv = require('dotenv');
 const express = require('express')
 const app = express();
+const bodyParser = require('body-parser')
 //dotenv.config({path: `${__dirname}/.env`})
 // Global Variable for usage in platform
 //global.__basedir = __dirname;
 
 var port = process.env.httpPort //|| 3002;
 //need to invoke config functions to store all configuration necessary in memory at start up or refresh 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(function (req, res, next) {
     /*var err = new Error('Not Found');
      err.status = 404;
@@ -24,6 +27,7 @@ app.use(function (req, res, next) {
     next();
   });
 app.use('/', api);
+
 const server = app.listen(port, function () {
     console.log("=========================")
     console.log("System Values Set:")

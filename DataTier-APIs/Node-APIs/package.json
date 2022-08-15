@@ -18,6 +18,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "axios": "^0.26.0",
+    "body-parser": "^1.20.0",
     "build": "^0.1.4",
     "chance": "^1.1.8",
     "connect-redis": "^5.0.0",
