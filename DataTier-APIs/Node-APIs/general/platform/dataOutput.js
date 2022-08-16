@@ -18,7 +18,7 @@ module.exports = {
     /*
      *  Method to output data
      */
-    processDataOutput(msg,datastructureName) {
+    processDataOutput(msg,datastructureName,requestGUID) {
         let outputType = config.outputAdapter;
         const dataoutput =[];
         systemOutputName = datastructureName;
@@ -30,7 +30,9 @@ module.exports = {
         if (outputType == "kafka-datapersistence") {
             // This is intended to build out specific kafka topic for data
             msg.forEach(msg => {
-                datapersist.generate_datapersistence_record("datagenerator","datasynthesis",datastructureName,msg)
+                datapersist.generate_datapersistence_record(
+                    "datagenerator","datasynthesis", datastructureName,
+                    msg, requestGUID)
                 //topicOutput(systemOutputName, msg)
             })
         }

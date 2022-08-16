@@ -30,7 +30,7 @@ let systemOutputName;
 const args = process.argv.slice(2);
 
 const appName="DataSynthesis";
-const appGUID=uuid.v4();
+const requestGUID=uuid.v4();
 
 dataattributeName = args[0];
 runCount = args[1];
@@ -74,7 +74,7 @@ if(dataattributeName=='accountnumbers')
     auditEventMessage = auditEventMessage +" with Random Value Used for Generation: "+randomValueSelection;
     console.log(auditEventMessage);
     accountnumbersDtl = buildDataAttributes.generateAccountNumbers(randomValueSelection, runCount)
-    dataOutputting.processDataOutput(accountnumbersDtl, methodName);
+    dataOutputting.processDataOutput(accountnumbersDtl, methodName, requestGUID);
 }
 
 /*
