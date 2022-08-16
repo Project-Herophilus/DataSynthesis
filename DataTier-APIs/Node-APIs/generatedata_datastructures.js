@@ -46,7 +46,7 @@ if (datastructureName  == null)
 }
 
 const appName="DataSynthesis";
-const appGUID=uuid.v4();
+const requestGUID=uuid.v4();
 const runQuantity = process.env.runQuantity;
 componentName = "buildComplexDataStructures";
 // Set Start Value for timing
@@ -60,9 +60,11 @@ methodName ="buildComplexDataStructure_"+datastructureName.replace(/\s/g, "");
 buildComplexDataStructures.buildComplexDataStructure(datastructureName, runQuantity).then(resp=>{
     const finalDataOutPut = []
     resp.forEach(msg=>{
-        const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
-            "componentName": componentName,"methodName": methodName,"data":msg}
-        finalDataOutPut.push(JSON.stringify(dataObject))
+        //const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
+        //    "componentName": componentName,"methodName": methodName,"data":msg}
+        //finalDataOutPut.push(JSON.stringify(dataObject))
+        const dataObject = msg;
+        finalDataOutPut.push(dataObject)
     })
     // endTime = new Date();
     // Auditing - Publish
@@ -71,7 +73,7 @@ buildComplexDataStructures.buildComplexDataStructure(datastructureName, runQuant
     // startTime = new Date();
     // Output Record
     //externalizeDataOutput(finalDataOutPut, outputType)
-    dataOutputting.processDataOutput(finalDataOutPut, methodName);
+    dataOutputting.processDataOutput(finalDataOutPut, methodName,requestGUID);
     // Audit
     // endTime = new Date();
     // componentName = "DataOutput";
