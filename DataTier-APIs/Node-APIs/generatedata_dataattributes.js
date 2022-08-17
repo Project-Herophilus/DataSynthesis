@@ -78,7 +78,7 @@ if(dataattributeName=='accountnumbers')
 }
 
 /*
- *   row.forEach not a function
+ *   Need to add requestGUID to all datautputting calls
  *
  */
 if(dataattributeName=='address-us')
@@ -231,3 +231,8 @@ if(dataattributeName=='useridentities')
 // console.log(module.exports.generateAccountNumbers('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',25))
 // console.log(module.exports.generateUserIdentities('^[%#@&]{1}[A-Z]{3}[%#@&]{1}[0-9]{1}[A-Z]{2}$',25))
 // console.log(module.exports.generateIntlPhoneNumbers('in',1000))
+
+// to run from prompt
+// 1. ensure datasynthesis env variables are set
+// 2. to randomly return accountnumbers and send in a single message delivery format
+// node generatedata_dataattributes.js accountnumbers
