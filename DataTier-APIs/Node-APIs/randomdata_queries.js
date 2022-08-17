@@ -16,15 +16,24 @@ const topicOutput = require("./connectivity/general/connectors/kafka-producer");
 const db = require("./general/datatier/dbQueries");
 const queryBuilder = require("./general/datatier/reusableQueries");
 const queryProcessor = require("./general/datatier/dbQueries");
+const { processDataOutput } = require("./general/platform/dataOutput");
 
 // Global Variable for usage in platform
 global.__basedir = __dirname;
+const args = process.argv.slice(2);
+dataattributeName = args[0];
+runCount = args[1];
+mode = args[2];
 
 async function queryFunction() {
-    sqlQuery = queryBuilder.getDataFromTable('dataexisting_ababanking',5000);
-    console.log(sqlQuery)
-    results1 = await dbQueries.RunSpecificQuery(sqlQuery);
+    sqlQuery = queryBuilder.getDataFromTable(input_table_mapping[dataattributeName],runCount);
+    results1 = await dbQueries.RunSpecificQuery(sqlQuery)
     return results1;
+}
+const input_table_mapping = {
+    "lastname": "dataexisting_namelast",
+    "firstname": "dataexisting_namefirst",
+    "banking": "dataexisting_ababanking"
 }
 
 
@@ -35,13 +44,11 @@ var dataattributeName;
 var runCount;
 
 let systemOutputName;
-const args = process.argv.slice(2);
 
 const appName="DataSynthesis";
 const appGUID=uuid.v4();
 
-dataattributeName = args[0];
-runCount = args[1];
+
 
 // Set Start Value for timing
 let auditEventMessage ="";
@@ -51,7 +58,8 @@ componentName = "buildDataAttriubutes";
 methodName ="randomQoery_"+dataattributeName;
 
 const queryResults = [];
-if(dataattributeName=='ababanking')
+let dataObject = {};
+if(dataattributeName=='banking')
 {
     if(runCount==null)
     {
@@ -61,16 +69,25 @@ if(dataattributeName=='ababanking')
     //dataOutputting.processDataOutput(randomQueryDtl, methodName, requestGUID);
     queryFunction().then(resp=>{
         //console.log(resp)
-        console.log(queryResults)
-        resp.rows.forEach(row=> {
-           //console.log(row.ababankingid)
-            const dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
-                "componentName": componentName,"methodName": methodName,"data":row.ababankingid}
+        console.log(resp.rows)
+        if (mode=='batch'){
+            console.log('mode')
+            dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
+            "componentName": componentName,"methodName": methodName,"data":resp.rows}
             queryResults.push(JSON.stringify(dataObject))
-        })
+            dataOutputting.processDataOutput(queryResults, methodName, appGUID)
+            return dataObject
         }
-        //dataOutputting.processDataOutput(accountnumbersDtl, methodName, requestGUID);
-    )
-    //console.log(queryResults);
+        if (mode=='transactional'){
+            resp.rows.forEach(row=>{
+                dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
+                "componentName": componentName,"methodName": methodName,"data":row}
+            })
+            queryResults.push(JSON.stringify(dataObject))
+            dataOutputting.processDataOutput(queryResults, methodName, appGUID)
+        }
+    })
+        // dataOutputting.processDataOutput(accountnumbersDtl, methodName, requestGUID);
+
 }
 
