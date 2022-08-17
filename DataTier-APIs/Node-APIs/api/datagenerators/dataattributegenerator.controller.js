@@ -17,7 +17,7 @@ router.get("/addresses", async(req, res) => {
 
 });
 
-router.get("/phone-numbers", async(req, res) => {
+router.get("/phonenumbers-us", async(req, res) => {
     const number_of_phone_numbers = parseInt(req.query.count) || 1000;
     const country = req.query.country || "US";
     const results = dataattributesGenerator.generateUSPhoneNumbers(number_of_phone_numbers, country)
