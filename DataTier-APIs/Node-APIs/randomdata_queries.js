@@ -71,9 +71,9 @@ let methodName ="randomQuery_"+dataattributeName;
                 //dataObject = {"date":new Date(),"applicationName":appName,"appGUID":appGUID,
                 //    "componentName": componentName,"methodName": methodName,"data":row.lastnameid};
                 queryResults.push(row)
-                dataOutputting.processDataOutput(queryResults, methodName, appGUID)
-                //console.log(row.data)
             })
+            dataOutputting.processDataOutput(queryResults, methodName, appGUID)
+            //console.log(row.data)
         }
     })
 
