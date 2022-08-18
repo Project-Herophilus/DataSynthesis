@@ -9,8 +9,15 @@ let rdbmsType = process.env.rdbms;
     router.get('/ababanking', function (req, res) {
             dbConnection.query('select * from dataexisting_ababanking', function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
-                res.status(200).send();
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query");
+                }
             });
     });
     // rest api to get a area codes by state
@@ -27,10 +34,18 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const stateCodeVal = req.params.statecode;
+            let strQuery ='select * from dataexisting_ababanking where StateCode= '+stateCodeVal
             dbConnection.query('select * from dataexisting_ababanking where StateCode=$1', [req.params.statecode], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
-                res.status(200).send();
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
     });
@@ -39,9 +54,18 @@ let rdbmsType = process.env.rdbms;
      *   AreaCode
      */
     router.get('/areacode', function (req, res) {
+            let strQuery ='select * from dataexisting_areacode where StatusID=1'
             dbConnection.query('select * from dataexisting_areacode where StatusID=1', function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
     });
     // Example: http://localhost:3001/dataexisting/areacode/CA
@@ -56,9 +80,18 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const stateCodeVal = req.params.statecode;
+            let strQuery ='select * from dataexisting_areacode where StateCode= '+stateCodeVal
             dbConnection.query('select * from dataexisting_areacode where StateCode=$1', [req.params.statecode], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
     });
@@ -67,9 +100,18 @@ let rdbmsType = process.env.rdbms;
      *   Companies
      */
     router.get('/companies', function (req, res) {
+        let strQuery ='select * from dataexisting_companies where StatusID=1'
         dbConnection.query('select * from dataexisting_companies where StatusID=1', function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
     // Companies with a like name match
@@ -84,11 +126,18 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const companyNameVal = req.params.companyname;
-            // let sqlQuery = "select * from dataexisting_companies where StatusID=1 and companyname like "+ companyNameVal;
-            // console.log("Query: "+sqlQuery);
+            let strQuery ='select * from dataexisting_companies where companyname like '+'%'+companyNameVal+'%'
             dbConnection.query('select * from dataexisting_companies where companyname like $1', ['%'+req.params.companyname+'%'], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
     });
@@ -107,34 +156,34 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL") {
             const genderVal = req.params.gender;
             const firstNameCharVal = req.params.firstnamelike;
+            let strQuery ='select * from dataexisting_companies where firstname like '+'%'+firstNameCharVal+'%'+' and gender ='+'%'+genderVal+'%'
             dbConnection.query('select * from dataexisting_namefirst where firstname like $1 and gender=$2', ['%'+req.params.firstnamelike+'%', req.params.gender], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
-    });
-    router.get('/namefirst:likename', function (req, res) {
-        if (rdbmsType =="mysql")
-        {
-            dbConnection.query('select * from dataexisting_namefirst where firstname like ?', [req.params.likename], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-        if (rdbmsType =="postgreSQL")
-        {
-            const lastnameVal = req.params.likename;
-            dbConnection.query('select * from dataexisting_namefirst where firstname like $1', ['%'+req.params.likename+'%'], function (error, results, fields) {
-                if (error) throw error;
-                res.end(JSON.stringify(results));
-            });
-        }
-
     });
     router.get('/namefirst', function (req, res) {
+        let strQuery ='select * from dataexisting_namefirst'
         dbConnection.query('select * from dataexisting_namefirst', function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
 
@@ -152,16 +201,34 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const lastnameCharVal = req.params.lastnamematch;
+            let strQuery ='select * from dataexisting_namelast where lastname like '+'%'+lastnameCharVal+'%'
             dbConnection.query('select * from dataexisting_namelast where lastname like $1', ['%'+req.params.lastnamematch+'%'], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
     });
     router.get('/namelast', function (req, res) {
+        let strQuery ='select * from dataexisting_namelast where statusid=1'
         dbConnection.query('select * from dataexisting_namelast', function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
 
@@ -179,16 +246,34 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL")
         {
             const productNameVal = req.params.productnamematch;
+            let strQuery ='select * from dataexisting_upccodes where upcproductname like '+'%'+productNameVal+'%'
             dbConnection.query('select * from dataexisting_upccodes where upcproductname like $1', ['%'+req.params.productnamematch+'%'], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
     });
     router.get('/upccodes', function (req, res) {
+        let strQuery ='select * from dataexisting_upccodes where statusid=1'
         dbConnection.query('select * from dataexisting_upccodes', function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
 
@@ -196,9 +281,18 @@ let rdbmsType = process.env.rdbms;
      *    ZipcodeUS
      */
     router.get('/zipcodeus', function (req, res) {
+        let strQuery ='select * from dataexisting_zipcodeus where statusid=1'
         dbConnection.query('select * from dataexisting_zipcodeus', function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
     router.get('/zipcodeus/:statecode', function (req, res) {
@@ -210,9 +304,18 @@ let rdbmsType = process.env.rdbms;
         }
         if (rdbmsType =="postgreSQL") {
             const stateCodeVal = req.params.statecode;
+            let strQuery ='select * from dataexisting_zipcodeus where statecode='+stateCodeVal
             dbConnection.query('select * from dataexisting_zipcodeus where StateCode=$1', [req.params.statecode], function (error, results, fields) {
                 if (error) throw error;
-                res.end(JSON.stringify(results));
+                if (results.rows.length > 0)
+                {
+                    res.end(JSON.stringify(results.rows));
+                    res.status(200).send();
+                }
+                else
+                {
+                    res.status(200).send("No Data Returned from Query: " +strQuery);
+                }
             });
         }
     });
