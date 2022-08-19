@@ -30,10 +30,6 @@ global.__basedir = __dirname;
 
 const args = process.argv.slice(2);
 
-/* DataStructureName
- * This must match the name in the platform_datastructures table from the field
- * datastructurename
- */
 //datastructureName ="Person Demographics";
 //datastructureName ="Complete Name";
 //datastructureName ="US Address";

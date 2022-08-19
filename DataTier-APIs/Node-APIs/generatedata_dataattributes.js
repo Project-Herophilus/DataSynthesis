@@ -51,17 +51,6 @@ methodName ="buildDataAttributes_"+dataattributeName.replace(/\s/g, "");
  *
  */
 
-/*
- *  This works on command line options to run:
- *  This example invokes the node base data generator for data attributes
- *  Below this example will create accountnumbers with one of two random regular expressions
- *  if no second argument is specified then the const runQuantity value is used
- *  (currently set by default is 5000)
- *  Example:    node generatedata_dataattributes.js accountnumber
- *  This example will create 525 accountnumbers with one of two random regular expressions
- *  Example:    node generatedata_dataattributes.js accountnumber 525
- */
-
 if(dataattributeName=='accountnumbers')
 {
     if(runCount==null)
