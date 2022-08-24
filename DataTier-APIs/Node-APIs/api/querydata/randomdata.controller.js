@@ -5,6 +5,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get('/ababanking', function (req, res) {
+    let sqlQuery = 'select * from dataexisting_ababanking order by random()';
   dbConnection.query('select * from dataexisting_ababanking order by random() limit '+process.env.runQuantity, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -12,7 +13,7 @@ router.get('/ababanking', function (req, res) {
           res.status(200).send();
         }
         else { 
-          res.status(500).send("No Data Available")
+          res.status(500).send("No Data Available"+strQuery);
         }
     });
 });
