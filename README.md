@@ -24,14 +24,15 @@ the struggle that every organization experiences around their data needs. What w
 perspective and approach.
 
 1. DataSynthesis is part of the Project Herophilus upstream community. This community consists of numerous other capabilities all
-provided by a group across multiple organizations with a very large focus on healthcare. While there are numerous offerings out their across the open source
-and paid offerings we wanted to build something that could not only be used for traditional application based
-data needs but be used within integration efforts as well.
+provided by a group across multiple organizations with a very large focus on healthcare. While there are numerous 
+offerings out their across the open source and paid offerings we wanted to build something that could not only be 
+used for traditional application based data needs but be used within integration efforts as well.
 2. As part of the Project Herophilus community the intent is for it to be leveraged to both support and enable other
 capabilities to be leveraged. A complete list of components from Connectivity, Data Real-Time Assets, Data Simulators, 
 Data De-Identification and Anonymization components and more can be found <a href="https://github.com/Project-Herophilus" target="_blank">here</a>.
-3. Building simply to highly complex data and datasets. The DataSynthesis platform from its inception has been designed to generate and/or build upon the extensible data
-attributes it has, currently the platform has 21 different data attributes it can use to create data structures.
+3. Building simply to highly complex data and datasets. The DataSynthesis platform from its inception has been designed 
+to generate and/or build upon the extensible data attributes it has, currently the platform has 21 different data 
+attributes it can use to create data structures.
 4. Our focus is on enabling massive amounts of data to be used immediately or very quickly. This we feel helps to 
 focus on reducing data breached and information exposure. Why should organizations risk <a href="https://www.breachlevelindex.com/" target="_blank">data breaches</a> or the
 potential leakage of <a href="https://en.wikipedia.org/wiki/Protected_health_information" target="_blank">PHI (in healthcare)</a>
@@ -44,12 +45,11 @@ on implementing FHIR and improving HL7.
 7. Helping to create and grow "Data Driven Organization". To be a data-driven organization requires an 
 overarching information culture driven by data. An information culture is not only a deep knowledge of their data but 
 a major understanding how it relates to any specific testing needed or required. broad access and data literacy along with
-appropriate data-driven decision-making governance and guidance processes. While it sounds complicated it is really about providing businesses a
-means for data collection, cleansing, hosting and maintenance data while mitigating the risk of a data breach thru 
-comprehensive testing processes and practices. Data-driven organization can innovate continuously because they 
+appropriate data-driven decision-making governance and guidance processes. While it sounds complicated it is really 
+about providing businesses a means for data collection, cleansing, hosting and maintenance data while mitigating the 
+risk of a data breach thru comprehensive testing processes and practices. Data-driven organization can innovate continuously because they 
 understand and can embrace new business models quickly. The focus around tooling in these organizations typically is 
 to enable them.
-
 
 ## DataSynthesis Philosophy
 
@@ -61,25 +61,15 @@ platform. data access capabilities. The core assets provided include a highly fl
 tier, APIs that both enable the platform to be accessed as well as extended and at some point there will be a 
 WebUI. 
 
-# DataSynthesis: Getting More Familiar
-DataSynthesis consists of three core areas. 
+# DataSynthesis: Getting More Familiar 
+DataSynthesis consists of three core modules - data, apis, and a web interface. 
 
-## 1: DataTier
-At the core of DataSynthesis is the data tier that is designed to be extensible and support all the needs for the platform.
-All things around the data tier are specifically contained within the link provided below.
 
-[DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md) 
-
-## 2: Data Tier - APIs
-To support the needs of user requests are the data tier APIs. This API set is about being able to both generate 
-data and persist it to the data tier. The Data Tier APIs consist of Node and Quarkus APIs.
-
-[DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/README.md)
-
-## 3: Web-UI(s)
-These are intended to be minimal viable usable products that can be used to look at the datatier of DataSynthesis you implement.
-
-[DataTier Web User Interfaces](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-WebUIs/README.mc)
+| Area           | Sub-Module                                                                                                              | 
+|----------------|-------------------------------------------------------------------------------------------------------------------------|
+| Data Platform  | [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md)                            | 
+| Platform APIs  | [DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/README.md)                  |
+| User Interface | [DataTier Web User Interfaces](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-WebUIs/README.mc) |
 
 
 *Enjoy and Happy Coding!!!*
