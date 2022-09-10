@@ -1,33 +1,27 @@
+Return to the <a href="https://github.com/Project-Herophilus/DataSynthesis" target="_blank">Main DataSynthesis Page</a>
+
 # DataSynthesis Loading Seeded Data
-The easiest thing we could have done is make this a complete SaaS based offering. We are cognizant of the potential for 
-partners to build out potential services offering down the road. We also want to ensure that organizations can 
+The easiest thing we could have done is make this a complete SaaS based offering. We are cognizant of the potential for
+partners to build out potential services offering down the road. We also want to ensure that organizations can
 have control of the data.
 
-# Data Loading 
-While we focused initially was around MariaDB / MySQL in 2022 we have decided to move to PostgresQL. We will continue
-to publish DDLs for it. The dataloading scripts are simplicistic inserts with NO specific RDBMS commands built into them.
-However, with OS and RDBMS security enhancements always keep in mind there might be changes needed. The intent of the 
-Data Seeeding is to support loading all the data we provide, if you wish to reduce the loaded data feel free to customize 
-them. As with everything we do we keep the complete history so everyone can see the work that has been done.
-
-## Postgres
-As mentioned above starting in 2022 all development efforts and core database work will be done against Postgres as 
-the main database. We dont test for any specific version of PostgresQL but have heard through various implementatyions either
-in public clouds or on premise that these scripts work from v9.6 forward. We will still continue to export DDLs for other 
-databases. However, as with every effort these as a best effort unless otherwise specifically stated.
+# Data Loading
+All of these scripts have been built around PostgreSQL. Active work is going on with other data tiers as well. As these
+get implemented and tested we will put those into this sub module for this repository.
 
 ### Pre-Requisites
-Make sure you have all the tools needed installed and configured for usage.
+Make sure you have all the tools needed installed and configured for usage. Some of these items have PostgreSQL specific
+references.
 
-1. Clone the DataSynthesis repository. 
-2. Go to the \DataLoaders directory where you cloned the DataSynthesis repository, we maintain ALL
-relevant load scripts as single files so you should REALLY focus on the latest versioned one by the data technology you
-are using.
-3. Load up a command prompt - You can also use the pqsql command prompt if you wish. 
-To simplify the experience you should change directories to the base directory location where the load scripts is. By doing
-this all the scripts will be able to find the corresponding directies and scripts as is.
-4. If you DO NOT not to enter the user name and password for EVERY script to run then make sure you have a .pgpass file created. This file can be wherever you want it to be but we are working with it at It is in the format of host:port:database:user:password
-the base directory of where the DataTier/DataLoaders are located.
+1. RDBMS you are using installed and configured and have tested connectivity to it.
+2. A clone or unzipped download of the DataSynthesis repository.
+2. Go to the \DataLoaders directory where you cloned or unzipped the DataSynthesis repository.
+3. Load up a command prompt - You can also use the pqsql command prompt if you wish.
+   To simplify the experience you should change directories to the base directory location where the load scripts is. By doing
+   this all the scripts will be able to find the corresponding directies and scripts as is.
+4. If you DO NOT want to enter the user name and password for EVERY script to run then make sure you have a .pgpass file
+   created. This file can be wherever you want it to be but we are working with it at It is in the format of host:port:database:user:password
+   the base directory of where the DataTier/DataLoaders are located.
 ```
 localhost:5432:datasynthesis:postgres:Developer123
 ```
@@ -56,7 +50,7 @@ cd /Users/alscott/Development/Project-Herophilus/DataSynthesis/DataTier/DataLoad
 cd c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
 ```
 3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
-type in the password with every script that is run.
+   type in the password with every script that is run.
 
 
 Happy coding!!!

@@ -15,34 +15,30 @@ professionals to conduct business processes." With these definitions it is easy 
 synthetic data is an involved process that can be achieved by numerous measures and ways. Our way was to create a platform to
 synthesize data (Data Synthesis) for multiple needs based on items like industry standards, coded ontologies,
 vendor data models, custom defined models all in an on-demand manner. With a focus on data and specifically synthetic 
-data we wanted our platform to clearly express our focus, the name we settled on was DataSynthesis. 
-
-# What Makes DataSynthesis Unique
+data we wanted our platform to clearly express our focus, the name we settled on was DataSynthesis.
 
 <i>The idea for DataSynthesis is in NO WAY new or unique</i>, it purpose and usage is fueled to help reduce and/or remove
-the struggle that every organization experiences around their data needs. What we believes make us unique is our
+the struggle that every organization experiences around their data needs. What we believe makes this plaform unique is our
 perspective and approach.
 
-1. DataSynthesis is part of the Project Herophilus upstream community. This community consists of numerous other capabilities all
-provided by a group across multiple organizations with a very large focus on healthcare. While there are numerous 
-offerings out their across the open source and paid offerings we wanted to build something that could not only be 
-used for traditional application based data needs but be used within integration efforts as well.
-2. As part of the Project Herophilus community the intent is for it to be leveraged to both support and enable other
-capabilities to be leveraged. A complete list of components from Connectivity, Data Real-Time Assets, Data Simulators, 
-Data De-Identification and Anonymization components and more can be found <a href="https://github.com/Project-Herophilus" target="_blank">here</a>.
-3. Building simply to highly complex data and datasets. The DataSynthesis platform from its inception has been designed 
-to generate and/or build upon the extensible data attributes it has, currently the platform has 21 different data 
-attributes it can use to create data structures.
-4. Our focus is on enabling massive amounts of data to be used immediately or very quickly. This we feel helps to 
+* While there are numerous offerings out their across the open source and paid offerings we wanted to build something 
+that could not only be used to support data integration needs but also support application development and integration needs as well. 
+* As part of the Project Herophilus community the intent is for it to be leveraged to both support and enable other
+capabilities to be developed and leveraged. A complete list of components from Connectivity, Data Real-Time Assets, Data Simulators, 
+Data De-Identification and Anonymization components and more can be found <a href="https://github.com/Project-Herophilus" target="_blank">here</a>. 
+* Simplicity built for complex data and datasets needs. The DataSynthesis platform from its inception has been designed 
+to generate and/or build upon a concept of data attributes. There are currently 21 different data attributes it can use to 
+create data structures. 
+* Our focus is on enabling massive amounts of data to be used immediately or very quickly. This we feel helps to 
 focus on reducing data breached and information exposure. Why should organizations risk <a href="https://www.breachlevelindex.com/" target="_blank">data breaches</a> or the
 potential leakage of <a href="https://en.wikipedia.org/wiki/Protected_health_information" target="_blank">PHI (in healthcare)</a>
 or <a href="https://en.wikipedia.org/wiki/Personal_data" target="_blank">PII (In any other industry)</a>? In today's
 technology world we wanted to enable a new and different way to innovate within a data-driven organization, an extensible 
-5. Work with implementations industry based data. Our focus is also on enriching the platform with codes and codesets into data thats generated to ensure it matches
-existing data systems.
-6. Generating industry standargs. For Healthcare specifically this is HL7, FHIR, EDI and so forth. We are actively working
-on implementing FHIR and improving HL7.
-7. Helping to create and grow "Data Driven Organization". To be a data-driven organization requires an 
+* Work with implementations industry based data. Our focus is also on enriching the platform with codes and codesets into data thats generated to ensure it matches
+existing data systems. 
+* Generating industry standargs. For Healthcare specifically this is HL7, FHIR, EDI and so forth. We are actively working
+on implementing FHIR and improving HL7. 
+* Helping to create and grow "Data Driven Organization". To be a data-driven organization requires an 
 overarching information culture driven by data. An information culture is not only a deep knowledge of their data but 
 a major understanding how it relates to any specific testing needed or required. broad access and data literacy along with
 appropriate data-driven decision-making governance and guidance processes. While it sounds complicated it is really 
@@ -62,13 +58,12 @@ tier, APIs that both enable the platform to be accessed as well as extended and 
 WebUI. 
 
 # DataSynthesis: Getting More Familiar 
-DataSynthesis consists of three core modules - data, apis, and a web interface. 
+DataSynthesis consists of three core modules - data, apis, and a web interface.
 
-
-| Area           | Sub-Module                                                                                                              | 
-|----------------|-------------------------------------------------------------------------------------------------------------------------|
-| Data Platform  | [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md)                            | 
-| Platform APIs  | [DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/README.md)                  |
+| Area | Sub-Module                                                                                                              | 
+|------|-------------------------------------------------------------------------------------------------------------------------|
+| Data | [DataTier](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/README.md)                            | 
+| APIs | [DataTier APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/README.md)                  |
 | User Interface | [DataTier Web User Interfaces](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-WebUIs/README.mc) |
 
 
