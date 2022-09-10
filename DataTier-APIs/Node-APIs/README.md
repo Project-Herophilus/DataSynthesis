@@ -14,7 +14,7 @@ The biggest thing to understand is that all settings for this solution are done 
 It is important to know that if you clone the repository the file  WILL NOT be included or created. We have
 created a specific file that is intended to cover this specific implementation need as it will be universal
 across all APIs. Please feel follow this link on the specific environment variables needed to succesfully
-run the [APIs](EnvironmentSetup.md).
+run the [APIs](../EnvironmentSetup.md).
 
 # Kafka
 An existing Kafka (or some flavor of it) up and running. Red Hat currently implements AMQ-Streams based on Apache 
