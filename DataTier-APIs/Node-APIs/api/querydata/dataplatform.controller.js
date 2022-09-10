@@ -6,10 +6,18 @@ const fs = require("fs");
 let rdbmsType = process.env.rdbms;
 
 router.get('/datastructures', function (req, res) {
+    let strQuery ='select datastructurename from platform_config_datastructures where StatusID=1'
     dbConnection.query('select datastructurename from platform_config_datastructures where StatusID=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
-        res.status(200).send();
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 module.exports = router;

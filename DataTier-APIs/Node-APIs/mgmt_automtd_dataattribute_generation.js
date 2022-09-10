@@ -14,7 +14,6 @@ const buildComplexDataStructure = require("./builders/buildComplexDataStructures
 const fs = require("fs");
 const datasattributesGenerator = require("./builders/buildDataAttributes");
 const rng = require("./builders/numberGenerators");
-const dbConnection = require("./connectivity/general/connectors/dbConnections/postgresqlConnect");
 const auditingDetail = require("./general/platform/auditing")
 const dataGenConfigurationDetails = [];
 // Global Variable for usage in platform

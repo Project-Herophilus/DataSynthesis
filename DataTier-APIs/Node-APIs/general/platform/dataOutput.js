@@ -33,7 +33,6 @@ module.exports = {
                 datapersist.generate_datapersistence_record(
                     "datagenerator","datasynthesis", datastructureName,
                     msg, requestGUID)
-                //topicOutput(systemOutputName, msg)
             })
         }
         if (outputType == "file") {

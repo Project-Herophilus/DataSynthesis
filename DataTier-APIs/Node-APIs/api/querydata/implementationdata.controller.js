@@ -7,10 +7,6 @@ const fs = require("fs");
 let rdbmsType = process.env.rdbms;
 
 /*
-*     Impl Data
-*/
-
-/*
  *   Applications
  */
 router.get('/applications/:activeStatus', function (req, res) {
@@ -37,68 +33,147 @@ router.get('/applications/:activeStatus', function (req, res) {
     }
     if (rdbmsType =="postgreSQL")
     {
-        let sqlQuery = 'select * from impl_application where '+StatusID;
-        //console.log("SQL: "+sqlQuery);
+        let sqlQuery = 'select * from impl_application where StatusID ='+StatusID;
         dbConnection.query('select * from impl_application where '+StatusID, function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     }
 });
 
 router.get('/codesets', function (req, res) {
-    dbConnection.query('select * from impl_codesetscrossmaps', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_codesetscrossmaps where statusid =1';
+    dbConnection.query('select * from impl_codesetscrossmaps where statusid =1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/codesetstocrossmaps', function (req, res) {
-    dbConnection.query('select * from impl_codesetscrossmaps ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_codesetscrossmaps where statusid=1';
+    dbConnection.query('select * from impl_codesetscrossmaps where statusid=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/codesetstocrossmaps', function (req, res) {
-    dbConnection.query('select * from impl_codesetstoapplication ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_codesetstoapplication where statusid=1';
+    dbConnection.query('select * from impl_codesetstoapplication where statusid=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/codesetstocrossmaps', function (req, res) {
-    dbConnection.query('select * from impl_codesettomsgtype ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_codesettomsgtype where statusid=1';
+    dbConnection.query('select * from impl_codesettomsgtype where statusid=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/legalentities', function (req, res) {
-    dbConnection.query('select * from impl_legalentities ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_legalentities where statusid=1';
+    dbConnection.query('select * from impl_legalentities where statusid=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/organization', function (req, res) {
-    dbConnection.query('select * from impl_organization ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_organization where statusid=1';
+    dbConnection.query('select * from impl_organization where statusid=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/rulesets', function (req, res) {
-    dbConnection.query('select * from impl_rulesets ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_rulesets where statusid =1';
+    dbConnection.query('select * from impl_rulesets where statusid =1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 
 router.get('/rulesetsdefinitions', function (req, res) {
-    dbConnection.query('select * from impl_rulesetsdefinitions ', function (error, results, fields) {
+    let sqlQuery = 'select * from impl_rulesetsdefinitions where statusid=1';
+    dbConnection.query('select * from impl_rulesetsdefinitions where statusid=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
     });
 });
 

@@ -5,21 +5,36 @@ const router = express.Router();
 const fs = require("fs");
 const statusID = 1;
 let dbUsed = process.env.rdbms;
-// Data Existing Queries
 
     router.get('/datatables', function (req, res) {
+        let strQuery ='select tablename,tableinformation from datamodel_datatables where StatusID=1'
         dbConnection.query('select tablename,tableinformation from datamodel_datatables where StatusID=1', function (error, results, fields) {
             if (error) throw error;
-            res.end(JSON.stringify(results));
-            res.status(200).send();
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
 
     router.get('/datadomain', function (req, res) {
+        let strQuery ='select * from datamodel_domain where StatusID=1'
         dbConnection.query('select * from datamodel_domain where StatusID=1', function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
-        res.status(200).send();
+            if (results.rows.length > 0)
+            {
+                res.end(JSON.stringify(results.rows));
+                res.status(200).send();
+            }
+            else
+            {
+                res.status(200).send("No Data Returned from Query: " +strQuery);
+            }
         });
     });
 

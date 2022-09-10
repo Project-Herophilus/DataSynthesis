@@ -25,8 +25,8 @@ module.exports = {
       })
       return result
   },
-  RunSpecificQuery(strQuery) {
-    const result = dbConnection
+  async RunSpecificQuery(strQuery) {
+    const result = await dbConnection
         .query(strQuery)
         .then((res) => {
           return res
