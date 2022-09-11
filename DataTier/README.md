@@ -123,6 +123,7 @@ is ALWAYS built upon the Organization and Application sending the data.
 | Area                                                                                                                   | Description                                                                                                                         | 
 |------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | [Data Tier DDLs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/DatabaseDefintions/README,md ) | Database Defintion Language for Data Tier Technologies that are seperated by directories per specific technology                    | 
+| [APIs](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/README,md )                         | Database Defintion Language for Data Tier Technologies that are seperated by directories per specific technology                    | 
 | [SQL](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier/SQL)                                      | Helpful SQL queries to do certain activities within the platform | 
 
 

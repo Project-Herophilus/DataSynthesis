@@ -106,16 +106,10 @@ setup and are working with Node then we have seen no issues.
 The capabilities delivered through this code base are extensive, below is a series of links to help guide specific 
 implementation needs and usage based scenarios. Within the capabilities provided by the developed Node-APIs.
 
-| Node Implementation Type | Description                                                            |
-|--------------------------|------------------------------------------------------------------------| 
-|[Node Usage](Usage-Node-Assets.md)| Assets developed to provided DataSynthesis platform.                   |
-|[Node APIs](Usage-Node-APIs.md)  | APIs developed to provided DataSynthesis data access and functionality |    
+| Node Implementation Type               | Description                                                            |
+|----------------------------------------|------------------------------------------------------------------------| 
+| [Node APIs](../Usage-Node-APIs.md)     | APIs developed to provided DataSynthesis data access and functionality |
+| [Node Assets](../Usage-Node-Assets.md) | Assets developed to provided DataSynthesis platform.                   |
 
-# Testing APIs 
-To help enable resources to leverage the APIs we have pre-built and are continuing to enhance a set of PostMan APIs. 
-The intent is to that anyone can see how the APIs can be leveraged simply and directly.
 
-https://go.postman.co/workspace/DataSynthesis~6a46c0cf-955b-49b4-b495-68940fde4c31/collection/16526170-6e45e3ca-8eaf-47c9-a0cb-0e024a852505?action=share&creator=16526170
-
-Happy Coding
 
