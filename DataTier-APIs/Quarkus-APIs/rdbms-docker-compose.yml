@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: letmein
       POSTGRES_DB: datasynthesis
     volumes:
-      - ../../DataTier/DDLs/Postgres/Postgres-2022-0203.sql:/docker-entrypoint-initdb.d/001.sql:Z,delegated
+      - ../../DataTier/DatabaseDefintions/Postgres/Postgres-2022-0203.sql:/docker-entrypoint-initdb.d/001.sql:Z,delegated
   quarkus:
     image: maven
     environment:
