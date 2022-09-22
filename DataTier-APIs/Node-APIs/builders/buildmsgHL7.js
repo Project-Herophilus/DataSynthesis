@@ -9,7 +9,6 @@ const HL7Common = {
     fieldRepeat: "~"
 }
 
-const hl7_messages = [];
 module.exports = {
 
     /*
@@ -33,6 +32,7 @@ module.exports = {
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const random_letter = alphabet[Math.floor(Math.random() * alphabet.length)];
         console.log("generate rows"+rows)
+        const hl7_messages = [];
         if(hl7_version == "2.5.1"){
             console.log("looping rows")
             console.log(rows)
@@ -178,9 +178,9 @@ AL1|${set_id}|${allergy_type_code}|${allergy_code_mnemonic}|${severity}|${reacti
 ACC|${timestamp}|${accident_code}
 DG1|${set_id}|${coding_method}|${dg_code}|${description}|${diagnosis_timestamp}|${diagnosis_type}||||||||||||N
 GT1|${set_id}|${g_number}|${g_name}||${g_address}|${home_phone}||${g_dob}|${g_gender}|${g_type}|${g_relationship}|${ssn}||||${g_emp_name}|${g_emp_address}|${g_emp_phn}||ST|
-IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${ins_comp_contact}|${ins_comp_phn}|||||${plan_effective_date}||${auth_info}||${insurer_name}|${patient_relationship}|${insured_dob}||||||||||||||||||||||||||`.replace(/[\n\r]/g, '\r')
-            )
+IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${ins_comp_contact}|${ins_comp_phn}|||||${plan_effective_date}||${auth_info}||${insurer_name}|${patient_relationship}|${insured_dob}||||||||||||||||||||||||||`.replace(/[\n\r]/g, '\r'))
         })
+        console.log(typeof hl7_messages)
         return hl7_messages
         }
 

@@ -13,6 +13,7 @@ const dataOutputting = require("./general/platform/dataOutput")
 const { data } = require('./general/functions/general/randomFunctions');
 //Outputs
 const topicOutput = require("./connectivity/general/connectors/kafka-producer");
+const { type } = require("os");
 // Global Variable for usage in platform
 global.__basedir = __dirname;
 
@@ -43,7 +44,7 @@ methodName ="generate-hl7";
 let dataResults;
 
 if (dataattributeName =='hl7')
-{
+{ 
     const doc_type = hl7message;
     //TRIGGER EVENT = AO1,AO8,AO3
     const trigger_event = hl7event;
@@ -74,8 +75,15 @@ if (dataattributeName =='hl7')
             }, {}))
         })
         dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
-        console.log("dataresults" + dataResults)
-        fs.writeFileSync('industrystds-test.hl7', dataResults.toString(), 'utf8')
+        console.log("dataresults" + dataResults.length)
+        if(process.env.outputAdapter=='kafka-datapersistence'){
+            dataResults.forEach(msg=>{
+                dataOutputting.processDataOutput(msg,'generated-hl7',uuid.v4())
+            })
+        }
+        else { 
+            fs.writeFileSync('industrystds-test.hl7', dataResults.join('\n').toString(), 'utf8')
+        }
         //res.send(dataResults)
     })
 }

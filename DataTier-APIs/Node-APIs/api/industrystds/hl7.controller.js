@@ -18,7 +18,7 @@ router.get("/generator-hl7", async(req, res) => {
   const sending_app = req.query.sending_app || "datasynthesis";
   const sending_fac = req.query.sending_fac || "datafacility"
  
-  db.query(queryBuilder.getData(count, state), (err, rows, fields)=>{
+  dbConnection.query(queryBuilder.getData(count, state), (err, rows, fields)=>{
       if(err) throw err;
       const tuples = [];
       const modifiedTuples = [];
@@ -40,8 +40,9 @@ router.get("/generator-hl7", async(req, res) => {
           }, {}))
       })
       dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
-      console.log("dataresults" + dataResults)
-      fs.writeFileSync('industrystds-test.industrystds', dataResults.toString(), 'utf8')
+      //Return a formatted payload with seperate messages for prettiness
+      //dataResults = dataResults.join('\n')
+
       res.send(dataResults)
   })
 });

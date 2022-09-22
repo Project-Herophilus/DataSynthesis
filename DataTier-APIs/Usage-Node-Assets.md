@@ -106,7 +106,7 @@ generatedata_industrystds.js <industrystd> <quantity>
 Examples:
 1. Generate 500 HL7 Messages
 ```
-generatedata_industrystds.js hl7 500
+generatedata_industrystds.js <industry_std> <message count> <state_code> <MESSAGE TYPE> <EVENT TYPE>
 ```
 
 ## Automated Data Attribute Generation

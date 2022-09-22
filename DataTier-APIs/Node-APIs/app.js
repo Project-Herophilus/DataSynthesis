@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 // Global Variable for usage in platform
 //global.__basedir = __dirname;
 
-var port = process.env.httpPort //|| 3002;
+var port = process.env.http_port //|| 3002;
 //need to invoke config functions to store all configuration necessary in memory at start up or refresh 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -85,6 +85,6 @@ On the Mac the implementation depends upon the shell you have. However, you can 
 simply run the following command: source <filename> before starting your API platform. You can run
 this as a seperate command or implement it within a shell script.
 
-## Windows
+## Windows 
 With Windows there are tons of resourcs online, here is a [video](https://www.youtube.com/watch?v=5BTnfpIq5mI) that
 shows you the process.

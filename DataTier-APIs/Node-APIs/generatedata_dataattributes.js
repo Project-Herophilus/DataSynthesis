@@ -207,7 +207,9 @@ if(dataattributeName=='useridentities')
     auditEventMessage="Invoking Data Generator for "+ runCount+" User Identities with random value:"+ randomValueSelection;
     console.log(auditEventMessage)
     useridentityDtl = buildDataAttributes.generateUserIdentities(randomValueSelection,runCount)
-    dataOutputting.processDataOutput(useridentityDtl, methodName);
+    useridentityDtl.forEach(msg=>{
+        dataOutputting.processDataOutput(msg, methodName);
+    })
 
 }
 // console.log(generateSerialNumbers_Basic('^[A-Z]{2}[%#@&]{1}[0-9]{5}[A-Z]{1}$',10));

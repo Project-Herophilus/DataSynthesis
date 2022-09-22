@@ -22,18 +22,12 @@ module.exports = {
         let outputType = config.outputAdapter;
         const dataoutput =[];
         systemOutputName = datastructureName;
-        if (outputType == "kafka") {
-            msg.forEach(msg => {
-                topicOutput(systemOutputName, msg)
-            })
-        }
+
         if (outputType == "kafka-datapersistence") {
             // This is intended to build out specific kafka topic for data
-            msg.forEach(msg => {
-                datapersist.generate_datapersistence_record(
-                    "datagenerator","datasynthesis", datastructureName,
-                    msg, requestGUID)
-            })
+            datapersist.generate_datapersistence_record(
+                "datagenerator","datasynthesis", datastructureName,
+                msg, requestGUID)
         }
         if (outputType == "file") {
             /*
