@@ -52,6 +52,32 @@ Below are the following data attributes.
 |--------------|
 | hl7          |
 
+#### Randomized Queries
+Below are the specific values required to properly run the code asset.
+
+| Parameter |Table Name|
+|--------|----------|
+|accountnumbers|datagenerated_accountnumbers|
+|addresses|datagenerated_addresses|
+|areacode|dataexisting_areacode|
+|areacodeintl |dataexisting_areacodeintl|
+|bankaccount|datagenerated_bankaccount|
+|banking|dataexisting_ababanking|
+|companies|dataexisting_companies|
+|creditcard|datagenerated_creditcard|
+|dateofbirth|datagenerated_dateofbirth|
+|driverslicense|datagenerated_driverslicenses|
+|ein|datagenerated_ein|
+|firstname|dataexisting_namefirst|
+|lastname|dataexisting_namelast|
+|phonenumber|datagenerated_phonenumber|
+|phonenumberintl|datagenerated_phonenumbersintl|
+|socialsecuritynumber|datagenerated_socialsecuritynumber|
+|upccodes|dataexisting_upccodes|
+|useridentities|datagenerated_useridentities|
+|zipcodeus|dataexisting_zipcodeus|
+|zidecodeintl|dataexisting_zipcodeintl|
+
 # Assets with Examples
 Below are the specific assets and some examples
 
@@ -97,16 +123,26 @@ node generatedata_datastructures.js "Person Demographics"
 This provides the SAME capabilities as the API for generating data attributes found at:
 /api/industrystds/generator-hl7?count=100
 
-- The attributename list us above in the Reerence Charts->Data Attributes Chart.
+- The attributename list us above in the Reference Charts->Data Attributes Chart.
 
 There are two arguments, one is specific and required the second one if not included will be defaulted to the runQuantity
 environment variable.
-generatedata_industrystds.js <industrystd> <quantity>
+generatedata_industrystds.js <industrystd> <quantity> <message count> <state_code> <HL7 Message Type> <HL7 Event Type>
 
 Examples:
-1. Generate 500 HL7 Messages
+1. Generate 500 HL7 ADT Messages
 ```
-generatedata_industrystds.js <industry_std> <message count> <state_code> <MESSAGE TYPE> <EVENT TYPE>
+generatedata_industrystds.js <industry_std> <message count> <state_code> <HL7 Message Type> <HL7 Event Type>
+```
+## Randomized Data Queries
+There is NO API that provides this capability overall, this specifically functionality is
+intended. 
+- The attributename list us above in the Reference Charts->Randmized Queries Chart.
+
+randomize_data.js <randmized query param>
+Examples:
+```
+node randomize_data.js <randmized query param>
 ```
 
 ## Automated Data Attribute Generation
