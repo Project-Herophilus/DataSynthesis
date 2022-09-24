@@ -31,9 +31,26 @@ async function queryFunction() {
     return results1;
 }
 const input_table_mapping = {
+    "areacode":"dataexisting_areacode",
+    "areacodeintl":"dataexisting_areacodeintl",
+    "banking": "dataexisting_ababanking",
+    "companies":"dataexisting_companies",
     "lastname": "dataexisting_namelast",
     "firstname": "dataexisting_namefirst",
-    "banking": "dataexisting_ababanking"
+    "upccodes":"dataexisting_upccodes",
+    "zipcodeus":"dataexisting_zipcodeus",
+    "zidecodeintl":"dataexisting_zipcodeintl",
+    "accountnumbers":"datagenerated_accountnumbers",
+    "addresses":"datagenerated_addresses",
+    "bankaccount":"datagenerated_bankaccount",
+    "creditcard":"datagenerated_creditcard",
+    "dateofbirth":"datagenerated_dateofbirth",
+    "driverslicense":"datagenerated_driverslicenses",
+    "ein":"datagenerated_ein",
+    "phonenumber":"datagenerated_phonenumber",
+    "phonenumberintl":"datagenerated_phonenumbersintl",
+    "socialsecuritynumber":"datagenerated_socialsecuritynumber",
+    "useridentities":"datagenerated_useridentities"
 }
 
 
@@ -51,7 +68,6 @@ let startTime = new Date();
 const runQuantity = process.env.runQuantity;
 let componentName = "randomizedQuery";
 let methodName ="randomQuery_"+dataattributeName;
-
 
     const queryResults = [];
     let dataObject = {};
