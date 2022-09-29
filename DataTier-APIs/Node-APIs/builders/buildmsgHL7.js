@@ -31,12 +31,10 @@ module.exports = {
         const random_number = Math.floor(Math.random() * (count - 0) + 0);
         const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const random_letter = alphabet[Math.floor(Math.random() * alphabet.length)];
-        console.log("generate rows"+rows)
         const hl7_messages = [];
         if(hl7_version == "2.5.1"){
-            console.log("looping rows")
-            console.log(rows)
-            rows.forEach(row=>{
+
+            rows.forEach((row)=>{
             const sending_application = sending_app
             const sending_facility = sending_fac
             const receiving_application = sending_app
@@ -159,18 +157,19 @@ module.exports = {
             //REFDATA
             const hp_id = ""
             //REFDATA ALL BELOW
-            const insurance_comp_id = "Dr Bob Loblaw"
-            const ins_comp_name = "Dr Bob Loblaw"
+            const insurance_comp_id = "ANT123"
+            const ins_comp_name = "Anthem"
             const ins_comp_addr = ""
-            const ins_comp_contact = "Dr Bob Loblaw"
-            const ins_comp_phn = ""
-            const plan_effective_date = ""
+            const ins_comp_contact = rows[random_number].firstname + rows[random_number].lastname
+            const ins_comp_phn = rows[random_number].phonenumbervalue
+            const plan_effective_date = moment().subtract(12, 'months').format('MM-DD-YYYY');
             const auth_info = ""
-            const insurer_name = ""
-            const patient_relationship = "Dr Bob Loblaw"
-            const insured_dob = ""
-            hl7_messages.push(
-`MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}
+            const insurer_name =  "Anthem"
+            const patient_relationship = relationships[Math.floor(Math.random()*relationships.length)]
+            const insured_dob = row.dateofbirth
+            function getTemplate(type) {
+                templates = {
+                    "ADT": `MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}
 EVN|${eventtype}|${timestamp}||||
 PID|${set_id}|${patientid}|${patientid_list}|${alternative_patientid}|${fullname}|${mothers_maiden_name}|${dt_birth}|${gender}||${ethnic_group}|${fullpatientaddress}|${country_code}|${home_phone}|${business_phone}|${primary_lang}|${marital_status}|${religion}|${patient_acct_num}|${ssn}|${drivers_license_num}
 PV1|${set_id}|${patient_class}|${location}|${admission_type}|${preadmit_num}|${prior_patient_loc}|${attending_physician}|${referring_physcian}|${consulting_physcian}|${hospital_service}||||${admit_source}|${ambulatory_status}|${vip_indicator}|${admitting_doctor}|${patient_type}|${visit_number}|${financial_class}||||||||||||||||||||||||${admit_date}|${discharge_date}||||||||
@@ -178,9 +177,14 @@ AL1|${set_id}|${allergy_type_code}|${allergy_code_mnemonic}|${severity}|${reacti
 ACC|${timestamp}|${accident_code}
 DG1|${set_id}|${coding_method}|${dg_code}|${description}|${diagnosis_timestamp}|${diagnosis_type}||||||||||||N
 GT1|${set_id}|${g_number}|${g_name}||${g_address}|${home_phone}||${g_dob}|${g_gender}|${g_type}|${g_relationship}|${ssn}||||${g_emp_name}|${g_emp_address}|${g_emp_phn}||ST|
-IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${ins_comp_contact}|${ins_comp_phn}|||||${plan_effective_date}||${auth_info}||${insurer_name}|${patient_relationship}|${insured_dob}||||||||||||||||||||||||||`.replace(/[\n\r]/g, '\r'))
+IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${ins_comp_contact}|${ins_comp_phn}|||||${plan_effective_date}||${auth_info}||${insurer_name}|${patient_relationship}|${insured_dob}||||||||||||||||||||||||||`.replace(/[\n\r]/g, '\r'),
+                    "ORU": "",
+                    "VXU": ""
+                }
+                return templates[type]
+            }
+            hl7_messages.push(getTemplate(doc_type))
         })
-        console.log(typeof hl7_messages)
         return hl7_messages
         }
 

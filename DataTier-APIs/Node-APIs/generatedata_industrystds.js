@@ -75,7 +75,6 @@ if (dataattributeName =='hl7')
             }, {}))
         })
         dataResults = hl7Builder.generateHL7_Record(modifiedTuples, doc_type, trigger_event, count, state, sending_app, sending_fac)
-        console.log("dataresults" + dataResults.length)
         if(process.env.outputAdapter=='kafka-datapersistence'){
             dataResults.forEach(msg=>{
                 dataOutputting.processDataOutput(msg,'generated-hl7',uuid.v4())

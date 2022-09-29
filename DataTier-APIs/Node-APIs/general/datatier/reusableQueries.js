@@ -12,7 +12,7 @@ module.exports = {
             'datagenerated_phonenumber'
         ]
             tables.forEach(table=>{
-            query_string += ` select * from ${table} limit ${count} ;`
+            query_string += ` select * from ${table} order by random() limit ${count} ;`
             })
             return query_string;
         },
