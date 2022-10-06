@@ -8,6 +8,7 @@ const config = process.env
 const express = require("express");
 const router = express.Router();
 const hl7Builder = require("./builders/buildmsgHL7");
+const fhirBuilder = require("./builders/buildmsgFHIR")
 const fs = require("fs");
 const dataOutputting = require("./general/platform/dataOutput")
 const { data } = require('./general/functions/general/randomFunctions');
@@ -29,11 +30,11 @@ const args = process.argv.slice(2);
 const appName="DataSynthesis";
 const requestGUID=uuid.v4();
 
-dataattributeName = args[0];
+industryStd = args[0];
 runCount = args[1];
 processUSState = args[2];
-hl7message = args[3];
-hl7event = args[4];
+industryStdMessage = args[3];
+industryStdEvent = args[4];
 // Set Start Value for timing
 let auditEventMessage ="";
 let startTime = new Date();
@@ -43,11 +44,11 @@ methodName ="generate-hl7";
 
 let dataResults;
 
-if (dataattributeName =='hl7')
+if (industryStd =='hl7')
 { 
-    const doc_type = hl7message;
+    const doc_type = industryStdMessage;
     //TRIGGER EVENT = AO1,AO8,AO3
-    const trigger_event = hl7event;
+    const trigger_event = industryStdEvent;
     const count = runCount;
     const state = processUSState;
     const sending_app = "datasynthesis";
@@ -83,6 +84,50 @@ if (dataattributeName =='hl7')
         else { 
             fs.writeFileSync('industrystds-test.hl7', dataResults.join('\n').toString(), 'utf8')
         }
+        //res.send(dataResults)
+    })
+}
+if (industryStd =='fhir')
+{ 
+    const count = runCount;
+    const state = processUSState;
+    const sending_app = "datasynthesis";
+    const sending_fac = "datafacility"
+    const resourceType = industryStdMessage
+
+    dbConnection.query(queryBuilder.getData(count, state), (err, rows, fields)=>{
+        if(err) throw err;
+        const tuples = [];
+        const modifiedTuples = [];
+        rows.forEach((row,i)=>{
+            row.rows.forEach((object, index)=>{
+                if(tuples.length <= index){
+                    tuples[index] = []
+                    tuples[index].push(object)
+                }
+                else {
+                    tuples[index].push(object)
+                }
+            })
+
+        })
+        tuples.forEach(record=>{
+            modifiedTuples.push(record.reduce(function(result, current){
+                return Object.assign(result,current)
+            }, {}))
+        })
+        modifiedTuples.forEach(data=>{
+            console.log(data)
+            dataResults = fhirBuilder.generateFHIR_Resource(resourceType, data)
+            if(process.env.outputAdapter=='kafka-datapersistence'){
+                dataResults.forEach(msg=>{
+                    dataOutputting.processDataOutput(msg,'generated-fhir',uuid.v4())
+                })
+            }
+            else { 
+                fs.writeFileSync(`${resourceType}.json`, JSON.stringify(dataResults), 'utf8')
+            }
+        })
         //res.send(dataResults)
     })
 }
