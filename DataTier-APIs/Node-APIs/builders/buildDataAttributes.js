@@ -21,46 +21,6 @@ const DelimsCommon = {
 
 const demographic_messages = [];
 module.exports = {
-
-    /*
-    generatebasicref(rows, count, sending_app, sending_fac){
-        //Create different templates for different types
-        const relationships = ["Mother", "Father", "Sister", "Brother", "Aunt", "Uncle"];
-        const random_number = Math.floor(Math.random() * (count - 0) + 0);
-        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const random_letter = alphabet[Math.floor(Math.random() * alphabet.length)];
-
-        rows.forEach(row=>{
-            const sending_application = sending_app
-            const sending_facility = sending_fac
-            const timestamp = moment().format("yyyyMMDDHHMMSS");
-            //DATAEXISTING_NAMEFIRST => RANDOMIZED
-            const firstname = row.FirstName
-            //RANDOMIZE LETTER
-            const middlename = random_letter
-            //DATAEXISTING_NAMELAST => RANDOMIZED
-            const lastname = row.LastName
-            //CONCAT ALL THREE
-            const fullname = `${firstname}^${middlename}^${lastname}`
-            //CONCAT DATAEXISTING_ADDRESS AND ZIPCODEUS
-            const fullpatientaddress = `${row.AddressStreet}^${row.City}^${row.State}^${row.ZipCode}^${row.State}`
-            //DATAGENERETED_DATEOFBIRTH AGE >10
-            const date = new Date(row.DateOfBirth)
-            const dt_birth = moment(date).format("yyyyMMDD")
-            //DATAEXISTING_FIRSTNAME/LASTNAME
-            const gender = row.Gender
-            //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-            const home_phone = `${row.AreaCodeValue}-${row.PhoneNumberValue}`
-            //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-            const business_phone = `${row.AreaCodeValue}-${rows[random_number].PhoneNumberValue}`
-            //DATAGENERATED_SOCIALSECURITYNUMBER
-            const ssn = row.SocialSecurityNumberValue
-            //DATAGENERATED_DRIVERLICENSES
-            const drivers_license_num = row.DLN
-            demographic_messages.push(`${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|${business_phone}${ssn}|${drivers_license_num}\n`)
-        })
-        return demographic_messages
-    },*/
     /*
      *  Generic Method for reuse that enables generation of a defined count of messages
      *  Based on a provided regex
