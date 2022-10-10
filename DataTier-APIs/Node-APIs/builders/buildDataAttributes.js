@@ -21,46 +21,6 @@ const DelimsCommon = {
 
 const demographic_messages = [];
 module.exports = {
-
-    /*
-    generatebasicref(rows, count, sending_app, sending_fac){
-        //Create different templates for different types
-        const relationships = ["Mother", "Father", "Sister", "Brother", "Aunt", "Uncle"];
-        const random_number = Math.floor(Math.random() * (count - 0) + 0);
-        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const random_letter = alphabet[Math.floor(Math.random() * alphabet.length)];
-
-        rows.forEach(row=>{
-            const sending_application = sending_app
-            const sending_facility = sending_fac
-            const timestamp = moment().format("yyyyMMDDHHMMSS");
-            //DATAEXISTING_NAMEFIRST => RANDOMIZED
-            const firstname = row.FirstName
-            //RANDOMIZE LETTER
-            const middlename = random_letter
-            //DATAEXISTING_NAMELAST => RANDOMIZED
-            const lastname = row.LastName
-            //CONCAT ALL THREE
-            const fullname = `${firstname}^${middlename}^${lastname}`
-            //CONCAT DATAEXISTING_ADDRESS AND ZIPCODEUS
-            const fullpatientaddress = `${row.AddressStreet}^${row.City}^${row.State}^${row.ZipCode}^${row.State}`
-            //DATAGENERETED_DATEOFBIRTH AGE >10
-            const date = new Date(row.DateOfBirth)
-            const dt_birth = moment(date).format("yyyyMMDD")
-            //DATAEXISTING_FIRSTNAME/LASTNAME
-            const gender = row.Gender
-            //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-            const home_phone = `${row.AreaCodeValue}-${row.PhoneNumberValue}`
-            //CONCAT DATAEXISTING_AREACODE + DATAEXISTING_PHONENUMBER =>RANDOMIZE
-            const business_phone = `${row.AreaCodeValue}-${rows[random_number].PhoneNumberValue}`
-            //DATAGENERATED_SOCIALSECURITYNUMBER
-            const ssn = row.SocialSecurityNumberValue
-            //DATAGENERATED_DRIVERLICENSES
-            const drivers_license_num = row.DLN
-            demographic_messages.push(`${sending_application}|${sending_facility}|${timestamp}|${fullname}|${dt_birth}|${gender}|${fullpatientaddress}|${home_phone}|${business_phone}${ssn}|${drivers_license_num}\n`)
-        })
-        return demographic_messages
-    },*/
     /*
      *  Generic Method for reuse that enables generation of a defined count of messages
      *  Based on a provided regex
@@ -90,10 +50,10 @@ module.exports = {
             return array[Math.floor(Math.random() * array.length - 0) + 0]
         }
         sqlQueryLastNames = `select lastname from dataexisting_namelast order by random() limit ${rows};`
-        console.log(sqlQueryLastNames)
+        //console.log(sqlQueryLastNames)
         // Process Query for Random Last Names
         lastnames = await db.RecordSpecificResponse(sqlQueryLastNames)
-        console.log(lastnames.rows)
+        //console.log(lastnames.rows)
         const minLocationNumber = 1
         const maxLocationNumber = 9999
         //console.log(Math.floor(result))
@@ -114,10 +74,6 @@ module.exports = {
         })
         return fullstreetaddress
     },
-
-    /*
-     *      Generate Bank Accounts
-     */
     generateBankAccounts(regExpression, count){
         return this.generateGenericRegex(regExpression, count)
     },
@@ -170,10 +126,32 @@ module.exports = {
         }
         return creditcard_numbers
     },
-    generateDLN(number_of_dls, usstate){
+    generateDLN(number_of_dlns, usstate){
         // 1. read config (state code and regex pattern)
-        // 2. generate random set of numbers/characters based on regex pattern 
-        return new RandExp('^[A-Z]{1}[0-9]{8}$').gen();
+        // 2. generate random set of numbers/characters based on regex pattern
+        const dln_numbers = [];
+        if (usstate == "AK"){
+            regDLNExpression = '^[0-9]{7}$'
+            dln_numbers.push(this.generateGenericRegex(regDLNExpression, number_of_dlns))
+        }
+        if (usstate == "AL"){
+            regDLNExpression = '^[0-9]{7,8}$'
+            dln_numbers.push(this.generateGenericRegex(regDLNExpression, number_of_dlns))
+        }
+        if (usstate == "AR"){
+            regDLNExpression = '^[0-9]{9}$'
+            dln_numbers.push(this.generateGenericRegex(regDLNExpression, number_of_dlns))
+        }
+        if (usstate == "AZ"){
+            regDLNExpression = '^[A-Z]{1}[0-9]{8}$'
+            dln_numbers.push(this.generateGenericRegex(regDLNExpression, number_of_dlns))
+        }
+        if (usstate == "CA"){
+            regDLNExpression = '^[A-Z]{1}[0-9]{7}$'
+            dln_numbers.push(this.generateGenericRegex(regDLNExpression, number_of_dlns))
+        }
+        return dln_numbers;
+        //return new RandExp('^[A-Z]{1}[0-9]{8}$').gen();
 
     },
     generateDateOfBirths(beginyear, count){
@@ -202,7 +180,8 @@ module.exports = {
         const phone_numbers = [];
         for (i=0; i<count; i++){
             if (country == "us"){
-                phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+                //phone_numbers.push(chance.phone({ country: "us" }).split(' ')[1])
+                phone_numbers.push(chance.phone({ country: 'us' }))
             }
             else {
                 // https://chancejs.com/location/phone.html
