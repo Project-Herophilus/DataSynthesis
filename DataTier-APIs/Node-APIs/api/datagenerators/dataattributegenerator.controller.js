@@ -5,6 +5,7 @@ const express = require("express");
 const router = express.Router();
 const dataattributesGenerator = require("../../builders/buildDataAttributes");
 const fs = require("fs");
+const buildDataAttributes = require("../../builders/buildDataAttributes");
 
 router.get("/addresses", async(req, res) => {
   let dataResults;
@@ -66,7 +67,7 @@ router.get("/ein", async(req, res) => {
 router.get("/phonenumbers-us", async(req, res) => {
     const quantity = parseInt(req.query.quantity) || 1000;
     const country = req.query.country || 'us';
-    const results = dataattributesGenerator.generatePhoneNumbersUS(country,quantity)
+    const results = dataattributesGenerator.generatePhoneNumbersUS("us",quantity)
     res.json(results)
 
 });
