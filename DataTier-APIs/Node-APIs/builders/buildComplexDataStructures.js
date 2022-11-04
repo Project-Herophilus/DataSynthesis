@@ -4,6 +4,7 @@
 3. 
 */
 const db = require("../general/datatier/dbQueries");
+
 const table_to_field_name = [
   { platformtablename: "dataexisting_namelast", platformfieldname: "lastname" },
   {
@@ -51,6 +52,7 @@ const table_to_field_name = [
 module.exports = {
   async buildComplexDataStructure(datastructure, no_recs) {
     let merged_array = [];
+    const dataPulled = [];
     const data_structure_complete = [];
     const dataQuery = `select
         platform_config_datastructures_dtl.platformdatastructurestodataattributesid,
@@ -96,6 +98,14 @@ module.exports = {
         `;
     const result = await db.RecordSpecificResponse(dataQuery).then(async res => {
       let sql_query = "";
+     /* dataPulled.push(res);
+      console.log(dataPulled);
+      */
+      res.rows.forEach(datastructure => {
+       const table_filter = table_to_field_name.filter(table => table.platformtablename == datastructure.platformtablename)
+       sql_query += `select ${table_filter[0].platformfieldname} from ${table_filter[0].platformtablename} order by random() limit ${no_recs};`
+       //console.log(sql_query)
+     })
       res.rows.forEach(datastructure => {
         const table_filter = table_to_field_name.filter(table => table.platformtablename == datastructure.platformtablename)
         sql_query += `select ${table_filter[0].platformfieldname} from ${table_filter[0].platformtablename} order by random() limit ${no_recs};`
