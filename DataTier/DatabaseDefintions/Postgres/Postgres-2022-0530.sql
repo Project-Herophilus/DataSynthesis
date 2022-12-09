@@ -2238,6 +2238,17 @@ CREATE TABLE refdata_terminologystd (
                                         statusid integer DEFAULT 1
 );
 
+CREATE SEQUENCE refdata_terminologystd_terminologystdid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE refdata_terminologystd_terminologystdid_seq OWNED BY refdata_terminologystd.terminologystdid;
+
+ALTER TABLE ONLY refdata_terminologystd ALTER COLUMN terminologystdid SET DEFAULT nextval('refdata_terminologystd_terminologystdid_seq'::regclass);
 
 --
 -- TOC entry 303 (class 1259 OID 18844)
