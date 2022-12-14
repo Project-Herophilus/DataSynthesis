@@ -90,9 +90,9 @@ public class DriversLicensesService extends RandomizerService<DataGeneratedDrive
     }
 
     @Transactional
-    public List<DataGeneratedDriversLicensesEntity> generatedDriverLicenses(int count, Short typeId)
+    public List<DLN> generatedDriverLicenses(int count, Short typeId, boolean dryRun)
             throws DataSynthesisException {
-        List<DataGeneratedDriversLicensesEntity> results = new ArrayList<DataGeneratedDriversLicensesEntity>();
+        List<DLN> results = new ArrayList<DLN>();
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
@@ -126,8 +126,8 @@ public class DriversLicensesService extends RandomizerService<DataGeneratedDrive
             entity.setDln(rgxGen.generate(rand));
             entity.setDataGenType(dataType);
 
-            if (entity.safePersist()) {
-                results.add(entity);
+            if (dryRun || entity.safePersist()) {
+                results.add(mapEntityToDTO(entity));
                 i++;
             }
         }

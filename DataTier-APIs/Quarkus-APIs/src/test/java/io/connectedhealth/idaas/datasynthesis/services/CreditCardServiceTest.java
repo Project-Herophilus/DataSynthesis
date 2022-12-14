@@ -50,7 +50,7 @@ public class CreditCardServiceTest {
     @Transactional
     public void testRandomGenerateAndRetrieve() throws DataSynthesisException {
         initDB();
-        service.generateCreditCards(10, null);
+        service.generateCreditCards(10, null, true);
         Assertions.assertEquals(10, DataGeneratedCreditCardEntity.count());
 
         List<CreditCard> cards = service.retrieveRandomCreditCards(8, null);
@@ -63,8 +63,8 @@ public class CreditCardServiceTest {
     @Transactional
     public void testRandomGenerateAndRetrievePerType() throws DataSynthesisException {
         short[] ids = initDB();
-        service.generateCreditCards(10, ids[0]);
-        service.generateCreditCards(10, ids[1]);
+        service.generateCreditCards(10, ids[0], true);
+        service.generateCreditCards(10, ids[1], true);
 
         List<CreditCard> cards = service.retrieveRandomCreditCards(20, ids[0]);
         Assertions.assertEquals(10, cards.size());

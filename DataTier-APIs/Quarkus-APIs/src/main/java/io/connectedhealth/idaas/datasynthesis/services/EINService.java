@@ -45,8 +45,8 @@ public class EINService extends RandomizerService<DataGeneratedEinEntity, EIN> {
 
     // Generate Data
     @Transactional
-    public List<DataGeneratedEinEntity> generateEinNumber(long generationCounter) throws DataSynthesisException {
-        List<DataGeneratedEinEntity> einNumberList = new ArrayList<DataGeneratedEinEntity>((int) generationCounter);
+    public List<EIN> generateEinNumber(long generationCounter, boolean dryRun) throws DataSynthesisException {
+        List<EIN> einNumberList = new ArrayList<EIN>((int) generationCounter);
         int upperBound1 = 99;
         int upperBound2 = 9999999;
         RefDataApplicationEntity app = getRegisteredApp();
@@ -64,8 +64,8 @@ public class EINService extends RandomizerService<DataGeneratedEinEntity, EIN> {
             einNumberEntity.setRegisteredApp(app);
             einNumberEntity.setStatus(defaultStatus);
             einNumberEntity.setCreatedDate(createdDate);
-            if (einNumberEntity.safePersist()) {
-                einNumberList.add(einNumberEntity);
+            if (dryRun || einNumberEntity.safePersist()) {
+                einNumberList.add(mapEntityToDTO(einNumberEntity));
                 i++;
             } 
         }

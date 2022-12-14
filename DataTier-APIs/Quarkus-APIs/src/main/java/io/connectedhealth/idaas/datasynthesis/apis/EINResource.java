@@ -11,8 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.Count;
@@ -21,7 +19,6 @@ import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.connectedhealth.idaas.datasynthesis.services.EINService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
 @Path("/employeridentificationnumbers")
@@ -47,9 +44,7 @@ public class EINResource {
 
     @Audited
     @POST
-    @APIResponse(responseCode = "201")
-    public Response generateEINs(Count countBody) throws DataSynthesisException {
-        einService.generateEinNumber(countBody.count);
-        return Response.status(Status.CREATED).build();
+    public List<EIN> generateEINs(Count countBody) throws DataSynthesisException {
+        return einService.generateEinNumber(countBody.count, countBody.dryRun);
     }
 }

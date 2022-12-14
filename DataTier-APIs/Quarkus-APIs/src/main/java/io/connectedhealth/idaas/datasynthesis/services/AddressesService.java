@@ -54,8 +54,8 @@ public class AddressesService extends RandomizerService<DataGeneratedAddressesEn
     }
 
     @Transactional
-    public List<DataGeneratedAddressesEntity> generateAddresses(int count) throws DataSynthesisException {
-        List<DataGeneratedAddressesEntity> entities = new ArrayList<DataGeneratedAddressesEntity>();
+    public List<Address> generateAddresses(int count, boolean dryRun) throws DataSynthesisException {
+        List<Address> entities = new ArrayList<Address>();
 
         Randomization rndService = new Randomization(this.rand);
         RefDataApplicationEntity app = getRegisteredApp();
@@ -78,8 +78,8 @@ public class AddressesService extends RandomizerService<DataGeneratedAddressesEn
 
             entity.setAddressStreet(address);
 
-            if (entity.safePersist()) {
-                entities.add(entity);
+            if (dryRun || entity.safePersist()) {
+                entities.add(mapEntityToDTO(entity));
                 i++;
             }
         }

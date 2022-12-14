@@ -45,8 +45,8 @@ public class SocialSecurityNumberService extends RandomizerService<DataGenerated
 
     // Generate Data
     @Transactional
-    public List<DataGeneratedSocialSecurityNumberEntity> generateSSN(long generationCounter) throws DataSynthesisException {
-        List<DataGeneratedSocialSecurityNumberEntity> ssnList = new ArrayList<DataGeneratedSocialSecurityNumberEntity>((int) generationCounter);
+    public List<SSN> generateSSN(long generationCounter, boolean dryRun) throws DataSynthesisException {
+        List<SSN> ssnList = new ArrayList<SSN>((int) generationCounter);
         int upperBound1 = 999;
         int upperBound2 = 99;
         int upperBound3 = 9999;
@@ -67,8 +67,8 @@ public class SocialSecurityNumberService extends RandomizerService<DataGenerated
             ssnEntity.setRegisteredApp(app);
             ssnEntity.setStatus(defaultStatus);
             ssnEntity.setCreatedDate(createdDate);
-            if (ssnEntity.safePersist()) {
-                ssnList.add(ssnEntity);
+            if (dryRun || ssnEntity.safePersist()) {
+                ssnList.add(mapEntityToDTO(ssnEntity));
                 i++;
             }
         }

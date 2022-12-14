@@ -7,6 +7,9 @@ public class Count {
     @Schema(description = "Number of random records to be inserted to database")
     public int count;
 
+    @Schema(description = "Dry run only. Do not actually insert.")
+    public boolean dryRun = false;
+
     public String toString()
     {
         return ReflectionToStringBuilder.toString(this);

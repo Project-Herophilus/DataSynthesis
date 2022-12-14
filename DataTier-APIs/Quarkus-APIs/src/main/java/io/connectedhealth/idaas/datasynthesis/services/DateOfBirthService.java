@@ -56,13 +56,13 @@ public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBir
 
     // Create Generated Data
     @Transactional
-    public List<DataGeneratedDateOfBirthEntity> generatedDateOfBirthEntities(int count) throws DataSynthesisException {
+    public List<BirthDate> generatedDateOfBirthEntities(int count, boolean dryRun) throws DataSynthesisException {
         long now = System.currentTimeMillis();
         Timestamp createdDate = new Timestamp(now);
         RefDataApplicationEntity registeredApp = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        List<DataGeneratedDateOfBirthEntity> entities = new ArrayList<DataGeneratedDateOfBirthEntity>();
+        List<BirthDate> entities = new ArrayList<BirthDate>();
 
         for(int i = 0; i<count;) {
             long dobMills = this.rand.nextInt(DAYS_IN_100YRS) * MILLS_IN_DAY + now - MILLS_IN_100YRS;
@@ -76,8 +76,8 @@ public class DateOfBirthService extends RandomizerService<DataGeneratedDateOfBir
             entity.setAge((int)((now - dobMills) / MILLS_IN_DAY / 365));
             entity.setCreatedDate(createdDate);
 
-            if (entity.safePersist()) {
-                entities.add(entity);
+            if (dryRun || entity.safePersist()) {
+                entities.add(mapEntityToDTO(entity));
                 i++;
             }
         }

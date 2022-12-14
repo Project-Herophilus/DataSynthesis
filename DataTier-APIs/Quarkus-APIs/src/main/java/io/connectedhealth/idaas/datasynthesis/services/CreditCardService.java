@@ -63,9 +63,9 @@ public class CreditCardService extends RandomizerService<DataGeneratedCreditCard
     }
 
     @Transactional
-    public List<DataGeneratedCreditCardEntity> generateCreditCards(int count, Short genTypeId)
+    public List<CreditCard> generateCreditCards(int count, Short genTypeId, boolean dryRun)
             throws DataSynthesisException {
-        List<DataGeneratedCreditCardEntity> ccnList = new ArrayList<DataGeneratedCreditCardEntity>(count);
+        List<CreditCard> ccnList = new ArrayList<CreditCard>(count);
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
@@ -98,8 +98,8 @@ public class CreditCardService extends RandomizerService<DataGeneratedCreditCard
             entity.setCreditCardName(dataType.getDataGenTypeDescription());
             entity.setDataGenType(dataType);
 
-            if (entity.safePersist()) {
-                ccnList.add(entity);
+            if (dryRun || entity.safePersist()) {
+                ccnList.add(mapEntityToDTO(entity));
                 i++;
             }
         }

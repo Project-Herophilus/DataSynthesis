@@ -29,17 +29,15 @@ public class PhoneNumberServiceTest {
     @Transactional
     public void testPhoneNumberGeneration() throws DataSynthesisException {
         Common.seed();
-        List<DataGeneratedPhoneNumberEntity> list = service.generatePhoneNumber(10);
+        List<PhoneNumber> list = service.generatePhoneNumber(10, true);
         Assertions.assertEquals(10, list.size());
         Assertions.assertEquals(10, DataGeneratedPhoneNumberEntity.count());
         validatePhoneNumberEntity(list.get(0));
     }
 
-    private void validatePhoneNumberEntity(DataGeneratedPhoneNumberEntity entity) {
-        Common.validatePattern("^\\d{3}-\\d{4}$", entity.getPhoneNumberValue());
-        Assertions.assertNotNull(entity.getStatus());
-        Assertions.assertNotNull(entity.getCreatedDate());
-        Assertions.assertNotNull(entity.getRegisteredApp());
+    private void validatePhoneNumberEntity(PhoneNumber entity) {
+        Common.validatePattern("^\\d{3}-\\d{4}$", entity.value);
+
     }
 
     @Test

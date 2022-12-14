@@ -62,8 +62,8 @@ public class AccountNumbersService extends RandomizerService<DataGeneratedAccoun
     }
 
     @Transactional
-    public List<DataGeneratedAccountNumbersEntity> generateAccountNumbers(int count, Short typeId) throws DataSynthesisException {
-        List<DataGeneratedAccountNumbersEntity> results = new ArrayList<DataGeneratedAccountNumbersEntity>(count);
+    public List<AccountNumber> generateAccountNumbers(int count, Short typeId, boolean dryRun) throws DataSynthesisException {
+        List<AccountNumber> results = new ArrayList<AccountNumber>(count);
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
@@ -95,8 +95,8 @@ public class AccountNumbersService extends RandomizerService<DataGeneratedAccoun
             entity.setAccountNumberValue(rgxGen.generate(rand));
             entity.setDataGenType(dataType);
 
-            if (entity.safePersist()) {
-                results.add(entity);
+            if (dryRun || entity.safePersist()) {
+                results.add(mapEntityToDTO(entity));
                 i++;
             }
         }
