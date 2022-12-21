@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import io.connectedhealth.idaas.datasynthesis.dtos.BirthDate;
 import io.connectedhealth.idaas.datasynthesis.models.DataGeneratedDateOfBirthEntity;
 
 import org.junit.jupiter.api.Assertions;
@@ -26,26 +27,23 @@ public class DateOfBirthServiceTest {
     @Transactional
     public void testDobGeneration() throws Exception {
         Common.seed();
-        List<DataGeneratedDateOfBirthEntity> list = service.generatedDateOfBirthEntities(10);
+        List<BirthDate> list = service.generatedDateOfBirthEntities(10, true);
         Assertions.assertEquals(10, list.size());
         Assertions.assertEquals(10, DataGeneratedDateOfBirthEntity.count());
         validateDobEntry(list.get(0));
     }
 
-    private void validateDobEntry(DataGeneratedDateOfBirthEntity entity) throws ParseException {
+    private void validateDobEntry(BirthDate entity) throws ParseException {
         String patternString = "^([1-9]|1[0-2])/([1-9]|1\\d|2\\d|3[01])/(19|20)\\d{2}$";       
-        Common.validatePattern(patternString, entity.getDateOfBirth());
+        Common.validatePattern(patternString, entity.dateOfBirth);
 
-        Assertions.assertTrue(entity.getAge() <= 100);
+        Assertions.assertTrue(entity.age <= 100);
 
         SimpleDateFormat formatter = new SimpleDateFormat("M/d/yyyy");
-        Date dob = formatter.parse(entity.getDateOfBirth());
+        Date dob = formatter.parse(entity.dateOfBirth);
         //accuracy up to day
-        Assertions.assertTrue(Math.abs(dob.getTime() - entity.getDateOfBirthDate().getTime())/86400000 <= 1);
+        Assertions.assertTrue(Math.abs(dob.getTime() - entity.dateOfBirthDate.getTime())/86400000 <= 1);
 
-        Assertions.assertNotNull(entity.getStatus());
-        Assertions.assertNotNull(entity.getCreatedDate());
-        Assertions.assertNotNull(entity.getRegisteredApp());
     }
     
 }

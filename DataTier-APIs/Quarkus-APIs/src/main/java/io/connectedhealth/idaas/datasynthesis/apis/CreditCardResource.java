@@ -11,8 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.CreditCard;
@@ -21,7 +19,6 @@ import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.connectedhealth.idaas.datasynthesis.services.CreditCardService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
 @Path("/creditcards")
@@ -48,9 +45,7 @@ public class CreditCardResource {
     
     @Audited
     @POST
-    @APIResponse(responseCode = "201")
-    public Response generateCreditCards(TypeAndCount countBody) throws DataSynthesisException {
-        service.generateCreditCards(countBody.count, countBody.dataGenTypeId);
-        return Response.status(Status.CREATED).build();
+    public List<CreditCard> generateCreditCards(TypeAndCount countBody) throws DataSynthesisException {
+        return service.generateCreditCards(countBody.count, countBody.dataGenTypeId, countBody.dryRun);
     }
 }

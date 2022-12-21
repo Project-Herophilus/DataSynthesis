@@ -45,8 +45,8 @@ public class PhoneNumberService extends RandomizerService<DataGeneratedPhoneNumb
 
     // Generate Data
     @Transactional
-    public List<DataGeneratedPhoneNumberEntity> generatePhoneNumber(long generationCounter) throws DataSynthesisException {
-        List<DataGeneratedPhoneNumberEntity> phoneNumberList = new ArrayList<DataGeneratedPhoneNumberEntity>((int) generationCounter);
+    public List<PhoneNumber> generatePhoneNumber(long generationCounter, boolean dryRun) throws DataSynthesisException {
+        List<PhoneNumber> phoneNumberList = new ArrayList<PhoneNumber>((int) generationCounter);
         int upperBound1 = 999;
         int upperBound2 = 9999;
         RefDataApplicationEntity app = getRegisteredApp();
@@ -64,8 +64,8 @@ public class PhoneNumberService extends RandomizerService<DataGeneratedPhoneNumb
             phoneNumberEntity.setRegisteredApp(app);
             phoneNumberEntity.setStatus(defaultStatus);
             phoneNumberEntity.setCreatedDate(createdDate);
-            if (phoneNumberEntity.safePersist()) {
-                phoneNumberList.add(phoneNumberEntity);
+            if (dryRun || phoneNumberEntity.safePersist()) {
+                phoneNumberList.add(mapEntityToDTO(phoneNumberEntity));
                 i++;
             }
         }

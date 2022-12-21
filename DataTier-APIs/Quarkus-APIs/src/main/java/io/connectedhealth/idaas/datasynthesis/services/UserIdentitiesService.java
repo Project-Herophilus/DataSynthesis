@@ -55,8 +55,8 @@ public class UserIdentitiesService extends RandomizerService<DataGeneratedUserId
     }
 
     @Transactional
-    public List<DataGeneratedUserIdentitiesEntity> generateUserIdentities(UserIdentityWithType uIdentity) throws DataSynthesisException {
-        List<DataGeneratedUserIdentitiesEntity> results = new ArrayList<DataGeneratedUserIdentitiesEntity>(uIdentity.count);
+    public List<UserIdentity> generateUserIdentities(UserIdentityWithType uIdentity) throws DataSynthesisException {
+        List<UserIdentity> results = new ArrayList<UserIdentity>(uIdentity.count);
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
@@ -75,8 +75,8 @@ public class UserIdentitiesService extends RandomizerService<DataGeneratedUserId
             entity.setAdditionalAttributes(uIdentity.additionalDetail);
             entity.setDataGenType(dataType);
 
-            if (entity.safePersist()) {
-                results.add(entity);
+            if (uIdentity.dryRun || entity.safePersist()) {
+                results.add(mapEntityToDTO(entity));
                 i++;
             }
         }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import io.connectedhealth.idaas.datasynthesis.dtos.DLN;
 import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.connectedhealth.idaas.datasynthesis.models.DataGeneratedDriversLicensesEntity;
 import io.connectedhealth.idaas.datasynthesis.models.PlatformDataAttributesEntity;
@@ -61,10 +62,10 @@ public class DriverLicenseNumberServiceTest {
     @Transactional
     public void testALLicense() throws DataSynthesisException {
         short[] ids = initDB();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[0]);
+        List<DLN> dlns = service.generatedDriverLicenses(10, ids[0], true);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
-        for(DataGeneratedDriversLicensesEntity entity : dlns) {
-            String num = entity.getDln();
+        for(DLN entity : dlns) {
+            String num = entity.dLNNumber;
             Assertions.assertTrue(num.length() == 7 || num.length() == 8);
             for(int i = 0; i < 7; i++) {
                 char ch = num.charAt(i);
@@ -81,10 +82,10 @@ public class DriverLicenseNumberServiceTest {
     @Transactional
     public void testCALicense() throws DataSynthesisException {
         short[] ids = initDB();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[1]);
+        List<DLN> dlns = service.generatedDriverLicenses(10, ids[1], true);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
-        for(DataGeneratedDriversLicensesEntity entity : dlns) {
-            String num = entity.getDln();
+        for(DLN entity : dlns) {
+            String num = entity.dLNNumber;
             Assertions.assertEquals(8, num.length());
             char first = num.charAt(0);
             Assertions.assertTrue( first >= '0' && first <= '9' || first >= 'A' && first <= 'Z');
@@ -99,10 +100,10 @@ public class DriverLicenseNumberServiceTest {
     @Transactional
     public void testHILicense() throws DataSynthesisException {
         short[] ids = initDB();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[2]);
+        List<DLN> dlns = service.generatedDriverLicenses(10, ids[2], true);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
-        for(DataGeneratedDriversLicensesEntity entity : dlns) {
-            String num = entity.getDln();
+        for(DLN entity : dlns) {
+            String num = entity.dLNNumber;
             Assertions.assertEquals(9, num.length());
             char first = num.charAt(0);
             Assertions.assertEquals('H', first);
@@ -117,10 +118,10 @@ public class DriverLicenseNumberServiceTest {
     @Transactional
     public void testRILicense() throws DataSynthesisException {
         short[] ids = initDB();
-        List<DataGeneratedDriversLicensesEntity> dlns = service.generatedDriverLicenses(10, ids[3]);
+        List<DLN> dlns = service.generatedDriverLicenses(10, ids[3], true);
         Assertions.assertEquals(10, DataGeneratedDriversLicensesEntity.count());
-        for(DataGeneratedDriversLicensesEntity entity : dlns) {
-            String num = entity.getDln();
+        for(DLN entity : dlns) {
+            String num = entity.dLNNumber;
             Assertions.assertEquals(7, num.length());
             char first = num.charAt(0);
             Assertions.assertTrue( first >= '0' && first <= '9' || first == 'V');

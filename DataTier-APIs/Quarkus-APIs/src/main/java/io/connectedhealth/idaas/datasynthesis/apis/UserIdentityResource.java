@@ -11,8 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import io.connectedhealth.idaas.datasynthesis.audit.Audited;
 import io.connectedhealth.idaas.datasynthesis.dtos.UserIdentity;
@@ -21,7 +19,6 @@ import io.connectedhealth.idaas.datasynthesis.exception.DataSynthesisException;
 import io.connectedhealth.idaas.datasynthesis.services.UserIdentitiesService;
 
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
 @Path("/useridentities")
@@ -48,9 +45,7 @@ public class UserIdentityResource {
 
     @Audited
     @POST
-    @APIResponse(responseCode = "201")
-    public Response generateUserIdentities(UserIdentityWithType requestBody) throws DataSynthesisException {
-        service.generateUserIdentities(requestBody);
-        return Response.status(Status.CREATED).build();
+    public List<UserIdentity> generateUserIdentities(UserIdentityWithType requestBody) throws DataSynthesisException {
+        return service.generateUserIdentities(requestBody);
     }
 }

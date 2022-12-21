@@ -62,8 +62,8 @@ public class BankAccountService extends RandomizerService<DataGeneratedBankAccou
     }
 
     @Transactional
-    public List<DataGeneratedBankAccountEntity> generateBankAccounts(int count, Short typeId) throws DataSynthesisException {
-        List<DataGeneratedBankAccountEntity> results = new ArrayList<DataGeneratedBankAccountEntity>(count);
+    public List<BankAccount> generateBankAccounts(int count, Short typeId, boolean dryRun) throws DataSynthesisException {
+        List<BankAccount> results = new ArrayList<BankAccount>(count);
         RefDataApplicationEntity app = getRegisteredApp();
         RefDataStatusEntity defaultStatus = getDefaultStatus();
         Timestamp createdDate = new Timestamp(System.currentTimeMillis());
@@ -95,8 +95,8 @@ public class BankAccountService extends RandomizerService<DataGeneratedBankAccou
             entity.setBankAccountValue(rgxGen.generate(rand));
             entity.setDataGenType(dataType);
 
-            if (entity.safePersist()) {
-                results.add(entity);
+            if (dryRun || entity.safePersist()) {
+                results.add(mapEntityToDTO(entity));
                 i++;
             }
         }

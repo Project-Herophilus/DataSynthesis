@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import io.connectedhealth.idaas.datasynthesis.models.DataGeneratedAddressesEntity;
+import io.connectedhealth.idaas.datasynthesis.dtos.Address;
 import io.connectedhealth.idaas.datasynthesis.dtos.NameLast;
 
 import org.junit.jupiter.api.Assertions;
@@ -31,16 +32,16 @@ public class AddressServiceTest {
         nameService.insertNameLast(new NameLast("Last1"));
         nameService.insertNameLast(new NameLast("Last2"));
 
-        List<DataGeneratedAddressesEntity> list = addressService.generateAddresses(10);
+        List<Address> list = addressService.generateAddresses(10, true);
         Assertions.assertEquals(10, list.size());
         Assertions.assertEquals(10, DataGeneratedAddressesEntity.count());
-        for (DataGeneratedAddressesEntity entity : list) {
+        for (Address entity : list) {
             validateAddressEntry(entity);
         }
     }
 
-    private void validateAddressEntry(DataGeneratedAddressesEntity entity) {
-        String address = entity.getAddressStreet();
+    private void validateAddressEntry(Address entity) {
+        String address = entity.address1;
         String[] segments = address.split(" ");
         Assertions.assertTrue(segments.length == 3 || segments.length == 4);
         int i = 0;

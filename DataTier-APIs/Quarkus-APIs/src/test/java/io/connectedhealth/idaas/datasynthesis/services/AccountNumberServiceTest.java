@@ -51,7 +51,7 @@ public class AccountNumberServiceTest {
     @Transactional
     public void testRandomGenerateAndRetrieve() throws DataSynthesisException {
         initDB();
-        service.generateAccountNumbers(10, null);
+        service.generateAccountNumbers(10, null, true);
         Assertions.assertEquals(10, DataGeneratedAccountNumbersEntity.count());
 
         List<AccountNumber> accounts = service.retrieveRandomAccountNumbers(8, null);
@@ -64,8 +64,8 @@ public class AccountNumberServiceTest {
     @Transactional
     public void testRandomGenerateAndRetrievePerType() throws DataSynthesisException {
         short[] ids = initDB();
-        service.generateAccountNumbers(10, ids[0]);
-        service.generateAccountNumbers(10, ids[1]);
+        service.generateAccountNumbers(10, ids[0], true);
+        service.generateAccountNumbers(10, ids[1], true);
 
         List<AccountNumber> accounts = service.retrieveRandomAccountNumbers(20, ids[0]);
         Assertions.assertEquals(10, accounts.size());

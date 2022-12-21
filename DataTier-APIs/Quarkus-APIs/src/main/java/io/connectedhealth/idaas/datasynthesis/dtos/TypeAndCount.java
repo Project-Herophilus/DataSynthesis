@@ -10,6 +10,9 @@ public class TypeAndCount {
 
     @Schema(required = false, description = "optional")
     public short dataGenTypeId;
+
+    @Schema(required = false, description = "Dry run only. Do not actually insert")
+    public boolean dryRun = false;
     
     public String toString()
     {

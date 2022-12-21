@@ -30,17 +30,14 @@ public class SSNServiceTest {
     @Transactional
     public void testSSNGeneration() throws DataSynthesisException {
         Common.seed();
-        List<DataGeneratedSocialSecurityNumberEntity> list = service.generateSSN(10);
+        List<SSN> list = service.generateSSN(10, true);
         Assertions.assertEquals(10, list.size());
         Assertions.assertEquals(10, DataGeneratedSocialSecurityNumberEntity.count());
         validateSSNEntity(list.get(0));
     }
 
-    private void validateSSNEntity(DataGeneratedSocialSecurityNumberEntity entity) {
-        Common.validatePattern("^\\d{3}-\\d{2}-\\d{4}$", entity.getSocialSecurityNumberValue());
-        Assertions.assertNotNull(entity.getStatus());
-        Assertions.assertNotNull(entity.getCreatedDate());
-        Assertions.assertNotNull(entity.getRegisteredApp());
+    private void validateSSNEntity(SSN entity) {
+        Common.validatePattern("^\\d{3}-\\d{2}-\\d{4}$", entity.socialSecurityNumber);
     }
 
     @Test
