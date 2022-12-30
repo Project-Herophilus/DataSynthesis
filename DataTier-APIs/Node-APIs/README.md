@@ -9,14 +9,9 @@ technology.
 For these assets you will want to ensure you have the needed versions of Node, npm and yarn installed and working for 
 your environment.
 
-# Setting Up The Environment: Environment Variable
-The biggest thing to understand is that all settings for this solution are done through environment variable. 
-It is important to know that if you clone the repository the file  WILL NOT be included or created. We have
-created a specific file that is intended to cover this specific implementation need as it will be universal
-across all APIs. Please feel follow this link on the specific environment variables needed to succesfully
-run the [APIs](../EnvironmentSetup.md).
+# Setting Up The Environment
 
-# Kafka
+## Kafka
 An existing Kafka (or some flavor of it) up and running. Red Hat currently implements AMQ-Streams based on Apache 
 Kafka; however, we have implemented iDaaS with numerous Kafka implementations. Please see the following files 
 we have included to try and help: <br/>
@@ -36,12 +31,12 @@ auto.offset.reset=earliest <br/>
     - Open Source and Web based: [Kowl](https://github.com/redpanda-data/kowl)
     - Desktop Based and Paid Product after trial: [Offset Explorer](https://www.kafkatool.com/)
 
-# Pre-Requisites - Node v <= 16
+## Development Language - Node v16 (Less Than or Equal To)
 This section is intended to help with any pre-requisites and we have tried to make them as
 specific to OS as we can. In general, we have developed and tested this code with NodeJS versions: 12, 14, 16 and 17.
 With versions above 16 there are some additional commands to run before starting anything.
 
-## Mac
+### Mac
 We have many users specifically leveraging Macs, please follow this link:
 https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
 
@@ -50,14 +45,14 @@ brew install npm <br/>
 brew install yarn <br/>
 brew upgrade <package> <br/>
 
-## Windows
+### Windows
 Find the download from https://nodejs.org/en/download/ and install it.
 
-## Linux
+### Linux
 Depending on your flavor of Linux you will find the needed downloads
 https://nodejs.org/en/download/ or within your Linux implementation.
 
-# Updating packages
+## Updating packages
 From command line at the project directory level or within IDE (depending upon capabilities of IDE) simply run:
 ```
 npm install
@@ -67,7 +62,7 @@ or
 yarn install
 ```
 
-# Command Line Experience
+## Command Line Experience
 From a command line you can follow the following common commands to use the Node APIs. 
 
 ## Installing/Updating Needed Packages
@@ -85,15 +80,24 @@ Upgrade:
 npm upgrade
 ```
 
-## Starting the Solution
-Always make sure you have either install or updated the packages first:
+# Starting it Up
+To start 
 
-To start the solution from the command line at the project level simply type:
+## Environment Variable
+The biggest thing to understand is that all settings for this solution are done through environment variable. 
+It is important to know that if you clone the repository the file  WILL NOT be included or created. We have
+created a specific file that is intended to cover this specific implementation need as it will be universal
+across all APIs. Please feel follow this link on the specific environment variables needed to succesfully
+run the [APIs](../EnvironmentSetup.md).
+  
+## Starting From Command Line
+Always make sure you have either install or updated the packages first:
+- Make sure the environment variables are set. 
+- To start the solution from the command line at the project level simply type:
 ```
 npm start 
 ```
-
-Or, if you want to work with it locally and potentially enhance it then from the base project level type:
+- Or, if you want to work with it locally and potentially enhance it then from the base project level type:
 ```
 nodemon app.js
 ```
