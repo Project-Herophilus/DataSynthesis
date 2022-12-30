@@ -57,7 +57,7 @@ Find the download from https://nodejs.org/en/download/ and install it.
 Depending on your flavor of Linux you will find the needed downloads
 https://nodejs.org/en/download/ or within your Linux implementation.
 
-### Updating packages
+# Updating packages
 From command line at the project directory level or within IDE (depending upon capabilities of IDE) simply run:
 ```
 npm install
