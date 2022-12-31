@@ -9,8 +9,10 @@ const buildDataAttributes = require("../../builders/buildDataAttributes");
 
 router.get("/addresses", async(req, res) => {
   let dataResults;
+
   res.setHeader("Content-Type", "text/plain");
   const quantity = req.query.quantity || 1000;
+  console.log("Using API : Data Attribute Generator for Addresses to retrieve "+quantity +" transactions ")
   const results = await dataattributesGenerator.generateAddress_Record_US(quantity)
   res.json(results)
 });
@@ -68,6 +70,7 @@ router.get("/phonenumbers-us", async(req, res) => {
     const quantity = parseInt(req.query.quantity) || 1000;
     const country = req.query.country || 'us';
     const results = dataattributesGenerator.generatePhoneNumbersUS("us",quantity)
+
     res.json(results)
 
 });

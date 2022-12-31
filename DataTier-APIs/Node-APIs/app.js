@@ -41,6 +41,11 @@ const server = app.listen(port, function () {
     console.log("Kafka Server [kafka_server]: "+process.env.kafka_server)
     console.log("RDBMS Values Set:")
     console.log("RDBMS [rdbms]: "+process.env.rdbms)
+    console.log("dbHost: "+process.env.dbHost)
+    console.log("dbPort: "+process.env.dbPort)
+    console.log("dbName: "+process.env.dbName)
+    console.log("dbUser: "+process.env.dbUser)
+    console.log("dbPassword: "+process.env.dbPassword)
     console.log("=========================")
 
 });

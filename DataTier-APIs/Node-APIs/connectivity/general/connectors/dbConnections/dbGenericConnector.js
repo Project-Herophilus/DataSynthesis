@@ -2,22 +2,36 @@
 // use the environment variable name rdbms to drive the connectiion params used and
 // the specific attributes
 
-/* https://node-postgres.com/features/connecting */
+/* https://node-postgres.com/features/connecting
+    https://www.thisdot.co/blog/connecting-to-postgresql-with-node-js
+*/
+
 const { Pool, Client } = require('pg');
-const db = require('mysql');
+//const db = require('mysql');
 // var snowflake = require('snowflake-sdk');
 const path = require('path')
 
 client = new Client();
 
+const credentials = {
+    user: process.env.dbUser,
+    host: process.env.dbHost,
+    database: process.env.dbName,
+    password: process.env.dbPassword,
+    port: process.env.dbPort,
+};
+
 if (process.env.rdbms =="postgreSQL") {
-    let connectionString = process.env.dbURL;
+    /*let connectionString = process.env.dbURL;
     client = new Client({
         connectionString,
     })
+    */
+    client = new Client(credentials);
+    //client.connect();
     client.connect(function (err) {
         if (err) throw err;
-        console.log("Connected to Postgress DB !");
+        console.log("Connected to Postgres DB !");
     });
 }
 if (process.env.rdbms =="mySQL")
