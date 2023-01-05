@@ -9,7 +9,7 @@
             <h4 class="title">Platform Tables Reference List</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table :items="data_tables" :reference_table="true" :platform_table="false" table-header-color="orange" v-if="data_tables.length > 0" @tableclicked="populateResultsTable" style="max-height:600px; overflow:scroll"></ordered-table>
+            <ordered-table v-if="data_tables && data_tables.length > 0" :items="data_tables" :reference_table="true" :platform_table="false" table-header-color="orange" @tableclicked="populateResultsTable" style="max-height:600px; overflow:scroll"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
@@ -21,7 +21,7 @@
             <h4 class="title">Table Results</h4>
           </md-card-header>
           <md-card-content>
-            <ordered-table :items="result_fields" :reference_table="false" :platform_table="true" table-header-color="orange" v-if="result_fields.length > 0" style="max-height:600px; overflow:scroll"></ordered-table>
+            <ordered-table  v-if="result_fields && result_fields.length > 0" :items="result_fields" :reference_table="false" :platform_table="true" table-header-color="orange" style="max-height:600px; overflow:scroll"></ordered-table>
           </md-card-content>
         </md-card>
       </div>
@@ -47,20 +47,17 @@ export default {
     }
   },
   methods: {
-    populatedDataTables(data_response){
-      this.data_tables = data_response
-    },
     populateResultsTable(table){
       this.result_fields = [];
       api.getTableResults(table).then(resp=>{
-        this.result_fields = resp.data.rows;
+        this.result_fields = resp.data;
         console.log(this.result_fields)
       })
     }
   },
   mounted(){
     api.getDomainTables().then(resp=>{
-      this.populatedDataTables(resp.data.rows)
+      this.data_tables = resp.data;
     }).catch(error=>{
       console.log(`error: ${error}`)
     })

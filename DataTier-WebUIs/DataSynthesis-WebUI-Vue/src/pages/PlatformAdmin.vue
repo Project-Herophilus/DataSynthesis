@@ -136,7 +136,7 @@ export default {
     api
       .getDataStructures()
       .then((resp) => {
-        this.populatedDataTables(resp.data.rows);
+        this.populatedDataTables(resp.data);
       })
       .catch((error) => {
         console.log(`error: ${error}`);
