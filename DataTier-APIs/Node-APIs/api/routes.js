@@ -15,6 +15,7 @@ const hl7controller = require("./industrystds/hl7.controller");
 const impldatacontroller = require("./querydata/implementationdata.controller");
 const refdatacontroller = require("./querydata/referencedata.controller");
 const termdatacontroller = require("./querydata/termsdata.controller");
+//const upsertdataexistingcontroller = require("./upsertdata/dataexisting.controller");
 // Defined Specific Routers - Tied to Constants
 router.use('/api/apihealth', apihealthcontroller)
 router.use('/api/generatedata/generate', generatedatacontroller)
@@ -28,7 +29,7 @@ router.use('/api/querydata/implementationdata', impldatacontroller)
 router.use('/api/querydata/referencedata', refdatacontroller)
 router.use('/api/querydata/randomized', datarndmcontroller)
 router.use('/api/querydata/terminologydata', termdatacontroller)
-
+//router.use('/api/upsertdata/dataexistting', upsertdataexistingcontroller)
 router.use('/api/upsertdata/datamanagement', datamanagementcontroller)
 
 module.exports = router;
