@@ -33,7 +33,7 @@ router.get('/applications/:activeStatus', function (req, res) {
     }
     if (rdbmsType =="postgreSQL")
     {
-        let sqlQuery = 'select * from impl_application where StatusID ='+StatusID;
+        let strQuery = 'select * from impl_application where StatusID ='+StatusID;
         dbConnection.query('select * from impl_application where '+StatusID, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
@@ -50,8 +50,8 @@ router.get('/applications/:activeStatus', function (req, res) {
 });
 
 router.get('/codesets', function (req, res) {
-    let sqlQuery = 'select * from impl_codesetscrossmaps where statusid =1';
-    dbConnection.query('select * from impl_codesetscrossmaps where statusid =1', function (error, results, fields) {
+    let strQuery = 'select * from impl_codesets where statusid =1';
+    dbConnection.query('select * from impl_codesets where statusid =1', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -66,40 +66,8 @@ router.get('/codesets', function (req, res) {
 });
 
 router.get('/codesetstocrossmaps', function (req, res) {
-    let sqlQuery = 'select * from impl_codesetscrossmaps where statusid=1';
-    dbConnection.query('select * from impl_codesetscrossmaps where statusid=1', function (error, results, fields) {
-        if (error) throw error;
-        if (results.rows.length > 0)
-        {
-            res.end(JSON.stringify(results.rows));
-            res.status(200).send();
-        }
-        else
-        {
-            res.status(200).send("No Data Returned from Query: " +strQuery);
-        }
-    });
-});
-
-router.get('/codesetstocrossmaps', function (req, res) {
-    let sqlQuery = 'select * from impl_codesetstoapplication where statusid=1';
-    dbConnection.query('select * from impl_codesetstoapplication where statusid=1', function (error, results, fields) {
-        if (error) throw error;
-        if (results.rows.length > 0)
-        {
-            res.end(JSON.stringify(results.rows));
-            res.status(200).send();
-        }
-        else
-        {
-            res.status(200).send("No Data Returned from Query: " +strQuery);
-        }
-    });
-});
-
-router.get('/codesetstocrossmaps', function (req, res) {
-    let sqlQuery = 'select * from impl_codesettomsgtype where statusid=1';
-    dbConnection.query('select * from impl_codesettomsgtype where statusid=1', function (error, results, fields) {
+    let strQuery = 'select * from impl_codesets_crossmaps where statusid=1';
+    dbConnection.query('select * from impl_codesets_crossmaps where statusid=1', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -114,7 +82,7 @@ router.get('/codesetstocrossmaps', function (req, res) {
 });
 
 router.get('/legalentities', function (req, res) {
-    let sqlQuery = 'select * from impl_legalentities where statusid=1';
+    let strQuery = 'select * from impl_legalentities where statusid=1';
     dbConnection.query('select * from impl_legalentities where statusid=1', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -130,7 +98,7 @@ router.get('/legalentities', function (req, res) {
 });
 
 router.get('/organization', function (req, res) {
-    let sqlQuery = 'select * from impl_organization where statusid=1';
+    let strQuery = 'select * from impl_organization where statusid=1';
     dbConnection.query('select * from impl_organization where statusid=1', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -146,7 +114,7 @@ router.get('/organization', function (req, res) {
 });
 
 router.get('/rulesets', function (req, res) {
-    let sqlQuery = 'select * from impl_rulesets where statusid =1';
+    let strQuery = 'select * from impl_rulesets where statusid =1';
     dbConnection.query('select * from impl_rulesets where statusid =1', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -162,7 +130,7 @@ router.get('/rulesets', function (req, res) {
 });
 
 router.get('/rulesetsdefinitions', function (req, res) {
-    let sqlQuery = 'select * from impl_rulesetsdefinitions where statusid=1';
+    let strQuery = 'select * from impl_rulesetsdefinitions where statusid=1';
     dbConnection.query('select * from impl_rulesetsdefinitions where statusid=1', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
