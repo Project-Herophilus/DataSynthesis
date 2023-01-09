@@ -193,11 +193,6 @@ IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${
         return hl7_messages
         }
 
-    },
-    handleDocType(doctype,version,count){
-        if (doctype == "ADT") {
-            return this.generateHL7_Record("ADT")
-        }
     }
 
 }
