@@ -396,3 +396,4 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+DataTier-APIs/Node-APIs/env-variables.sh
