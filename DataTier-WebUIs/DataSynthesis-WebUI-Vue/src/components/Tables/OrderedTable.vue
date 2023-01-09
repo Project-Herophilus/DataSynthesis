@@ -1,22 +1,27 @@
 <template>
   <div>
-    <v-data-table :headers="headers" :items="items" v-if="reference_table && !platform_table">
+    <v-data-table
+      :headers="headers"
+      :items="items"
+      v-if="reference_table && !platform_table"
+    >
       <template v-slot:item="row">
         <tr>
           <td>{{ row.item.tablename }}</td>
           <td>{{ row.item.tableinformation }}</td>
           <td v-if="reference_table">
-            <v-btn
-              color="white"
-              @click="onButtonClick(row.item.tablename)"
-            >
-            <a style="white"> View </a>
+            <v-btn color="white" @click="onButtonClick(row.item.tablename)">
+              <a style="white"> View </a>
             </v-btn>
           </td>
         </tr>
       </template>
     </v-data-table>
-    <v-data-table :headers="headers" :items="items" v-if="reference_table && platform_table">
+    <v-data-table
+      :headers="headers"
+      :items="items"
+      v-if="reference_table && platform_table"
+    >
       <template v-slot:item="row">
         <tr>
           <td>{{ row.item.datastructurename }}</td>
@@ -25,19 +30,25 @@
               color="white"
               @click="onButtonClick(row.item.datastructurename)"
             >
-            <a style="white"> View </a>
+              <a style="white"> View </a>
             </v-btn>
           </td>
         </tr>
       </template>
     </v-data-table>
-    <v-data-table :headers="headers" :items="items" :search="search" v-if="!reference_table">
-        <template v-slot:top>
-        <v-text-field
+    <v-data-table
+      :headers="headers"
+      :items="items"
+      :search="search"
+      v-if="!reference_table"
+    >
+      <template v-slot:top>
+        <v-btn text @click="downloadFile()">Export</v-btn>
+        <!-- <v-text-field
           v-model="search"
           label="Search (UPPER CASE ONLY)"
           class="mx-4"
-        ></v-text-field>
+        ></v-text-field> -->
       </template>
     </v-data-table>
     <v-dialog v-model="showModal" width="400">
@@ -46,11 +57,7 @@
         <v-card-text></v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn
-            text
-            @click="onButtonClick()"
-            >Confirm</v-btn
-          >
+          <v-btn text @click="onButtonClick()">Confirm</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -58,6 +65,7 @@
 </template>
 
 <script>
+import exportFromJSON from "export-from-json";
 export default {
   name: "ordered-table",
   props: {
@@ -73,19 +81,19 @@ export default {
     },
     reference_table: {
       type: Boolean,
-      default: false
+      default: false,
     },
     platform_table: {
-      type: Boolean, 
-      default: false
-    }
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       selected: [],
       headers: [],
       showModal: false,
-      search: '',
+      search: "",
     };
   },
   computed: {},
@@ -108,8 +116,14 @@ export default {
       });
     },
     onButtonClick(table) {
-      this.$emit("tableclicked",table)
+      this.$emit("tableclicked", table);
       this.showModal = !this.showModal;
+    },
+    downloadFile() {
+      const data = this.items;
+      const fileName = "data_export";
+      const exportType = exportFromJSON.types.csv;
+      if (data) exportFromJSON({ data, fileName, exportType });
     },
   },
   beforeMount() {

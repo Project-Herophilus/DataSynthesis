@@ -1,16 +1,17 @@
 import HTTP from "./HTTP";
 // import apimap from "../configs/table_to_api_map";
 const apimap = {
-  "dataexisting_ababanking": '/dataexisting/ababanking',
-  "dataexisting_areacode": "/dataexisting/areacode",
-  "dataexisting_areacodeintl":"/dataexisting/areacodeintl",
-  "dataexisting_companies": "/dataexisting/companies",
-  "dataexisting_upccodes": "/dataexisting/upcodes",
-  "dataexisting_namefirst": "/dataexisting/namefirst",
-  "dataexisting_namelast": "/dataexisting/namelast",
-  "datagenerated_accountnumbers": "/datagenerated/accountnumbers",
-  "dataexisting_zipcodeus": "/dataexisting/zipcodeus",
-  "dataexisting_zipcodeintl": "/dataexisting/zipcodeintl"
+  "dataexisting_ababanking": '/api/querydata/dataexisting/ababanking',
+  "dataexisting_areacode": "/api/querydata/dataexisting/areacode",
+  "dataexisting_areacodeintl":"/api/querydata/dataexisting/areacodeintl",
+  "dataexisting_companies": "/api/querydata/dataexisting/companies",
+  "dataexisting_upccodes": "/api/querydata/dataexisting/upcodes",
+  "dataexisting_namefirst": "/api/querydata/dataexisting/namefirst",
+  "dataexisting_namelast": "/api/querydata/dataexisting/namelast",
+  "datagenerated_accountnumbers": "/api/querydata/datagenerated/accountnumbers",
+  "dataexisting_zipcodeus": "/api/querydata/dataexisting/zipcodeus",
+  "dataexisting_zipcodeintl": "/api/querydata/dataexisting/zipcodeintl",
+  "datagenerated_serialnumbers": "/api/generatedata/generate/serialnumber-complex"
 }
 export default {
   getDomainTables() {
@@ -21,7 +22,7 @@ export default {
   },
   getTableResults(table){
     console.log(table)
-    return HTTP().get(`/api/querydata${apimap[table]}?limit=50`)
+    return HTTP().get(`${apimap[table]}?limit=50`)
   },
   getDataStructureDetails(datastructure){
     console.log(datastructure)

@@ -10,11 +10,11 @@ import routes from "./routes/routes";
 import GlobalComponents from "./globalComponents";
 import GlobalDirectives from "./globalDirectives";
 import Notifications from "./components/NotificationPlugin";
-
 // MaterialDashboard plugin
 import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
+// import JsonCSV from 'vue-json-csv'
 
 // configure router
 const router = new VueRouter({
@@ -29,6 +29,8 @@ Vue.use(MaterialDashboard);
 Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
+// Vue.use(JsonCSV);
+
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
