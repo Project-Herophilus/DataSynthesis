@@ -24,7 +24,7 @@ router.get('/codesets', function (req, res) {
 });
 
 router.get('/countries', function (req, res) {
-    let sqlQuery = 'select * from refdata_countries';
+    let strQuery = 'select * from refdata_countries';
     dbConnection.query('select * from refdata_countries', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -38,7 +38,7 @@ router.get('/countries', function (req, res) {
 });
 
 router.get('/datagentypes', function (req, res) {
-    let sqlQuery = 'select * from refdata_datagentypes';
+    let strQuery = 'select * from refdata_datagentypes';
     dbConnection.query('select * from refdata_datagentypes', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -52,7 +52,7 @@ router.get('/datagentypes', function (req, res) {
 });
 
 router.get('/industrystd', function (req, res) {
-    let sqlQuery = 'select * from refdata_industrystd';
+    let strQuery = 'select * from refdata_industrystd';
     dbConnection.query('select * from refdata_industrystd', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -66,7 +66,7 @@ router.get('/industrystd', function (req, res) {
 });
 
 router.get('/operationtype', function (req, res) {
-    let sqlQuery = 'select * from refdata_operationtype';
+    let strQuery = 'select * from refdata_operationtype';
     dbConnection.query('select * from refdata_operationtype', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -80,7 +80,7 @@ router.get('/operationtype', function (req, res) {
 });
 
 router.get('/platformparams', function (req, res) {
-    let sqlQuery = 'select * from refdata_platformparams';
+    let strQuery = 'select * from refdata_platformparams';
     dbConnection.query('select * from refdata_platformparams', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -94,7 +94,7 @@ router.get('/platformparams', function (req, res) {
 });
 
 router.get('/platformparamstodataattributes', function (req, res) {
-    let sqlQuery = 'select * from refdata_platformparamstodataattributes';
+    let strQuery = 'select * from refdata_platformparamstodataattributes';
     dbConnection.query('select * from refdata_platformparamstodataattributes', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -108,7 +108,7 @@ router.get('/platformparamstodataattributes', function (req, res) {
 });
 
 router.get('/sensitivityflags', function (req, res) {
-    let sqlQuery = 'select * from refdata_sensitivityflag';
+    let strQuery = 'select * from refdata_sensitivityflag';
     dbConnection.query('select * from refdata_sensitivityflag', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -122,7 +122,7 @@ router.get('/sensitivityflags', function (req, res) {
 });
 
 router.get('/statuses', function (req, res) {
-    let sqlQuery = 'select * from refdata_status';
+    let strQuery = 'select * from refdata_status';
     dbConnection.query('select * from refdata_status', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -136,7 +136,7 @@ router.get('/statuses', function (req, res) {
 });
 
 router.get('/terminologystd', function (req, res) {
-    let sqlQuery = 'select * from refdata_terminologystd';
+    let strQuery = 'select * from refdata_terminologystd';
     dbConnection.query('select * from refdata_terminologystd', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -150,7 +150,7 @@ router.get('/terminologystd', function (req, res) {
 });
 
 router.get('/timezones', function (req, res) {
-    let sqlQuery = 'select * from refdata_timezones';
+    let strQuery = 'select * from refdata_timezones';
     dbConnection.query('select * from refdata_timezones', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -164,7 +164,7 @@ router.get('/timezones', function (req, res) {
 });
 
 router.get('/usstates', function (req, res) {
-    let sqlQuery = 'select * from refdata_usstates';
+    let strQuery = 'select * from refdata_usstates';
     dbConnection.query('select * from refdata_usstates', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
@@ -178,7 +178,7 @@ router.get('/usstates', function (req, res) {
 });
 
 router.get('/vendors', function (req, res) {
-    let sqlQuery = 'select * from refdata_vendor';
+    let strQuery = 'select * from refdata_vendor';
     dbConnection.query('select * from refdata_vendor', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
