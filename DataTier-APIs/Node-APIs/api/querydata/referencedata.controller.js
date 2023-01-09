@@ -10,7 +10,7 @@ let rdbmsType = process.env.rdbms;
 */
 
 router.get('/codesets', function (req, res) {
-    let sqlQuery = 'select * from refdata_codeset';
+    let strQuery = 'select * from refdata_codeset';
     dbConnection.query('select * from refdata_codeset', function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0){
