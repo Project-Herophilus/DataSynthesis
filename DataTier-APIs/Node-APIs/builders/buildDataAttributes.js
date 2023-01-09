@@ -223,7 +223,7 @@ module.exports = {
         for (i=0; i<count; i++)
         {
             let serialnumbervalue = crypto.randomBytes(8).toString("hex");
-            serialNumbers.push(`${serialnumbervalue}`)
+            serialNumbers.push({"serialnumber": serialnumbervalue})
         }
         return serialNumbers
     },
