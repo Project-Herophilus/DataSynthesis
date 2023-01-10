@@ -7,7 +7,8 @@ let rdbmsType = process.env.rdbms;
 // Data Existing Queries
 
     router.get('/ababanking', function (req, res) {
-            dbConnection.query('select * from dataexisting_ababanking', function (error, results, fields) {
+            let strQuery ='select * from dataexisting_ababanking'
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -16,7 +17,7 @@ let rdbmsType = process.env.rdbms;
                 }
                 else
                 {
-                    res.status(200).send("No Data Returned from Query");
+                    res.status(200).send("No Data Returned from Query: "+strQuery);
                 }
             });
     });
@@ -35,7 +36,7 @@ let rdbmsType = process.env.rdbms;
         {
             const stateCodeVal = req.params.statecode;
             let strQuery ='select * from dataexisting_ababanking where StateCode= '+stateCodeVal
-            dbConnection.query('select * from dataexisting_ababanking where StateCode=$1', [req.params.statecode], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -54,8 +55,8 @@ let rdbmsType = process.env.rdbms;
      *   AreaCode
      */
     router.get('/areacode', function (req, res) {
-            let strQuery ='select * from dataexisting_areacode where StatusID=1'
-            dbConnection.query('select * from dataexisting_areacode where StatusID=1', function (error, results, fields) {
+            let strQuery ='select * from dataexisting_areacode'
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -81,7 +82,7 @@ let rdbmsType = process.env.rdbms;
         {
             const stateCodeVal = req.params.statecode;
             let strQuery ='select * from dataexisting_areacode where StateCode= '+stateCodeVal
-            dbConnection.query('select * from dataexisting_areacode where StateCode=$1', [req.params.statecode], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -100,8 +101,8 @@ let rdbmsType = process.env.rdbms;
      *   Companies
      */
     router.get('/companies', function (req, res) {
-        let strQuery ='select * from dataexisting_companies where StatusID=1'
-        dbConnection.query('select * from dataexisting_companies where StatusID=1', function (error, results, fields) {
+        let strQuery ='select * from dataexisting_companies'
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -127,7 +128,8 @@ let rdbmsType = process.env.rdbms;
         {
             const companyNameVal = req.params.companyname;
             let strQuery ='select * from dataexisting_companies where companyname like '+'%'+companyNameVal+'%'
-            dbConnection.query('select * from dataexisting_companies where companyname like $1', ['%'+req.params.companyname+'%'], function (error, results, fields) {
+            //dbConnection.query('select * from dataexisting_companies where companyname like $1', ['%'+req.params.companyname+'%'], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -157,23 +159,24 @@ let rdbmsType = process.env.rdbms;
             const genderVal = req.params.gender;
             const firstNameCharVal = req.params.firstnamelike;
             let strQuery ='select * from dataexisting_companies where firstname like '+'%'+firstNameCharVal+'%'+' and gender ='+'%'+genderVal+'%'
-            dbConnection.query('select * from dataexisting_namefirst where firstname like $1 and gender=$2', ['%'+req.params.firstnamelike+'%', req.params.gender], function (error, results, fields) {
-                if (error) throw error;
-                if (results.rows.length > 0)
-                {
-                    res.end(JSON.stringify(results.rows));
-                    res.status(200).send();
-                }
-                else
-                {
-                    res.status(200).send("No Data Returned from Query: " +strQuery);
-                }
-            });
-        }
+            //dbConnection.query('select * from dataexisting_namefirst where firstname like $1 and gender=$2', ['%'+req.params.firstnamelike+'%', req.params.gender], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
+                    if (error) throw error;
+                    if (results.rows.length > 0)
+                    {
+                        res.end(JSON.stringify(results.rows));
+                        res.status(200).send();
+                    }
+                    else
+                    {
+                        res.status(200).send("No Data Returned from Query: " +strQuery);
+                    }
+                });
+            }
     });
     router.get('/namefirst', function (req, res) {
         let strQuery ='select * from dataexisting_namefirst'
-        dbConnection.query('select * from dataexisting_namefirst', function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -202,7 +205,7 @@ let rdbmsType = process.env.rdbms;
         {
             const lastnameCharVal = req.params.lastnamematch;
             let strQuery ='select * from dataexisting_namelast where lastname like '+'%'+lastnameCharVal+'%'
-            dbConnection.query('select * from dataexisting_namelast where lastname like $1', ['%'+req.params.lastnamematch+'%'], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -217,8 +220,8 @@ let rdbmsType = process.env.rdbms;
         }
     });
     router.get('/namelast', function (req, res) {
-        let strQuery ='select * from dataexisting_namelast where statusid=1'
-        dbConnection.query('select * from dataexisting_namelast', function (error, results, fields) {
+        let strQuery ='select * from dataexisting_namelast'
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -247,7 +250,7 @@ let rdbmsType = process.env.rdbms;
         {
             const productNameVal = req.params.productnamematch;
             let strQuery ='select * from dataexisting_upccodes where upcproductname like '+'%'+productNameVal+'%'
-            dbConnection.query('select * from dataexisting_upccodes where upcproductname like $1', ['%'+req.params.productnamematch+'%'], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
@@ -262,8 +265,8 @@ let rdbmsType = process.env.rdbms;
         }
     });
     router.get('/upccodes', function (req, res) {
-        let strQuery ='select * from dataexisting_upccodes where statusid=1'
-        dbConnection.query('select * from dataexisting_upccodes', function (error, results, fields) {
+        let strQuery ='select * from dataexisting_upccodes'
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -282,7 +285,7 @@ let rdbmsType = process.env.rdbms;
      */
     router.get('/zipcodeus', function (req, res) {
         let strQuery ='select * from dataexisting_zipcodeus where statusid=1'
-        dbConnection.query('select * from dataexisting_zipcodeus', function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -305,7 +308,7 @@ let rdbmsType = process.env.rdbms;
         if (rdbmsType =="postgreSQL") {
             const stateCodeVal = req.params.statecode;
             let strQuery ='select * from dataexisting_zipcodeus where statecode='+stateCodeVal
-            dbConnection.query('select * from dataexisting_zipcodeus where StateCode=$1', [req.params.statecode], function (error, results, fields) {
+            dbConnection.query(strQuery, function (error, results, fields) {
                 if (error) throw error;
                 if (results.rows.length > 0)
                 {
