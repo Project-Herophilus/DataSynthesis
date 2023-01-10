@@ -1,4 +1,3 @@
-//const dbConnection = require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
 const dbConnection = require("../../connectivity/general/connectors/dbConnections/dbGenericConnector")
 const express = require("express");
 const router = express.Router();
@@ -9,6 +8,7 @@ let rdbmsType = process.env.rdbms;
 /*
  *   Applications
  */
+/*
 router.get('/applications/:activeStatus', function (req, res) {
     const activeStatus = req.params.activeStatus;
     //console.log("Active Status: "+activeStatus);
@@ -48,10 +48,26 @@ router.get('/applications/:activeStatus', function (req, res) {
         });
     }
 });
+*/
 
+router.get('/applications', function (req, res) {
+    let strQuery = 'select * from impl_application ';
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
 router.get('/codesets', function (req, res) {
-    let strQuery = 'select * from impl_codesets where statusid =1';
-    dbConnection.query('select * from impl_codesets where statusid =1', function (error, results, fields) {
+    let strQuery = 'select * from impl_codesets';
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -66,8 +82,8 @@ router.get('/codesets', function (req, res) {
 });
 
 router.get('/codesetstocrossmaps', function (req, res) {
-    let strQuery = 'select * from impl_codesets_crossmaps where statusid=1';
-    dbConnection.query('select * from impl_codesets_crossmaps where statusid=1', function (error, results, fields) {
+    let strQuery = 'select * from impl_codesets_crossmaps';
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -82,8 +98,8 @@ router.get('/codesetstocrossmaps', function (req, res) {
 });
 
 router.get('/legalentities', function (req, res) {
-    let strQuery = 'select * from impl_legalentities where statusid=1';
-    dbConnection.query('select * from impl_legalentities where statusid=1', function (error, results, fields) {
+    let strQuery = 'select * from impl_legalentities';
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -98,8 +114,8 @@ router.get('/legalentities', function (req, res) {
 });
 
 router.get('/organization', function (req, res) {
-    let strQuery = 'select * from impl_organization where statusid=1';
-    dbConnection.query('select * from impl_organization where statusid=1', function (error, results, fields) {
+    let strQuery = 'select * from impl_organization';
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -114,8 +130,8 @@ router.get('/organization', function (req, res) {
 });
 
 router.get('/rulesets', function (req, res) {
-    let strQuery = 'select * from impl_rulesets where statusid =1';
-    dbConnection.query('select * from impl_rulesets where statusid =1', function (error, results, fields) {
+    let strQuery = 'select * from impl_rulesets';
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -130,8 +146,8 @@ router.get('/rulesets', function (req, res) {
 });
 
 router.get('/rulesetsdefinitions', function (req, res) {
-    let strQuery = 'select * from impl_rulesetsdefinitions where statusid=1';
-    dbConnection.query('select * from impl_rulesetsdefinitions where statusid=1', function (error, results, fields) {
+    let strQuery = 'select * from impl_rulesetsdefinitions';
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
