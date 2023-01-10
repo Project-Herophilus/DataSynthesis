@@ -222,6 +222,25 @@ router.get('/dateofbirth/:ageSearch', function (req, res)
 });
 
 /*
+ *   Devices
+ */
+router.get('/devices', function (req, res) {
+    let strQuery ='select * from datagenerated_devices'
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
+/*
  *   Drivers License
  */
 router.get('/driverslicenses', function (req, res) {
@@ -357,6 +376,25 @@ router.get('/phonenumber/:likesearch', function (req, res) {
         });
     }
 
+});
+
+/*
+ *   Serial Numbers
+ */
+router.get('/serialnumbers', function (req, res) {
+    let strQuery ='select * from datagenerated_serialnumbers'
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
 });
 
 /*
