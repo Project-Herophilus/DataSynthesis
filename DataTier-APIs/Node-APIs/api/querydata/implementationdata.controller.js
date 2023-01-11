@@ -175,7 +175,8 @@ router.get('/organization', function (req, res) {
  */
 router.get('/organizationbylegalentity/:legalentityid', function (req, res) {
     const codeVal = req.params.legalentityid;
-    let strQuery = 'select * from impl_organization where legalentityguid ='+codeVal;
+    let strQuery = 'select * from impl_organization where legalentityguid ='+"'"+codeVal+"'";
+    console.log("Query: " +strQuery);
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
