@@ -107,7 +107,7 @@ router.get('/codesets', function (req, res) {
  */
 router.get('/codesetscrossmapsbycrossmap/:crossmapid', function (req, res) {
     const codeVal = req.params.crossmapid;
-    let strQuery = 'select * from impl_codesets_crossmaps where impcodesetsid = '+codeVal;
+    let strQuery = 'select * from impl_codesets_crossmaps where implcodesetsid = '+codeVal;
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -226,7 +226,7 @@ router.get('/rulesetsdefinitions', function (req, res) {
  *   RuleSet Deifinition By Specific Codeset
  */
 router.get('/rulesetsdefinitionbyruleset/:rulesetid', function (req, res) {
-    const codeVal = req.params.applicationid;
+    const codeVal = req.params.rulesetid;
     let strQuery = 'select * from impl_rulesetsdefinitions where rulesetid ='+codeVal;
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
