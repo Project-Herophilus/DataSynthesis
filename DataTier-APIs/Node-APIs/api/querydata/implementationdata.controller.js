@@ -65,8 +65,49 @@ router.get('/applications', function (req, res) {
         }
     });
 });
+
+/*
+ *  Applications By Specific Vendor
+ */
+router.get('/applicationsbyvendor/:applicationid', function (req, res) {
+    const codeVal = req.params.applicationid;
+    let strQuery = 'select * from impl_application where vendorid = '+codeVal;
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
 router.get('/codesets', function (req, res) {
     let strQuery = 'select * from impl_codesets';
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
+/*
+ *   Codeset Crossmaps By Specific Crossmap
+ */
+router.get('/codesetscrossmapsbycrossmap/:crossmapid', function (req, res) {
+    const codeVal = req.params.crossmapid;
+    let strQuery = 'select * from impl_codesets_crossmaps where impcodesetsid = '+codeVal;
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
@@ -129,6 +170,26 @@ router.get('/organization', function (req, res) {
     });
 });
 
+/*
+ *      Organizations By Specific Legal Entiyy
+ */
+router.get('/organizationbylegalentity/:legalentityid', function (req, res) {
+    const codeVal = req.params.legalentityid;
+    let strQuery = 'select * from impl_organization where legalentityguid ='+codeVal;
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
 router.get('/rulesets', function (req, res) {
     let strQuery = 'select * from impl_rulesets';
     dbConnection.query(strQuery, function (error, results, fields) {
@@ -147,6 +208,26 @@ router.get('/rulesets', function (req, res) {
 
 router.get('/rulesetsdefinitions', function (req, res) {
     let strQuery = 'select * from impl_rulesetsdefinitions';
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
+/*
+ *   RuleSet Deifinition By Specific Codeset
+ */
+router.get('/rulesetsdefinitionbyruleset/:rulesetid', function (req, res) {
+    const codeVal = req.params.applicationid;
+    let strQuery = 'select * from impl_rulesetsdefinitions where rulesetid ='+codeVal;
     dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
