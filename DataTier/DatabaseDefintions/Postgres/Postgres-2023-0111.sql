@@ -178,15 +178,13 @@ CREATE TABLE datagenerated_dateofbirth (
 );
 
 CREATE TABLE datagenerated_devices (
-	devicesid serial NOT NULL,
-	devicename varchar(40),
-	industryid integer,
-	devicetypeid integer,
-	createddate timestamp DEFAULT CURRENT_TIMESTAMP,
-	statusid integer DEFAULT 1,
-	application varchar(38),
-	organization varchar(38),
-	PRIMARY KEY (devicesid)
+     devicesid serial NOT NULL,
+     devicename varchar(40),
+     devicetypeid integer,
+     createddate timestamp DEFAULT CURRENT_TIMESTAMP,
+     statusid integer DEFAULT 1,
+     application varchar(38) DEFAULT 'NULL'::character varying,
+     RIMARY KEY (devicesid)
 );
 
 CREATE TABLE datagenerated_driverslicenses (
