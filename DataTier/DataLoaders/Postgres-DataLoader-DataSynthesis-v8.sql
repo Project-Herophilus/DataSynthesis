@@ -38,8 +38,11 @@ psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datage
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_bankaccount.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_creditcard.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_dateofbirth.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_devices.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_driverslicenses_1.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_driverslicenses_2.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/ein.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_phonenumbers.sql
-psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_socialsecuritynumber.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_driverslicenses_2.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_serialnumbers.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_useridentities.sql
