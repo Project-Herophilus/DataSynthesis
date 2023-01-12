@@ -1,4 +1,3 @@
-//const dbConnection = require("../../connectivity/general/connectors/dbConnections/postgresqlConnect")
 const dbConnection = require("../../connectivity/general/connectors/dbConnections/dbGenericConnector")
 const express = require("express");
 const router = express.Router();
@@ -14,7 +13,7 @@ let rdbmsType = process.env.rdbms;
  */
 router.get('/accountnumbers', function (req, res) {
     let strQuery ='select * from datagenerated_accountnumbers'
-    dbConnection.query('select * from datagenerated_accountnumbers', function (error, results, fields) {
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -39,7 +38,8 @@ router.get('/accountnumbers/:likesearch', function (req, res) {
     {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_accountnumbers where accountnumbervalue like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_accountnumbers where accountnumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        //dbConnection.query('select * from datagenerated_accountnumbers where accountnumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -58,8 +58,8 @@ router.get('/accountnumbers/:likesearch', function (req, res) {
  *  Address
  */
 router.get('/addresses', function (req, res) {
-    let strQuery ='select * from datagenerated_addresses where StatusID=1'
-    dbConnection.query('select * from datagenerated_addresses where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_addresses'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -84,7 +84,7 @@ router.get('/addresses/:likesearch', function (req, res) {
     {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_addresses where addressstreet like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_addresses where addressstreet like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -103,8 +103,8 @@ router.get('/addresses/:likesearch', function (req, res) {
  *   Bank Account
  */
 router.get('/bankaccount', function (req, res) {
-    let strQuery ='select * from datagenerated_bankaccount where StatusID=1'
-    dbConnection.query('select * from datagenerated_bankaccount where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_bankaccount'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -127,7 +127,7 @@ router.get('/bankaccount/:likesearch', function (req, res) {
     if (rdbmsType =="postgreSQL") {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_bankaccount where bankaccountvalue like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_bankaccount where bankaccountvalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -146,8 +146,8 @@ router.get('/bankaccount/:likesearch', function (req, res) {
  *   CreditCard
  */
 router.get('/creditcard', function (req, res) {
-    let strQuery ='select * from datagenerated_bankaccount where bankaccountvalue'
-    dbConnection.query('select * from datagenerated_creditcard where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_creditcard'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -163,7 +163,7 @@ router.get('/creditcard', function (req, res) {
 router.get('/creditcard/:creditcardname', function (req, res) {
     const likeSearchVal = req.params.creditcardname;
     let strQuery ='select * from datagenerated_creditcard where CreditCardName like '+'%'+likeSearchVal+'%'
-    dbConnection.query('select * from datagenerated_creditcard where CreditCardName=$1', [req.params.creditcardname] ,function (error, results, fields) {
+    dbConnection.query(strQuery ,function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -181,8 +181,8 @@ router.get('/creditcard/:creditcardname', function (req, res) {
  *   Date of Birth
  */
 router.get('/dateofbirth', function (req, res) {
-    let strQuery ='select * from datagenerated_dateofbirth where StatusID=1'
-    dbConnection.query('select * from datagenerated_dateofbirth where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_dateofbirth'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -205,8 +205,8 @@ router.get('/dateofbirth/:ageSearch', function (req, res)
     }
     if (rdbmsType =="postgreSQL") {
         const ageSearchVal = req.params.ageSearch;
-        let strQuery ='select * from datagenerated_creditcard where CreditCardName like '+'%'+ageSearchVal+'%'
-        dbConnection.query('select * from datagenerated_dateofbirth where Age >=$1', [req.params.ageSearch], function (error, results, fields) {
+        let strQuery ='select * from datagenerated_dateofbirth where Age >= '+'%'+ageSearchVal+'%'
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -222,11 +222,30 @@ router.get('/dateofbirth/:ageSearch', function (req, res)
 });
 
 /*
+ *   Devices
+ */
+router.get('/devices', function (req, res) {
+    let strQuery ='select * from datagenerated_devices'
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
+/*
  *   Drivers License
  */
 router.get('/driverslicenses', function (req, res) {
-    let strQuery ='select * from datagenerated_driverslicenses where StatusID=1'
-    dbConnection.query('select * from datagenerated_driverslicenses where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_driverslicenses'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -252,7 +271,8 @@ router.get('/driverslicenses/:statecode', function (req, res)
     {
         const likeSearchVal = req.params.statecode;
         let strQuery ='select * from datagenerated_driverslicenses where StateCode like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_driverslicenses where StateCode like $1', ['%'+req.params.statecode+'%'], function (error, results, fields) {
+        //dbConnection.query('select * from datagenerated_driverslicenses where StateCode like $1', ['%'+req.params.statecode+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -271,8 +291,8 @@ router.get('/driverslicenses/:statecode', function (req, res)
  * EIN - Employer Identification Number
  */
 router.get('/ein', function (req, res) {
-    let strQuery ='select * from datagenerated_ein where StatusID=1'
-    dbConnection.query('select * from datagenerated_ein where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_ein'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -297,7 +317,7 @@ router.get('/ein/:likesearch', function (req, res) {
     {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_ein where einvalue like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_ein where einvalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -316,8 +336,8 @@ router.get('/ein/:likesearch', function (req, res) {
  *   Phone Numbers
  */
 router.get('/phonenumber', function (req, res) {
-    let strQuery ='select * from datagenerated_phonenumber where StatusID=1'
-    dbConnection.query('select * from datagenerated_phonenumber where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_phonenumber'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -342,7 +362,7 @@ router.get('/phonenumber/:likesearch', function (req, res) {
     {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_phonenumber where phonenumbervalue like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_phonenumber where phonenumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -359,11 +379,30 @@ router.get('/phonenumber/:likesearch', function (req, res) {
 });
 
 /*
+ *   Serial Numbers
+ */
+router.get('/serialnumbers', function (req, res) {
+    let strQuery ='select * from datagenerated_serialnumbers'
+    dbConnection.query(strQuery, function (error, results, fields) {
+        if (error) throw error;
+        if (results.rows.length > 0)
+        {
+            res.end(JSON.stringify(results.rows));
+            res.status(200).send();
+        }
+        else
+        {
+            res.status(200).send("No Data Returned from Query: " +strQuery);
+        }
+    });
+});
+
+/*
  *   Social Security
  */
 router.get('/socialsecuritynumbers', function (req, res) {
-    let strQuery ='select * from datagenerated_socialsecuritynumber where StatusID=1'
-    dbConnection.query('select * from datagenerated_socialsecuritynumber where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_socialsecuritynumber'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -396,7 +435,7 @@ router.get('/socialsecuritynumbers/:likesearch', function (req, res) {
     {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_socialsecuritynumber where socialsecuritynumbervalue like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_socialsecuritynumber where socialsecuritynumbervalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -414,8 +453,8 @@ router.get('/socialsecuritynumbers/:likesearch', function (req, res) {
  *   User Identities
  */
 router.get('/useridentities', function (req, res) {
-    let strQuery ='select * from datagenerated_useridentities where StatusID=1'
-    dbConnection.query('select * from datagenerated_useridentities where StatusID=1', function (error, results, fields) {
+    let strQuery ='select * from datagenerated_useridentities'
+    dbConnection.query(strQuery, function (error, results, fields) {
         if (error) throw error;
         if (results.rows.length > 0)
         {
@@ -440,7 +479,7 @@ router.get('/useridentities/:likesearch', function (req, res) {
     {
         const likeSearchVal = req.params.likesearch;
         let strQuery ='select * from datagenerated_useridentities where useridentityvalue like '+'%'+likeSearchVal+'%'
-        dbConnection.query('select * from datagenerated_useridentities where useridentityvalue like $1', ['%'+req.params.likesearch+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {
@@ -467,7 +506,8 @@ router.get('/useridentities/:likesearch/:domain', function (req, res) {
         const likeSearchVal = req.params.likesearch;
         const domainSearchVal = req.params.domain;
         let strQuery ='select * from datagenerated_useridentities where useridentityvalue like '+'%'+likeSearchVal+'%' +' and UserDomain = ' +'%'+domainSearchVal+'%'
-        dbConnection.query('select * from datagenerated_useridentities where useridentityvalue like $1 and UserDomain=$2', ['%'+req.params.likesearch+'%','%'+req.params.domain+'%'], function (error, results, fields) {
+        //dbConnection.query('select * from datagenerated_useridentities where useridentityvalue like $1 and UserDomain=$2', ['%'+req.params.likesearch+'%','%'+req.params.domain+'%'], function (error, results, fields) {
+        dbConnection.query(strQuery, function (error, results, fields) {
             if (error) throw error;
             if (results.rows.length > 0)
             {

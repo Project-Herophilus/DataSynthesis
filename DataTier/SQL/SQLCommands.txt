@@ -1,0 +1,11 @@
+Change Permissions for All Tables
+---------------------------------
+REASSIGN OWNED BY postgres TO test_dsynth
+
+Remove all data and delete any FK data
+--------------------------------------
+TRUNCATE TABLE invoices RESTART IDENTITY CASCADE;
+
+Truncate table and Restart Identity Keys
+----------------------------------------
+TRUNCATE TABLE invoices RESTART IDENTITY;

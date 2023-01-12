@@ -7,8 +7,8 @@
 */
 
 const { Pool, Client } = require('pg');
-//const db = require('mysql');
-// var snowflake = require('snowflake-sdk');
+const db = require('mysql');
+var snowflake = require('snowflake-sdk');
 const path = require('path')
 
 client = new Client();

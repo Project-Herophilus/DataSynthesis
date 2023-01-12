@@ -178,8 +178,13 @@ ACC|${timestamp}|${accident_code}
 DG1|${set_id}|${coding_method}|${dg_code}|${description}|${diagnosis_timestamp}|${diagnosis_type}||||||||||||N
 GT1|${set_id}|${g_number}|${g_name}||${g_address}|${home_phone}||${g_dob}|${g_gender}|${g_type}|${g_relationship}|${ssn}||||${g_emp_name}|${g_emp_address}|${g_emp_phn}||ST|
 IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${ins_comp_contact}|${ins_comp_phn}|||||${plan_effective_date}||${auth_info}||${insurer_name}|${patient_relationship}|${insured_dob}||||||||||||||||||||||||||`.replace(/[\n\r]/g, '\r'),
-                    "ORU": "",
-                    "VXU": ""
+                    "MDM": `MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}`.replace(/[\n\r]/g, '\r'),
+                    "MFN": `MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}`.replace(/[\n\r]/g, '\r'),
+                    "ORM":'MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}'.replace(/[\n\r]/g, '\r'),
+                    "ORU": 'MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}'.replace(/[\n\r]/g, '\r'),
+                    "RDE": 'MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}'.replace(/[\n\r]/g, '\r'),
+                    "SCH": 'MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}'.replace(/[\n\r]/g, '\r'),
+                    "VXU": 'MSH|^~\\&|${sending_application}|${sending_facility}|${receiving_application}|${receiving_facility}|${timestamp}|${security}|${messagetype}|${messagecontrolid}|${environment}|${version}'.replace(/[\n\r]/g, '\r'),
                 }
                 return templates[type]
             }
@@ -188,11 +193,6 @@ IN1|${set_id}|${hp_id}|${insurance_comp_id}|${ins_comp_name}|${ins_comp_addr}|${
         return hl7_messages
         }
 
-    },
-    handleDocType(doctype,version,count){
-        if (doctype == "ADT") {
-            return this.generateHL7_Record("ADT")
-        }
     }
 
 }
