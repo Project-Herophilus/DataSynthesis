@@ -18,7 +18,7 @@ psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_application.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_datatables.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_domain.sql
-psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_dataattributes.sql
+psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/old-platform_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/10-refdata_datagentypes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures.sql
