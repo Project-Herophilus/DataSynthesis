@@ -13,13 +13,17 @@ psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdat
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdata_devicetypes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdata_industries.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdata_industriestobusiness.sql
+-- impl_codesets and impl_codesets_crossmaps are purposefully blank and will 
+-- only be worked on implementation
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_legalentities.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_organization.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_application.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_datatables.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_domain.sql
+-- This is suspect as the data model changed need to revalidate
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/old-platform_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/10-refdata_datagentypes.sql
+--
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures_dtl.sql
