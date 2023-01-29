@@ -1,0 +1,8 @@
+
+Delete all Rows and Reset Identity
+
+- This becomes critical when you have tables with Foreign Keys and you cannot drop the tables
+
+https://blog.sqlauthority.com/2012/08/24/sql-server-delete-truncate-and-reseed-identity/
+https://learn.microsoft.com/en-us/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver16
+

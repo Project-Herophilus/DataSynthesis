@@ -5,13 +5,15 @@ The easiest thing we could have done is make this a complete SaaS based offering
 partners to build out potential services offering down the road. We also want to ensure that organizations can
 have control of the data.
 
-# Data Loading
-All of these scripts have been built around the database technology they support. 
+# Data Loading Types
+There are two options for data loading, Insert Scripts and Jupyter Notebooks. Our intent is to get to
+using Juptyer notebooks only eventually.
 
-| Database Technology               | Version Details                                                | 
-|-----------------------------------|----------------------------------------------------------------|
-| [SQL Server](SQLServer/README.md) | SQL Server 2016 including Azure SQL and above have been tested |
-| [PostgreSQL](Postgres/README.md)  | v10 and above have been tested                                 |
+
+| Database Technology                                                  | Version Details                                                | 
+|----------------------------------------------------------------------|----------------------------------------------------------------|
+| [Jupyter Notebooks](DataTier/DataLoaders/JupyterNotebooks/README.md) | SQL Server 2016 including Azure SQL and above have been tested |
+| [Insert Scripts](DataTier/DataLoaders/InsertScripts/README.md)       | v10 and above have been tested                                 |
 
 
 Happy coding!!!
