@@ -7,13 +7,19 @@
     >
       <template v-slot:item="row">
         <tr>
-          <td>{{ row.item.tablename }}</td>
-          <td>{{ row.item.tableinformation }}</td>
           <td v-if="reference_table">
-            <v-btn color="white" @click="onButtonClick(row.item.tablename)">
-              <a style="white"> View </a>
-            </v-btn>
+            <a
+              style="white"
+              href="#"
+              @click="onButtonClick(row.item.tablename)"
+            >
+              <td>{{ row.item.tablename }}</td>
+            </a>
           </td>
+          <td>{{ row.item.tableinformation }}</td>
+          <td>{{ row.item.statusid }}</td>
+          <td>{{ row.item.createddate }}</td>
+          <td>{{ row.item.domain }}</td>
         </tr>
       </template>
     </v-data-table>
@@ -24,15 +30,17 @@
     >
       <template v-slot:item="row">
         <tr>
-          <td>{{ row.item.datastructurename }}</td>
           <td v-if="reference_table">
-            <v-btn
-              color="white"
-              @click="onButtonClick(row.item.datastructurename)"
-            >
-              <a style="white"> View </a>
-            </v-btn>
+          <a style="white" href="#" @click="onButtonClick(row.item.datastructurename)">
+            <td>{{ row.item.datastructurename }}</td></a>
           </td>
+          <td>{{ row.item.sensitivityflagid }}</td>
+          <td>{{ row.item.createddate }}</td>
+          <td>{{ row.item.statusid }}</td>
+          <td>{{ row.item.createduser }}</td>
+          <td>{{ row.item.platformstructuresguid}}</td>
+          <td>{{ row.item.registeredapp }}</td>
+
         </tr>
       </template>
     </v-data-table>
