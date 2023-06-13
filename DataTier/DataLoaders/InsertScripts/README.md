@@ -34,12 +34,13 @@ use the command /Library/PostgresQL/14/bin/psql
 1. For this example our directory is c:\Development\Project-Herophilus\DataSynthesis\DataTier\DataLoaders
 2. We open up a command prompt and run the following command (based on your system and install location):
 ```
-cd /Users/alscott/Development/Project-Herophilus/DataSynthesis/DataTier/DataLoaders
+cd /Users/alscott/Development/Project-Herophilus/DataSynthesis/DataTier/DataLoaders/InsertScripts
 ```
 3. As of this document we run the psql statements in the Postgres-DataLoader-DataSynthesis-vX.sql, we will have to
    type in the password with every script that is run. Below is an example of how the command should look:
 
 ```
+export PGPASSWORD='password'
 /Library/PostgreSQL/14/bin/psql -h localhost -U postgres -d dev_datasynthesis -p 5432 -f ./Platform/3-platform_datastructurestodataattributes.sql
 
 ```
