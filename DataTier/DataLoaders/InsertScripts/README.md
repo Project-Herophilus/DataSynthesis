@@ -11,17 +11,17 @@ get implemented and tested we will put those into this sub module for this repos
 
 ### Pre-Requisites
 Make sure you have all the tools needed installed and configured for usage. Some of these items have PostgreSQL specific
-references.
+references. You will need to have the Postgres psql command setup for this to work.
 
 1. RDBMS you are using installed and configured and have tested connectivity to it.
 2. A clone or unzipped download of the DataSynthesis repository.
-2. Go to the \DataLoaders directory where you cloned or unzipped the DataSynthesis repository.
-3. Load up a command prompt - You can also use the pqsql command prompt if you wish.
-   To simplify the experience you should change directories to the base directory location where the load scripts is. By doing
-   this all the scripts will be able to find the corresponding directies and scripts as is.
-4. If you DO NOT want to enter the user name and password for EVERY script to run then make sure you have a .pgpass file
-   created. This file can be wherever you want it to be but we are working with it at It is in the format of host:port:database:user:password
-   the base directory of where the DataTier/DataLoaders are located.
+2. Go to the \DataLoaders base directory where you cloned or unzipped the DataSynthesis repository.
+3. Load up a command prompt
+4. You can run the scripts in the Postgres-DataLoader-DataSynthesis-v<X>.sql file If you DO NOT want to enter the 
+   username and password for EVERY script to run then make sure you have a .pgpass file OR
+   For Linux environments use: export PGPASSWORD='password' 
+   For Windows environments use set PGPASSWORD='password'
+
 ```
 localhost:5432:datasynthesis:postgres:Developer123
 ```
