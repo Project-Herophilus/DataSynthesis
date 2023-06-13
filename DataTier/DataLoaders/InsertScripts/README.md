@@ -22,6 +22,7 @@ references. You will need to have the Postgres psql command setup for this to wo
    For Linux environments use: export PGPASSWORD='password' 
    For Windows environments use set PGPASSWORD='password'
 
+
 ```
 localhost:5432:datasynthesis:postgres:Developer123
 ```
