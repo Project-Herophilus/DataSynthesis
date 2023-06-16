@@ -18,13 +18,15 @@ psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./ReferenceData/refdat
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_legalentities.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_organization.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_application.sql
+-- Data Models
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_datatables.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_domain.sql
+-- Platform
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_dataattributes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures_dtl.sql
--- DataExisting and DataGenerated
+-- DataExisting
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_ababanking.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_areacode.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_companies.sql
@@ -36,6 +38,7 @@ psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexi
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_profession.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_upccodes.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_zipcodeus.sql
+-- DataGenerated
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_accountnumber.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_addresses.sql
 psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_bankaccount.sql

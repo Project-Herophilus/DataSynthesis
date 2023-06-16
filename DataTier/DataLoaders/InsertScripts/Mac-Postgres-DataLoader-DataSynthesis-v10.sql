@@ -18,13 +18,15 @@
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_legalentities.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_organization.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Implementation/impl_application.sql
+-- Data Model
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_datatables.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataModel/datamodel_domain.sql
+-- Platform
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_dataattributes.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_dataattributes.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./Platform/platform_config_datastructures_dtl.sql
--- DataExisting and DataGenerated
+-- DataExisting
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_ababanking.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_areacode.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_companies.sql
@@ -36,6 +38,7 @@
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_profession.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_upccodes.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataExisting/dataexisting_zipcodeus.sql
+-- DataGenerated
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_accountnumbers.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_addresses.sql
 /Library/PostgreSQL/15/bin/psql -h localhost -U postgres -d datasynthesis -p 5432 -f ./DataGenerated/datagenerated_bankaccount.sql
