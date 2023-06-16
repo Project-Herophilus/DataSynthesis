@@ -1,47 +1,29 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "refdata_operationtype")
 public class RefDataOperationTypeEntity {
-    private String operationTypeId;
-    private String operationTypeName;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-
     @Id
     @GeneratedValue
-    @Column(name = "OperationTypeID", nullable = false, length = 7)
-    public String getOperationTypeId() {
-        return operationTypeId;
-    }
-
-    public void setOperationTypeId(String operationTypeId) {
-        this.operationTypeId = operationTypeId;
-    }
-
+    @Column(name = "operationtypeid", nullable = false, length = 7)
+    private String operationTypeId;
     @Basic
-    @Column(name = "OperationTypeName", nullable = true, length = 60)
-    public String getOperationTypeName() {
-        return operationTypeName;
-    }
-
-    public void setOperationTypeName(String operationTypeName) {
-        this.operationTypeName = operationTypeName;
-    }
-
+    @Column(name = "operationtypename", nullable = true, length = 60)
+    private String operationTypeName;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
 
     @Override
     public boolean equals(Object o) {
@@ -61,17 +43,5 @@ public class RefDataOperationTypeEntity {
 		return java.util.Objects.hash(operationTypeId, operationTypeName, createdDate, status);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
 
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-  /*  public static List<RefDataOperationTypeEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

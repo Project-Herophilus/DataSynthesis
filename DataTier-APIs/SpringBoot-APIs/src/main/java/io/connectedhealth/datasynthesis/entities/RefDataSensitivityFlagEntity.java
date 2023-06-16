@@ -1,47 +1,30 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "refdata_sensitivityflag")
 public class RefDataSensitivityFlagEntity  {
-    private short sensitiveFlagId;
-    private String sensitiveFlagDesc;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "SensitiveFlagID", nullable = false)
-    public short getSensitiveFlagId() {
-        return sensitiveFlagId;
-    }
-
-    public void setSensitiveFlagId(short sensitiveFlagId) {
-        this.sensitiveFlagId = sensitiveFlagId;
-    }
-
+    @Column(name = "sensitiveflagid", nullable = false)
+    private short sensitiveFlagId;
     @Basic
-    @Column(name = "SensitiveFlagDesc", nullable = true, length = 30)
-    public String getSensitiveFlagDesc() {
-        return sensitiveFlagDesc;
-    }
-
-    public void setSensitiveFlagDesc(String sensitiveFlagDesc) {
-        this.sensitiveFlagDesc = sensitiveFlagDesc;
-    }
-
+    @Column(name = "sensitiveflagdesc", nullable = true, length = 30)
+    private String sensitiveFlagDesc;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,17 +44,4 @@ public class RefDataSensitivityFlagEntity  {
 		return java.util.Objects.hash(sensitiveFlagId, sensitiveFlagDesc, createdDate, status);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-   /* public static List<RefDataSensitivityFlagEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

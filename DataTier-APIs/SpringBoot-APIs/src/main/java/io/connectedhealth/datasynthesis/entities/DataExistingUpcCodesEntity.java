@@ -1,59 +1,35 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "dataexisting_upccodes")
 public class DataExistingUpcCodesEntity {
-    private long upcCodeId;
-    private String upcCodeName;
-    private String upcProductName;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UPCCodeID", nullable = false)
-    public long getUpcCodeId() {
-        return upcCodeId;
-    }
-
-    public void setUpcCodeId(long upcCodeId) {
-        this.upcCodeId = upcCodeId;
-    }
-
+    @Column(name = "upccodeid", nullable = false)
+    private long upcCodeId;
     @Basic
-    @Column(name = "UPCCodeName", nullable = true, length = 15)
-    public String getUpcCodeName() {
-        return upcCodeName;
-    }
-
-    public void setUpcCodeName(String upcCodeName) {
-        this.upcCodeName = upcCodeName;
-    }
-
+    @Column(name = "upccodename", nullable = true, length = 15)
+    private String upcCodeName;
     @Basic
-    @Column(name = "UPCProductName", nullable = true, length = 150)
-    public String getUpcProductName() {
-        return upcProductName;
-    }
-
-    public void setUpcProductName(String upcProductName) {
-        this.upcProductName = upcProductName;
-    }
-
+    @Column(name = "upcproductname", nullable = true, length = 150)
+    private String upcProductName;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
 
     @Override
     public boolean equals(Object o) {
@@ -75,25 +51,5 @@ public class DataExistingUpcCodesEntity {
 					registeredApp);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
 
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-    */
 }

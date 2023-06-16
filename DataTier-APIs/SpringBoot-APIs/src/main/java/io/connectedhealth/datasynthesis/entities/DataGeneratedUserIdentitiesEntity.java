@@ -1,71 +1,41 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "datagenerated_useridentities")
 public class DataGeneratedUserIdentitiesEntity {
-    private long userIdentitiesId;
-    private String userIdentityValue;
-    private String userDomain;
-    private String additionalAttributes;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-    private RefDataDataGenTypesEntity dataGenType;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserIdentitiesID", nullable = false)
-    public long getUserIdentitiesId() {
-        return userIdentitiesId;
-    }
-
-    public void setUserIdentitiesId(long userIdentitiesId) {
-        this.userIdentitiesId = userIdentitiesId;
-    }
-
+    @Column(name = "useridentitiesid", nullable = false)
+    private long userIdentitiesId;
     @Basic
-    @Column(name = "UserIdentityValue", nullable = true, length = 20)
-    public String getUserIdentityValue() {
-        return userIdentityValue;
-    }
-
-    public void setUserIdentityValue(String userIdentityValue) {
-        this.userIdentityValue = userIdentityValue;
-    }
-
+    @Column(name = "useridentityvalue", nullable = true, length = 20)
+    private String userIdentityValue;
     @Basic
-    @Column(name = "UserDomain", nullable = true, length = 20)
-    public String getUserDomain() {
-        return userDomain;
-    }
-
-    public void setUserDomain(String userDomain) {
-        this.userDomain = userDomain;
-    }
-
+    @Column(name = "userdomain", nullable = true, length = 20)
+    private String userDomain;
     @Basic
-    @Column(name = "AdditionalAttributes", nullable = true, length = 40)
-    public String getAdditionalAttributes() {
-        return additionalAttributes;
-    }
-
-    public void setAdditionalAttributes(String additionalAttributes) {
-        this.additionalAttributes = additionalAttributes;
-    }
-
+    @Column(name = "additionalattributes", nullable = true, length = 40)
+    private String additionalAttributes;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
+    @ManyToOne
+    @JoinColumn(name = "datagentypeid", referencedColumnName = "DataGenTypeID")
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Override
     public boolean equals(Object o) {
@@ -87,41 +57,5 @@ public class DataGeneratedUserIdentitiesEntity {
 		return java.util.Objects.hash(userIdentitiesId, userIdentityValue, userDomain, additionalAttributes, createdDate,
 					status, registeredApp, dataGenType);
 	}
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-    public static List<DataGeneratedUserIdentitiesEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }
-    */
-    @ManyToOne
-    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
-    public RefDataDataGenTypesEntity getDataGenType() {
-        return dataGenType;
-    }
-
-    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
-        this.dataGenType = dataGenType;
-    }
-
 
 }

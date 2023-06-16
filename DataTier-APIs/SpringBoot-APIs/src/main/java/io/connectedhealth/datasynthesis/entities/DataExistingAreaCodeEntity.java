@@ -1,61 +1,40 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
-
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 
 @Entity
+@NoArgsConstructor
+@Data
 @Table(name = "dataexisting_areacode")
 public class DataExistingAreaCodeEntity {
-    private long areaCodeId;
-    private String areaCodeValue;
-    private Timestamp createdDate;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-    private RefDataTimeZonesEntity timeZone;
-    private RefDataUsStatesEntity state;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AreaCodeID", nullable = false)
-    public long getAreaCodeId() {
-        return areaCodeId;
-    }
-
-    public void setAreaCodeId(long areaCodeId) {
-        this.areaCodeId = areaCodeId;
-    }
-
+    @Column(name = "areacodeid", nullable = false)
+    private long areaCodeId;
     @Basic
-    @Column(name = "AreaCodeValue", nullable = false, length = 3)
-    public String getAreaCodeValue() {
-        return areaCodeValue;
-    }
-
-    public void setAreaCodeValue(String areaCodeValue) {
-        this.areaCodeValue = areaCodeValue;
-    }
-
+    @Column(name = "areacodevalue", nullable = false, length = 3)
+    private String areaCodeValue;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "timezone", referencedColumnName = "TimeZoneValue")
+    private RefDataTimeZonesEntity timeZone;
+    @ManyToOne
+    @JoinColumn(name = "statecode", referencedColumnName = "StateID")
+    private RefDataUsStatesEntity state;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
 
     @Override
     public boolean equals(Object o) {
@@ -78,46 +57,5 @@ public class DataExistingAreaCodeEntity {
 					registeredApp, timeZone, state);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "TimeZone", referencedColumnName = "TimeZoneValue")
-    public RefDataTimeZonesEntity getTimeZone() {
-        return timeZone;
-    }
-
-    public void setTimeZone(RefDataTimeZonesEntity timeZone) {
-        this.timeZone = timeZone;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StateCode", referencedColumnName = "StateID")
-    public RefDataUsStatesEntity getState() {
-        return state;
-    }
-
-    public void setState(RefDataUsStatesEntity state) {
-        this.state = state;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-    */
 
 }

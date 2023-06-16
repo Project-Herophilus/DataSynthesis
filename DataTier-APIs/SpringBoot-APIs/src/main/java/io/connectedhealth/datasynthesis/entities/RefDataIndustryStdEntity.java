@@ -1,47 +1,29 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "refdata_industrystd")
 public class RefDataIndustryStdEntity {
-    private String industryStd;
-    private String industryStdDesc;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IndustryStd", nullable = false, length = 6)
-    public String getIndustryStd() {
-        return industryStd;
-    }
-
-    public void setIndustryStd(String industryStd) {
-        this.industryStd = industryStd;
-    }
-
+    @Column(name = "industrystd", nullable = false, length = 6)
+    private String industryStd;
     @Basic
-    @Column(name = "IndustryStdDesc", nullable = true, length = 30)
-    public String getIndustryStdDesc() {
-        return industryStdDesc;
-    }
-
-    public void setIndustryStdDesc(String industryStdDesc) {
-        this.industryStdDesc = industryStdDesc;
-    }
-
+    @Column(name = "industrystddesc", nullable = true, length = 30)
+    private String industryStdDesc;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
 
     @Override
     public boolean equals(Object o) {
@@ -61,17 +43,4 @@ public class RefDataIndustryStdEntity {
 		return java.util.Objects.hash(industryStd, industryStdDesc, createdDate, status);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-   /* public static List<RefDataIndustryStdEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

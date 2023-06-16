@@ -1,82 +1,42 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "datagenerated_dateofbirth")
 public class DataGeneratedDateOfBirthEntity {
-    private long dateofBirthsId;
-    private String dateOfBirth;
-    private Date dateOfBirthDate;
-    private Integer age;
-    private Timestamp createdDate;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DateofBirthsID", nullable = false)
-    public long getDateofBirthsId() {
-        return dateofBirthsId;
-    }
-
-    public void setDateofBirthsId(long dateofBirthsId) {
-        this.dateofBirthsId = dateofBirthsId;
-    }
-
+    @Column(name = "dateofbirthsid", nullable = false)
+    private long dateofBirthsId;
     @Basic
-    @Column(name = "DateOfBirth", nullable = true, length = 12)
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
+    @Column(name = "dateofbirth", nullable = true, length = 12)
+    private String dateOfBirth;
     @Basic
-    @Column(name = "DateOfBirthDate", nullable = true)
-    public Date getDateOfBirthDate() {
-        return dateOfBirthDate;
-    }
-
-    public void setDateOfBirthDate(Date dateOfBirthDate) {
-        this.dateOfBirthDate = dateOfBirthDate;
-    }
-
+    @Column(name = "dateofbirthdate", nullable = true)
+    private Date dateOfBirthDate;
     @Basic
-    @Column(name = "Age", nullable = true)
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
+    @Column(name = "age", nullable = true)
+    private Integer age;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
 
     @Override
     public boolean equals(Object o) {
@@ -99,29 +59,4 @@ public class DataGeneratedDateOfBirthEntity {
 					createdUser, status, registeredApp);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-    public static List<DataGeneratedDateOfBirthEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }
-     */
 }

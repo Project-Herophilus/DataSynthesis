@@ -3,7 +3,6 @@ package io.connectedhealth.datasynthesis.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.sql.Timestamp;
 
 @Entity
@@ -42,22 +41,8 @@ public class DataExistingAbaBankingEntity  {
    @ManyToOne
     @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
     private RefDataStatusEntity status;
-  /*
     @ManyToOne
     @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
     private RefDataApplicationEntity registeredApp;
-    */
-
-    /*public DataExistingAbaBankingEntity(long abaBankingId, String routingNumber, String telegraphicName, String customerName,
-            String city, String state, String zipCode) {
-        this.abaBankingId = abaBankingId;
-        this.routingNumber = routingNumber;
-        this.telegraphicName = telegraphicName;
-        this.customerName = customerName;
-        this.city = city;
-        this.stateCode = state;
-        this.zipCode = zipCode;
-    }
-*/
 
 }

@@ -26,7 +26,7 @@ public class RefDataStatusEntity {
     @Column(name = "createduser", nullable = true, length = 20)
     private String createdUser;
 
-    public RefDataStatusEntity(short statusId, String statusDescription, Timestamp createdDate, String createdUser) {
+ /*   public RefDataStatusEntity(short statusId, String statusDescription, Timestamp createdDate, String createdUser) {
         this.statusId = statusId;
         this.statusDescription = statusDescription;
         this.createdDate = createdDate;
@@ -50,5 +50,5 @@ public class RefDataStatusEntity {
     public int hashCode() {
 		return java.util.Objects.hash(statusId, statusDescription, createdDate, createdUser);
 	}
-
+*/
 }

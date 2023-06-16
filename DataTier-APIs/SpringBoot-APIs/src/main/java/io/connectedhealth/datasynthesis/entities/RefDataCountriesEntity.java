@@ -1,58 +1,32 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "refdata_countries")
 public class RefDataCountriesEntity {
-    private short countryId;
-    private String idd;
-    private String countryName;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CountryID", nullable = false)
-    public short getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(short countryId) {
-        this.countryId = countryId;
-    }
-
+    @Column(name = "countryid", nullable = false)
+    private short countryId;
     @Basic
-    @Column(name = "IDD", nullable = true, length = 5)
-    public String getIdd() {
-        return idd;
-    }
-
-    public void setIdd(String idd) {
-        this.idd = idd;
-    }
-
+    @Column(name = "idd", nullable = true, length = 5)
+    private String idd;
     @Basic
-    @Column(name = "CountryName", nullable = true, length = 59)
-    public String getCountryName() {
-        return countryName;
-    }
-
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
+    @Column(name = "countryname", nullable = true, length = 59)
+    private String countryName;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
 
     @Override
     public boolean equals(Object o) {
@@ -72,17 +46,5 @@ public class RefDataCountriesEntity {
 		return java.util.Objects.hash(countryId, idd, countryName, createdDate, status);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
 
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*public static List<RefDataCountriesEntity> findByStatusId(Short statusId) {
-        //return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

@@ -7,67 +7,37 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "platform_config_datastructures_dtl")
 public class PlatformDataStructuresToDataAttributesEntity {
-    private short platformDataStructuresToDataAttributesId;
-    private String compositeDataStructureName;
-    private Timestamp createdDate;
-    private String createdUser;
-    private String platformDataStructuresToDataAttributesGuid;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-    private RefDataSensitivityFlagEntity sensitivityFlag;
-    private PlatformDataAttributesEntity platformDataAttributes;
-    private PlatformDataStructuresEntity platformDataStructures;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PlatformDataStructuresToDataAttributesID", nullable = false)
-    public short getPlatformDataStructuresToDataAttributesId() {
-        return platformDataStructuresToDataAttributesId;
-    }
-
-    public void setPlatformDataStructuresToDataAttributesId(short platformDataStructuresToDataAttributesId) {
-        this.platformDataStructuresToDataAttributesId = platformDataStructuresToDataAttributesId;
-    }
-
+    @Column(name = "platformdatastructurestodataattributesid", nullable = false)
+    private short platformDataStructuresToDataAttributesId;
     @Basic
-    @Column(name = "CompositeDataStructureName", nullable = true, length = 50)
-    public String getCompositeDataStructureName() {
-        return compositeDataStructureName;
-    }
-
-    public void setCompositeDataStructureName(String compositeDataStructureName) {
-        this.compositeDataStructureName = compositeDataStructureName;
-    }
-
+    @Column(name = "compositeDatastructurename", nullable = true, length = 50)
+    private String compositeDataStructureName;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
-
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
     @Basic
     @Column(name = "PlatformDataStructuresToDataAttributesGUID", nullable = true, length = 38)
-    public String getPlatformDataStructuresToDataAttributesGuid() {
-        return platformDataStructuresToDataAttributesGuid;
-    }
-
-    public void setPlatformDataStructuresToDataAttributesGuid(String platformDataStructuresToDataAttributesGuid) {
-        this.platformDataStructuresToDataAttributesGuid = platformDataStructuresToDataAttributesGuid;
-    }
+    private String platformDataStructuresToDataAttributesGuid;
+    @ManyToOne
+    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
+    @ManyToOne
+    @JoinColumn(name = "SensitivityFlagID", referencedColumnName = "SensitiveFlagID")
+    private RefDataSensitivityFlagEntity sensitivityFlag;
+    @ManyToOne
+    @JoinColumn(name = "PlatformDataAttributesID", referencedColumnName = "PlatformDataAttributesID")
+    private PlatformDataAttributesEntity platformDataAttributes;
+    @ManyToOne
+    @JoinColumn(name = "PlatformDataStructuresID", referencedColumnName = "PlatformDataStructuresID")
+    private PlatformConfigDataStructuresEntity platformDataStructures;
 
     @Override
     public boolean equals(Object o) {
@@ -92,58 +62,6 @@ public class PlatformDataStructuresToDataAttributesEntity {
 					platformDataStructures);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "PlatformDataStructuresID", referencedColumnName = "PlatformDataStructuresID")
-    public PlatformDataStructuresEntity getPlatformDataStructures() {
-        return platformDataStructures;
-    }
 
-    public void setPlatformDataStructures(PlatformDataStructuresEntity platformDataStructures) {
-        this.platformDataStructures = platformDataStructures;
-    }
 
-    @ManyToOne
-    @JoinColumn(name = "PlatformDataAttributesID", referencedColumnName = "PlatformDataAttributesID")
-    public PlatformDataAttributesEntity getPlatformDataAttributes() {
-        return platformDataAttributes;
-    }
-
-    public void setPlatformDataAttributes(PlatformDataAttributesEntity platformDataAttributes) {
-        this.platformDataAttributes = platformDataAttributes;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "SensitivityFlagID", referencedColumnName = "SensitiveFlagID")
-    public RefDataSensitivityFlagEntity getSensitivityFlag() {
-        return sensitivityFlag;
-    }
-
-    public void setSensitivityFlag(RefDataSensitivityFlagEntity sensitivityFlag) {
-        this.sensitivityFlag = sensitivityFlag;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-    public static List<PlatformDataStructuresToDataAttributesEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

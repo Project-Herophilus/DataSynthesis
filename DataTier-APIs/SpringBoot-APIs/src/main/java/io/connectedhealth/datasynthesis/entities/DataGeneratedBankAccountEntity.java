@@ -1,60 +1,38 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "datagenerated_bankaccount")
 public class DataGeneratedBankAccountEntity {
-    private long bankAccountsId;
-    private String bankAccountValue;
-    private Timestamp createdDate;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-    private RefDataDataGenTypesEntity dataGenType;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BankAccountsID", nullable = false)
-    public long getBankAccountsId() {
-        return bankAccountsId;
-    }
-
-    public void setBankAccountsId(long bankAccountsId) {
-        this.bankAccountsId = bankAccountsId;
-    }
-
+    @Column(name = "bankaccountsid", nullable = false)
+    private long bankAccountsId;
     @Basic
-    @Column(name = "BankAccountValue", nullable = true, length = 17)
-    public String getBankAccountValue() {
-        return bankAccountValue;
-    }
-
-    public void setBankAccountValue(String bankAccountValue) {
-        this.bankAccountValue = bankAccountValue;
-    }
-
+    @Column(name = "bankaccountvalue", nullable = true, length = 17)
+    private String bankAccountValue;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
+    @ManyToOne
+    @JoinColumn(name = "datagentypeid", referencedColumnName = "DataGenTypeID")
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Override
     public boolean equals(Object o) {
@@ -76,46 +54,5 @@ public class DataGeneratedBankAccountEntity {
 					registeredApp, dataGenType);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
 
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-    @ManyToOne
-    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
-    public RefDataDataGenTypesEntity getDataGenType() {
-        return dataGenType;
-    }
-
-    // Added
-    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
-        this.dataGenType = dataGenType;
-    }
-
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-
-
-    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
-        this.dataGenType = dataGenType;
-    }
-
-    public static List<DataGeneratedBankAccountEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }
-     */
 }

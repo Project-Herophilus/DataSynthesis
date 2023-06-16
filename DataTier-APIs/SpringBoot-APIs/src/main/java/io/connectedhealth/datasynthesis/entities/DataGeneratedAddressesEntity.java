@@ -1,71 +1,41 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "datagenerated_addresses")
 public class DataGeneratedAddressesEntity {
-    private long addressId;
-    private String addressStreet;
-    private String addressStreet2;
-    private Timestamp createdDate;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-    private RefDataDataGenTypesEntity dataGenType;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AddressID", nullable = false)
-    public long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
-    }
-
+    @Column(name = "addressid", nullable = false)
+    private long addressId;
     @Basic
-    @Column(name = "AddressStreet", nullable = true, length = 99)
-    public String getAddressStreet() {
-        return addressStreet;
-    }
-
-    public void setAddressStreet(String addressStreet) {
-        this.addressStreet = addressStreet;
-    }
-
+    @Column(name = "addressstreet", nullable = true, length = 99)
+    private String addressStreet;
     @Basic
-    @Column(name = "AddressStreet2", nullable = true, length = 59)
-    public String getAddressStreet2() {
-        return addressStreet2;
-    }
-
-    public void setAddressStreet2(String addressStreet2) {
-        this.addressStreet2 = addressStreet2;
-    }
-
+    @Column(name = "addressstreet2", nullable = true, length = 59)
+    private String addressStreet2;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
+    @ManyToOne
+    @JoinColumn(name = "datagentypeid", referencedColumnName = "DataGenTypeID")
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Override
     public boolean equals(Object o) {
@@ -88,40 +58,4 @@ public class DataGeneratedAddressesEntity {
 					status, registeredApp, dataGenType);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
-    public RefDataDataGenTypesEntity getDataGenType() {
-        return dataGenType;
-    }
-
-    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
-        this.dataGenType = dataGenType;
-    }
-
-    public static List<DataGeneratedAddressesEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }
-
-     */
 }

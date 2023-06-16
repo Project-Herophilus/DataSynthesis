@@ -1,71 +1,41 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "refdata_datagentypes")
 public class RefDataDataGenTypesEntity {
-    private short dataGenTypeId;
-    private String dataGenTypeDescription;
-    private String definition;
-    private String createdUser;
-    private Timestamp createdDate;
-    private RefDataStatusEntity status;
-    private PlatformDataAttributesEntity dataAttribute;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DataGenTypeID", nullable = false)
-    public short getDataGenTypeId() {
-        return dataGenTypeId;
-    }
-
-    public void setDataGenTypeId(short dataGenTypeId) {
-        this.dataGenTypeId = dataGenTypeId;
-    }
-
+    @Column(name = "datagentypeid", nullable = false)
+    private short dataGenTypeId;
     @Basic
-    @Column(name = "Definition", nullable = true, length = 256)
-    public String getDefinition() {
-        return definition;
-    }
-
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
+    @Column(name = "datagentypedescription", nullable = true, length = 65)
+    private String dataGenTypeDescription;
     @Basic
-    @Column(name = "DataGenTypeDescription", nullable = true, length = 65)
-    public String getDataGenTypeDescription() {
-        return dataGenTypeDescription;
-    }
-
-    public void setDataGenTypeDescription(String description) {
-        this.dataGenTypeDescription = description;
-    }
-
+    @Column(name = "definition", nullable = true, length = 256)
+    private String definition;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
-
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "dataattributeid", referencedColumnName = "PlatformDataAttributesID")
+    private PlatformDataAttributesEntity dataAttribute;
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
 
+/*
     @Override
     public boolean equals(Object o) {
 		if (this == o)
@@ -85,28 +55,7 @@ public class RefDataDataGenTypesEntity {
 		return java.util.Objects.hash(dataGenTypeId, dataGenTypeDescription, definition, createdUser, createdDate,
 					status, dataAttribute);
 	}
+*/
 
-    @ManyToOne
-    @JoinColumn(name = "DataAttributeID", referencedColumnName = "PlatformDataAttributesId")
-    public PlatformDataAttributesEntity getDataAttribute() {
-        return dataAttribute;
-    }
 
-    public void setDataAttribute(PlatformDataAttributesEntity dataAttribute) {
-        this.dataAttribute = dataAttribute;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*public static List<RefDataDataGenTypesEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

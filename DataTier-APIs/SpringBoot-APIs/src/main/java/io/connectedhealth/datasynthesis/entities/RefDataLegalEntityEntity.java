@@ -1,114 +1,50 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "refdata_legalentity")
+@Data
+@NoArgsConstructor
+@Table(name = "impl_legalentities")
 public class RefDataLegalEntityEntity {
-    private String legalEntityGuid;
-    private String locationName;
-    private String address;
-    private String city;
-    private RefDataUsStatesEntity state;
-    private String zipCode;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private Timestamp createdDate;
-    private String locationUrl;
-    private String locationPhone;
-
     @Id
     @GeneratedValue
-    @Column(name = "LegalEntityGUID", nullable = false, length = 38)
-    public String getLegalEntityGuid() {
-        return legalEntityGuid;
-    }
-
-    public void setLegalEntityGuid(String legalEntityGuid) {
-        this.legalEntityGuid = legalEntityGuid;
-    }
-
+    @Column(name = "legalentityguid", nullable = false, length = 38)
+    private String legalEntityGuid;
     @Basic
-    @Column(name = "LocationName", nullable = true, length = 50)
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
-    }
-
+    @Column(name = "locationname", nullable = true, length = 50)
+    private String locationName;
     @Basic
-    @Column(name = "Address", nullable = true, length = 75)
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    @Column(name = "address", nullable = true, length = 75)
+    private String address;
     @Basic
-    @Column(name = "City", nullable = true, length = 60)
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+    @Column(name = "city", nullable = true, length = 60)
+    private String city;
+    @ManyToOne
+    @JoinColumn(name = "stateid", referencedColumnName = "StateID")
+    private RefDataUsStatesEntity state;
     @Basic
-    @Column(name = "ZipCode", nullable = true, length = 12)
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
+    @Column(name = "zipcode", nullable = true, length = 12)
+    private String zipCode;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
-
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
     @Basic
-    @Column(name = "CreatedDate", nullable = false)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = false)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "LocationURL", nullable = true, length = 99)
-    public String getLocationUrl() {
-        return locationUrl;
-    }
-
-    public void setLocationUrl(String locationUrl) {
-        this.locationUrl = locationUrl;
-    }
-
+    @Column(name = "locationurl", nullable = true, length = 99)
+    private String locationUrl;
     @Basic
-    @Column(name = "LocationPhone", nullable = true, length = 12)
-    public String getLocationPhone() {
-        return locationPhone;
-    }
-
-    public void setLocationPhone(String locationPhone) {
-        this.locationPhone = locationPhone;
-    }
+    @Column(name = "locationphone", nullable = true, length = 12)
+    private String locationPhone;
 
     @Override
     public boolean equals(Object o) {
@@ -133,27 +69,4 @@ public class RefDataLegalEntityEntity {
 					locationUrl, locationPhone);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StateID", referencedColumnName = "StateID")
-    public RefDataUsStatesEntity getState() {
-        return state;
-    }
-
-    public void setState(RefDataUsStatesEntity state) {
-        this.state = state;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-   /* public static List<RefDataLegalEntityEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

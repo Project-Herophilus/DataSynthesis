@@ -1,125 +1,53 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "dataexisting_zipcodeus")
 public class DataExistingZipCodeUsEntity {
-    private long zipCodeId;
-    private String zipCode;
-    private String zipCodeType;
-    private String city;
-    private String state;
-    private String lattitude;
-    private String longitude;
-    private String location;
-    private Timestamp createdDate;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ZipCodeID", nullable = false)
-    public long getZipCodeId() {
-        return zipCodeId;
-    }
-
-    public void setZipCodeId(long zipCodeId) {
-        this.zipCodeId = zipCodeId;
-    }
-
+    @Column(name = "zipcodeid", nullable = false)
+    private long zipCodeId;
     @Basic
-    @Column(name = "ZipCode", nullable = false, length = 5)
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
+    @Column(name = "zipcode", nullable = false, length = 5)
+    private String zipCode;
     @Basic
-    @Column(name = "ZipCodeType", nullable = true, length = 15)
-    public String getZipCodeType() {
-        return zipCodeType;
-    }
-
-    public void setZipCodeType(String zipCodeType) {
-        this.zipCodeType = zipCodeType;
-    }
-
+    @Column(name = "zipcodetype", nullable = true, length = 15)
+    private String zipCodeType;
     @Basic
-    @Column(name = "City", nullable = true, length = 75)
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+    @Column(name = "city", nullable = true, length = 75)
+    private String city;
     @Basic
-    @Column(name = "StateCode", nullable = true, length = 2)
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
+    @Column(name = "statecode", nullable = true, length = 2)
+    private String state;
     @Basic
-    @Column(name = "Lattitude", nullable = true, length = 10)
-    public String getLattitude() {
-        return lattitude;
-    }
-
-    public void setLattitude(String lattitude) {
-        this.lattitude = lattitude;
-    }
-
+    @Column(name = "lattitude", nullable = true, length = 10)
+    private String lattitude;
     @Basic
-    @Column(name = "Longitude", nullable = true, length = 10)
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
+    @Column(name = "longitude", nullable = true, length = 10)
+    private String longitude;
     @Basic
-    @Column(name = "Lctn", nullable = true, length = 99)
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
+    @Column(name = "lctn", nullable = true, length = 99)
+    private String location;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
 
     @Override
     public boolean equals(Object o) {
@@ -145,29 +73,6 @@ public class DataExistingZipCodeUsEntity {
 					createdUser, status, registeredApp);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
 
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
 
-    /*
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-    public static List<DataExistingZipCodeUsEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }
-    */
 }

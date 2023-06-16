@@ -1,117 +1,55 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "refdata_organization")
+@Data
+@NoArgsConstructor
+@Table(name = "impl_organization")
 public class RefDataOrganizationEntity {
-    private String organizationGuid;
-    private String organizationInternalCode;
-    private String organizationInternalId;
-    private String organizationName;
-    private String address;
-    private String city;
-    private RefDataUsStatesEntity state;
-    private String zipCode;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private Timestamp createdDate;
-    private RefDataLegalEntityEntity legalEntityGuid;
-
     @Id
     @GeneratedValue
-    @Column(name = "OrganizationGUID", nullable = false, length = 38)
-    public String getOrganizationGuid() {
-        return organizationGuid;
-    }
-
-    public void setOrganizationGuid(String organizationGuid) {
-        this.organizationGuid = organizationGuid;
-    }
-
+    @Column(name = "organizationguid", nullable = false, length = 38)
+    private String organizationGuid;
     @Basic
-    @Column(name = "OrganizationInternalCode", nullable = true, length = 10)
-    public String getOrganizationInternalCode() {
-        return organizationInternalCode;
-    }
-
-    public void setOrganizationInternalCode(String organizationInternalCode) {
-        this.organizationInternalCode = organizationInternalCode;
-    }
-
+    @Column(name = "organizationinternalcode", nullable = true, length = 10)
+    private String organizationInternalCode;
     @Basic
-    @Column(name = "OrganizationInternalID", nullable = true, length = 10)
-    public String getOrganizationInternalId() {
-        return organizationInternalId;
-    }
-
-    public void setOrganizationInternalId(String organizationInternalId) {
-        this.organizationInternalId = organizationInternalId;
-    }
-
+    @Column(name = "organizationinternalid", nullable = true, length = 10)
+    private String organizationInternalId;
     @Basic
-    @Column(name = "OrganizationName", nullable = true, length = 50)
-    public String getOrganizationName() {
-        return organizationName;
-    }
-
-    public void setOrganizationName(String organizationName) {
-        this.organizationName = organizationName;
-    }
-
+    @Column(name = "organizationname", nullable = true, length = 50)
+    private String organizationName;
     @Basic
-    @Column(name = "Address", nullable = true, length = 75)
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    @Column(name = "address", nullable = true, length = 75)
+    private String address;
     @Basic
-    @Column(name = "City", nullable = true, length = 60)
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
+    @Column(name = "city", nullable = true, length = 60)
+    private String city;
+    @ManyToOne
+    @JoinColumn(name = "stateid", referencedColumnName = "StateID")
+    private RefDataUsStatesEntity state;
     @Basic
-    @Column(name = "ZipCode", nullable = true, length = 12)
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
+    @Column(name = "zipcode", nullable = true, length = 12)
+    private String zipCode;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
-
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
     @Basic
-    @Column(name = "CreatedDate", nullable = false)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
+    @Column(name = "createddate", nullable = false)
+    private Timestamp createdDate;
+    @ManyToOne
+    @JoinColumn(name = "legalentityguid", referencedColumnName = "LegalEntityGUID")
+    private RefDataLegalEntityEntity legalEntityGuid;
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    @Override
+  @Override
     public boolean equals(Object o) {
 		if (this == o)
 			return true;
@@ -135,37 +73,5 @@ public class RefDataOrganizationEntity {
 					status, createdDate, legalEntityGuid);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "LegalEntityGUID", referencedColumnName = "LegalEntityGUID")
-    public RefDataLegalEntityEntity getLegalEntityGuid() {
-        return legalEntityGuid;
-    }
 
-    public void setLegalEntityGuid(RefDataLegalEntityEntity legalEntityGuid) {
-        this.legalEntityGuid = legalEntityGuid;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StateID", referencedColumnName = "StateID")
-    public RefDataUsStatesEntity getState() {
-        return state;
-    }
-
-    public void setState(RefDataUsStatesEntity state) {
-        this.state = state;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-  /*  public static List<RefDataOrganizationEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

@@ -17,7 +17,7 @@ public class TermsCodeSetsToApplicationEntity {
     private String createdUser;
     private RefDataOrganizationEntity organization;
     private RefDataApplicationEntity application;
-    private RefDataVendorEntity vendor;
+    //private RefDataVendorEntity vendor;
     private String codeValue;
     private String codeDesc;
     private RefDataSensitivityFlagEntity sensitiveFlag;
@@ -93,6 +93,7 @@ public class TermsCodeSetsToApplicationEntity {
         this.codeDesc = codeDesc;
     }
 
+/*
     @Override
     public boolean equals(Object o) {
 		if (this == o)
@@ -109,15 +110,7 @@ public class TermsCodeSetsToApplicationEntity {
 			java.util.Objects.equals(application, other.application) && java.util.Objects.equals(vendor, other.vendor) && 
 			java.util.Objects.equals(codeValue, other.codeValue) && java.util.Objects.equals(codeDesc, other.codeDesc) && 
 			java.util.Objects.equals(sensitiveFlag, other.sensitiveFlag);
-	}
-
-    @Override
-    public int hashCode() {
-		return java.util.Objects.hash(codeSetToApplicationId, codeSets, domain, industryStd, specificDetails,
-					createdDate, status, createdUser, organization,
-					application, vendor, codeValue, codeDesc,
-					sensitiveFlag);
-	}
+	}*/
 
     @ManyToOne
     @JoinColumn(name = "SensitivityFlagID", referencedColumnName = "SensitiveFlagID")
@@ -159,15 +152,11 @@ public class TermsCodeSetsToApplicationEntity {
         this.organization = organization;
     }
 
-    @ManyToOne
+  /*  @ManyToOne
     @JoinColumn(name = "VendorID", referencedColumnName = "VendorID")
     public RefDataVendorEntity getVendor() {
         return vendor;
-    }
-
-    public void setVendor(RefDataVendorEntity vendor) {
-        this.vendor = vendor;
-    }
+    }*/
 
     @ManyToOne
     @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")

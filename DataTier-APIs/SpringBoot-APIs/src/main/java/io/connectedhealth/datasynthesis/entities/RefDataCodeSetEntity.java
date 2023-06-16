@@ -1,82 +1,44 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "refdata_codeset")
 public class RefDataCodeSetEntity {
-    private long codeSetsId;
-    private String codeSetName;
-    private RefDataIndustryStdEntity industryStd;
-    private Timestamp createdDate;
-    private String createdUser;
-    private String codesetGuid;
-    private String fieldMapping;
-    private RefDataStatusEntity status;
-    private RefDataSensitivityFlagEntity sensitivityFlag;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CodeSetsID", nullable = false)
-    public long getCodeSetsId() {
-        return codeSetsId;
-    }
-
-    public void setCodeSetsId(long codeSetsId) {
-        this.codeSetsId = codeSetsId;
-    }
-
+    @Column(name = "codesetsid", nullable = false)
+    private long codeSetsId;
     @Basic
-    @Column(name = "CodeSetName", nullable = true, length = 50)
-    public String getCodeSetName() {
-        return codeSetName;
-    }
-
-    public void setCodeSetName(String codeSetName) {
-        this.codeSetName = codeSetName;
-    }
-
+    @Column(name = "codesetname", nullable = true, length = 50)
+    private String codeSetName;
+    @ManyToOne
+    @JoinColumn(name = "industrystd", referencedColumnName = "IndustryStd")
+    private RefDataIndustryStdEntity industryStd;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
-
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
     @Basic
-    @Column(name = "CodesetGUID", nullable = true, length = 38)
-    public String getCodesetGuid() {
-        return codesetGuid;
-    }
-
-    public void setCodesetGuid(String codesetGuid) {
-        this.codesetGuid = codesetGuid;
-    }
-
+    @Column(name = "codesetguid", nullable = true, length = 38)
+    private String codesetGuid;
     @Basic
-    @Column(name = "FieldMapping", nullable = true, length = 20)
-    public String getFieldMapping() {
-        return fieldMapping;
-    }
-
-    public void setFieldMapping(String fieldMapping) {
-        this.fieldMapping = fieldMapping;
-    }
+    @Column(name = "fieldmapping", nullable = true, length = 20)
+    private String fieldMapping;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "sensitivityflagid", referencedColumnName = "SensitiveFlagID")
+    private RefDataSensitivityFlagEntity sensitivityFlag;
 
     @Override
     public boolean equals(Object o) {
@@ -99,37 +61,4 @@ public class RefDataCodeSetEntity {
 					codesetGuid, fieldMapping, status, sensitivityFlag);
 	}
 
-    @ManyToOne
-    @JoinColumn(name = "IndustryStd", referencedColumnName = "IndustryStd")
-    public RefDataIndustryStdEntity getIndustryStd() {
-        return industryStd;
-    }
-
-    public void setIndustryStd(RefDataIndustryStdEntity industryStd) {
-        this.industryStd = industryStd;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "SensitivityFlagID", referencedColumnName = "SensitiveFlagID")
-    public RefDataSensitivityFlagEntity getSensitivityFlag() {
-        return sensitivityFlag;
-    }
-
-    public void setSensitivityFlag(RefDataSensitivityFlagEntity sensitivityFlag) {
-        this.sensitivityFlag = sensitivityFlag;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*public static List<RefDataCodeSetEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }*/
 }

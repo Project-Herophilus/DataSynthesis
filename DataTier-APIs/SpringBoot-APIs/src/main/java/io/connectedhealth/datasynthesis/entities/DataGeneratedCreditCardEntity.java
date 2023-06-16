@@ -1,71 +1,41 @@
 package io.connectedhealth.datasynthesis.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "datagenerated_creditcard")
 public class DataGeneratedCreditCardEntity {
-    private long creditCardId;
-    private String creditCardNumber;
-    private String creditCardName;
-    private Timestamp createdDate;
-    private String createdUser;
-    private RefDataStatusEntity status;
-    private RefDataApplicationEntity registeredApp;
-    private RefDataDataGenTypesEntity dataGenType;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CreditCardID", nullable = false)
-    public long getCreditCardId() {
-        return creditCardId;
-    }
-
-    public void setCreditCardId(long creditCardId) {
-        this.creditCardId = creditCardId;
-    }
-
+    @Column(name = "creditcardid", nullable = false)
+    private long creditCardId;
     @Basic
-    @Column(name = "CreditCardNumber", nullable = true, length = 20)
-    public String getCreditCardNumber() {
-        return creditCardNumber;
-    }
-
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
-    }
-
+    @Column(name = "creditcardnumber", nullable = true, length = 20)
+    private String creditCardNumber;
     @Basic
-    @Column(name = "CreditCardName", nullable = true, length = 10)
-    public String getCreditCardName() {
-        return creditCardName;
-    }
-
-    public void setCreditCardName(String creditCardName) {
-        this.creditCardName = creditCardName;
-    }
-
+    @Column(name = "creditcardname", nullable = true, length = 10)
+    private String creditCardName;
     @Basic
-    @Column(name = "CreatedDate", nullable = true)
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
+    @Column(name = "createddate", nullable = true)
+    private Timestamp createdDate;
     @Basic
-    @Column(name = "CreatedUser", nullable = true, length = 20)
-    public String getCreatedUser() {
-        return createdUser;
-    }
-
-    public void setCreatedUser(String createdUser) {
-        this.createdUser = createdUser;
-    }
+    @Column(name = "createduser", nullable = true, length = 20)
+    private String createdUser;
+    @ManyToOne
+    @JoinColumn(name = "statusid", referencedColumnName = "StatusID")
+    private RefDataStatusEntity status;
+    @ManyToOne
+    @JoinColumn(name = "registeredapp", referencedColumnName = "AppGUID")
+    private RefDataApplicationEntity registeredApp;
+    @ManyToOne
+    @JoinColumn(name = "datagentypeid", referencedColumnName = "DataGenTypeID")
+    private RefDataDataGenTypesEntity dataGenType;
 
     @Override
     public boolean equals(Object o) {
@@ -87,40 +57,4 @@ public class DataGeneratedCreditCardEntity {
 		return java.util.Objects.hash(creditCardId, creditCardNumber, creditCardName, createdDate, createdUser,
 					status, registeredApp, dataGenType);
 	}
-
-    @ManyToOne
-    @JoinColumn(name = "StatusID", referencedColumnName = "StatusID")
-    public RefDataStatusEntity getStatus() {
-        return status;
-    }
-
-    public void setStatus(RefDataStatusEntity status) {
-        this.status = status;
-    }
-
-    /*
-    @ManyToOne
-    @JoinColumn(name = "DataGenTypeID", referencedColumnName = "DataGenTypeID")
-    public RefDataDataGenTypesEntity getDataGenType() {
-        return dataGenType;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "RegisteredApp", referencedColumnName = "AppGUID")
-    public RefDataApplicationEntity getRegisteredApp() {
-        return registeredApp;
-    }
-
-    public void setRegisteredApp(RefDataApplicationEntity registeredApp) {
-        this.registeredApp = registeredApp;
-    }
-
-    public void setDataGenType(RefDataDataGenTypesEntity dataGenType) {
-        this.dataGenType = dataGenType;
-    }
-
-    public static List<DataGeneratedCreditCardEntity> findByStatusId(Short statusId) {
-        return find("status", new RefDataStatusEntity(statusId)).list();
-    }
-    */
 }
