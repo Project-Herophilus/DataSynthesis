@@ -4,14 +4,11 @@ Return to the <a href="https://github.com/Project-Herophilus/DataSynthesis" targ
 DataSynthesis APIs are intended to be a place where several different languages of APIs are developed
 to access the DataSynthesis data model. 
 
-| API (By Programming Language)                                                                                     |Usage/Implementation |
-|-------------------------------------------------------------------------------------------------------------------|----------|
-| [Node (Express)](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Node-APIs/README.md) |Javascript Express based APIs .|
-| [Quarkus](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs/README.md)     |Quarkus based APIs|
-
-# OpenAPI - Coming Soon
-We have a community member that has started working with us on building out the needed assets for OpenAPI, we anticipate
-this coming in the Fall of 2022.
+| API (By Programming Language)                                                                                          |Usage/Implementation |
+|------------------------------------------------------------------------------------------------------------------------|----------|
+| [Node (Express)](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Node-APIs/README.md)      |Javascript Express based APIs .|
+| [Quarkus](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/Quarkus-APIs/README.md)          |Quarkus based APIs|
+| [Spring Boot 3](https://github.com/Project-Herophilus/DataSynthesis/tree/main/DataTier-APIs/SpringBoot-APIs/README.md) ||
 
 # Focus on Improving
 We are focusing on continuing to improve. With the numerous implementation and partner implementations we
