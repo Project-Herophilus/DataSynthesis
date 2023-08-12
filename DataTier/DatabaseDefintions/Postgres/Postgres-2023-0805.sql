@@ -36,6 +36,7 @@ create sequence platform_config_datagen_datagenconfigid_seq;
 create sequence platform_dataattributes_seq;
 create sequence platform_datastructures_platformdatastructuresid_seq;
 create sequence platform_datastructurestodata_platformdatastructurestodataa_seq;
+create sequence platform_industrystds_metadata_seq;
 create sequence refdata_codeset_seq;
 create sequence refdata_countries_seq;
 create sequence refdata_datagentypes_seq;
@@ -563,6 +564,22 @@ CREATE TABLE platform_dataattributes (
                                          PRIMARY KEY (platformdataattributesid)
 );
 
+CREATE TABLE platform_industrystds_metadata (
+                                         platformdindustrystdmetadatasid integer DEFAULT nextval('platform_industrystds_metadata_seq'::regclass) NOT NULL,
+                                         eventtypeid varchar(10) DEFAULT 'NULL'::character varying,
+                                         industryversion varchar(10) DEFAULT 'NULL'::character varying,
+                                         segmentdetail varchar(50) DEFAULT 'NULL'::character varying,
+                                         fieldorderid integer,
+                                         fieldid varchar(10) DEFAULT 'NULL'::character varying,
+                                         fieldname varchar(50) DEFAULT 'NULL'::character varying,
+                                         fielddesc varchar(99) DEFAULT 'NULL'::character varying,
+                                         sensitivityflagid integer,
+                                         createddate timestamp DEFAULT CURRENT_TIMESTAMP,
+                                         statusid integer DEFAULT 1,
+                                         createduser varchar(20) DEFAULT 'NULL'::character varying,
+                                         PRIMARY KEY (platformdindustrystdmetadatasid)
+);
+
 CREATE TABLE refdata_codeset (
                                  codesetsid integer DEFAULT nextval('refdata_codeset_seq'::regclass) NOT NULL,
                                  codesetname varchar(50) DEFAULT 'NULL'::character varying,
@@ -609,8 +626,7 @@ CREATE TABLE refdata_devicetypes (
 
 CREATE TABLE refdata_industrystd_eventtypes
 (
-    eventtypeid     integer default nextval('refdata_eventtypes_seq'::regclass) not null
-        primary key,
+    eventtypeid     varchar(10) default not null primary key,
     eventtypesddesc varchar(30) default 'NULL'::character varying,
     industrystd     varchar(6),
     createddate     timestamp   default CURRENT_TIMESTAMP,
@@ -1219,6 +1235,18 @@ ALTER TABLE platform_dataattributes
 ALTER TABLE platform_dataattributes
     ADD FOREIGN KEY (statusid)
         REFERENCES refdata_status (statusid);
+
+ALTER TABLE platform_industrystds_metadata
+    ADD FOREIGN KEY (statusid)
+        REFERENCES refdata_status (statusid);
+
+ALTER TABLE platform_industrystds_metadata
+    ADD FOREIGN KEY (eventtypeid)
+        REFERENCES refdata_industrystd_eventtypes (eventtypeid);
+
+ALTER TABLE platform_industrystds_metadata
+    ADD FOREIGN KEY (sensitivityflagid)
+        REFERENCES refdata_sensitivityflag (sensitiveflagid);
 
 ALTER TABLE refdata_codeset
     ADD FOREIGN KEY (industrystd)
