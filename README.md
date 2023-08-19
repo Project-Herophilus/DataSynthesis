@@ -1,3 +1,5 @@
+This project we have left in place here for existing folks that have used it before. We are in the midst of moving it to its own project to stand on its own.
+
 # Background
 As we thought about how to help healthcare we continue to focus and believe that <b>data being the asset</b> and that 
 must be core as part of our mindset. A key part we want to ensure is a focus on a wide variety of data enablement 
